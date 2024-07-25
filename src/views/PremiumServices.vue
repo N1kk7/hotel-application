@@ -212,4 +212,67 @@ export default {
             }
         }
     }
+    @media screen and (max-width: 768px) {
+        .Services{
+            .golfClubs {
+                    padding: 30px;
+                    margin: 30px;
+                    gap: 20px;
+
+                    h2 {
+                    font-size: 30px;
+                    }
+
+                    p {
+                    font-size: 18px;
+                    }
+
+                    .clubsWrapper {
+                    grid-template-columns: 1fr;
+                    }
+                }
+        }
+    }
+    @media (max-width: 480px) {
+        .Services{
+            .golfClubs {
+                    padding: 20px;
+                    margin: 20px;
+                    gap: 15px;
+
+                    h2 {
+                    font-size: 25px;
+                    }
+
+                    p {
+                    font-size: 16px;
+                    }
+
+                    .clubsWrapper {
+                    grid-template-columns: 1fr;
+                    }
+                }
+        }
+    }
+    @media (max-width: 320px) {
+        .Services{
+            .golfClubs {
+                    padding: 10px;
+                    margin: 10px;
+                    gap: 10px;
+
+                    h2 {
+                    font-size: 20px;
+                    }
+
+                    p {
+                    font-size: 14px;
+                    }
+
+                    .clubsWrapper {
+                    grid-template-columns: 1fr;
+                    }
+                }
+        }
+    }
 </style>

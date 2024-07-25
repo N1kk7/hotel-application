@@ -253,5 +253,68 @@ export default {
             }
         }
     }
+    @media (max-width: 768px) {
+        .KingPalace{
+            .pageBlock {
+                padding: 30px;
+                margin: 30px;
+                gap: 20px;
+
+                h2 {
+                font-size: 30px;
+                }
+
+                p {
+                font-size: 18px;
+                }
+
+                .blockWrapper {
+                grid-template-columns: 1fr;
+                }
+            }
+        }
+    }
+    @media (max-width: 468px) {
+        .KingPalace{
+            .pageBlock {
+                padding: 20px;
+                margin: 20px;
+                gap: 15px;
+
+                h2 {
+                font-size: 25px;
+                }
+
+                p {
+                font-size: 16px;
+                }
+
+                .blockWrapper {
+                grid-template-columns: 1fr;
+                }
+            }
+        }
+    }
+    @media (max-width: 320px) {
+        .KingPalace{
+            .pageBlock {
+                padding: 10px;
+                margin: 10px;
+                gap: 10px;
+
+                h2 {
+                font-size: 20px;
+                }
+
+                p {
+                font-size: 14px;
+                }
+
+                .blockWrapper {
+                grid-template-columns: 1fr;
+                }
+            }
+        }
+    }
 
 </style>

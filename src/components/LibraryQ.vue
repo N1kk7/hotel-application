@@ -48,6 +48,9 @@
         </defs>
         </symbol>
     <!-- Arrow Icon -->
+    <symbol id="longArrowRight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><title>Artboard-34</title><g  data-name="Right"><polygon points="17.5 5.999 16.793 6.706 22.086 11.999 1 11.999 1 12.999 22.086 12.999 16.792 18.294 17.499 19.001 24 12.499 17.5 5.999"/></g></symbol>
+    <symbol id="longArrowLeft"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><title>Artboard-35</title><g data-name="Left"><polygon points="24 12.001 2.914 12.001 8.208 6.706 7.501 5.999 1 12.501 7.5 19.001 8.207 18.294 2.914 13.001 24 13.001 24 12.001" /></g>
+    </symbol>
     <symbol id="arrowRight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 21" fill="none">
     <path d="M7.5 8L10.5 11L7.5 14" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>

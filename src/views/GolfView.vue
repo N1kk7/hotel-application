@@ -155,212 +155,197 @@ export default {
     SvgIcon,
     PrimaryButton,
   },
-
+  data() {
+    return {
+      showImage: true,
+      showText: true,
+      showClubs: true,
+      showPlayGolfContent: true,
+      showPlayGolfDetails: true,
+      showAvailableServicesHeader: true,
+      clubs: [
+        { name: 'MARIÁNSKÉ LÁZNĚ', image: '../assets/images/golf-page/golf4.png', description: 'A national cultural monument and the second largest riding hall in Central Europe.' },
+        { name: 'KYNŽVART', image: '../assets/images/golf-page/golf1.png', description: 'Ruins of the oldest known Czech stone castle.' },
+        { name: 'ALFRÉDOV', image: '../assets/images/golf-page/golf2.png', description: 'Ideal for training and recreational sports.' },
+        { name: 'SOKOLOV', image: '../assets/images/golf-page/golf3.png', description: 'Europe\'s most important paintball arena.' },
+      ],
+      details: [
+        { icon: 'golfField', value: '100 HA', label: 'Area of the golf course' },
+        { icon: 'lake', value: '10 HA', label: 'Area of the water surface' },
+        { icon: 'golfHole', value: '18', label: 'Number of holes' },
+      ],
+      services: [
+        { title: 'Equipment Rental', image: '../assets/images/golf-page/service1.png', description: 'Description' },
+        { title: 'Golf Lessons', image: '../assets/images/golf-page/service2.png', description: 'Description' },
+        { title: 'Transfer', image: '../assets/images/golf-page/service3.png', description: 'Description' },
+      ],
+    };
+  },
 };
 </script>
-
 <style scoped lang="scss">
-    .Golf{
+
+  .Golf {
+    width: 100%;
+    height: fit-content;
+    background: var(--color-light);
+
+    .main {
+      position: relative;
+      .mainImage {
         width: 100%;
-        height: fit-content;
-        background: var(--color-light);
-        .main{
-           position: relative;
-           .mainImage{
-            width: 100%;
-            height: 100%;
-            min-height: 100vh;
-            object-fit: cover;
-            }
-            .textBlock{
-                position: absolute;
-                bottom: 15%;
-                max-width: 40vw;
-                left: 10%;
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-                .path{
-                    display: flex;
-                    justify-content: flex-start;
-                    gap: 10px;
-                    align-items: center;
-                    position: relative;
-                    z-index: 5;
-                    a{
-                        text-decoration: none;
-                        cursor: pointer;
-                    }
-                    span{
-                        color: var(--color-white);
-                        text-align: center;
-                        font-family: var(--font-text-reg);
-                        font-size: 14px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 150%; /* 21px */
-                        text-transform: uppercase;
-                    }
-                }
-                h1{
-                    color: var(--color-white);
-                    font-family: var(--font-grot-reg);
-                    font-size: clamp(45px, 10vw, 80px);
-                    font-style: normal;
-                    font-weight: 420;
-                    line-height: 100%; /* 80px */
-                    text-transform: uppercase;
-        }
-            }
-        }
-        .golfClubs{
-            padding: 60px;
-            margin: 60px;
-            background: var(--color-white);
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            h2{
-                color: var(--color-black);
-                /* [desk]/H2 */
-                font-family: var(--font-text-reg);
-                font-size: 40px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 120%; /* 48px */
-                text-transform: uppercase;
-            }
-            p{
-                color: #454545;
-                font-family: var(--font-text-reg);
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 150%; /* 30px */
-            }
-            .clubsWrapper{
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                column-gap: 40px;
-                row-gap: 60px;
-                .club{
-                    overflow: hidden;
-                    img{
-                        width: 100%;
-                        height: auto;
-                        object-fit: cover;
-                    }
-                    h4{
-                        color: var(--color-black);
-                        font-family: var(--font-text-reg);
-                        font-size: 30.752px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 130%; /* 39.978px */
-                        text-transform: uppercase;
-                        padding: 22px 0;
-                    }
-                    p{
-                        color: #454545;
-                        font-family: var(--font-text-reg);
-                        font-size: 21.966px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 150%; /* 32.949px */
-                    }
-                }
+        height: 100%;
+        min-height: 100vh;
+        object-fit: cover;
+      }
 
-            }
-            button{
-                margin: 20px auto 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+      .textBlock {
+        position: absolute;
+        bottom: 15%;
+        max-width: 40vw;
+        left: 10%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        .path {
+          display: flex;
+          justify-content: flex-start;
+          gap: 10px;
+          align-items: center;
+          position: relative;
+          z-index: 5;
+          a {
+            text-decoration: none;
+            cursor: pointer;
+          }
+          span {
+            color: var(--color-white);
+            text-align: center;
+            font-family: var(--font-text-reg);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 150%; /* 21px */
+            text-transform: uppercase;
+          }
         }
-        .playGolf {
-        margin-inline: 60px;
-        margin-bottom: 60px;
 
-  &__content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 2rem;
-    background: var(--color-white);
-    padding: 60px 72px;
-
-  }
-  &__text {
-      flex: 1;
-      padding-right: 2rem;
+        h1 {
+          color: var(--color-white);
+          font-family: var(--font-grot-reg);
+          font-size: clamp(45px, 10vw, 80px);
+          font-style: normal;
+          font-weight: 420;
+          line-height: 100%; /* 80px */
+          text-transform: uppercase;
+        }
+      }
     }
-  &__title {
-      margin-bottom: 1rem;
-      color: var(--color-black);
+
+    .golfClubs {
+      padding: 60px;
+      margin: 60px;
+      background: var(--color-white);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      h2 {
+        color: var(--color-black);
         font-family: var(--font-text-reg);
         font-size: 40px;
         font-style: normal;
         font-weight: 500;
         line-height: 120%; /* 48px */
         text-transform: uppercase;
-    }
+      }
 
-    &__description {
-      margin-bottom: 1rem;
-      color: #3F3F3F;
+      p {
+        color: #454545;
         font-family: var(--font-text-reg);
         font-size: 20px;
         font-style: normal;
         font-weight: 400;
         line-height: 150%; /* 30px */
-    }
-    &__imageWrapper {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-
-    }
-    &__image {
-        width: 100%;
-        height: auto;
       }
 
-  &__details {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    padding: 60px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
+      .clubsWrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 40px;
+        row-gap: 60px;
 
-  }
-  &__detail {
-      flex: 1;
-      display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 20px;
-        .icon{
-            border: 1px solid #D7B154;
-            border-radius: 50%;
-            padding: 15px;
+        .club {
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+          }
+
+          h4 {
+            color: var(--color-black);
+            font-family: var(--font-text-reg);
+            font-size: 30.752px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 130%; /* 39.978px */
+            text-transform: uppercase;
+            padding: 22px 0;
+          }
+
+          p {
+            color: #454545;
+            font-family: var(--font-text-reg);
+            font-size: 21.966px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%; /* 32.949px */
+          }
         }
+      }
 
+      button {
+        margin: 20px auto 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
-    &__detailValue {
+
+    .playGolf {
+      margin-inline: 60px;
+      margin-bottom: 60px;
+
+      &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        margin-bottom: 2rem;
+        background: var(--color-white);
+        padding: 60px 72px;
+      }
+
+      &__text {
+        flex: 1;
+        padding-right: 2rem;
+      }
+
+      &__title {
+        margin-bottom: 1rem;
         color: var(--color-black);
         font-family: var(--font-text-reg);
-        font-size: 28px;
+        font-size: 40px;
         font-style: normal;
         font-weight: 500;
-        line-height: 130%; /* 36.4px */
+        line-height: 120%; /* 48px */
         text-transform: uppercase;
       }
 
-      &__detailLabel {
+      &__description {
+        margin-bottom: 1rem;
         color: #3F3F3F;
         font-family: var(--font-text-reg);
         font-size: 20px;
@@ -368,18 +353,74 @@ export default {
         font-weight: 400;
         line-height: 150%; /* 30px */
       }
-        }
-        .availableServices {
-            margin-inline: 60px;
-            margin-bottom: 60px;
-  padding: 60px 72px;
-  background-color: #fff;
 
-  &__header {
-    text-align: left;
-    margin-bottom: 60px;
-  }
-  &__title {
+      &__imageWrapper {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      &__image {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .playGolf__details {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      padding: 60px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+    }
+
+    .playGolf__detail {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+
+      .icon {
+        border: 1px solid #D7B154;
+        border-radius: 50%;
+        padding: 15px;
+      }
+    }
+
+    .playGolf__detailValue {
+      color: var(--color-black);
+      font-family: var(--font-text-reg);
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 130%; /* 36.4px */
+      text-transform: uppercase;
+    }
+
+    .playGolf__detailLabel {
+      color: #3F3F3F;
+      font-family: var(--font-text-reg);
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 30px */
+    }
+
+    .availableServices {
+      margin-inline: 60px;
+      margin-bottom: 60px;
+      padding: 60px 72px;
+      background-color: #fff;
+
+      &__header {
+        text-align: left;
+        margin-bottom: 60px;
+      }
+
+      &__title {
         color: var(--color-black);
         font-family: var(--font-text-reg);
         font-size: 40px;
@@ -387,9 +428,9 @@ export default {
         font-weight: 500;
         line-height: 120%; /* 48px */
         text-transform: uppercase;
-    }
+      }
 
-    &__description {
+      &__description {
         margin-top: 40px;
         color: #3F3F3F;
         font-family: var(--font-text-reg);
@@ -397,20 +438,20 @@ export default {
         font-style: normal;
         font-weight: 400;
         line-height: 150%; /* 30px */
-    }
+      }
 
-  &__services {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
+      &__services {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+      }
 
-  }
-  &__service {
-      text-align: start;
-      flex: 1;
+      &__service {
+        text-align: start;
+        flex: 1;
+      }
 
-    }
-    &__image {
+      &__image {
         width: 100%;
         height: auto;
         margin-bottom: 20px;
@@ -435,6 +476,288 @@ export default {
         font-weight: 400;
         line-height: 150%; /* 30px */
       }
-}
     }
+  }
+
+  @media (max-width: 768px) {
+    .Golf {
+      .main {
+        .textBlock {
+          bottom: 10%;
+          left: 5%;
+          max-width: 90vw;
+          gap: 10px;
+          .path {
+            flex-direction: column;
+            align-items: flex-start;
+
+            span {
+              font-size: 12px;
+            }
+          }
+
+          h1 {
+            font-size: clamp(30px, 8vw, 50px);
+          }
+        }
+      }
+
+      .golfClubs {
+        padding: 30px;
+        margin: 30px;
+        gap: 20px;
+
+        h2 {
+          font-size: 30px;
+        }
+
+        p {
+          font-size: 18px;
+        }
+
+        .clubsWrapper {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .playGolf {
+        margin-inline: 30px;
+        margin-bottom: 30px;
+
+        &__content {
+          flex-direction: column;
+          padding: 30px 36px;
+          gap: 20px;
+        }
+
+        &__text {
+          padding-right: 0;
+        }
+
+        &__title {
+          font-size: 30px;
+        }
+
+        &__description {
+          font-size: 18px;
+        }
+
+        &__details {
+          flex-direction: column;
+          padding: 30px;
+          gap: 20px;
+        }
+      }
+
+      .availableServices {
+        margin-inline: 30px;
+        margin-bottom: 30px;
+        padding: 30px 36px;
+
+        &__header {
+          margin-bottom: 30px;
+        }
+
+        &__title {
+          font-size: 30px;
+        }
+
+        &__description {
+          font-size: 18px;
+        }
+
+        &__services {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .Golf {
+      .main {
+        .textBlock {
+          bottom: 5%;
+          left: 5%;
+          max-width: 90vw;
+          gap: 8px;
+          .path {
+            flex-direction: column;
+            align-items: flex-start;
+
+            span {
+              font-size: 10px;
+            }
+          }
+
+          h1 {
+            font-size: clamp(25px, 6vw, 40px);
+          }
+        }
+      }
+
+      .golfClubs {
+        padding: 20px;
+        margin: 20px;
+        gap: 15px;
+
+        h2 {
+          font-size: 25px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+
+        .clubsWrapper {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .playGolf {
+        margin-inline: 20px;
+        margin-bottom: 20px;
+
+        &__content {
+          flex-direction: column;
+          padding: 20px 24px;
+          gap: 15px;
+        }
+
+        &__text {
+          padding-right: 0;
+        }
+
+        &__title {
+          font-size: 25px;
+        }
+
+        &__description {
+          font-size: 16px;
+        }
+
+        &__details {
+          flex-direction: column;
+          padding: 20px;
+          gap: 15px;
+        }
+      }
+
+      .availableServices {
+        margin-inline: 20px;
+        margin-bottom: 20px;
+        padding: 20px 24px;
+
+        &__header {
+          margin-bottom: 20px;
+        }
+
+        &__title {
+          font-size: 25px;
+        }
+
+        &__description {
+          font-size: 16px;
+        }
+
+        &__services {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 320px) {
+    .Golf {
+      .main {
+        .textBlock {
+          bottom: 3%;
+          left: 3%;
+          max-width: 94vw;
+          gap: 6px;
+          .path {
+            flex-direction: column;
+            align-items: flex-start;
+
+            span {
+              font-size: 8px;
+            }
+          }
+
+          h1 {
+            font-size: clamp(20px, 5vw, 30px);
+          }
+        }
+      }
+
+      .golfClubs {
+        padding: 10px;
+        margin: 10px;
+        gap: 10px;
+
+        h2 {
+          font-size: 20px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+
+        .clubsWrapper {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .playGolf {
+        margin-inline: 10px;
+        margin-bottom: 10px;
+
+        &__content {
+          flex-direction: column;
+          padding: 10px 12px;
+          gap: 10px;
+        }
+
+        &__text {
+          padding-right: 0;
+        }
+
+        &__title {
+          font-size: 20px;
+        }
+
+        &__description {
+          font-size: 14px;
+        }
+
+        &__details {
+          flex-direction: column;
+          padding: 10px;
+          gap: 10px;
+        }
+      }
+
+      .availableServices {
+        margin-inline: 10px;
+        margin-bottom: 10px;
+        padding: 10px 12px;
+
+        &__header {
+          margin-bottom: 10px;
+        }
+
+        &__title {
+          font-size: 20px;
+        }
+
+        &__description {
+          font-size: 14px;
+        }
+
+        &__services {
+          flex-direction: column;
+        }
+      }
+    }
+  }
 </style>

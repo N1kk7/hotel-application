@@ -194,7 +194,7 @@ export default {
   },
 };
 </script>
-
+<!--
 <style scoped lang="scss">
     .Contact{
         width: 100%;
@@ -494,4 +494,267 @@ export default {
             }
         }
     }
+</style> -->
+
+<style scoped lang="scss">
+.Contact {
+  width: 100%;
+  height: fit-content;
+  background: var(--color-light);
+
+  .main {
+    position: relative;
+
+    .mainImage {
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      object-fit: cover;
+    }
+
+    .textBlock {
+      position: absolute;
+      bottom: 10%;
+      left: 10%;
+      max-width: 90vw;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .path {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        align-items: center;
+
+        a {
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        span {
+          color: var(--color-white);
+          text-align: center;
+          font-family: var(--font-text-reg);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 150%;
+          text-transform: uppercase;
+        }
+      }
+
+      h1 {
+        color: var(--color-white);
+        font-family: var(--font-grot-reg);
+        font-size: clamp(30px, 8vw, 60px);
+        font-weight: 420;
+        line-height: 100%;
+        text-transform: uppercase;
+      }
+
+      .description {
+        color: var(--color-white);
+        font-family: var(--font-text-reg);
+        font-size: 18px;
+        line-height: 150%;
+      }
+
+      .PrimaryButton {
+        max-width: 180px;
+      }
+    }
+  }
+
+  .infoBlock,
+  .map,
+  .journeyPlan,
+  .transferBlock {
+    margin: 40px;
+    padding: 40px;
+    background: var(--color-white);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .infoBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .infoCard {
+      padding: 20px;
+
+      h3 {
+        font-size: 24px;
+      }
+
+      ul {
+        padding: 0;
+        list-style-type: none;
+        gap: 15px;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          span {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+
+  .map {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      color: var(--color-gold);
+      font-size: 14px;
+    }
+
+    .topBlock {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      h2 {
+        font-size: 32px;
+      }
+
+      .topInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        span {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .mapImg {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .journeyPlan {
+    h2 {
+      font-size: 32px;
+    }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .icon {
+          svg {
+            border: 1px solid var(--color-gold);
+            border-radius: 50%;
+            padding: 10px;
+          }
+        }
+
+        h3 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .transferBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .transferInfo {
+      h2 {
+        font-size: 32px;
+      }
+
+      p,
+      span {
+        font-size: 18px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .textBlock {
+      left: 5%;
+    }
+
+    .infoBlock,
+    .map,
+    .journeyPlan,
+    .transferBlock {
+      margin: 20px;
+      padding: 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-size: 90%;
+    }
+
+    p,
+    span {
+      font-size: 90%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .textBlock {
+      max-width: 90vw;
+      left: 5%;
+    }
+
+    h1 {
+      font-size: 8vw;
+    }
+
+    .infoBlock,
+    .map,
+    .journeyPlan,
+    .transferBlock {
+      margin: 10px;
+      padding: 10px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    span {
+      font-size: 80%;
+    }
+
+    .mainImage,
+    .transferBlock img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
 </style>

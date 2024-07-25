@@ -191,7 +191,7 @@ export default {
   },
 };
 </script>
-
+<!--
 <style scoped lang="scss">
     .Massage{
         width: 100%;
@@ -404,4 +404,237 @@ export default {
             }
         }
     }
+</style> -->
+<style scoped lang="scss">
+.Massage {
+  width: 100%;
+  height: fit-content;
+  background: var(--color-light);
+
+  .main {
+    position: relative;
+    .mainImage {
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      object-fit: cover;
+    }
+    .textBlock {
+      position: absolute;
+      bottom: 10%;
+      max-width: 80vw;
+      left: 5%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .path {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        align-items: center;
+        position: relative;
+        z-index: 5;
+        a {
+          text-decoration: none;
+          cursor: pointer;
+        }
+        span {
+          color: var(--color-white);
+          text-align: center;
+          font-family: var(--font-text-reg);
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 150%;
+          text-transform: uppercase;
+        }
+      }
+      .colorTitle {
+        color: var(--color-gold);
+      }
+      h1 {
+        color: var(--color-white);
+        font-family: var(--font-grot-reg);
+        font-size: clamp(30px, 5vw, 50px);
+        font-style: normal;
+        font-weight: 420;
+        line-height: 100%;
+        text-transform: uppercase;
+      }
+      .description {
+        color: var(--color-white);
+        font-family: var(--font-text-reg);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+      }
+      .PrimaryButton {
+        max-width: 180px;
+      }
+    }
+  }
+
+  .infoBlock {
+    margin: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    background: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+    .infoCard {
+      padding: 20px;
+      border-bottom: 1px solid var(--color-light-grey);
+      &:last-child {
+        border-bottom: none;
+      }
+
+      h3 {
+        color: var(--color-black);
+        font-family: var(--font-text-reg);
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          .openingDescription {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: flex-start;
+          }
+
+          .timeAvailable {
+            color: var(--color-grey);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+          }
+
+          span {
+            color: var(--color-black);
+            font-family: var(--font-text-reg);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
+          }
+        }
+      }
+    }
+  }
+
+  .ourSpecialist {
+    padding: 20px;
+    margin: 30px 20px;
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .infoBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 100%;
+
+      h2 {
+        color: var(--color-black);
+        font-family: var(--font-text-reg);
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: var(--color-black);
+        font-family: var(--font-text-reg);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+      }
+    }
+
+    .imageBlock {
+      overflow: hidden;
+      position: relative;
+
+      img {
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+/* Медиа запрос для маленьких экранов */
+@media (max-width: 480px) {
+  .Massage {
+    .main {
+      .textBlock {
+        bottom: 5%;
+        left: 5%;
+        max-width: 90%;
+        .path span,
+        .description,
+        h1 {
+          font-size: 12px;
+        }
+        h1 {
+          font-size: clamp(20px, 8vw, 40px);
+        }
+      }
+    }
+
+    .infoBlock {
+      margin: 20px;
+      .infoCard {
+        padding: 20px;
+        h3 {
+          font-size: 20px;
+        }
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .ourSpecialist {
+      margin: 20px 10px;
+      padding: 20px;
+
+      .infoBlock h2 {
+        font-size: 24px;
+      }
+
+      .infoBlock p {
+        font-size: 14px;
+      }
+    }
+  }
+}
 </style>

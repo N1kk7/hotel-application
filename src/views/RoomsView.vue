@@ -52,13 +52,13 @@
         <div class="wrapper">
             <div class="main">
                 <div class="description">
-                    <span>
+                    <span class="topBlock">
                         5 STAR LUXURY
 
                     </span>
                     <h2>
                         THE MOST
-                        <span>
+                        <span class="colorText">
                             LUXURIOUS
                         </span>
                         ACCOMMODATION
@@ -77,32 +77,59 @@
                         King's Grand Suite, King's Leon Suite with a private whirlpool.
                     </p>
                 </div>
-                <div class="content">
+                <!-- <div class="content"> -->
                     <swiper
-    :spaceBetween="30"
-    :effect="'fade'"
-    :navigation="true"
-    :pagination="{
-      clickable: true,
-    }"
-    :modules="modules"
-    class="mySwiper"
-  >
-    <swiper-slide
-      ><img
-        src="https://swiperjs.com/demos/images/nature-1.jpg" alt="ololo"/></swiper-slide
-    ><swiper-slide
-      ><img
-        src="https://swiperjs.com/demos/images/nature-2.jpg" alt="ololo"/></swiper-slide
-    ><swiper-slide
-      ><img
-        src="https://swiperjs.com/demos/images/nature-3.jpg" alt="ololo"></swiper-slide
-    ><swiper-slide
-      ><img src="https://swiperjs.com/demos/images/nature-4.jpg" alt="ololo"
-    /></swiper-slide>
-  </swiper>
+                        ref="mySwiper"
+                        :spaceBetween="30"
+                        :effect="'fade'"
+                        :navigation="{ nextEl: '.swiper-button-next',
+                         prevEl: '.swiper-button-prev'}"
+                          @slideChange="onSlideChange"
+                          @swiper="onSwiper"
+                        :modules="modules"
+                        :autoplay="true"
+                        class="mySwiper"
+                    >
+                        <swiper-slide
+                        ><img
+                            src="@/assets/images/hotel-page/king/king1.jpg" alt="image1"/>
+                        </swiper-slide
+                        ><swiper-slide
+                        ><img
+                            src="@/assets/images/hotel-page/king/king2.jpg" alt="image2"/>
+                            </swiper-slide
+                        ><swiper-slide
+                        ><img
+                            src="@/assets/images/hotel-page/king/king3.jpg" alt="image3">
+                            </swiper-slide
+                        ><swiper-slide
+                        ><img src="@/assets/images/hotel-page/king/king4.jpg" alt="image4"
+                        /></swiper-slide>
+                        <swiper-slide>
+                            <img src="@/assets/images/hotel-page/king/king5.jpg" alt="image5"/>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <img src="@/assets/images/hotel-page/king/king6.jpg" alt="image6"/>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <img src="@/assets/images/hotel-page/king/king7.jpg" alt="image7"/>
+                        </swiper-slide>
+                        <div class="buttonWrapper">
+                            <div class="swiper-button-prev">
+                                <SvgIcon  name="longArrowLeft" size="large" fill="red"/>
+                            </div>
+                            <div class="info">
+                                <p>Current Slide: {{ currentSlide }}</p>
+                                <p>Total Slides: {{ totalSlides }}</p>
+                            </div>
+                            <div class="swiper-button-next">
+                                <SvgIcon  name="longArrowRight" size="large" fill="red"/>
 
-                </div>
+                            </div>
+                        </div>
+                    </swiper>
+
+                <!-- </div> -->
             </div>
         </div>
 
@@ -111,48 +138,70 @@
 </template>
 
 <script>
-import {
-  Swiper, SwiperSlide, EffectFade, Navigation, Pagination,
-} from 'swiper/vue';
+// import {
+//   Swiper, SwiperSlide, EffectFade, Navigation, Pagination,
+// } from 'swiper/vue';
 // import { EffectFade, Navigation, Pagination } from 'swiper';
-
-// import 'swiper/swiper.less';
-// import 'swiper/swiper.scss';
-// import 'swiper/swiper-bundle.css';
-// import 'swiper/pagination.scss';
-// import 'swiper/swiper-bundle.min/css';
-
-// import 'swiper/swiper.scss';
-
-// import 'swiper/css';
-// import 'swiper/css/effect-fade';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-
-// import 'swiper/swiper-bundle.min.css';s
-
-// import 'swiper/swiper.min.css';
-// import 'swiper/modules/pagination/pagination.min.css';
+import { ref } from 'vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
+import SvgIcon from '../components/SvgIcon.vue';
+import 'swiper/swiper-bundle.css';
 
 export default {
   name: 'Hotel-page',
   components: {
+    SvgIcon,
     Swiper,
     SwiperSlide,
   },
   setup() {
+    // const mySwiper = ref(null);
+    const swiperInstance = ref(null);
+    const currentSlide = ref(0);
+    const totalSlides = ref(0);
+
+    // const slideInfo = reactive({
+    //   currentSlide: 0,
+    //   totalSlides: 0,
+    // });
+
+    // const onSwiper = (swiper) => {
+    // //   mySwiper.value = swiper;
+    //   swiperInstance.value = swiper;
+    //   slideInfo.totalSlides = swiper.slides.length;
+    // };
+
+    // const onSlideChange = () => {
+    //   if (swiperInstance.value) {
+    //     // console.log('Current slide index:', swiperInstance.value.realIndex + 1);
+    //     slideInfo.currentSlide = swiperInstance.value.realIndex + 1;
+    //   }
+    // };
+    const onSwiper = (swiper) => {
+      swiperInstance.value = swiper;
+      totalSlides.value = swiper.slides.length;
+    };
+
+    const onSlideChange = () => {
+      if (swiperInstance.value) {
+        currentSlide.value = swiperInstance.value.realIndex + 1; // Add 1 to make it 1-based index
+      }
+    };
     return {
-      modules: [EffectFade, Navigation, Pagination],
+      swiperInstance,
+      currentSlide,
+      totalSlides,
+      onSwiper,
+      onSlideChange,
+      modules: [EffectFade, Autoplay, Navigation],
     };
   },
 };
 </script>
 
 <style scoped lang="scss">
-// @import 'swiper/css';
-// @import 'swiper/css/effect-fade';
-// @import 'swiper/css/navigation';
-// @import 'swiper/css/pagination';
+
     .Hotel{
         .main {
         position: relative;
@@ -231,6 +280,131 @@ export default {
                         color: var(--color-black);
                         transition: all ease 0.3s;
                         transform: translateX(0px) scaleX(1.1);
+                    }
+                }
+            }
+        }
+        .luxury{
+            width: 100%;
+            background: var(--color-light);
+            position: relative;
+            .wrapper{
+                width: 90%;
+                margin: 0 auto;
+                .main{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 50px;
+                    .description{
+                        max-width: 40vw;
+                        position: relative;
+                        margin-block: 20px;
+                        .topBlock{
+                            &::before{
+                                content: "";
+                                width: 79px;
+                                height: 1px;
+                                display: inline-block;
+                                background-color: var(--color-gold);
+                                vertical-align: middle;
+                                top: -2px;
+                                margin-bottom: 1px;
+                                margin-right: 18px;
+
+                            }
+                        }
+                        span{
+                            font-family: var(--font-grot-bold);
+                            font-size: 14px;
+                            color: var(--color-gold);
+                            font-weight: 700;
+                            letter-spacing: 2px;
+                        }
+                        h2{
+                            font-family: var(--font-text-reg);
+                            font-size: 42px;
+                            font-weight: 700;
+                            line-height: 1.1;
+                            margin: 20px 0 30px;
+                            .colorText{
+                                font-size: 42px;
+                                &::before{
+                                    display: none;
+                                }
+                            }
+                        }
+                        p{
+                            font-family: var(--font-text-reg);
+                            font-size: 20px;
+                            margin-block: 20px;
+                            max-width: 70%;
+                        }
+                    }
+                    .swiper {
+                        width: 100%;
+                        height: auto;
+                        margin: 2vw;
+
+                        .swiper-slide {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            overflow: hidden; /* Ensures the image doesn't overflow the container */
+            width: 100%;
+            height: 100%; /* Adjust this value as needed */
+                            // padding: 2vw;
+                            // margin: 2vw;
+
+                            img {
+                                // width: 70%;
+                                // height: auto;
+                                // object-fit: contain;
+                                // transition: all ease 0.5s;
+                                // transform: scale(1);
+                                width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: all ease 0.5s;
+              transform: scale(1);
+
+                                &:hover{
+                                    transform: scale(1.1);
+                                    // transform: scaleX(1);
+                                    transition: all ease 0.5s;
+
+                                }
+                            }
+                        }
+                        .buttonWrapper {
+                            position: absolute;
+                            bottom: 10px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 80%;
+                            height: 50px;
+                            background: white;
+                            z-index: 5;
+                            .swiper-button-prev, .swiper-button-next {
+                                flex: 1;
+                                padding: 10px;
+                                border-radius: 50%;
+                                svg{
+                                    stroke: var(--color-gold);
+
+                                }
+                                // color: var(--color-white);
+                                // &:hover {
+                                //     background: rgba(0, 0, 0, 0.8);
+                                // }
+                                &::after{
+                                    content: "";
+                                }
+                            }
+                        }
                     }
                 }
             }
