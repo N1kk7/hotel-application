@@ -194,307 +194,6 @@ export default {
   },
 };
 </script>
-<!--
-<style scoped lang="scss">
-    .Contact{
-        width: 100%;
-        height: fit-content;
-        background: var(--color-light);
-        .main{
-           position: relative;
-           .mainImage{
-            width: 100%;
-            height: 100%;
-            min-height: 100vh;
-            object-fit: cover;
-            }
-            .textBlock{
-                position: absolute;
-                bottom: 15%;
-                max-width: 40vw;
-                left: 10%;
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-                .path{
-                    display: flex;
-                    justify-content: flex-start;
-                    gap: 10px;
-                    align-items: center;
-                    position: relative;
-                    z-index: 5;
-                    a{
-                        text-decoration: none;
-                        cursor: pointer;
-                    }
-                    span{
-                        color: var(--color-white);
-                        text-align: center;
-                        font-family: var(--font-text-reg);
-                        font-size: 14px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 150%; /* 21px */
-                        text-transform: uppercase;
-                    }
-                }
-                .colorTitle{
-                    color: var(--color-gold);
-                }
-                h1{
-                    color: var(--color-white);
-                    font-family: var(--font-grot-reg);
-                    font-size: clamp(45px, 10vw, 80px);
-                    font-style: normal;
-                    font-weight: 420;
-                    line-height: 100%; /* 80px */
-                    text-transform: uppercase;
-                }
-                .description{
-                    color: var(--color-white);
-                    font-family: var(--font-text-reg);
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 150%; /* 30px */
-                }
-                .PrimaryButton{
-                    max-width: 180px;
-                }
-            }
-        }
-        .infoBlock{
-            margin: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-            gap: 20px;
-            .infoCard{
-                width: -webkit-fill-available;
-                padding: 40px 60px;
-                background: var(--color-white);
-                h3{
-                    color: var(--color-black);
-                    font-family: var(--font-text-reg);
-                    font-size: 28px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 130%; /* 36.4px */
-                    text-transform: uppercase;
-                }
-                ul{
-                    padding: 0;
-                    display: flex;
-                    flex-direction: column;
-                    list-style-type: none;
-                    gap: 20px;
-                    li{
-                        display: flex;
-                        align-items: center;
-                        justify-content: flex-start;
-                        gap: 10px;
-                        .openingDescription{
-                            display: flex;
-                            justify-content: space-between;
-                            width: 100%;
-                        }
-                        .timeAvailable{
-                            padding-right: 10%;
-                        }
-                        span{
-                            color: var(--color-black);
-                            font-family: var(--font-text-reg);
-                            font-size: 20px;
-                            font-style: normal;
-                            font-weight: 400;
-                            line-height: 150%; /* 30px */
-                        }
-                    }
-                }
-
-            }
-        }
-        .map{
-            margin: 60px;
-            padding: 60px;
-            background: var(--color-white);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            h3{
-                color: var(--color-gold);
-                font-family: var(--font-text-reg);
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 150%; /* 21px */
-                text-transform: uppercase;
-            }
-            .topBlock{
-                position: absolute;
-                top: 30px;
-                left: 0;
-                margin: 60px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: -webkit-fill-available;
-                h2{
-                    color: var(--color-black);
-                    /* [desk]/H2 */
-                    font-family: var(--font-text-reg);
-                    font-size: 40px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 120%; /* 48px */
-                    text-transform: uppercase;
-                }
-                .topInfo{
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    gap: 30px;
-                    span{
-                        color: var(--color-black);
-                        font-family: var(--font-text-reg);
-                        font-size: 20px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 150%; /* 30px */
-                    }
-                }
-            }
-            .mapImg{
-                text-align: center;
-            }
-        }
-        .journeyPlan{
-            margin: 60px;
-            padding: 60px;
-            background: var(--color-white);
-            h2{
-                color: var(--color-black);
-                /* [desk]/H2 */
-                font-family: var(--font-text-reg);
-                font-size: 40px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 120%; /* 48px */
-                text-transform: uppercase;
-            }
-            .items{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-top: 60px;
-                gap: 40px;
-                .item{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 20px;
-                    .icon{
-                        svg{
-                            border: 1px solid var(--color-gold);
-                            border-radius: 50%;
-                            padding: 10px;
-                        }
-                    }
-                    h3{
-                        color: var(--color-black);
-                        font-family: var(--font-text-reg);
-                        font-size: 28px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 130%; /* 36.4px */
-                        text-transform: uppercase;
-                    }
-                    p{
-                        color: #3F3F3F;
-                        font-family: var(--font-text-reg);
-                        font-size: 20px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 150%; /* 30px */
-                    }
-                }
-            }
-        }
-        .transferBlock{
-            margin: 60px;
-            padding: 60px;
-            background: var(--color-white);
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-            position: relative;
-            gap: 40px;
-            img{
-                min-width: 50%;
-            }
-            .transferInfo{
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                justify-content: space-between;
-                // align-items: stretch;
-                h2{
-                    color: var(--color-black);
-                    /* [desk]/H2 */
-                    font-family: var(--font-text-reg);
-                    font-size: 40px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 120%; /* 48px */
-                    text-transform: uppercase;
-                }
-                .colorText{
-                    color: var(--color-gold);
-                }
-                p{
-                    margin-top: clamp(20px, 3vw, 40px);
-                    color: #3F3F3F;
-                    font-family: var(--font-text-reg);
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 150%; /* 30px */
-                }
-                .contacts{
-                    h3{
-                        color: var(--color-gold);
-                        font-family: var(--font-text-reg);
-                        font-size: 14px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 150%; /* 21px */
-                        text-transform: uppercase;
-                    }
-                    ul{
-                        list-style-type: none;
-                        padding: 0;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 10px;
-                        li{
-                            display: flex;
-                            align-items: center;
-                            justify-content: flex-start;
-                            gap: 10px;
-                            span{
-                                color: var(--color-black);
-                                font-family: var(--font-text-reg);
-                                font-size: 20px;
-                                font-style: normal;
-                                font-weight: 400;
-                                line-height: 150%; /* 30px */
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-</style> -->
 
 <style scoped lang="scss">
 .Contact {
@@ -565,7 +264,6 @@ export default {
     }
   }
 
-  .infoBlock,
   .map,
   .journeyPlan,
   .transferBlock {
@@ -575,30 +273,99 @@ export default {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .infoBlock {
+//   .infoBlock {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 20px;
+
+//     .infoCard {
+//       padding: 20px;
+
+//       h3 {
+//         font-size: 24px;
+//       }
+
+//       ul {
+//         padding: 0;
+//         list-style-type: none;
+//         gap: 15px;
+
+//         li {
+//           display: flex;
+//           align-items: center;
+//           gap: 10px;
+
+//           span {
+//             font-size: 18px;
+//           }
+//         }
+//       }
+//     }
+//   }
+.infoBlock {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    // flex-direction: column;
+    gap: 30px;
+    padding: 20px;
 
     .infoCard {
       padding: 20px;
+      border-bottom: 1px solid var(--color-light-grey);
+    background: var(--color-white);
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+      &:last-child {
+        border-bottom: none;
+      }
 
       h3 {
+        color: var(--color-black);
+        font-family: var(--font-text-reg);
         font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%;
+        text-transform: uppercase;
+        margin-bottom: 10px;
       }
 
       ul {
         padding: 0;
+        margin: 0;
         list-style-type: none;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
         gap: 15px;
 
         li {
           display: flex;
           align-items: center;
+          justify-content: space-between;
           gap: 10px;
+          .openingDescription {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: flex-start;
+          }
+
+          .timeAvailable {
+            color: var(--color-grey);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+          }
 
           span {
-            font-size: 18px;
+            color: var(--color-black);
+            font-family: var(--font-text-reg);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
           }
         }
       }
@@ -609,6 +376,7 @@ export default {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    position: relative;
 
     h3 {
       color: var(--color-gold);
@@ -616,9 +384,17 @@ export default {
     }
 
     .topBlock {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 5vw;
+    left: 0;
+    width: -webkit-fill-available;
+    margin: 0 auto;
+    padding: 0 20px;
 
       h2 {
         font-size: 32px;
@@ -646,11 +422,14 @@ export default {
   .journeyPlan {
     h2 {
       font-size: 32px;
+      font-family: var(--font-text-reg);
+      font-weight: 500;
     }
 
     .items {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      margin-block: 20px;
       gap: 20px;
 
       .item {
@@ -668,10 +447,15 @@ export default {
 
         h3 {
           font-size: 24px;
+          font-family: var(--font-text-reg);
+          font-weight: 500;
         }
 
         p {
           font-size: 18px;
+          font-family: var(--font-text-reg);
+          font-weight: 400;
+
         }
       }
     }

@@ -1,10 +1,21 @@
 <template>
     <div class="Massage">
         <div class="main">
-            <img
+            <!-- <img
                 src="../assets/images/relax/relaxBg.png"
                 alt="Header Image" class="mainImage"
-            />
+            /> -->
+            <video
+                controls
+                autoplay
+                loop
+                muted
+                poster="../assets/images/relax/relaxBg.png"
+                >
+                <source src="../assets/images/relax/Kings-Wellness.mp4" type="video/mp4" />
+                <!-- <source src="path/to/video.webm" type="video/webm" /> -->
+                Your browser does not support the video tag.
+            </video>
             <div class="textBlock">
                 <div class="path">
                     <router-link to="/">
@@ -158,10 +169,7 @@
             </div>
             <div class="infoBlock">
                 <h2>
-                    Barber
-                </h2>
-                <h2>
-                    shop
+                    Barber shop
                 </h2>
                 <p>
                     Barber Karel Cavalier won the GBBB (the Great British Barber Bash) in
@@ -413,7 +421,7 @@ export default {
 
   .main {
     position: relative;
-    .mainImage {
+    .mainImage, video {
       width: 100%;
       height: 100%;
       min-height: 100vh;
@@ -434,7 +442,7 @@ export default {
         gap: 10px;
         align-items: center;
         position: relative;
-        z-index: 5;
+        z-index: 4;
         a {
           text-decoration: none;
           cursor: pointer;
@@ -477,18 +485,19 @@ export default {
   }
 
   .infoBlock {
-    margin: 60px;
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     gap: 30px;
     padding: 20px;
-    background: var(--color-white);
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
     .infoCard {
       padding: 20px;
       border-bottom: 1px solid var(--color-light-grey);
+    background: var(--color-white);
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
       &:last-child {
         border-bottom: none;
       }
@@ -508,6 +517,7 @@ export default {
         padding: 0;
         margin: 0;
         list-style-type: none;
+        align-items: flex-start;
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -548,15 +558,17 @@ export default {
     padding: 20px;
     margin: 30px 20px;
     background: var(--color-white);
+    align-items: center;
     display: flex;
-    flex-direction: column;
     gap: 20px;
 
     .infoBlock {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      max-width: 100%;
+      max-width: 50%;
+      padding: 0;
+      flex: 1;
 
       h2 {
         color: var(--color-black);
@@ -582,16 +594,36 @@ export default {
     .imageBlock {
       overflow: hidden;
       position: relative;
+      width: 100%;
+      flex: 1;
 
       img {
         width: 100%;
+        height: 100%;
         border-radius: 10px;
       }
     }
   }
 }
 
-/* Медиа запрос для маленьких экранов */
+@media (max-width: 700px) {
+    .Massage {
+        .infoBlock{
+            flex-direction: column;
+            .infoCard{
+                max-width: 100%;
+                width: unset;
+            }
+        }
+        .ourSpecialist{
+            flex-direction: column;
+            .infoBlock{
+                max-width: 100%;
+            }
+        }
+    }
+}
+
 @media (max-width: 480px) {
   .Massage {
     .main {

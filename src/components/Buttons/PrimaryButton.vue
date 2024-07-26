@@ -33,7 +33,8 @@ export default defineComponent({
 <style scoped lang="scss">
     .PrimaryButton{
         background: #D7B154;
-        padding: 16px 32px;
+        // padding: 16px 32px;
+        padding: clamp(7px, 3vw, 16px) clamp(10px, 3vw, 32px);
         border: none;
         cursor: pointer;
         border-radius: 100px;

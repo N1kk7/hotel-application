@@ -1,10 +1,21 @@
 <template>
     <div class="Massage">
         <div class="main">
-            <img
+            <!-- <img
                 src="../assets/images/gym/gymBg.png"
                 alt="Header Image" class="mainImage"
-            />
+            /> -->
+            <video
+                controls
+                autoplay
+                loop
+                muted
+                poster="../assets/images/gym/gymBg.png"
+                >
+                <source src="../assets/images/gym/Kings–Fitness.mp4" type="video/mp4" />
+                <!-- <source src="path/to/video.webm" type="video/webm" /> -->
+                Your browser does not support the video tag.
+            </video>
             <div class="textBlock">
                 <div class="path">
                     <router-link to="/">
@@ -137,7 +148,7 @@ export default {
         background: var(--color-light);
         .main{
            position: relative;
-           .mainImage{
+           .mainImage, video{
             width: 100%;
             height: 100%;
             min-height: 100vh;
@@ -157,7 +168,7 @@ export default {
                     gap: 10px;
                     align-items: center;
                     position: relative;
-                    z-index: 5;
+                    z-index: 4;
                     a{
                         text-decoration: none;
                         cursor: pointer;

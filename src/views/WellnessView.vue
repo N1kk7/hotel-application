@@ -168,7 +168,7 @@ export default {
                     gap: 10px;
                     align-items: center;
                     position: relative;
-                    z-index: 5;
+                    z-index: 4;
                     a{
                         text-decoration: none;
                         cursor: pointer;

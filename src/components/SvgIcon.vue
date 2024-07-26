@@ -1,49 +1,4 @@
-<!-- <template>
-    <component :is="svg" v-bind="svgProps" v-if="svg" />
-  </template>
-<script>
-import { defineComponent, computed } from 'vue';
-import SvgIconLibrary from './SvgIconLibrary.vue';
-
-export default defineComponent({
-  name: 'SvgIcon',
-  props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    size: {
-      type: Number,
-      default: 24,
-    },
-    width: {
-      type: Number,
-      default: null,
-    },
-  },
-  setup(props) {
-    const svgProps = computed(() => ({
-      width: props.width || props.size,
-      height: props.size,
-    }));
-
-    const svg = computed(() => {
-      const svgId = `#${props.name}`;
-      const svgElement = SvgIconLibrary.template.querySelector(svgId);
-      return svgElement ? svgElement.outerHTML : null;
-    });
-
-    return {
-      svg,
-      svgProps,
-    };
-  },
-});
-</script> -->
-
 <template>
-    <!-- <div v-html="svg" v-bind="svgProps" v-if="svg"></div> -->
-    <!-- <svg :width="svgProps.width" :height="svgProps.height" v-html="svg"></svg> -->
     <svg
       class="svg-icon"
       :width="svgProps.width"
