@@ -77,7 +77,7 @@
                     <h2>
                         Rooms
                     </h2>
-                    <h2>
+                    <h2 class="colorText">
                         RESERVATION
                     </h2>
                 </div>
@@ -90,6 +90,48 @@
             </div>
             <div class="mapImg">
                 <img src="../assets/images/contact/map.png" alt="map">
+            </div>
+            <div class="mobileLocation">
+                <div class="location">
+                    <h3>
+                        PILSEN
+                    </h3>
+                    <span>
+                        Distance: — 45 MIN
+                    </span>
+                </div>
+                <div class="location">
+                    <h3>
+                        nuremberg
+                    </h3>
+                    <span>
+                        Distance: — 1,5 hours
+                    </span>
+                </div>
+                <div class="location">
+                    <h3>
+                        prague
+                    </h3>
+                    <span>
+                        Distance: — 1,5 hours
+                    </span>
+                </div>
+                <div class="location">
+                    <h3>
+                        MUNICH
+                    </h3>
+                    <span>
+                        Distance: — 2 hours
+                    </span>
+                </div>
+                <div class="location">
+                    <h3>
+                        stuttgart
+                    </h3>
+                    <span>
+                        Distance: — 3,5 hours
+                    </span>
+                </div>
             </div>
         </div>
         <div class="journeyPlan">
@@ -150,6 +192,8 @@
                         Palace for travelers from European countries
                     </p>
                 </div>
+                <img src="../assets/images/contact/transfer.png" alt="transfer">
+
                 <div class="contacts">
                     <h3>
                         reservation
@@ -263,6 +307,13 @@ export default {
       }
     }
   }
+  @media (max-width: 768px) {
+    .main {
+        .mainImage{
+            min-height: 50vh;
+        }
+    }
+  }
 
   .map,
   .journeyPlan,
@@ -304,9 +355,8 @@ export default {
 //   }
 .infoBlock {
     display: flex;
-    // flex-direction: column;
     gap: 30px;
-    padding: 20px;
+    margin: 40px;
 
     .infoCard {
       padding: 20px;
@@ -371,65 +421,119 @@ export default {
       }
     }
   }
+  @media (max-width: 768px) {
+    .infoBlock{
+        flex-direction: column-reverse;
+        gap: 20px;
+        margin: 20px;
+        .infoCard{
+            max-width: -webkit-fill-available;
+            width: unset;
+        }
+    }
+  }
 
   .map {
-    padding: 20px;
+    padding: clamp(30px, 5vw, 60px);
     display: flex;
     flex-direction: column;
     position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
     h3 {
       color: var(--color-gold);
+      text-transform: uppercase;
       font-size: 14px;
     }
 
     .topBlock {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    position: absolute;
-    top: 5vw;
-    left: 0;
-    width: -webkit-fill-available;
-    margin: 0 auto;
-    padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        position: absolute;
+        top: clamp(50px, 7vw, 100px);
+        left: 0;
+        width: -webkit-fill-available;
+        margin: 0 auto;
+        padding: 0 clamp(30px, 5vw, 60px);
 
       h2 {
         font-size: 32px;
+        font-family: var(--font-text-reg);
+        font-weight: 700;
+        margin: 0;
+      }
+      .colorText{
+          color: var(--color-gold);
       }
 
       .topInfo {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        align-items: flex-end;
+        gap: 20px;
 
         span {
           font-size: 18px;
+          font-family: var(--font-text-reg);
+          font-weight: 400;
         }
       }
+      @media (max-width: 768px) {
+            position: relative;
+            top: unset;
+            left: unset;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 0 0 20px;
+            .topInfo{
+                align-items: flex-start;
+                width: -webkit-fill-available;
+                button{
+                    width: -webkit-fill-available;
+                }
+            }
+        }
     }
 
     .mapImg {
+        text-align: center;
+        @media (max-width: 768px) {
+            display: none;
+        }
       img {
-        width: 100%;
+        width: 60%;
         height: auto;
       }
+    }
+    .mobileLocation{
+        display: none;
+        @media (max-width: 768px) {
+            display: block;
+        }
     }
   }
 
   .journeyPlan {
+    padding: clamp(30px, 5vw, 60px);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     h2 {
       font-size: 32px;
       font-family: var(--font-text-reg);
-      font-weight: 500;
+      font-weight: 700;
     }
 
     .items {
       display: flex;
       justify-content: space-between;
-      margin-block: 20px;
+      margin: 60px 0 20px;
       gap: 20px;
 
       .item {
@@ -448,37 +552,129 @@ export default {
         h3 {
           font-size: 24px;
           font-family: var(--font-text-reg);
-          font-weight: 500;
+          font-weight: 700;
+          margin-block: 20px;
         }
 
         p {
-          font-size: 18px;
+          font-size: clamp(16px, 2vw, 20px);
           font-family: var(--font-text-reg);
-          font-weight: 400;
+          font-weight: 200;
+          color: #3F3F3F;
+          max-width: 80%;
 
         }
       }
+    }
+    @media (max-width: 450px) {
+        .items{
+            margin-block: 20px;
+            flex-direction: column;
+            .item{
+                p{
+                    max-width: 100%;
+                }
+            }
+        }
     }
   }
 
   .transferBlock {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: space-between;
+    padding: clamp(30px, 5vw, 60px);
+    gap: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
     img {
-      width: 100%;
-      height: auto;
+        flex: 1 1 50%;
+        max-width: 50%;
+        height: auto;
+        object-fit: cover;
     }
 
     .transferInfo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       h2 {
-        font-size: 32px;
+        font-size: clamp(28px, 5vw, 40px);
+        font-family: var(--font-text-reg);
+        font-weight: 700;
+        color: var(--color-black);
+      }
+      .colorText {
+        color: var(--color-gold);
       }
 
+      p{
+          font-size: clamp(16px, 2vw, 20px);
+          font-family: var(--font-text-reg);
+          color: #3F3F3F;
+          font-weight: 200;
+          color: #3F3F3F;
+          max-width: 80%;
+          margin-top: 40px;
+      }
       p,
       span {
         font-size: 18px;
+      }
+      img{
+        display: none;
+      }
+      h3{
+        display: none;
+      }
+      @media (min-width: 1024px) {
+        h3{
+            display: block;
+            color: var(--color-gold);
+            font-family: var(--font-text-reg);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 150%;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+      }
+      }
+      ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        li{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      img{
+          display: none;
+      }
+      .transferInfo{
+            p{
+                max-width: 100%;
+                margin-top: 20px;
+            }
+          img{
+              display: block;
+              width: 100%;
+              height: auto;
+              object-fit: cover;
+              flex: 1 1 100%;
+              margin-block: 30px;
+              max-width: 100%;
+          }
       }
     }
   }
@@ -487,8 +683,6 @@ export default {
     .textBlock {
       left: 5%;
     }
-
-    .infoBlock,
     .map,
     .journeyPlan,
     .transferBlock {
