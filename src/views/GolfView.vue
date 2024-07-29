@@ -1,5 +1,5 @@
 <template>
-    <div class="Golf">
+    <div class="Page Golf">
         <div class="main">
             <img
                 src="../assets/images/golf-page/main-golf.png"

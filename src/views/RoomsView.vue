@@ -1,5 +1,5 @@
 <template>
-  <div class="Hotel">
+  <div class="Page Hotel">
     <div class="main">
       <video controls autoplay loop muted poster="../assets/images/hotel-page/mainBg.png">
         <source src="../assets/images/hotel-page/Kings-Hotel.mp4" type="video/mp4" />

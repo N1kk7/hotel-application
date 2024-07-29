@@ -1,5 +1,5 @@
 <template>
-    <div class="Restaurants">
+    <div class="Page Restaurants">
         <div class="main">
             <!-- <img
                 src="../assets/images/restaurants/mainBg.png"
@@ -382,7 +382,7 @@ export default {
     .mainImage, video {
       width: 100%;
       height: 100%;
-      min-height: 60vh;
+      min-height: 100vh;
       object-fit: cover;
     }
     .textBlock {

@@ -1,5 +1,5 @@
 <template>
-    <div class="kingsPalace">
+    <div class="Page kingsPalace">
       <div class="main">
         <!-- <img src="../assets/images/home-page/main.png"
          alt="Header Image" class="mainImage" /> -->

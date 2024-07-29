@@ -1,5 +1,5 @@
 <template>
-   <div class="Services">
+   <div class="Page Services">
         <div class="main">
             <img
                 src="../assets/images/premium-services/main.png"

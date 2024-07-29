@@ -1,5 +1,5 @@
 <template>
-    <div class="Contact">
+    <div class="Page Contact">
         <div class="main">
             <img
                 src="../assets/images/contact/mainBg.png"
@@ -307,13 +307,13 @@ export default {
       }
     }
   }
-  @media (max-width: 768px) {
-    .main {
-        .mainImage{
-            min-height: 50vh;
-        }
-    }
-  }
+//   @media (max-width: 768px) {
+//     .main {
+//         .mainImage{
+//             min-height: 50vh;
+//         }
+//     }
+//   }
 
   .map,
   .journeyPlan,
@@ -735,4 +735,6 @@ export default {
     }
   }
 }
+@import '../style/main.scss';
+
 </style>

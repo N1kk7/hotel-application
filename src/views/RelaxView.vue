@@ -1,5 +1,5 @@
 <template>
-    <div class="Massage">
+    <div class="Page Massage">
         <div class="main">
             <!-- <img
                 src="../assets/images/relax/relaxBg.png"
