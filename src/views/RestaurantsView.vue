@@ -269,12 +269,13 @@ export default {
             align-items: center;
             gap: 10px;
             .option {
-              color: var(--color-black);
-              font-family: var(--font-text-reg);
-              font-size: 14px;
-              font-style: normal;
-              font-weight: 400;
-              line-height: 150%;
+              // color: var(--color-black);
+              // font-family: var(--font-text-reg);
+              // font-size: 14px;
+              // font-style: normal;
+              // font-weight: 400;
+              // line-height: 150%;
+              @include text(var(--color-black), 14px, unset, 400);
             }
           }
         }
@@ -331,13 +332,14 @@ export default {
         padding: 16px;
         .title {
           margin: 16px 0 10px;
-          color: var(--color-black);
-          font-family: var(--font-text-reg);
-          font-size: 24px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 130%;
-          text-transform: uppercase;
+          // color: var(--color-black);
+          // font-family: var(--font-text-reg);
+          // font-size: 24px;
+          // font-style: normal;
+          // font-weight: 500;
+          // line-height: 130%;
+          // text-transform: uppercase;
+          @include text(var(--color-black), 24px, uppercase, 500);
         }
         ul {
           list-style-type: none;
@@ -351,12 +353,13 @@ export default {
             justify-content: flex-start;
             gap: 10px;
             .option {
-              color: var(--color-black);
-              font-family: var(--font-text-reg);
-              font-size: 14px;
-              font-style: normal;
-              font-weight: 400;
-              line-height: 150%;
+              // color: var(--color-black);
+              // font-family: var(--font-text-reg);
+              // font-size: 14px;
+              // font-style: normal;
+              // font-weight: 400;
+              // line-height: 150%;
+              @include text(var(--color-black), 14px, unset, 400);
             }
           }
         }

@@ -336,14 +336,8 @@ export default {
         @include mainTextBlock;
 
         p{
-            color: var(--color-white);
-            font-family: var(--font-text-reg);
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 150%; /* 24px */
-            text-transform: uppercase;
             white-space: nowrap;
+            @include text(var(--color-white), 16px, uppercase, 400);
         }
         h1{
             @include mainTitle;
@@ -356,25 +350,14 @@ export default {
     .hotelDescription{
         margin: 66px 0 80px;
         h2{
-            color: var(--color-black);
+            @include text(var(--color-black), clamp(28px, 5vw, 40px), uppercase, 500);
             text-align: center;
-            font-family: var(--font-text-reg);
-            font-size: clamp(28px, 5vw, 40px);
-            font-style: normal;
-            font-weight: 500;
-            line-height: 120%; /* 48px */
-            text-transform: uppercase;
+
         }
         .description{
             margin: 40px 0;
             p{
-            color: var(--color-black);
-            text-align: center;
-            font-family: var(--font-text-reg);
-            font-size: clamp(16px,3vw,20px);
-            font-style: normal;
-            font-weight: 400;
-            line-height: 150%; /* 30px */
+            @include text(var(--color-black), clamp(16px,3vw,20px), none, 400);
             }
         }
         .underLine{
@@ -392,14 +375,8 @@ export default {
         justify-content: space-between;
         margin-block: 20px;
         h2{
-            color: var(--color-black);
+            @include text(var(--color-black), 48px, uppercase, 500);
             text-align: center;
-            font-family: var(--font-text-reg);
-            font-size: 48px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 120%; /* 57.6px */
-            text-transform: uppercase;
             flex: 1;
         }
         .buttons{
@@ -422,12 +399,7 @@ export default {
             height: 100%;
             .cardInfo{
                 h3{
-                    color: var(--color-black);
-                    font-family: var(--font-text-reg);
-                    font-size: clamp(12px, 1.7vw, 26px);
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 130%; /* 33.8px */
+                    @include text(var(--color-black), clamp(12px, 1.7vw, 26px), unset, 500);
                     text-transform: uppercase;
                     white-space: nowrap;
                 }
@@ -449,19 +421,10 @@ export default {
                             padding: 5px;
                             color: #D7B154;
                             .meters{
-                                text-align: center;
-                                font-family: var(--font-text-reg);
-                                font-size: 20px;
-                                font-style: normal;
-                                font-weight: 500;
-                                line-height: 100%; /* 20px */
+                                @include text(var(--color-black), 20px, unset, 500);
                             }
                             .description{
-                            font-family: var(--font-text-reg);
-                            font-size: 12px;
-                            font-style: normal;
-                            font-weight: 500;
-                            line-height: 100%; /* 12px */
+                            @include text(var(--color-black), 12px, unset, 500);
                             }
                         }
                         svg{
@@ -470,13 +433,7 @@ export default {
                             padding: 7px;
                         }
                         .option{
-                            color: var(--color-black);
-                            /* [desk]/Body L */
-                            font-family: var(--font-text-reg);
-                            font-size: 20px;
-                            font-style: normal;
-                            font-weight: 400;
-                            line-height: 150%; /* 30px */
+                            @include text(var(--color-black), 20px, unset, 400);
                         }
                     }
                 }
@@ -506,23 +463,10 @@ export default {
             padding-top: 80px;
             gap: 12px;
             .accomodation{
-                color: var(--color-gold);
-                font-family: var(--font-text-reg);
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 150%; /* 21px */
-                text-transform: uppercase;
+                @include text(var(--color-gold), 14px, uppercase, 500);
             }
             h4{
-                color: var(--color-black);
-                text-align: center;
-                font-family: var(--font-text-reg);
-                font-size: 48px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 120%; /* 57.6px */
-                text-transform: uppercase;
+                @include text(var(--color-black), 48px, uppercase, 500);
             }
         }
         .items{
@@ -543,22 +487,10 @@ export default {
                     }
                 }
                 .title{
-                    color: var(--color-black);
-                    font-family: var(--font-text-reg);
-                    font-size: 40px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 120%; /* 48px */
-                    text-transform: uppercase;
-                    margin-block: 40px;
+                    @include text(var(--color-black), 40px, uppercase, 500);
                 }
                 .description{
-                    color: #3F3F3F;
-                    font-family: var(--font-text-reg);
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 150%; /* 30px */
+                    @include text(#3F3F3F, 20px, unset, 400);
                 }
                 .PrimaryButton{
                     margin-top: 60px;
@@ -599,13 +531,7 @@ export default {
                     color: var(--color-gold);
                 }
                 h2{
-                    color: var(--color-white);
-                    font-family: var(--font-grot-bold);
-                    font-size: 60px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 110%; /* 66px */
-                    text-transform: uppercase;
+                    @include text(var(--color-white), 60px, uppercase, 500);
                 }
             }
         }
@@ -620,21 +546,10 @@ export default {
             gap: 24px;
             margin-block: 80px;
             h2{
-                color: var(--color-black);
-                font-family: var(--font-text-reg);
-                font-size: 48px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 120%; /* 57.6px */
-                text-transform: uppercase;
+                @include text(var(--color-black), 48px, uppercase, 500);
             }
             span{
-                color: #3F3F3F;
-                font-family: var(--font-text-reg);
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 150%; /* 30px */
+                @include text(#3F3F3F, 20px, unset, 400);
             }
         }
         .instagramGallery{
@@ -698,13 +613,7 @@ export default {
                     gap: 5px;
                 }
                 span{
-                    max-width: 280px;
-                    color: var(--text-dark-gray, #3F3F3F);
-                    font-family: var(--font-text-reg);
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 150%; /* 30px */
+                    @include text(#3F3F3F, 20px, unset, 400);
                 }
             }
         }

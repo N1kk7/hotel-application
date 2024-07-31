@@ -652,7 +652,6 @@ export default {
         padding-block: clamp(5px, 2vw, 10px);
             padding-inline: clamp(10px, 2vw, 20px);
           font-family: var(--font-text-reg);
-          // font-size: clamp(12px, 2vw, 16px);
           font-size: clamp(10px, 1vw, 12px);
           text-transform: uppercase;
           transition: all ease 0.3s;
@@ -682,13 +681,8 @@ export default {
       display: block;
       margin: 20px;
       h2{
-        font-family: var(--font-grot-bold);
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 24px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--color-gold);
+        @include text(var(--color-gold), 20px, uppercase, 700);
+
       }
         ul{
                 list-style-type: none;
@@ -777,8 +771,8 @@ export default {
             font-size: 24px;
             font-weight: 700;
             line-height: 1.1;
-            margin: 20px 0 30px;
             text-transform: uppercase;
+            margin: 20px 0 30px;
 
             @media (min-width: 768px) {
               font-size: 42px;
@@ -825,13 +819,13 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Ensures the image doesn't overflow the container */
+            overflow: hidden;
             width: 100%;
-            height: 100%; /* Ensure all images have the same height */
+            height: 100%;
 
             img {
               width: 100%;
-              height: 100%; /* Ensure all images have the same height */
+              height: 100%;
               object-fit: cover;
               transition: all ease 0.5s;
               transform: scale(1);
@@ -847,7 +841,6 @@ export default {
             position: absolute;
             bottom: 0;
             right: 10%;
-            // transform: translateX(-50%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -869,12 +862,8 @@ export default {
               }
             }
             .info{
-                font-family: var(--font-text-reg);
-                font-size: 16px;
-                font-weight: 700;
+                @include text(var(--color-gold), 16px, uppercase, 700);
                 line-height: 1.1;
-                text-transform: uppercase;
-                color: var(--color-gold);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -1016,10 +1005,6 @@ export default {
                 align-items: flex-end;
                 width: -webkit-fill-available;
                 gap: 30px;
-                // h5, span{
-                //     flex: 1 1 100%;
-                //     width: 100%;
-                // }
             }
             h5{
                 margin-block: 0;

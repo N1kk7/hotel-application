@@ -169,22 +169,10 @@ export default {
             flex-direction: column;
             gap: 40px;
             h2{
-                color: var(--color-black);
-                /* [desk]/H2 */
-                font-family: var(--font-text-reg);
-                font-size: 40px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 120%; /* 48px */
-                text-transform: uppercase;
+                @include text(var(--color-black), 40px, uppercase, 500);
             }
             p{
-                color: #454545;
-                font-family: var(--font-text-reg);
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 150%; /* 30px */
+                @include text(#454545, 20px, unset, 400);
             }
             .blockWrapper{
                 display: grid;
@@ -199,22 +187,11 @@ export default {
                         object-fit: cover;
                     }
                     h4{
-                        color: var(--color-black);
-                        font-family: var(--font-text-reg);
-                        font-size: 30.752px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 130%; /* 39.978px */
-                        text-transform: uppercase;
+                        @include text(var(--color-black), 30px, uppercase, 500);
                         padding: 22px 0;
                     }
                     p{
-                        color: #454545;
-                        font-family: var(--font-text-reg);
-                        font-size: 21.966px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 150%; /* 32.949px */
+                        @include text(#454545, 21px, unset, 400);
                     }
                 }
 

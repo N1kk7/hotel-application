@@ -98,21 +98,6 @@
                 </ul>
             </div>
         </div>
-        <!-- <div class="aboutMassage">
-            <h3 class="preTitle">
-                FITNESS
-            </h3>
-            <h2 class="title">
-                TRAIN LIKE A KING
-            </h2>
-            <p class="description">
-                Our gym is open 24/7 and has a well-maintained selection of
-                free weights and machines.
-            </p>
-            <div class="imageWrapper">
-                <img src="../assets/images/gym/slider1.png" alt="slider1">
-            </div>
-        </div> -->
         <div class="ourSpecialist">
             <div class="infoBlock">
                 <h2>
@@ -256,14 +241,7 @@ export default {
       }
 
       h3 {
-        color: var(--color-black);
-        font-family: var(--font-text-reg);
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 130%;
-        text-transform: uppercase;
-        margin-bottom: 10px;
+        @include text(var(--color-black), 24px, uppercase, 500);
       }
 
       ul {
@@ -295,12 +273,7 @@ export default {
           }
 
           span {
-            color: var(--color-black);
-            font-family: var(--font-text-reg);
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 150%;
+            @include text(var(--color-black), 16px, unset, 400);
           }
         }
       }
@@ -324,23 +297,11 @@ export default {
       flex: 1;
 
       h2 {
-        color: var(--color-black);
-        font-family: var(--font-text-reg);
-        font-size: 30px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 120%;
-        text-transform: uppercase;
-        margin-bottom: 10px;
+        @include text(var(--color-black), 30px, uppercase, 500);
       }
 
       p {
-        color: var(--color-black);
-        font-family: var(--font-text-reg);
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%;
+        @include text(var(--color-black), 16px, unset, 400);
       }
     }
 

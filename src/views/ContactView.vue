@@ -243,37 +243,19 @@ export default {
 @import '@/style/mixins.scss';
 @import '@/style/main.scss';
 .Contact {
-//   width: 100%;
-//   height: fit-content;
-//   background: var(--color-light);
     @include pageStyle;
 
   .main {
     position: relative;
 
     .mainImage {
-    //   width: 100%;
-    //   height: 100%;
-    //   min-height: 100vh;
-    //   object-fit: cover;
         @include mainBg;
     }
 
     .textBlock {
-    //   position: absolute;
-    //   bottom: 10%;
-    //   left: 10%;
-    //   max-width: 90vw;
-    //   display: flex;
-    //   flex-direction: column;
-    //   gap: 16px;
     @include mainTextBlock;
 
       .path {
-        // display: flex;
-        // justify-content: flex-start;
-        // gap: 10px;
-        // align-items: center;
         @include alignPath;
 
         //!!!!!!!!!!!!!!!!!!!!!!
@@ -285,33 +267,13 @@ export default {
         //!!!!!!!!!!!!!!!!!!!!!!
 
         span {
-        //   color: var(--color-white);
-        //   text-align: center;
-        //   font-family: var(--font-text-reg);
-        //   font-size: 14px;
-        //   font-weight: 500;
-        //   line-height: 150%;
-        //   text-transform: uppercase;
           @include pathText;
         }
       }
 
       h1 {
-        // color: var(--color-white);
-        // font-family: var(--font-grot-reg);
-        // font-size: clamp(30px, 8vw, 60px);
-        // font-weight: 420;
-        // line-height: 100%;
-        // text-transform: uppercase;
         @include mainTitle;
       }
-
-    //   .description {
-    //     color: var(--color-white);
-    //     font-family: var(--font-text-reg);
-    //     font-size: 18px;
-    //     line-height: 150%;
-    //   }
 
       .PrimaryButton {
         max-width: 180px;
@@ -335,35 +297,6 @@ export default {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-//   .infoBlock {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 20px;
-
-//     .infoCard {
-//       padding: 20px;
-
-//       h3 {
-//         font-size: 24px;
-//       }
-
-//       ul {
-//         padding: 0;
-//         list-style-type: none;
-//         gap: 15px;
-
-//         li {
-//           display: flex;
-//           align-items: center;
-//           gap: 10px;
-
-//           span {
-//             font-size: 18px;
-//           }
-//         }
-//       }
-//     }
-//   }
 .infoBlock {
     display: flex;
     gap: 30px;
@@ -382,14 +315,7 @@ export default {
       }
 
       h3 {
-        color: var(--color-black);
-        font-family: var(--font-text-reg);
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 130%;
-        text-transform: uppercase;
-        margin-bottom: 10px;
+        @include text(var(--color-black), 24px, uppercase, 500);
       }
 
       ul {
@@ -421,12 +347,7 @@ export default {
           }
 
           span {
-            color: var(--color-black);
-            font-family: var(--font-text-reg);
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 150%;
+            @include text(var(--color-black), 16px, unset, 400);
           }
         }
       }
@@ -561,17 +482,11 @@ export default {
         }
 
         h3 {
-          font-size: 24px;
-          font-family: var(--font-text-reg);
-          font-weight: 700;
-          margin-block: 20px;
+        @include text(var(--color-black), 24px, unset, 700);
         }
 
         p {
-          font-size: clamp(16px, 2vw, 20px);
-          font-family: var(--font-text-reg);
-          font-weight: 200;
-          color: #3F3F3F;
+          @include text(#3F3F3F, 16px, unset, 400);
           max-width: 80%;
 
         }
@@ -621,11 +536,7 @@ export default {
       }
 
       p{
-          font-size: clamp(16px, 2vw, 20px);
-          font-family: var(--font-text-reg);
-          color: #3F3F3F;
-          font-weight: 200;
-          color: #3F3F3F;
+          @include text(#3F3F3F, clamp(16px, 2vw, 20px), unset, 200);
           max-width: 80%;
           margin-top: 40px;
       }
@@ -642,13 +553,7 @@ export default {
       @media (min-width: 1024px) {
         h3{
             display: block;
-            color: var(--color-gold);
-            font-family: var(--font-text-reg);
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 150%;
-            text-transform: uppercase;
+            @include text(var(--color-gold), 14px, uppercase, 500);
             margin-bottom: 30px;
       }
       }

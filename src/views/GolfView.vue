@@ -224,22 +224,11 @@ export default {
       gap: 40px;
 
       h2 {
-        color: var(--color-black);
-        font-family: var(--font-text-reg);
-        font-size: 40px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 120%; /* 48px */
-        text-transform: uppercase;
+        @include text(var(--color-black), 40px, uppercase, 500);
       }
 
       p {
-        color: #454545;
-        font-family: var(--font-text-reg);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 30px */
+        @include text(var(--color-black), 20px, unset, 400);
       }
 
       .clubsWrapper {
@@ -258,23 +247,12 @@ export default {
           }
 
           h4 {
-            color: var(--color-black);
-            font-family: var(--font-text-reg);
-            font-size: 30.752px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 130%; /* 39.978px */
-            text-transform: uppercase;
+            @include text(var(--color-black), 30.752px, uppercase, 500);
             padding: 22px 0;
           }
 
           p {
-            color: #454545;
-            font-family: var(--font-text-reg);
-            font-size: 21.966px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 150%; /* 32.949px */
+            @include text(var(--color-black), 21.966px, unset, 400);
           }
         }
       }
@@ -308,23 +286,12 @@ export default {
 
       &__title {
         margin-bottom: 1rem;
-        color: var(--color-black);
-        font-family: var(--font-text-reg);
-        font-size: 40px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 120%; /* 48px */
-        text-transform: uppercase;
+        @include text(var(--color-black), 40px, uppercase, 500);
       }
 
       &__description {
         margin-bottom: 1rem;
-        color: #3F3F3F;
-        font-family: var(--font-text-reg);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 30px */
+        @include text(var(--color-black), 20px, unset, 400);
       }
 
       &__imageWrapper {
@@ -364,22 +331,11 @@ export default {
     }
 
     .playGolf__detailValue {
-      color: var(--color-black);
-      font-family: var(--font-text-reg);
-      font-size: 28px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 130%; /* 36.4px */
-      text-transform: uppercase;
+      @include text(var(--color-black), 28px, uppercase, 500);
     }
 
     .playGolf__detailLabel {
-      color: #3F3F3F;
-      font-family: var(--font-text-reg);
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 150%; /* 30px */
+      @include text(#3F3F3F, 20px, unset, 400);
     }
 
     .availableServices {
@@ -394,23 +350,12 @@ export default {
       }
 
       &__title {
-        color: var(--color-black);
-        font-family: var(--font-text-reg);
-        font-size: 40px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 120%; /* 48px */
-        text-transform: uppercase;
+        @include text(var(--color-black), 40px, uppercase, 500);
       }
 
       &__description {
         margin-top: 40px;
-        color: #3F3F3F;
-        font-family: var(--font-text-reg);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 30px */
+        @include text(var(--color-black), 20px, unset, 400);
       }
 
       &__services {
@@ -431,23 +376,12 @@ export default {
       }
 
       &__serviceTitle {
-        color: var(--color-black);
-        font-family: var(--font-text-reg);
-        font-size: 28px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 130%; /* 36.4px */
-        text-transform: uppercase;
+        @include text(var(--color-black), 28px, uppercase, 500);
       }
 
       &__serviceDescription {
         margin-top: 20px;
-        color: #3F3F3F;
-        font-family: var(--font-text-reg);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 30px */
+        @include text(var(--color-black), 20px, unset, 400);
       }
     }
   }

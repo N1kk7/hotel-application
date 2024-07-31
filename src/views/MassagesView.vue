@@ -200,13 +200,7 @@ export default {
                 padding: 40px 60px;
                 background: var(--color-white);
                 h3{
-                    color: var(--color-black);
-                    font-family: var(--font-text-reg);
-                    font-size: 28px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 130%; /* 36.4px */
-                    text-transform: uppercase;
+                    @include text(var(--color-black), 28px, uppercase, 500);
                 }
                 ul{
                     padding: 0;
@@ -228,12 +222,7 @@ export default {
                             padding-right: 10%;
                         }
                         span{
-                            color: var(--color-black);
-                            font-family: var(--font-text-reg);
-                            font-size: 20px;
-                            font-style: normal;
-                            font-weight: 400;
-                            line-height: 150%; /* 30px */
+                            @include text(var(--color-black), 20px, unset, 400);
                         }
                     }
                 }
@@ -246,32 +235,14 @@ export default {
             background: var(--color-white);
             padding: 60px;
             .preTitle{
-                color: var(--color-gold);
-                font-family: var(--font-text-reg);
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 150%; /* 21px */
-                text-transform: uppercase;
+                @include text(var(--color-gold), 14px, uppercase, 500);
             }
             .title{
                 margin: 8px 0 32px;
-                color: var(--color-black);
-                /* [desk]/H2 */
-                font-family: var(--font-text-reg);
-                font-size: 40px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 120%; /* 48px */
-                text-transform: uppercase;
+                @include text(var(--color-black), 40px, uppercase, 500);
             }
             .description{
-                color: var(--color-black);
-                font-family: var(--font-text-reg);
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 150%; /* 30px */
+                @include text(var(--color-black), 20px, unset, 400);
             }
             .imageWrapper{
                 position: relative;
@@ -298,30 +269,13 @@ export default {
                 max-width: 50%;
 
                 h3{
-                    color: var(--color-gold);
-                    font-family: var(--font-text-reg);
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 150%; /* 21px */
-                    text-transform: uppercase;
+                    @include text(var(--color-gold), 14px, uppercase, 500);
                 }
                 h2{
-                    color: var(--color-black);
-                    font-family: var(--font-text-reg);
-                    font-size: 40px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 120%; /* 48px */
-                    text-transform: uppercase;
+                    @include text(var(--color-black), 40px, uppercase, 500);
                 }
                 p{
-                    color: var(--color-black);
-                    font-family: var(--font-text-reg);
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 150%; /* 30px */
+                    @include text(var(--color-black), 20px, unset, 400);
                 }
             }
             .imageBlock{
