@@ -10,6 +10,13 @@ button{
     cursor: pointer;
 }
 
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
 p, h1,h2,h3,h4{
     margin: 0;
 }
@@ -23,6 +30,18 @@ p, h1,h2,h3,h4{
         .main {
             .mainImage, video{
                 min-height: 50vh !important;
+            }
+            .textBlock{
+                width: 95% !important;
+                top: clamp(155px , 30vw, 260px) !important;
+                h1{
+                    font-size: clamp(30px, 8vw, 35px) !important;
+                    white-space: nowrap;
+                }
+                p{
+                    max-width: 100% !important;
+                    font-size: clamp(12px, 2vw, 16px) !important;
+                }
             }
         }
     }

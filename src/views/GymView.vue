@@ -1,10 +1,7 @@
 <template>
     <div class="Page Massage">
         <div class="main">
-            <!-- <img
-                src="../assets/images/gym/gymBg.png"
-                alt="Header Image" class="mainImage"
-            /> -->
+
             <video
                 controls
                 autoplay
@@ -13,7 +10,6 @@
                 poster="../assets/images/gym/gymBg.png"
                 >
                 <source src="../assets/images/gym/Kings–Fitness.mp4" type="video/mp4" />
-                <!-- <source src="path/to/video.webm" type="video/webm" /> -->
                 Your browser does not support the video tag.
             </video>
             <div class="textBlock">
@@ -104,29 +100,12 @@
                 <img src="../assets/images/gym/slider1.png" alt="slider1">
             </div>
         </div>
-        <!-- <div class="ourSpecialist">
-            <div class="infoBlock">
-                <h3>
-                    pool
-                </h3>
-                <h2>
-                    DIVE
-                </h2>
-                <p>
-                    Take a dip in the pool with a serene view of the Bohemian Forest!
-                </p>
-            </div>
-            <div class="imageBlock">
-                <img src="../assets/images/wellness/aboutImg.png" alt="massagists">
-            </div>
-        </div> -->
     </div>
 
 </template>
 
 <script>
 import SvgIcon from '@/components/SvgIcon.vue';
-// import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 
 export default {
@@ -142,67 +121,35 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    @import '@/style/mixins.scss';
+    @import '@/style/main.scss';
     .Massage{
-        width: 100%;
-        height: fit-content;
-        background: var(--color-light);
+       @include pageStyle;
         .main{
            position: relative;
            .mainImage, video{
-            width: 100%;
-            height: 100%;
-            min-height: 100vh;
-            object-fit: cover;
+            @include mainBg;
             }
             .textBlock{
-                position: absolute;
-                bottom: 15%;
-                max-width: 40vw;
-                left: 10%;
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
+                @include mainTextBlock;
                 .path{
-                    display: flex;
-                    justify-content: flex-start;
-                    gap: 10px;
-                    align-items: center;
-                    position: relative;
-                    z-index: 4;
+                    @include alignPath;
                     a{
                         text-decoration: none;
                         cursor: pointer;
                     }
                     span{
-                        color: var(--color-white);
-                        text-align: center;
-                        font-family: var(--font-text-reg);
-                        font-size: 14px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 150%; /* 21px */
-                        text-transform: uppercase;
+                        @include pathText;
                     }
                 }
                 .colorTitle{
                     color: var(--color-gold);
                 }
                 h1{
-                    color: var(--color-white);
-                    font-family: var(--font-grot-reg);
-                    font-size: clamp(45px, 10vw, 80px);
-                    font-style: normal;
-                    font-weight: 420;
-                    line-height: 100%; /* 80px */
-                    text-transform: uppercase;
+                    @include mainTitle;
                 }
                 .description{
-                    color: var(--color-white);
-                    font-family: var(--font-text-reg);
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 150%; /* 30px */
+                    @include mainDescription;
                 }
                 .PrimaryButton{
                     max-width: 180px;

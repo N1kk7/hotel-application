@@ -322,27 +322,18 @@ export default {
 </script>
 
   <style lang="scss" scoped>
+  @import '@/style/mixins.scss';
+  @import '@/style/main.scss';
   .kingsPalace {
-    width: 100%;
-    height: fit-content;
-    background: var(--color-light);
+    @include pageStyle;
 
     .main {
         position: relative;
       .mainImage, video{
-        width: 100%;
-        height: 100%;
-        min-height: 100vh;
-        object-fit: cover;
+       @include mainBg;
       }
       .textBlock{
-        position: absolute;
-        bottom: 15%;
-        max-width: 40vw;
-        left: 10%;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
+        @include mainTextBlock;
 
         p{
             color: var(--color-white);
@@ -355,13 +346,7 @@ export default {
             white-space: nowrap;
         }
         h1{
-            color: var(--color-white);
-            font-family: var(--font-grot-reg);
-            font-size: clamp(45px, 10vw, 80px);
-            font-style: normal;
-            font-weight: 420;
-            line-height: 100%; /* 80px */
-            text-transform: uppercase;
+            @include mainTitle;
         }
       }
     }
@@ -435,12 +420,6 @@ export default {
             position: relative;
             width: 100%;
             height: 100%;
-            img{
-                // position: absolute;
-                // top: 0;
-                // left: 0;
-                // width: 100%;
-            }
             .cardInfo{
                 h3{
                     color: var(--color-black);
@@ -510,15 +489,6 @@ export default {
                     .TertiaryButton{
                         flex: 1;
                     }
-                    // #blackBg{
-                    //     // background: var(--color-black);
-                    //     color: white;
-
-                    //     span{
-
-                    //     }
-
-                    // }
 
                 }
             }

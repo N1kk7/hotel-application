@@ -1,10 +1,6 @@
 <template>
     <div class="Page Restaurants">
         <div class="main">
-            <!-- <img
-                src="../assets/images/restaurants/mainBg.png"
-                alt="Header Image" class="mainImage"
-            /> -->
             <video
               controls
               autoplay
@@ -185,255 +181,39 @@ export default {
 };
 
 </script>
-<!--
+
 <style scoped lang="scss">
-    .Restaurants{
-        width: 100%;
-        height: fit-content;
-        background: var(--color-light);
-        .main{
-           position: relative;
-           .mainImage{
-            width: 100%;
-            height: 100%;
-            min-height: 100vh;
-            object-fit: cover;
-            }
-            .textBlock{
-                position: absolute;
-                bottom: 15%;
-                max-width: 40vw;
-                left: 10%;
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-                .path{
-                    display: flex;
-                    justify-content: flex-start;
-                    gap: 10px;
-                    align-items: center;
-                    position: relative;
-                    z-index: 5;
-                    a{
-                        text-decoration: none;
-                        cursor: pointer;
-                    }
-                    span{
-                        color: var(--color-white);
-                        text-align: center;
-                        font-family: var(--font-text-reg);
-                        font-size: 14px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 150%; /* 21px */
-                        text-transform: uppercase;
-                    }
-                }
-                .colorTitle{
-                    color: var(--color-gold);
-                }
-                h1{
-                    color: var(--color-white);
-                    font-family: var(--font-grot-reg);
-                    font-size: clamp(45px, 10vw, 80px);
-                    font-style: normal;
-                    font-weight: 420;
-                    line-height: 100%; /* 80px */
-                    text-transform: uppercase;
-                }
-                .description{
-                    color: var(--color-white);
-                    font-family: var(--font-text-reg);
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 150%; /* 30px */
-                }
-            }
-        }
-        .pageItems{
-            padding: 60px;
-
-            .preTitle{
-                color: var(--color-gold);
-            font-family: var(--font-text-reg);
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 150%; /* 21px */
-            text-transform: uppercase;
-            }
-            .title{
-                color: var(--color-black);
-                font-family: var(--font-text-reg);
-                font-size: 40px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 120%; /* 48px */
-                text-transform: uppercase;
-            }
-            .sliderWrapper{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                background: var(--color-white);
-                padding-left: 40px;
-                margin-top: 20px;
-                .cafeDescription{
-                    .cafeName{
-                        color: var(--color-black);
-                        font-family: var(--font-text-reg);
-                        font-size: 28px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 130%; /* 36.4px */
-                        text-transform: uppercase;
-                    }
-                    ul{
-                        display: flex;
-                        flex-direction: column;
-                        margin-top: 20px;
-                        padding: 0;
-                        gap: 15px;
-                        li{
-                            display: flex;
-                            justify-content: flex-start;
-                            align-items: center;
-                            gap: 10px;
-                            .option{
-                                color: var(--color-black);
-                                font-family: var(--font-text-reg);
-                                font-size: 15.972px;
-                                font-style: normal;
-                                font-weight: 400;
-                                line-height: 150%; /* 23.957px */
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .cardsWrapper{
-            margin-bottom: 100px;
-            padding-inline: 60px;
-            display: grid;
-            // grid-template-columns: repeat(3, 1fr);
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            justify-items: center;
-            gap: 40px;
-
-            @media (min-width: 1200px) {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .card{
-                background: var(--color-white);
-                max-width: fit-content;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                .bottomSide{
-                    padding: 23px;
-                    .title{
-                            margin: 24px 0 20px;
-                            color: var(--color-black);
-                            font-family: var(--font-text-reg);
-                            font-size: 27.95px;
-                            font-style: normal;
-                            font-weight: 500;
-                            line-height: 130%; /* 36.335px */
-                            text-transform: uppercase;
-                        }
-                        ul{
-                            list-style-type: none;
-                            padding: 0;
-                            display: flex;
-                            flex-direction: column;
-                            gap: 10px;
-                            li{
-                                display: flex;
-                                align-items: center;
-                                justify-content: flex-start;
-                                gap: 10px;
-                                .option{
-                                    color: var(--color-black);
-                                    font-family: var(--font-text-reg);
-                                    font-size: 15.972px;
-                                    font-style: normal;
-                                    font-weight: 400;
-                                    line-height: 150%; /* 23.957px */
-                                }
-                            }
-                        }
-                }
-
-            }
-        }
-    }
-</style> -->
-<style scoped lang="scss">
+@import '@/style/mixins.scss';
+@import '@/style/main.scss';
 .Restaurants {
-  width: 100%;
-  height: fit-content;
-  background: var(--color-light);
+  @include pageStyle;
 
   .main {
     position: relative;
     overflow: hidden;
     .mainImage, video {
-      width: 100%;
-      height: 100%;
-      min-height: 100vh;
-      object-fit: cover;
+      @include mainBg;
     }
     .textBlock {
-      position: absolute;
-      bottom: 10%;
-      max-width: 80vw;
-      left: 5%;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      @include mainTextBlock;
       .path {
-        display: flex;
-        justify-content: flex-start;
-        gap: 10px;
-        align-items: center;
-        position: relative;
-        z-index: 4;
+        @include alignPath;
         a {
           text-decoration: none;
           cursor: pointer;
         }
         span {
-          color: var(--color-white);
-          text-align: center;
-          font-family: var(--font-text-reg);
-          font-size: 12px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 150%;
-          text-transform: uppercase;
+          @include pathText;
         }
       }
       .colorTitle {
         color: var(--color-gold);
       }
       h1 {
-        color: var(--color-white);
-        font-family: var(--font-grot-reg);
-        font-size: clamp(30px, 5vw, 50px);
-        font-style: normal;
-        font-weight: 420;
-        line-height: 100%;
-        text-transform: uppercase;
+        @include mainTitle;
       }
       .description {
-        color: var(--color-white);
-        font-family: var(--font-text-reg);
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%;
+        @include mainDescription;
       }
     }
   }

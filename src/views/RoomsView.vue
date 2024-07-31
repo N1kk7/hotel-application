@@ -15,25 +15,47 @@
       </div>
       <div class="roomsCategory">
         <ul>
-          <li>
+          <li @click="scrollToSection('luxury')" @keydown="none">
             <span> 5 star luxury </span>
           </li>
-          <li>
+          <li @click="scrollToSection('deluxe')" @keydown="none">
             <span> 4 star deluxe </span>
           </li>
-          <li>
+          <li @click="scrollToSection('comfort')" @keydown="none">
             <span> 4 star comfort </span>
           </li>
-          <li>
+          <li @click="scrollToSection('everybody')" @keydown="none">
             <span> 3 star for everybody </span>
           </li>
-          <li>
+          <li @click="scrollToSection('basic')" @keydown="none">
             <span> 2 star basic </span>
           </li>
         </ul>
       </div>
     </div>
-    <section class="luxury">
+    <div class="mobileRoomCategory">
+        <h2>
+            Our rooms
+        </h2>
+        <ul>
+          <li @click="scrollToSection('luxury')" @keydown="none">
+            <span> 5 star luxury </span>
+          </li>
+          <li @click="scrollToSection('deluxe')" @keydown="none">
+            <span> 4 star deluxe </span>
+          </li>
+          <li @click="scrollToSection('comfort')" @keydown="none">
+            <span> 4 star comfort </span>
+          </li>
+          <li @click="scrollToSection('everybody')" @keydown="none">
+            <span> 3 star for everybody </span>
+          </li>
+          <li @click="scrollToSection('basic')" @keydown="none">
+            <span> 2 star basic </span>
+          </li>
+        </ul>
+    </div>
+    <section class="luxury" ref="luxury">
       <div class="wrapper">
         <div class="main">
           <div class="description">
@@ -146,7 +168,7 @@
         </div>
       </div>
     </section>
-    <section class="luxury">
+    <section class="luxury" ref="deluxe">
       <div class="wrapper">
         <div class="main">
           <swiper
@@ -248,7 +270,7 @@
         </div>
       </div>
     </section>
-    <section class="luxury">
+    <section class="luxury" ref="comfort">
       <div class="wrapper">
         <div class="main">
           <div class="description">
@@ -360,7 +382,7 @@
         </div>
       </div>
     </section>
-    <section class="luxury">
+    <section class="luxury" ref="everybody">
       <div class="wrapper">
         <div class="main">
           <img class="roomImg" src="@/assets/images/hotel-page/3star.png" alt="3star" />
@@ -433,7 +455,7 @@
         </div>
       </div>
     </section>
-    <section class="luxury">
+    <section class="luxury" ref="basic">
       <div class="wrapper">
         <div class="main">
           <div class="description">
@@ -489,12 +511,33 @@ export default {
   },
   setup() {
     // const swiperInstance = ref(null);
+    const luxury = ref(null);
+    const deluxe = ref(null);
+    const comfort = ref(null);
+    const everybody = ref(null);
+    const basic = ref(null);
+
     const swiperLux = ref(null);
     const swiperDeluxe = ref(null);
     const luxCurrentSlide = ref(0);
     const luxTotalSlides = ref(0);
     const deluxeCurrentSlide = ref(0);
     const deluxeTotalSlides = ref(0);
+
+    const scrollToSection = (section) => {
+      console.log(section, luxury);
+      const target = {
+        luxury: luxury.value,
+        deluxe: deluxe.value,
+        comfort: comfort.value,
+        everybody: everybody.value,
+        basic: basic.value,
+      }[section];
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
     const onSwiperLux = (swiper) => {
       swiperLux.value = swiper;
       luxTotalSlides.value = swiper.slides.length;
@@ -515,12 +558,18 @@ export default {
       }
     };
     return {
+      luxury,
+      deluxe,
+      comfort,
+      everybody,
+      basic,
       swiperLux,
       swiperDeluxe,
       luxCurrentSlide,
       luxTotalSlides,
       deluxeCurrentSlide,
       deluxeTotalSlides,
+      scrollToSection,
       onSwiperLux,
       onSwiperDeluxe,
       onSlideChangeLux,
@@ -532,16 +581,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/style/mixins.scss';
+@import '@/style/main.scss';
 .Hotel {
+  @include pageStyle;
   .main {
     position: relative;
 
     .mainImage,
     video {
-      width: 100%;
-      height: 100%;
-      min-height: 100vh;
-      object-fit: cover;
+      @include mainBg;
     }
     .textBlock {
       position: absolute;
@@ -567,13 +616,7 @@ export default {
       }
 
       h1 {
-        color: var(--color-white);
-        font-family: var(--font-grot-reg);
-        font-size: clamp(45px, 10vw, 80px);
-        font-style: normal;
-        font-weight: 420;
-        line-height: 100%; /* 80px */
-        text-transform: uppercase;
+        @include mainTitle;
       }
 
       .colorText {
@@ -593,19 +636,32 @@ export default {
         align-items: center;
         justify-content: space-between;
         list-style-type: none;
+        flex-wrap: wrap;
+        gap: 10px;
         flex-shrink: 0;
+        @media (max-width: 768px) {
+            &{
+                width: 95%;
 
+            }
+        }
         li {
           color: var(--color-gold);
           background: rgba(0, 0, 0, 0.75);
-          border-radius: 5px;
-          padding: 10px 20px;
+          border-radius: 20px;
+        padding-block: clamp(5px, 2vw, 10px);
+            padding-inline: clamp(10px, 2vw, 20px);
           font-family: var(--font-text-reg);
-          font-size: 18px;
+          // font-size: clamp(12px, 2vw, 16px);
+          font-size: clamp(10px, 1vw, 12px);
           text-transform: uppercase;
           transition: all ease 0.3s;
           cursor: pointer;
           transform: translateX(0) scaleX(1);
+          @media (max-width: 768px) {
+            padding: 0;
+            background: none;
+          }
         }
 
         li:hover {
@@ -615,15 +671,56 @@ export default {
           transform: translateX(0px) scaleX(1.1);
         }
       }
+      @media (max-width: 768px) {
+        display: none;
+      }
     }
   }
-
+  .mobileRoomCategory{
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
+      margin: 20px;
+      h2{
+        font-family: var(--font-grot-bold);
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--color-gold);
+      }
+        ul{
+                list-style-type: none;
+                display: flex;
+                padding: 0;
+                // flex-direction: column;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: 10px;
+                li{
+                    color: var(--color-gold);
+                    padding: 5px 7px;
+                    border-radius: 20px;
+                    background: rgba(0, 0, 0, 0.75);
+                    width: fit-content;
+                    font-family: var(--font-text-reg);
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    white-space: nowrap;
+                    z-index: 5;
+                }
+            }
+        }
+    }
+  }
   .luxury {
     width: 100%;
     background: var(--color-light);
     position: relative;
     overflow: hidden;
-    padding-block: 50px;
+    padding-block: 20px;
 
     .wrapper {
       width: 100%;
@@ -810,6 +907,8 @@ export default {
           font-weight: 700;
           letter-spacing: 2px;
           margin: 30px 20px;
+          border-bottom: 1px solid;
+          padding-bottom: 10px;
           @media (min-width: 768px) {
             font-size: 20px;
           }
@@ -834,8 +933,9 @@ export default {
             letter-spacing: 2px;
             // flex: 1 1 20%;
             width: 20%;
-            @media (min-width: 768px) {
+            @media (max-width: 768px) {
               font-size: 20px;
+              white-space: nowrap;
             }
           }
           p {
@@ -899,14 +999,15 @@ export default {
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
+            padding: clamp(20px, 2vw, 25px);
             margin: 0;
             gap: 10px;
-            h3 {
-            }
             p {
               width: 100%;
+              margin-block: 0;
             }
             ul{
+              margin-block: 0;
               width: 100%;
             }
             .mobPosition{
@@ -921,11 +1022,13 @@ export default {
                 // }
             }
             h5{
+                margin-block: 0;
                 max-width: 100%;
                 flex-shrink: 0;
             }
             span{
                 max-width: 100%;
+                margin-block: 0;
             }
           }
         }
@@ -933,5 +1036,4 @@ export default {
       }
     }
   }
-}
 </style>
