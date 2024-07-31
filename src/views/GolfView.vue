@@ -216,8 +216,7 @@ export default {
     }
 
     .golfClubs {
-      padding: 60px;
-      margin: 60px;
+      @include blockStyles;
       background: var(--color-white);
       display: flex;
       flex-direction: column;
@@ -266,9 +265,8 @@ export default {
     }
 
     .playGolf {
-      margin-inline: 60px;
+      // margin-inline: 60px;
       margin-bottom: 60px;
-
       &__content {
         display: flex;
         justify-content: space-between;
@@ -276,7 +274,9 @@ export default {
         gap: 40px;
         margin-bottom: 2rem;
         background: var(--color-white);
-        padding: 60px 72px;
+        // padding: 60px 72px;
+      @include blockStyles;
+
       }
 
       &__text {
@@ -339,9 +339,10 @@ export default {
     }
 
     .availableServices {
-      margin-inline: 60px;
-      margin-bottom: 60px;
-      padding: 60px 72px;
+      // margin-inline: 60px;
+      // margin-bottom: 60px;
+      // padding: 60px 72px;
+      @include blockStyles;
       background-color: #fff;
 
       &__header {
@@ -428,7 +429,7 @@ export default {
       }
 
       .playGolf {
-        margin-inline: 30px;
+        // margin-inline: 30px;
         margin-bottom: 30px;
 
         &__content {
@@ -457,7 +458,7 @@ export default {
       }
 
       .availableServices {
-        margin-inline: 30px;
+        // margin-inline: 30px;
         margin-bottom: 30px;
         padding: 30px 36px;
 

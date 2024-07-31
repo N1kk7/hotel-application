@@ -628,7 +628,7 @@ export default {
       position: absolute;
       bottom: 5%;
       width: 100%;
-      z-index: 5;
+      z-index: 4;
       ul {
         width: 80%;
         margin: 0 auto;
@@ -714,7 +714,7 @@ export default {
     background: var(--color-light);
     position: relative;
     overflow: hidden;
-    padding-block: 20px;
+    // padding-block: 20px;
 
     .wrapper {
       width: 100%;
@@ -725,7 +725,8 @@ export default {
         flex-direction: column;
         align-items: center;
         gap: 20px;
-        margin: 0 20px;
+        // margin: 0 20px;
+      @include blockStyles;
 
         @media (min-width: 768px) {
           flex-direction: row;

@@ -190,14 +190,13 @@ export default {
             }
         }
         .infoBlock{
-            margin: 60px;
             display: flex;
             justify-content: space-between;
+            @include blockMargin;
             align-items: stretch;
             gap: 20px;
             .infoCard{
-                width: -webkit-fill-available;
-                padding: 40px 60px;
+                @include cardStyles;
                 background: var(--color-white);
                 h3{
                     @include text(var(--color-black), 28px, uppercase, 500);
@@ -230,10 +229,11 @@ export default {
             }
         }
         .aboutMassage{
-            margin-inline: 60px;
-            margin-bottom: 70px;
+            // margin-inline: 60px;
+            // margin-bottom: 70px;
+            @include blockStyles;
             background: var(--color-white);
-            padding: 60px;
+            // padding: 60px;
             .preTitle{
                 @include text(var(--color-gold), 14px, uppercase, 500);
             }
@@ -254,8 +254,9 @@ export default {
             }
         }
         .ourSpecialist{
-            padding: 40px;
-            margin: 70px 60px;
+            // padding: 40px;
+            // margin: 70px 60px;
+            @include blockStyles;
             background: var(--color-white);
             display: flex;
             justify-content: space-between;

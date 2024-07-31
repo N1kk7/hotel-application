@@ -67,3 +67,25 @@
     line-height: 150%; /* 24px */
     text-transform: $transform;
 }
+
+@mixin blockStyles {
+    padding: clamp(30px, 5vw, 60px);
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: clamp(10px, 5vw, 40px);
+
+}
+
+@mixin blockMargin {
+    margin: clamp(10px, 5vw, 40px);
+}
+
+@mixin cardStyles {
+    padding: 20px;
+    border-bottom: 1px solid var(--color-light-grey);
+    background: var(--color-white);
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}

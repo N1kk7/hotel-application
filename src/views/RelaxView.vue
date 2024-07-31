@@ -226,15 +226,17 @@ export default {
   .infoBlock {
     display: flex;
     gap: 30px;
-    padding: 20px;
+    // padding: 20px;
+    @include blockMargin;
 
     .infoCard {
-      padding: 20px;
-      border-bottom: 1px solid var(--color-light-grey);
-    background: var(--color-white);
-    border-radius: 10px;
-    width: 100%;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    //   padding: 20px;
+    //   border-bottom: 1px solid var(--color-light-grey);
+    // background: var(--color-white);
+    // border-radius: 10px;
+    // width: 100%;
+    // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    @include cardStyles;
 
       &:last-child {
         border-bottom: none;
@@ -281,8 +283,7 @@ export default {
   }
 
   .ourSpecialist {
-    padding: 20px;
-    margin: 30px 20px;
+    @include blockStyles;
     background: var(--color-white);
     align-items: center;
     display: flex;

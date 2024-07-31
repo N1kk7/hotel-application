@@ -162,8 +162,7 @@ export default {
             }
         }
         .pageBlock{
-            padding: 60px;
-            margin: 60px;
+            @include blockStyles;
             background: var(--color-white);
             display: flex;
             flex-direction: column;
