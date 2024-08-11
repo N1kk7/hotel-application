@@ -141,19 +141,22 @@
         <p class="availableServices__serviceDescription">Description</p>
       </div>
     </div>
-  </section>
+        </section>
+        <RoomsCarusel tittleName="King's palace room"/>
     </div>
 </template>
 
 <script>
 import SvgIcon from '@/components/SvgIcon.vue';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
+import RoomsCarusel from '@/components/RoomsCarusel.vue';
 
 export default {
   name: 'GolfComponent',
   components: {
     SvgIcon,
     PrimaryButton,
+    RoomsCarusel,
   },
   data() {
     return {

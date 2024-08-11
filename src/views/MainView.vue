@@ -44,7 +44,9 @@
         </div>
     </section>
 
-    <section class="rooms">
+    <RoomsCarusel tittleName="KING'S PALACE ROOM"/>
+
+    <!-- <section class="rooms">
     <div class="topRooms">
         <h2>KING'S PALACE ROOM</h2>
         <div class="buttons">
@@ -107,7 +109,7 @@
         </div>
         </div>
     </div>
-    </section>
+    </section> -->
 
       <section class="sleepLikeAKing">
         <div class="topBlock">
@@ -253,8 +255,9 @@
 <script>
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 // import { Swiper, SwiperSlide } from 'swiper/vue';
+import RoomsCarusel from '@/components/RoomsCarusel.vue';
 import SvgIcon from '../components/SvgIcon.vue';
-import TertiaryButton from '../components/Buttons/TertiaryButton.vue';
+// import TertiaryButton from '../components/Buttons/TertiaryButton.vue';
 import Additional3 from '../components/Buttons/Additional3.vue';
 
 // import 'swiper/swiper.min.css';
@@ -265,23 +268,23 @@ import Additional3 from '../components/Buttons/Additional3.vue';
 export default {
   data() {
     return {
-      rooms: [
-        {
-          id: 1,
-          name: "King's Superior Double Room",
-          image: './room.png',
-        },
-        {
-          id: 2,
-          name: "King's Superior Twin Room",
-          image: './room.png',
-        },
-        {
-          id: 3,
-          name: "King's Superior Apartment Room",
-          image: './room.png',
-        },
-      ],
+    //   rooms: [
+    //     {
+    //       id: 1,
+    //       name: "King's Superior Double Room",
+    //       image: './room.png',
+    //     },
+    //     {
+    //       id: 2,
+    //       name: "King's Superior Twin Room",
+    //       image: './room.png',
+    //     },
+    //     {
+    //       id: 3,
+    //       name: "King's Superior Apartment Room",
+    //       image: './room.png',
+    //     },
+    //   ],
       restaurants: [
         {
           id: 1,
@@ -311,7 +314,8 @@ export default {
   },
   components: {
     PrimaryButton,
-    TertiaryButton,
+    RoomsCarusel,
+    // TertiaryButton,
     SvgIcon,
     Additional3,
     // Swiper,
@@ -367,93 +371,93 @@ export default {
             margin: 20px auto;
         }
     }
-    .rooms{
-        background: var(--color-light);
-        .topRooms{
-            display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-block: 20px;
-        h2{
-            @include text(var(--color-black), 48px, uppercase, 500);
-            text-align: center;
-            flex: 1;
-        }
-        .buttons{
-            display: flex;
-            button{
-                display: flex;
-            align-items: center;
-            justify-content: center;
-            }
-            #leftBtn{
-                transform: rotate(180deg);
-            }
-        }
-      }
-      .roomCards{
-        margin-bottom: 80px;
-        .roomCard{
-            position: relative;
-            width: 100%;
-            height: 100%;
-            .cardInfo{
-                h3{
-                    @include text(var(--color-black), clamp(12px, 1.7vw, 26px), unset, 500);
-                    text-transform: uppercase;
-                    white-space: nowrap;
-                }
-                .roomOption{
-                    li{
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        list-style-type: none;
-                        margin: 8px 0;
-                        gap: 10px;
-                        .distance{
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: center;
-                            border: 1px solid #D7B154;
-                            border-radius: 10px;
-                            padding: 5px;
-                            color: #D7B154;
-                            .meters{
-                                @include text(var(--color-black), 20px, unset, 500);
-                            }
-                            .description{
-                            @include text(var(--color-black), 12px, unset, 500);
-                            }
-                        }
-                        svg{
-                            border: 1px solid #D7B154;
-                            border-radius: 10px;
-                            padding: 7px;
-                        }
-                        .option{
-                            @include text(var(--color-black), 20px, unset, 400);
-                        }
-                    }
-                }
-                .cardButtons{
-                    display: flex;
-                    justify-content: space-between;
-                    padding-inline: 10px;
-                    gap: 10px;
-                    margin-bottom: 25px;
-                    .TertiaryButton{
-                        flex: 1;
-                    }
+    // .rooms{
+    //     background: var(--color-light);
+    //     .topRooms{
+    //         display: flex;
+    //     align-items: center;
+    //     justify-content: space-between;
+    //     margin-block: 20px;
+    //     h2{
+    //         @include text(var(--color-black), 48px, uppercase, 500);
+    //         text-align: center;
+    //         flex: 1;
+    //     }
+    //     .buttons{
+    //         display: flex;
+    //         button{
+    //             display: flex;
+    //         align-items: center;
+    //         justify-content: center;
+    //         }
+    //         #leftBtn{
+    //             transform: rotate(180deg);
+    //         }
+    //     }
+    //   }
+    //   .roomCards{
+    //     margin-bottom: 80px;
+    //     .roomCard{
+    //         position: relative;
+    //         width: 100%;
+    //         height: 100%;
+    //         .cardInfo{
+    //             h3{
+    //                 @include text(var(--color-black), clamp(12px, 1.7vw, 26px), unset, 500);
+    //                 text-transform: uppercase;
+    //                 white-space: nowrap;
+    //             }
+    //             .roomOption{
+    //                 li{
+    //                     display: flex;
+    //                     justify-content: flex-start;
+    //                     align-items: center;
+    //                     list-style-type: none;
+    //                     margin: 8px 0;
+    //                     gap: 10px;
+    //                     .distance{
+    //                         display: flex;
+    //                         flex-direction: column;
+    //                         align-items: center;
+    //                         justify-content: center;
+    //                         border: 1px solid #D7B154;
+    //                         border-radius: 10px;
+    //                         padding: 5px;
+    //                         color: #D7B154;
+    //                         .meters{
+    //                             @include text(var(--color-black), 20px, unset, 500);
+    //                         }
+    //                         .description{
+    //                         @include text(var(--color-black), 12px, unset, 500);
+    //                         }
+    //                     }
+    //                     svg{
+    //                         border: 1px solid #D7B154;
+    //                         border-radius: 10px;
+    //                         padding: 7px;
+    //                     }
+    //                     .option{
+    //                         @include text(var(--color-black), 20px, unset, 400);
+    //                     }
+    //                 }
+    //             }
+    //             .cardButtons{
+    //                 display: flex;
+    //                 justify-content: space-between;
+    //                 padding-inline: 10px;
+    //                 gap: 10px;
+    //                 margin-bottom: 25px;
+    //                 .TertiaryButton{
+    //                     flex: 1;
+    //                 }
 
-                }
-            }
+    //             }
+    //         }
 
-            }
+    //         }
 
-        }
-      }
+    //     }
+    //   }
       .sleepLikeAKing, .relaxLikeAKing, .eatLikeAKing{
         background: var(--color-white);
         .topBlock{

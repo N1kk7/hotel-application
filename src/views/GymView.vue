@@ -1,7 +1,6 @@
 <template>
     <div class="Page Massage">
         <div class="main">
-
             <video
                 controls
                 autoplay
@@ -100,6 +99,7 @@
                 <img src="../assets/images/gym/slider1.png" alt="slider1">
             </div>
         </div>
+        <RoomsCarusel tittleName="King's palace room"/>
     </div>
 
 </template>
@@ -107,12 +107,14 @@
 <script>
 import SvgIcon from '@/components/SvgIcon.vue';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
+import RoomsCarusel from '@/components/RoomsCarusel.vue';
 
 export default {
   name: 'MassagesView',
   components: {
     SvgIcon,
     PrimaryButton,
+    RoomsCarusel,
   },
   mounted() {
     window.scrollTo({ top: 0, behavior: 'smooth' });

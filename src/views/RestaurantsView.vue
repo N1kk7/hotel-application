@@ -103,18 +103,21 @@
                 </div>
             </div>
         </div>
+        <RoomsCarusel tittleName="King's palace room"/>
     </div>
 </template>
 
 <script>
 import SvgIcon from '@/components/SvgIcon.vue';
 import DistanceC from '@/components/DistanceC.vue';
+import RoomsCarusel from '@/components/RoomsCarusel.vue';
 
 export default {
   name: 'RestaurantsComponent',
   components: {
     SvgIcon,
     DistanceC,
+    RoomsCarusel,
   },
   data() {
     return {

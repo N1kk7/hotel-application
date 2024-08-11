@@ -120,6 +120,7 @@
                 <img src="../assets/images/wellness/aboutImg.png" alt="massagists">
             </div>
         </div>
+        <RoomsCarusel tittleName="AcCommodations"/>
     </div>
 
 </template>
@@ -128,12 +129,14 @@
 import SvgIcon from '@/components/SvgIcon.vue';
 // import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
+import RoomsCarusel from '@/components/RoomsCarusel.vue';
 
 export default {
   name: 'MassagesView',
   components: {
     SvgIcon,
     PrimaryButton,
+    RoomsCarusel,
   },
   mounted() {
     window.scrollTo({ top: 0, behavior: 'smooth' });

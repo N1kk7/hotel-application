@@ -76,6 +76,13 @@
               Room, Deluxe Double Room, King's Exclusive Suite, King's Grand Suite, King's Leon
               Suite with a private whirlpool.
             </p>
+            <div class="buttonGroup">
+              <router-link to="/rooms/king-suite">
+                <PrimaryButton buttonText="More details" />
+              </router-link>
+              <PrimaryButton buttonText="Check availability" />
+
+            </div>
           </div>
           <!-- <div class="content"> -->
           <swiper
@@ -242,6 +249,13 @@
               ensuite bathroom with floor heating and walk-in shower. The hotel has an elevator and
               all rooms are wheelchair accessible.
             </p>
+            <div class="buttonGroup">
+              <router-link to="/rooms/guest-room">
+                <PrimaryButton buttonText="More details" />
+              </router-link>
+              <PrimaryButton buttonText="Check availability" />
+
+            </div>
           </div>
         </div>
         <div class="includeOptions">
@@ -281,6 +295,9 @@
               can find deluxe rooms for a lower rate. To make your stay more comfortable, King's
               provides free transfer to/from accommodation to the resort.
             </p>
+            <div class="buttonGroup">
+              <PrimaryButton buttonText="Check availability" />
+            </div>
           </div>
           <img class="roomImg" src="@/assets/images/hotel-page/comfort.png" alt="comfort" />
         </div>
@@ -394,6 +411,9 @@
               are perfect if you are coming to stay with your friends as the 3-star rooms range from
               Twin Rooms to Quadriple rooms.
             </p>
+            <div class="buttonGroup">
+              <PrimaryButton buttonText="Check availability" />
+            </div>
           </div>
         </div>
         <div class="includeOptions">
@@ -468,6 +488,9 @@
               are no private bathrooms in the rooms. The shared bathrooms and showers are located in
               the corridor.
             </p>
+            <div class="buttonGroup">
+              <PrimaryButton buttonText="Check availability" />
+            </div>
           </div>
           <!-- <div class="content"> -->
           <img class="roomImg" src="@/assets/images/hotel-page/2star.png" alt="2star" />
@@ -499,6 +522,7 @@
 import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
+import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import SvgIcon from '../components/SvgIcon.vue';
 import 'swiper/swiper-bundle.css';
 
@@ -508,6 +532,7 @@ export default {
     SvgIcon,
     Swiper,
     SwiperSlide,
+    PrimaryButton,
   },
   setup() {
     // const swiperInstance = ref(null);
@@ -802,6 +827,13 @@ export default {
               font-size: 20px;
               max-width: 70%;
             }
+          }
+          .buttonGroup{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            padding-top: 15px;
+            gap: 15px;
           }
         }
 

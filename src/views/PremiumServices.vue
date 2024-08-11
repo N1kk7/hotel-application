@@ -75,16 +75,19 @@
             </div>
             <PrimaryButton buttonText="more golf clubs"/>
         </div>
+        <RoomsCarusel tittleName="King's palace room"/>
    </div>
 </template>
 
 <script>
 import SvgIcon from '@/components/SvgIcon.vue';
+import RoomsCarusel from '@/components/RoomsCarusel.vue';
 
 export default {
   name: 'Premium-services',
   components: {
     SvgIcon,
+    RoomsCarusel,
   },
 };
 </script>

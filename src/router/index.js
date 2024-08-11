@@ -11,6 +11,8 @@ import GolfView from '@/views/GolfView.vue';
 import PremiumServices from '@/views/PremiumServices.vue';
 import KingPalaceView from '@/views/KingPalaceView.vue';
 import RelaxView from '@/views/RelaxView.vue';
+import KingSuite from '@/views/KingsSuiteView.vue';
+import GuestRoom from '@/views/GuestRoomView.vue';
 
 const routes = [
   {
@@ -26,6 +28,16 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
     component: RoomsView,
+  },
+  {
+    path: '/rooms/king-suite',
+    name: 'king-suite',
+    component: KingSuite,
+  },
+  {
+    path: '/rooms/guest-room',
+    name: 'guest-room',
+    component: GuestRoom,
   },
   {
     path: '/relax/wellness',
