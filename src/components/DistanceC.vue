@@ -39,10 +39,11 @@ export default {
         .meters{
             text-align: center;
             font-family: var(--font-text-reg);
-            font-size: 20px;
+            font-size: 15px;
             font-style: normal;
             font-weight: 700;
             line-height: 100%; /* 20px */
+            color: #D7B154;
         }
         .description{
         font-family: var(--font-text-reg);
@@ -50,6 +51,7 @@ export default {
         font-style: normal;
         font-weight: 600;
         line-height: 100%; /* 12px */
+        color: #D7B154;
         }
     }
 

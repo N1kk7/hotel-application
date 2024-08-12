@@ -81,15 +81,51 @@
                     </p>
                 </div>
                 <div class="playGolf__imageWrapper">
-                    <img class="playGolf__image"
-                    src="../assets/images/golf-page/Image.png" alt="Golf Image">
+                  <swiper
+                    @swiper="onSwiper"
+                    :autoplay="{ delay: 3000 }"
+                    :modules="modules"
+                    :slides-per-view="'auto'"
+                    class="mySwiper"
+                  >
+                    <swiper-slide>
+                      <img class="playGolf__image"
+                      src="../assets/images/golf-page/player1.png" alt="Golf Image"/>
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img class="playGolf__image"
+                      src="../assets/images/golf-page/player2.png" alt="Golf Image"/>
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img class="playGolf__image"
+                      src="../assets/images/golf-page/player4.png" alt="Golf Image"/>
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img class="playGolf__image"
+                      src="../assets/images/golf-page/player3.png" alt="Golf Image"/>
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img class="playGolf__image"
+                      src="../assets/images/golf-page/player4.png" alt="Golf Image"/>
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img class="playGolf__image"
+                      src="../assets/images/golf-page/player5.png" alt="Golf Image"/>
+                    </swiper-slide>
+                  </swiper>
+                  <div class="buttonWrapper">
+                    <!-- <SvgIcon name="arrowRight" size="large" stroke="#D7B154"
+                    style="transform: rotate(180deg);"/> -->
+                    <SvgIcon name="arrowLeft" size="medium" stroke="#D7B154" @click="slidePrev"/>
 
+                    <SvgIcon name="arrowRight" size="medium" stroke="#D7B154" @click="slideNext"/>
+                  </div>
                 </div>
             </div>
             <div class="playGolf__details">
                 <div class="playGolf__detail">
                     <div class="icon">
-                        <SvgIcon name="golfField" size="large" stroke="#D7B154"/>
+                        <SvgIcon name="golfField" size="large" stroke="#D7B154" strokeWidth="1"/>
 
                     </div>
                     <span class="playGolf__detailValue">100 HA</span>
@@ -104,7 +140,7 @@
                 </div>
                 <div class="playGolf__detail">
                     <div class="icon">
-                        <SvgIcon name="golfHole" size="large" stroke="#D7B154"/>
+                        <SvgIcon name="golfHole" size="large" stroke="#D7B154" strokeWidth="0"/>
 
                     </div>
                     <span class="playGolf__detailValue">18</span>
@@ -147,9 +183,13 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import SvgIcon from '@/components/SvgIcon.vue';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/swiper-bundle.css';
 
 export default {
   name: 'GolfComponent',
@@ -157,6 +197,8 @@ export default {
     SvgIcon,
     PrimaryButton,
     RoomsCarusel,
+    Swiper,
+    SwiperSlide,
   },
   data() {
     return {
@@ -182,6 +224,26 @@ export default {
         { title: 'Golf Lessons', image: '../assets/images/golf-page/service2.png', description: 'Description' },
         { title: 'Transfer', image: '../assets/images/golf-page/service3.png', description: 'Description' },
       ],
+    };
+  },
+  setup() {
+    const swiperInstance = ref(null);
+
+    const onSwiper = (swiper) => {
+      swiperInstance.value = swiper;
+    };
+    const slideNext = () => {
+      swiperInstance.value.slideNext();
+    };
+    const slidePrev = () => {
+      // console.log('prev');
+      swiperInstance.value.slidePrev();
+    };
+    return {
+      modules: [Pagination, Autoplay],
+      onSwiper,
+      slideNext,
+      slidePrev,
     };
   },
 };
@@ -301,11 +363,43 @@ export default {
         flex: 1;
         display: flex;
         justify-content: center;
-      }
-
-      &__image {
-        width: 100%;
-        height: auto;
+        position: relative;
+        .swiper{
+          max-width: 100%;
+          max-height: 100%;
+          .swiper-slide{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+              display: block;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+        .buttonWrapper{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            svg{
+              margin-inline: 20px;
+              background: rgba(255,255,255, 0.9);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+          }
       }
     }
 
@@ -342,9 +436,6 @@ export default {
     }
 
     .availableServices {
-      // margin-inline: 60px;
-      // margin-bottom: 60px;
-      // padding: 60px 72px;
       @include blockStyles;
       background-color: #fff;
 

@@ -84,14 +84,12 @@
             <div class="swiper">
                 <!-- <img src="../assets/images/king-suite/gallery1.png" alt="gallery"> -->
                 <swiper
-                    :slidesPerView="'auto'"
-                    :autoplay="{
-                        delay: 3000
-                    }"
-                    :centeredSlides="true"
-                    :spaceBetween="30"
-                    :modules="modules"
-                    class="mySwiper"
+                :autoplay="{ delay: 3000 }"
+              :slides-per-view="'auto'"
+              :centered-slides="true"
+              :space-between="30"
+              :modules="modules"
+              class="mySwiper"
                 >
                     <swiper-slide>
                         <img src="../assets/images/king-suite/gallery1.png" alt="gallery-img">
@@ -725,18 +723,43 @@ export default {
                 @include text(var(--color-black), 40px, uppercase, 600);
                 margin-bottom: 40px;
             }
+            // .swiper{
+            //     .swiper-wrapper{
+            //         .swiper-slide{
+            //             img{
+            //                 max-width: 100%;
+
+            //             }
+            //         }
+            //         .swiper-slide-next,
+            //         .swiper-slide-prev{
+            //             opacity: 0.5;
+            //         }
+            //     }
+            // }
             .swiper{
+              width: 100%;
+              height: 100%;
                 .swiper-wrapper{
                     .swiper-slide{
-                        img{
-                            max-width: 100%;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      max-width: 80%;
 
-                        }
+                    }
+                    .swiper-slide img {
+                      display: block;
+                      width: 100%;
+                      height: 100%;
+                      object-fit: cover;
                     }
                     .swiper-slide-next,
                     .swiper-slide-prev{
-                        opacity: 0.5;
+                    img{
+                      opacity: 0.5;
                     }
+                  }
                 }
             }
         }

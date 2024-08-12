@@ -34,6 +34,113 @@
                 </p>
             </div>
         </div>
+        <div class="cafeBlock">
+          <section class="luxury" ref="luxury">
+            <div class="wrapper">
+              <div class="main">
+                <div class="description">
+                  <span class="topBlock"> Dine like a King </span>
+                  <h2>
+                    Radimský
+                    <span class="colorText"> á la carte restaurant </span>
+                  </h2>
+                  <p>
+                    Indulge in the ultimate culinary experience while surrounded by
+                    the beautiful paintings by Czech impressionist Václav Radimský.
+                  </p>
+                  <p>
+                    Our skilled chef prepare gourmet dishes with carefully chosen fresh ingredients.
+                    We offer a wide selection of dishes to suit every palate.
+                  </p>
+                  <div class="buttonGroup">
+                    <router-link to="/rooms/king-suite">
+                      <PrimaryButton buttonText="More details" />
+                    </router-link>
+                    <PrimaryButton buttonText="Check availability" />
+
+                  </div>
+                </div>
+                <!-- <div class="content"> -->
+                <swiper
+                  ref="swiperLux"
+                  :spaceBetween="30"
+                  :effect="'fade'"
+                  :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }"
+                  @slideChange="onSlideChangeLux"
+                  @swiper="onSwiperLux"
+                  :modules="modules"
+                  :autoplay="true"
+                  class="mySwiper"
+                >
+                  <swiper-slide>
+                    <img src="@/assets/images/restaurants/restImg1.jpg" alt="image1" />
+                    <div class="gradient"></div>
+                    <h2 class="slideTittle">
+                      Prosciutto di <br/> Parma
+                    </h2>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="@/assets/images/restaurants/restImg2.jpg" alt="image2" />
+                    <div class="gradient"></div>
+                    <h2 class="slideTittle">
+                      Argentinian <br/> Steak
+                    </h2>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="@/assets/images/restaurants/restImg3.jpg" alt="image3" />
+                    <div class="gradient"></div>
+                    <h2 class="slideTittle">
+                      Sea <br/> Bass
+                    </h2>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="@/assets/images/restaurants/restImg4.jpg" alt="image4"/>
+                    <div class="gradient"></div>
+                    <h2 class="slideTittle">
+                      Beef <br/> Consommé
+                    </h2>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="@/assets/images/restaurants/restImg5.jpg" alt="image5" />
+                    <div class="gradient"></div>
+                    <h2 class="slideTittle">
+                      Spicing <br/> things up
+                    </h2>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="@/assets/images/restaurants/restImg6.jpg" alt="image6" />
+                    <div class="gradient"></div>
+                    <h2 class="slideTittle">
+                      Coordinating <br/> every step
+                    </h2>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="@/assets/images/restaurants/restImg7.jpg" alt="image7" />
+                    <div class="gradient"></div>
+                    <h2 class="slideTittle">
+                      Grilled to <br/> perfection
+                    </h2>
+                  </swiper-slide>
+                  <div class="buttonWrapper">
+                    <div class="swiper-button-prev">
+                      <SvgIcon name="longArrowLeft" size="large" fill="red" />
+                    </div>
+                    <div class="info">
+                      <p>{{ luxCurrentSlide }}</p>
+                      <span>/</span>
+                      <p>{{ luxTotalSlides }}</p>
+                    </div>
+                    <div class="swiper-button-next">
+                      <SvgIcon name="longArrowRight" size="large" fill="red" />
+                    </div>
+                  </div>
+                </swiper>
+
+                <!-- </div> -->
+              </div>
+            </div>
+          </section>
+        </div>
         <div class="pageItems">
         <h4 class="preTitle">
             RESTAURANT & BUFFET
@@ -103,14 +210,38 @@
                 </div>
             </div>
         </div>
+        <div class="infoBlock">
+          <div class="infoWrapper">
+            <span class="topBlock">
+              Dine like a King
+            </span>
+            <h2 >
+              We take hospitality
+              <span class="colorText">
+                and your comfort very seriously
+              </span>
+            </h2>
+            <p >
+              Our ultimate goal is to make you feel like a King in our resort.
+              Therefore, we serve a wide selection of freshly-prepared food at
+              our buffet and special fine dishes at Radimsky restaurant.
+              Our team is always at your disposal to make your stay at King's memorable.
+            </p>
+          </div>
+          <img src="@/assets/images/restaurants/radimsky-team.png" alt="team">
+        </div>
         <RoomsCarusel tittleName="King's palace room"/>
     </div>
 </template>
 
 <script>
+import { ref } from 'vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import SvgIcon from '@/components/SvgIcon.vue';
 import DistanceC from '@/components/DistanceC.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
+import 'swiper/swiper-bundle.css';
 
 export default {
   name: 'RestaurantsComponent',
@@ -118,6 +249,8 @@ export default {
     SvgIcon,
     DistanceC,
     RoomsCarusel,
+    Swiper,
+    SwiperSlide,
   },
   data() {
     return {
@@ -181,6 +314,31 @@ export default {
       ],
     };
   },
+  setup() {
+    const swiperLux = ref(null);
+    const luxCurrentSlide = ref(0);
+    const luxTotalSlides = ref(0);
+
+    const onSwiperLux = (swiper) => {
+      swiperLux.value = swiper;
+      luxTotalSlides.value = swiper.slides.length;
+    };
+
+    const onSlideChangeLux = () => {
+      if (swiperLux.value) {
+        luxCurrentSlide.value = swiperLux.value.realIndex + 1;
+      }
+    };
+
+    return {
+      modules: [Autoplay, EffectFade, Navigation],
+      swiperLux,
+      luxCurrentSlide,
+      luxTotalSlides,
+      onSwiperLux,
+      onSlideChangeLux,
+    };
+  },
 };
 
 </script>
@@ -219,6 +377,217 @@ export default {
         @include mainDescription;
       }
     }
+  }
+
+  .cafeBlock {
+    .luxury {
+    width: 100%;
+    background: var(--color-light);
+    position: relative;
+    overflow: hidden;
+    // padding-block: 20px;
+
+    .wrapper {
+      width: 100%;
+      margin: 0 auto;
+
+      .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        // margin: 0 20px;
+      @include blockStyles;
+
+        @media (min-width: 768px) {
+          flex-direction: row;
+          justify-content: space-between;
+          gap: 50px;
+        }
+
+        .description {
+          position: relative;
+          margin-block: 20px;
+          flex: 0 0 100%;
+          max-width: 100%;
+
+          @media (min-width: 768px) {
+            flex: 0 0 50%;
+            max-width: 50%;
+          }
+
+          .topBlock {
+            &::before {
+              content: "";
+              width: 79px;
+              height: 1px;
+              display: inline-block;
+              background-color: var(--color-gold);
+              vertical-align: middle;
+              top: -2px;
+              margin-bottom: 1px;
+              margin-right: 18px;
+            }
+          }
+
+          span {
+            font-family: var(--font-grot-bold);
+            font-size: 14px;
+            color: var(--color-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+          }
+
+          h2 {
+            font-family: var(--font-text-reg);
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin: 20px 0 30px;
+
+            @media (min-width: 768px) {
+              font-size: 42px;
+            }
+
+            .colorText {
+              font-size: 24px;
+
+              @media (min-width: 768px) {
+                font-size: 42px;
+              }
+
+              &::before {
+                display: none;
+              }
+            }
+          }
+
+          p {
+            font-family: var(--font-text-reg);
+            font-size: 16px;
+            margin-block: 20px;
+            max-width: 100%;
+
+            @media (min-width: 768px) {
+              font-size: 20px;
+              max-width: 70%;
+            }
+          }
+          .buttonGroup{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            padding-top: 15px;
+            gap: 15px;
+          }
+        }
+
+        .swiper {
+          width: 100%;
+          flex: 0 0 100%;
+          max-width: 100%;
+          height: auto;
+
+          @media (min-width: 768px) {
+            flex: 0 0 50%;
+            max-width: 40%;
+          }
+
+          .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: all ease 0.5s;
+              transform: scale(1);
+
+              &:hover {
+                transform: scale(1.1);
+                transition: all ease 0.5s;
+              }
+            }
+            &:hover{
+              .slideTittle{
+                  @include text(var(--color-gold), 40px, uppercase, 900);
+                  transition: all ease 0.5s;
+
+                }
+            }
+            .gradient{
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%,
+              rgba(0, 0, 0, 0.1) 70%, rgba(0, 0, 0, 0.8) 100%);
+              position: absolute;
+              z-index: 1;
+            }
+            .slideTittle {
+              @include text(var(--color-white), 40px, uppercase, 900);
+              position: absolute;
+              transition: all ease 0.5s;
+              bottom: 0;
+              left: 0;
+              padding: 15% 10%;
+              z-index: 2;
+            }
+          }
+
+          .buttonWrapper {
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10;
+
+            .swiper-button-prev,
+            .swiper-button-next {
+              flex: 1;
+              border-radius: 50%;
+              svg {
+                stroke: var(--color-gold);
+              }
+
+              &::after {
+                content: "";
+              }
+            }
+            .info{
+                @include text(var(--color-gold), 16px, uppercase, 700);
+                line-height: 1.1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+          }
+        }
+
+        .roomImg {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+
+          @media (min-width: 768px) {
+            flex: 0 0 50%;
+            max-width: 40%;
+          }
+        }
+      }
+    }
+  }
   }
 
   .pageItems {
@@ -314,12 +683,19 @@ export default {
   }
 
   .cardsWrapper {
+    box-sizing: border-box;
     margin-bottom: 60px;
     padding-inline: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     justify-items: center;
     gap: 20px;
+
+    padding: clamp(30px, 5vw, 60px);
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: clamp(10px, 5vw, 40px);
 
     @media (min-width: 1200px) {
       grid-template-columns: repeat(3, 1fr);
@@ -331,6 +707,8 @@ export default {
       width: 100%;
       display: flex;
       flex-direction: column;
+      overflow: hidden; /* Добавлено */
+      box-sizing: border-box; /* Добавлено */
       .bottomSide {
         padding: 16px;
         .title {
@@ -369,5 +747,71 @@ export default {
       }
     }
   }
+  .infoBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding-block: 70px;
+    .infoWrapper{
+      flex: 0 0 40%;
+      .topBlock {
+            &::before {
+              content: "";
+              width: 79px;
+              height: 1px;
+              display: inline-block;
+              background-color: var(--color-gold);
+              vertical-align: middle;
+              top: -2px;
+              margin-bottom: 1px;
+              margin-right: 18px;
+            }
+          }
+
+          span {
+            font-family: var(--font-grot-bold);
+            font-size: 14px;
+            color: var(--color-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+          }
+
+          h2 {
+            font-family: var(--font-text-reg);
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin: 20px 0 30px;
+
+            @media (min-width: 768px) {
+              font-size: 42px;
+            }
+
+            .colorText {
+              font-size: 24px;
+
+              @media (min-width: 768px) {
+                font-size: 42px;
+              }
+
+              &::before {
+                display: none;
+              }
+            }
+    }
+    img{
+      flex: 0 0 60%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-height: 880px;
+      min-height: 650px;
+      width: calc(50vw - 15px);
+    }
+
+  }
+}
 }
 </style>

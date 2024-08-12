@@ -81,15 +81,16 @@
             <h2>
                 Gallery
             </h2>
+            <div>
+
+            </div>
             <swiper
-                :slidesPerView="'auto'"
-                :autoplay="{
-                    delay: 3000
-                }"
-                :centeredSlides="true"
-                :spaceBetween="30"
-                :modules="modules"
-                class="mySwiper"
+              :autoplay="{ delay: 3000 }"
+              :slides-per-view="'auto'"
+              :centered-slides="true"
+              :space-between="30"
+              :modules="modules"
+              class="mySwiper"
             >
                 <swiper-slide>
                     <img src="../assets/images/guest-room/Gallery1.png" alt="gallery-img">
@@ -166,18 +167,21 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Pagination, Autoplay } from 'swiper/modules';
 import SvgIcon from '@/components/SvgIcon.vue';
 import { gsap } from 'gsap';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import TertiaryButton from '@/components/Buttons/TertiaryButton.vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Pagination, Autoplay } from 'swiper/modules';
+// import { Swiper, SwiperSlide } from 'swiper/vue';
+// import { Pagination, Autoplay } from 'swiper/modules';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
-import 'swiper/swiper-bundle.css';
+// import RoomsData from '@/Data/RoomsData.json';
 
 import {
   ref, onMounted, nextTick, watch,
 } from 'vue';
+import 'swiper/swiper-bundle.css';
 
 gsap.registerPlugin();
 
@@ -193,6 +197,7 @@ export default {
   },
   data() {
     return {
+      // RoomsData,
     };
   },
   setup() {
@@ -302,6 +307,7 @@ export default {
       },
     ]);
     const showItems = ref([]);
+    // console.log(RoomsData, 'ololo');
 
     const handleShowDetail = () => {
       const existingIDs = showItems.value.map((item) => item.id);
@@ -529,17 +535,28 @@ export default {
                 margin-bottom: 40px;
             }
             .swiper{
+              width: 100%;
+              height: 100%;
                 .swiper-wrapper{
                     .swiper-slide{
-                        img{
-                            max-width: 100%;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      max-width: 80%;
 
-                        }
+                    }
+                    .swiper-slide img {
+                      display: block;
+                      width: 100%;
+                      height: 100%;
+                      object-fit: cover;
                     }
                     .swiper-slide-next,
                     .swiper-slide-prev{
-                        opacity: 0.5;
+                    img{
+                      opacity: 0.5;
                     }
+                  }
                 }
             }
         }
@@ -565,8 +582,6 @@ export default {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    // padding-top: 80px;
-
                     h3{
                         @include text(var(--color-black), 28px, uppercase, 500);
                     }

@@ -550,7 +550,6 @@ export default {
     const deluxeTotalSlides = ref(0);
 
     const scrollToSection = (section) => {
-      console.log(section, luxury);
       const target = {
         luxury: luxury.value,
         deluxe: deluxe.value,

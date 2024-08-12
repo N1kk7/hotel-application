@@ -57,7 +57,10 @@
     <symbol id="longArrowLeft"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><title>Artboard-35</title><g data-name="Left"><polygon points="24 12.001 2.914 12.001 8.208 6.706 7.501 5.999 1 12.501 7.5 19.001 8.207 18.294 2.914 13.001 24 13.001 24 12.001" /></g>
     </symbol>
     <symbol id="arrowRight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 21" fill="none">
-    <path d="M7.5 8L10.5 11L7.5 14" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.5 8L10.5 11L7.5 14" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="arrowLeft" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 21" fill="none">
+        <path d="M10.5 8L7.5 11L10.5 14" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
     <symbol id="arrowDown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 21" fill="none">
     <path d="M13.3337 8.83333L10.0003 12.1667L6.66699 8.83333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -966,6 +969,10 @@
         <symbol id="topBtn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
 <circle cx="24" cy="24" r="24" fill="#D2B06D"/>
 <path d="M16,28 L24,20 L32,28" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="whiteBgArrowR" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 44 44" fill="none">
+  <circle cx="22" cy="22" r="22" transform="rotate(-90 22 22)" fill="white"/>
+  <path d="M19.3359 14.6666L26.6693 21.9999L19.3359 29.3333" stroke="#D7B154" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
         <symbol id="arrowTop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 23" >
             <path d="M21.7304 11.4148L11.6973 0.26657C11.5057 0.0711185 11.2507 -0.0117029 11.0004 0.00132235C10.7492 -0.0117029 10.4952 0.0711185 10.3035 0.26657L0.269581 11.4148C-0.0898603 11.7805 -0.0898603 12.3742 0.269581 12.74C0.629022 13.1058 1.21224 13.1057 1.57168 12.74L11.0005 2.26275L20.4284 12.74C20.7878 13.1057 21.371 13.1057 21.7304 12.74C22.0899 12.3743 22.0899 11.7805 21.7304 11.4148Z"/>
