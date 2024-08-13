@@ -87,8 +87,9 @@
         </div>
       </div>
     <footer class="footer">
-      <div class="container">
-        <div class="footerTop">
+        <div class="footerTopWrapper">
+          <div class="container">
+            <div class="footerTop">
           <div class="footerLogo">
             <img src="../assets/images/mainLogo.png" alt="King's Palace" />
           </div>
@@ -143,7 +144,45 @@
             </div>
           </div>
         </div>
+        <div class="footerContact">
+          <div class="findKings">
+            <span class="preTittle">
+              Where to find King's?
+            </span>
+            <h4>
+              On the Main Motorway from Munich to Prague
+            </h4>
+            <button>
+              see on the map
+            </button>
+          </div>
+          <!-- <img src="@/assets/images/contact/map.png" alt="map"> -->
+           <div class="mapSvg">
+            <SvgIcon name="footerMap"  />
+           </div>
+          <div class="contact">
+            <span class="preTittle">
+              do you need a ride?
+            </span>
+            <div class="callKings">
+              <span>
+                call our
+              </span>&nbsp;
+              <span class="colorText">
+                call +420 777 281 804
+              </span>
+            </div>
+            <button>
+                call +420 777 281 804
+
+              </button>
+          </div>
+        </div>
+          </div>
+
+        </div>
         <div class="footerBottom">
+          <div class="container">
             <div class="betweenItems">
                 <p>&copy; 2024 King's Palace, Rozvadov. All rights reserved</p>
                 <ul class="footerBottomLinks">
@@ -156,8 +195,8 @@
                 Plzni, oddíl B, vložka 1079, sídlo Rozvadov 7, 348 06 Rozvadov,
                 Czech Republic
             </p>
+          </div>
         </div>
-      </div>
       <button class="scrollTop" @click="scrollToTop" aria-label="Scroll to top">
         <!-- <i class="fas fa-arrow-up"></i> -->
          <SvgIcon name="arrowTop" size="micro" />
@@ -263,7 +302,7 @@ export default {
     }
   }
   .footer {
-    background-color: #000;
+    background-color: #121212;
     color: #fff;
     padding: 20px 0;
     font-family: 'Arial', sans-serif;
@@ -280,7 +319,10 @@ export default {
       overflow: hidden;
     }
 
-    .footerTop {
+    .footerTopWrapper {
+    background-color: #121212;
+
+      .footerTop {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -399,7 +441,8 @@ export default {
           padding: 0 32px 16px;
           border-radius: 57% 25%;
           margin-top: 45px;
-          background-color: #0f0f0f;
+          // background-color: #0f0f0f;
+          background-color: #1c1c1c;
           width: 250px;
             .logo{
             text-align: center;
@@ -424,11 +467,77 @@ export default {
       }
     }
 
+    .footerContact {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      // margin-bottom: 20px;
+      .preTittle{
+        @include text(var(--color-gold), 14px, uppercase, 600);
+        margin-bottom: 20px;
+      }
+      .findKings{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        h4{
+          @include text(var(--color-white), 20px, uppercase, 500);
+          max-width: 60%;
+        }
+        button{
+          background-color: #171717;
+          padding: 17px 22px;
+          max-width: 60%;
+          @include text(var(--color-white), 16px, uppercase, 600);
+          &:hover{
+            background-color: var(--color-gold);
+            color: black;
+          }
+        }
+
+      }
+      .mapSvg{
+        flex: 1;
+        svg{
+          width: 424px;
+          height: 231px;
+          stroke: unset;
+        }
+      }
+      .contact{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .callKings{
+          @include text(var(--color-white), 14px, uppercase, 500);
+          .colorText{
+            color: var(--color-gold);
+          }
+        }
+        button{
+            background-color: var(--color-gold);
+            padding: 17px 22px;
+            max-width: 60%;
+            @include text(var(--color-white), 16px, uppercase, 600);
+            &:hover{
+              background-color: #171717;
+              color: var(--color-white);
+            }
+          }
+      }
+      }
+    }
+
     .footerBottom {
       text-align: center;
       font-size: 12px;
       display: flex;
       flex-direction: column;
+      background-color: #121212;
       gap: 20px;
 
       .betweenItems{
