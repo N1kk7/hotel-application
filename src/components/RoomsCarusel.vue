@@ -28,7 +28,7 @@
         :modules="modules"
         class="mySwiper"
       >
-        <swiper-slide v-for="room in rooms" :key="room.id">
+        <swiper-slide v-for="room in roomsWithBreak" :key="room.id">
           <div class="roomCard">
             <swiper
              @swiper="onCardSwiper"
@@ -51,7 +51,13 @@
             </swiper>
             <!-- <img :src="`/${room.image}`" alt="Room Image" /> -->
             <div class="cardInfo">
-              <h3>{{ room.name }}</h3>
+              <!-- <h3 v-html="room.name.replace(\'King's Superior\'', \"King's Superior<br/>\")">
+              {{ room.name }}
+              </h3> -->
+              <!-- <h3 v-html="room.name.replace(\"King's Superior\", \"King's
+               Superior<br/>\")"></h3> -->
+               <h3 v-html="room.breakTittle"></h3>
+
               <ul class="roomOption">
                 <li>
                   <span class="distance">
@@ -61,15 +67,15 @@
                   <span class="option"> Distance from King's </span>
                 </li>
                 <li>
-                  <SvgIcon name="doubleBed" size="medium" stroke="#D7B154" strokeWidth="0"/>
+                  <SvgIcon name="doubleBed" size="small" stroke="#D7B154" strokeWidth="0"/>
                   <span class="option"> King bed </span>
                 </li>
                 <li>
-                  <SvgIcon name="conditioner" size="medium" stroke="#D7B154" strokeWidth="0"/>
+                  <SvgIcon name="conditioner" size="small" stroke="#D7B154" strokeWidth="0"/>
                   <span class="option"> Air conditioner </span>
                 </li>
                 <li>
-                  <SvgIcon name="wifi" size="medium" stroke="#D7B154" />
+                  <SvgIcon name="wifi" size="small" stroke="#D7B154" />
                   <span class="option"> Wi-Fi </span>
                 </li>
               </ul>
@@ -157,6 +163,14 @@ export default {
     //   required: true,
     // },
   },
+  computed: {
+    roomsWithBreak() {
+      return this.rooms.map((room) => ({
+        ...room,
+        breakTittle: room.name.replace("King's Superior", "King's Superior<br/>"),
+      }));
+    },
+  },
   setup() {
     const swiperInstance = ref(null);
     const cardSwiperInstance = ref(null);
@@ -171,7 +185,7 @@ export default {
       if (width >= 1024) {
         slidesPerView.value = 3;
         spaceBetween.value = 40;
-      } else if (width >= 430 && width < 1024) {
+      } else if (width >= 550 && width < 1024) {
         slidesPerView.value = 2;
         spaceBetween.value = 30;
       } else {
@@ -228,13 +242,14 @@ export default {
 .rooms {
   background: var(--color-light);
   margin-inline: 40px;
+  margin-bottom: 80px;
   .topRooms {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-block: 20px;
     h2 {
-      @include text(var(--color-black), 48px, uppercase, 500);
+      @include text(var(--color-black), clamp(20px, 5vw, 48px), uppercase, 500);
       // text-align: center;
       flex: 1;
     }
@@ -252,23 +267,39 @@ export default {
     }
   }
   .roomCards {
-    margin-bottom: 80px;
+    width: 90%;
+    // height: 35vw;
+    // margin-bottom: 80px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-around;
     gap: 10px;
+    .swiper{
+      // padding: 0 18px 18px;
+      padding: 0 40px 50px;
+
+    }
     .swiper-slide{
+    // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 10px 10px 8px rgba(0, 0, 0, 0);
+      transition: all ease 0.3s;
+
       // max-width: 460px;
       .roomCard {
       position: relative;
       width: 100%;
       height: 100%;
+      border-radius: 0;
+      transition: all ease 0.5s;
+
       // max-width: 460px;
       .swiper{
+        padding: 0;
         .swiper-wrapper{
           .swiper-slide{
           // height: auto;
           img{
-            min-height: 300px;
+            // min-height: 300px;
             width: 100%;
             // height: 100%;
             object-fit: cover;
@@ -298,13 +329,15 @@ export default {
         }
       }
       .cardInfo {
-        padding: clamp(14px, 2vw, 24px);
+        padding: 10px clamp(10px, 2vw, 16px);
         background: white;
+        position: relative;
         h3 {
-          @include text(var(--color-black), clamp(12px, 1.7vw, 26px), unset, 500);
+          @include text(var(--color-black), clamp(12px, 1.6vw, 22px), unset, 700);
           text-transform: uppercase;
-          white-space: nowrap;
-          margin-bottom: 20px;
+          text-align: start;
+          margin-bottom: 10px;
+          // min-height: 66px;
         }
         .roomOption {
           li {
@@ -321,37 +354,60 @@ export default {
               justify-content: center;
               border: 1px solid #d7b154;
               border-radius: 10px;
-              padding: 5px;
+              padding: 3px;
               color: #d7b154;
               .meters {
-                @include text(var(--color-gold), 15px, unset, 800);
+                @include text(var(--color-gold), 12px, unset, 800);
+                line-height: 120%;
               }
               .description {
-                @include text(var(--color-gold), 12px, unset, 700);
+                @include text(var(--color-gold), 7px, unset, 700);
+                line-height: 110%;
               }
             }
             svg {
               border: 1px solid #d7b154;
               border-radius: 10px;
-              padding: 7px;
+              padding: 2px;
             }
             .option {
-              @include text(var(--color-black), 20px, unset, 400);
+              @include text(var(--color-black), clamp(10px, 1.5vw, 20px), unset, 400);
             }
           }
         }
         .cardButtons {
           display: flex;
           justify-content: space-between;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
           gap: 10px;
-          padding-top: 20px;
-          margin-bottom: 25px;
+          padding-top: 10px;
+          margin-bottom: 10px;
+          position: relative;
           .TertiaryButton {
-            flex: 1;
+            // padding: 16px clamp(10px, 2vw, 32px);
+            padding: unset;
+            padding-block: clamp(5px, 1.5vw, 10px);
+            flex: 1 1 auto;
+            span{
+              font-size: clamp(8px, 1.5vw, 13px);
+            }
           }
         }
       }
+    }
+    }
+    @media (min-width: 1024px) {
+      .swiper-slide:hover{
+      // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      // box-shadow: 20px 20px 16px rgba(0, 0, 0, 0.15);
+      // box-shadow: 25px 30px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 15px 25px 20px rgba(0, 0, 0, 0.25);
+      transition: all ease 0.3s;
+      .roomCard{
+        transform: scale(1.02);
+        transition: all ease 0.5s;
+      }
+
     }
     }
 
@@ -360,6 +416,7 @@ export default {
 @media (max-width: 1024px) {
       .rooms{
         .roomCards{
+          width: 100%;
           .swiper{
             .swiper-wrapper{
               .swiper-slide{
@@ -375,9 +432,19 @@ export default {
         }
       }
     }
+    @media (max-width: 768px) {
+      .rooms{
+        .topRooms{
+          .buttons{
+            display: none;
+          }
+        }
+      }
+    }
     @media (max-width: 425px) {
       .rooms{
-        margin-inline: 15px;
+        margin-inline: 5px;
+        padding: 0;
         .roomCards{
           .swiper{
             .swiper-wrapper{
