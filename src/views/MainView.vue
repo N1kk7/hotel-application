@@ -226,6 +226,8 @@
         </div>
       </section>
 
+      <div></div>
+
       <section class="map">
         <img src="../assets/images/home-page/map.png" alt="Map" />
         <div class="contactPopup">
