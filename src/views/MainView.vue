@@ -18,7 +18,7 @@
         <div class="textBlock">
             <p>Rozvadov 7, Entrance 2, 348 06 Rozvadov, Plzeňský kraj, Czech Republic</p>
             <h1>WELCOME TO</h1>
-            <h1>KING'S PALACE</h1>
+            <h1 class="colorTittle">KING'S PALACE</h1>
         </div>
       </div>
     <section class="mobileCheckAvailable">
@@ -346,6 +346,9 @@ export default {
         h1{
             @include mainTitle;
         }
+        .colorTittle{
+                color: var(--color-gold);
+            }
       }
     }
     .mobileCheckAvailable{

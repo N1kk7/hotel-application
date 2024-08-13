@@ -29,10 +29,10 @@
                     </span>
                 </div>
                 <h1>
-                    Relax like
+                    Relax
                 </h1>
                 <h1 class="colorText">
-                    A King
+                  like A King
 
                 </h1>
                 <p class="description">
@@ -208,7 +208,7 @@ export default {
           @include pathText;
         }
       }
-      .colorTitle {
+      .colorText {
         color: var(--color-gold);
       }
       h1 {

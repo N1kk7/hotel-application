@@ -9,25 +9,37 @@
     height: 100%;
     min-height: 100vh;
     object-fit: cover;
+    @media (max-width: 768px) {
+        min-height: 350px !important;
+        height: 50vh !important;
+    }
 }
 
 @mixin mainTextBlock {
     position: absolute;
-    bottom: 10%;
-    left: 10%;
-    max-width: 90vw;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 16px;
+    // @media (max-width: 768px) {
+    //     height: 30%;
+    // }
 }
 
 @mixin mainTitle {
     color: var(--color-white);
-    font-family: var(--font-grot-reg);
-    font-size: clamp(30px, 8vw, 60px);
+    font-family: var(--font-family-grot-bold);
+    font-size: clamp(30px, 8vw, 8rem);
     font-weight: 420;
     line-height: 100%;
     text-transform: uppercase;
+    text-align: center;
+
 }
 
 @mixin alignPath {
@@ -35,8 +47,14 @@
     justify-content: flex-start;
     gap: 10px;
     align-items: center;
-    position: relative;
+    position: absolute;
+    top: 12%;
+    left: 12%;
     z-index: 4;
+     @media (max-width: 768px) {
+        top: 20%;
+        left: 15%;
+    }
 }
 
 @mixin pathText {
@@ -44,9 +62,10 @@
     text-align: center;
     font-family: var(--font-text-reg);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 150%;
     text-transform: uppercase;
+   
 }
 
 @mixin mainDescription {

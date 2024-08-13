@@ -17,7 +17,7 @@
                         Golf
                     </span>
                 </div>
-                <h1>Golf</h1>
+                <h1 class="colorTitle">Golf</h1>
             </div>
         </div>
         <div class="golfClubs">
@@ -276,6 +276,7 @@ export default {
 
         h1 {
           @include mainTitle;
+          color: #D7B154
         }
       }
     }

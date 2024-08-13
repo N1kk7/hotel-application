@@ -20,7 +20,10 @@
                     </router-link>
                 </div>
                 <h1>
-                    Contact us
+                    Contact
+                    <span class="colorText">
+                      us
+                    </span>
                 </h1>
             <PrimaryButton buttonText="contact"/>
             </div>
@@ -273,6 +276,9 @@ export default {
 
       h1 {
         @include mainTitle;
+        .colorText {
+            color: var(--color-gold);
+        }
       }
 
       .PrimaryButton {

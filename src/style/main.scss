@@ -40,8 +40,7 @@ p, h1,h2,h3,h4{
                 min-height: 50vh !important;
             }
             .textBlock{
-                width: 95% !important;
-                top: clamp(155px , 30vw, 260px) !important;
+             
                 h1{
                     font-size: clamp(30px, 8vw, 35px) !important;
                     white-space: nowrap;

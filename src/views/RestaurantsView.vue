@@ -25,9 +25,9 @@
                     </span>
                 </div>
                 <h1>
-                    Dine like
+                    Dine
                 </h1>
-                <h1 class="colorTitle">a King </h1>
+                <h1 class="colorTitle">like a King </h1>
                 <p class="description">
                     Explore a wide range of dishes from buffet options to
                     world-class gastronomy at Radimský Restaurant
@@ -753,6 +753,7 @@ export default {
     justify-content: space-between;
     gap: 30px;
     padding-block: 70px;
+    overflow: hidden;
     .infoWrapper{
       flex: 0 0 40%;
       .topBlock {
@@ -801,17 +802,16 @@ export default {
               }
             }
     }
-    img{
+  }
+  img{
       flex: 0 0 60%;
-      width: 100%;
-      height: 100%;
+      // width: 50%;
+      // height: 100%;
       object-fit: cover;
-      max-height: 880px;
-      min-height: 650px;
+      // max-height: 880px;
+      // min-height: 650px;
       width: calc(50vw - 15px);
     }
-
-  }
 }
 }
 </style>
