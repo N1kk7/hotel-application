@@ -84,7 +84,6 @@
               </div>
             </div>
           </router-link>
-
         </div>
       </div>
     <footer class="footer">
@@ -396,40 +395,12 @@ export default {
           }
         }
         .columnCard{
-          // background-color: #1c1c1c;
-          // border-radius: 3px;
-          // padding: 10px;
-          // display: grid;
-          // justify-content: center;
-          // align-items: flex-start;
-          // display: flex;
-          // vertical-align: top;
           position: relative;
-          // top: 50px;
           padding: 0 32px 16px;
-          // border-radius: 50%;
           border-radius: 57% 25%;
-
-          // height: 300px;
-
+          margin-top: 45px;
           background-color: #0f0f0f;
-    // display: table;
-    width: 250px;
-          // .cardWrapper{
-            // display: inline-block;
-            // vertical-align: top;
-            // flex-grow: 1;
-            // grid-area: 1/1;
-            // transform: translateY(-25%);
-            // position: relative;
-            // width: 100%;
-            // position: absolute;
-            // left: 50%;
-            // transform: translateX(-50%);
-            // padding: 0 32px 16px;
-
-            // width: inherit;
-            // top: -50px;
+          width: 250px;
             .logo{
             text-align: center;
             position: relative;
@@ -438,7 +409,6 @@ export default {
               border-radius: 50%;
               border: 10px solid black;
               background: black;
-            // transform: translateY(-50%)
 
               }
             }
