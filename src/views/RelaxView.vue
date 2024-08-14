@@ -1,6 +1,6 @@
 <template>
     <div class="Page Massage">
-        <div class="main">
+        <div class="main" ref="mainDiv">
             <!-- <img
                 src="../assets/images/relax/relaxBg.png"
                 alt="Header Image" class="mainImage"
@@ -11,12 +11,13 @@
                 loop
                 muted
                 poster="../assets/images/relax/relaxBg.png"
+                ref="mainImageBg"
                 >
                 <source src="../assets/images/relax/Kings-Wellness.mp4" type="video/mp4" />
                 <!-- <source src="path/to/video.webm" type="video/webm" /> -->
                 Your browser does not support the video tag.
             </video>
-            <div class="textBlock">
+            <div class="textBlock" ref="textBlock">
                 <div class="path">
                     <router-link to="/">
                         <span>
@@ -171,6 +172,7 @@
 <script>
 import SvgIcon from '@/components/SvgIcon.vue';
 // import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
+import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 
 export default {
@@ -178,6 +180,20 @@ export default {
   components: {
     SvgIcon,
     PrimaryButton,
+  },
+  setup() {
+    const {
+      mainDiv,
+      textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
+    } = useAnimations();
+    return {
+      mainDiv,
+      textBlock,
+      pageBlock,
+      blockWrapper,
+      mainImageBg,
+      animatedTitle,
+    };
   },
   mounted() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -192,6 +208,7 @@ export default {
 
   .main {
     position: relative;
+    overflow: hidden;
     .mainImage, video {
       @include mainBg;
     }

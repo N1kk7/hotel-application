@@ -1,17 +1,18 @@
 <template>
     <div class="Page Massage">
-        <div class="main">
+        <div class="main" ref="mainDiv">
             <video
                 controls
                 autoplay
                 loop
                 muted
                 poster="../assets/images/gym/gymBg.png"
+                ref="mainImageBg"
                 >
                 <source src="../assets/images/gym/Kings–Fitness.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <div class="textBlock">
+            <div class="textBlock" ref="textBlock">
                 <div class="path">
                     <router-link to="/">
                         <span>
@@ -30,7 +31,10 @@
                     </span>
                 </div>
                 <h1>
-                    24/7 GYM
+                    24/7
+                </h1>
+                <h1 class="colorTitle">
+                    GYM
                 </h1>
                 <p class="description">
                     Reach new heights!
@@ -106,6 +110,7 @@
 
 <script>
 import SvgIcon from '@/components/SvgIcon.vue';
+import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
 
@@ -115,6 +120,21 @@ export default {
     SvgIcon,
     PrimaryButton,
     RoomsCarusel,
+  },
+  setup() {
+    const {
+      mainDiv,
+      textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
+    } = useAnimations();
+
+    return {
+      mainDiv,
+      textBlock,
+      pageBlock,
+      blockWrapper,
+      mainImageBg,
+      animatedTitle,
+    };
   },
   mounted() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -129,6 +149,7 @@ export default {
        @include pageStyle;
         .main{
            position: relative;
+           overflow: hidden;
            .mainImage, video{
             @include mainBg;
             }

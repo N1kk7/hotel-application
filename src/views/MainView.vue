@@ -1,6 +1,6 @@
 <template>
     <div class="Page kingsPalace">
-      <div class="main">
+      <div class="main" ref="mainDiv">
         <!-- <img src="../assets/images/home-page/main.png"
          alt="Header Image" class="mainImage" /> -->
         <!-- <video src="../assets/images/home-page/Kings-Main.mp4"></video> -->
@@ -9,13 +9,14 @@
       autoplay
       loop
       muted
+      ref="mainImageBg"
       poster="../assets/images/home-page/main.png"
     >
       <source src="../assets/images/home-page/Kings-Main.mp4" type="video/mp4" />
       <!-- <source src="path/to/video.webm" type="video/webm" /> -->
       Your browser does not support the video tag.
     </video>
-        <div class="textBlock">
+        <div class="textBlock" ref="textBlock">
             <p>Rozvadov 7, Entrance 2, 348 06 Rozvadov, Plzeňský kraj, Czech Republic</p>
             <h1>WELCOME TO</h1>
             <h1 class="colorTittle">KING'S PALACE</h1>
@@ -255,6 +256,7 @@
 <script>
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 // import { Swiper, SwiperSlide } from 'swiper/vue';
+import useAnimations from '@/animations/useAnimations';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
 import SvgIcon from '../components/SvgIcon.vue';
 // import TertiaryButton from '../components/Buttons/TertiaryButton.vue';
@@ -321,6 +323,20 @@ export default {
     // Swiper,
     // SwiperSlide,
   },
+  setup() {
+    const {
+      mainDiv,
+      textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
+    } = useAnimations();
+    return {
+      mainDiv,
+      textBlock,
+      pageBlock,
+      blockWrapper,
+      mainImageBg,
+      animatedTitle,
+    };
+  },
 
 };
 </script>
@@ -333,6 +349,7 @@ export default {
 
     .main {
         position: relative;
+        overflow: hidden;
       .mainImage, video{
        @include mainBg;
       }

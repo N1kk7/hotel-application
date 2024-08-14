@@ -1,11 +1,12 @@
 <template>
     <div class="Page Golf">
-        <div class="main">
+        <div class="main" ref="mainDiv">
             <img
                 src="../assets/images/golf-page/main-golf.png"
                 alt="Header Image" class="mainImage"
+                ref="mainImageBg"
             />
-            <div class="textBlock">
+            <div class="textBlock" ref="textBlock">
                 <div class="path">
                     <router-link to="/">
                         <span>
@@ -185,6 +186,7 @@
 <script>
 import { ref } from 'vue';
 import SvgIcon from '@/components/SvgIcon.vue';
+import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -227,6 +229,11 @@ export default {
     };
   },
   setup() {
+    const {
+      mainDiv,
+      textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
+    } = useAnimations();
+
     const swiperInstance = ref(null);
 
     const onSwiper = (swiper) => {
@@ -244,6 +251,12 @@ export default {
       onSwiper,
       slideNext,
       slidePrev,
+      mainDiv,
+      textBlock,
+      pageBlock,
+      blockWrapper,
+      mainImageBg,
+      animatedTitle,
     };
   },
 };
@@ -257,6 +270,7 @@ export default {
 
     .main {
       position: relative;
+      overflow: hidden;
       .mainImage {
         @include mainBg;
       }

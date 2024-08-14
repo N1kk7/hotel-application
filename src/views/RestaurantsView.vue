@@ -1,18 +1,19 @@
 <template>
     <div class="Page Restaurants">
-        <div class="main">
+        <div class="main" ref="mainDiv">
             <video
               controls
               autoplay
               loop
               muted
               poster="../assets/images/restaurants/mainBg.png"
+              ref="mainImageBg"
             >
               <source src="../assets/images/restaurants/Kings-Restaurant.mp4" type="video/mp4" />
               <!-- <source src="path/to/video.webm" type="video/webm" /> -->
               Your browser does not support the video tag.
             </video>
-            <div class="textBlock">
+            <div class="textBlock" ref="textBlock">
                 <div class="path">
                     <router-link to="/">
                         <span>
@@ -239,6 +240,7 @@ import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import SvgIcon from '@/components/SvgIcon.vue';
+import useAnimations from '@/animations/useAnimations';
 import DistanceC from '@/components/DistanceC.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
 import 'swiper/swiper-bundle.css';
@@ -318,6 +320,10 @@ export default {
     const swiperLux = ref(null);
     const luxCurrentSlide = ref(0);
     const luxTotalSlides = ref(0);
+    const {
+      mainDiv,
+      textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
+    } = useAnimations();
 
     const onSwiperLux = (swiper) => {
       swiperLux.value = swiper;
@@ -337,6 +343,12 @@ export default {
       luxTotalSlides,
       onSwiperLux,
       onSlideChangeLux,
+      mainDiv,
+      textBlock,
+      pageBlock,
+      blockWrapper,
+      mainImageBg,
+      animatedTitle,
     };
   },
 };

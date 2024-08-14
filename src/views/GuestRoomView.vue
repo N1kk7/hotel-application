@@ -1,8 +1,9 @@
 <template>
     <div class="Page GuestRoom">
-        <div class="main">
+        <div class="main" ref="mainDiv">
             <img
                 src="../assets/images/guest-room/GuestRoom.png"
+                ref="mainImageBg"
                 alt="Header Image" class="mainImage"
             />
         </div>
@@ -162,7 +163,7 @@
             <!-- </transition> -->
 
         </div>
-        <RoomsCarusel tittleName="Similar CLASS Accomodations"/>
+        <RoomsCarusel tittleName="Similar CLASS Accomodations" pathImg="."/>
     </div>
 </template>
 
@@ -173,6 +174,7 @@ import SvgIcon from '@/components/SvgIcon.vue';
 import { gsap } from 'gsap';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import TertiaryButton from '@/components/Buttons/TertiaryButton.vue';
+import useAnimations from '@/animations/useAnimations';
 // import { Swiper, SwiperSlide } from 'swiper/vue';
 // import { Pagination, Autoplay } from 'swiper/modules';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
@@ -411,6 +413,10 @@ export default {
     //     animateIn();
     //   }
     // });
+    const {
+      mainDiv,
+      textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
+    } = useAnimations();
 
     return {
       modules: [Pagination, Autoplay],
@@ -423,6 +429,12 @@ export default {
       animateIn,
       animateOut,
       showMoreButton,
+      mainDiv,
+      textBlock,
+      pageBlock,
+      blockWrapper,
+      mainImageBg,
+      animatedTitle,
     };
   },
 };
@@ -458,6 +470,7 @@ export default {
         @include pageStyle;
         .main{
            position: relative;
+           overflow: hidden;
            .mainImage{
             @include mainBg;
             }

@@ -1,11 +1,12 @@
 <template>
     <div class="Page Massage">
-        <div class="main">
+        <div class="main" ref="mainDiv">
             <img
                 src="../assets/images/wellness/wellnessBg.png"
                 alt="Header Image" class="mainImage"
+                ref="mainImageBg"
             />
-            <div class="textBlock">
+            <div class="textBlock" ref="textBlock">
                 <div class="path">
                     <router-link to="/">
                         <span>
@@ -23,10 +24,7 @@
                         massages
                     </span>
                 </div>
-                <h1>
-                    Massages &
-                </h1>
-                <h1 class="colorTitle"> treatments </h1>
+                <h1 class="colorTitle"> WELLNESS </h1>
                 <p class="description">
                     Slow down
                 </p>
@@ -128,6 +126,7 @@
 <script>
 import SvgIcon from '@/components/SvgIcon.vue';
 // import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
+import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
 
@@ -137,6 +136,20 @@ export default {
     SvgIcon,
     PrimaryButton,
     RoomsCarusel,
+  },
+  setup() {
+    const {
+      mainDiv,
+      textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
+    } = useAnimations();
+    return {
+      mainDiv,
+      textBlock,
+      pageBlock,
+      blockWrapper,
+      mainImageBg,
+      animatedTitle,
+    };
   },
   mounted() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -151,6 +164,7 @@ export default {
        @include pageStyle;
         .main{
            position: relative;
+           overflow: hidden;
            .mainImage{
                @include mainBg;
             }

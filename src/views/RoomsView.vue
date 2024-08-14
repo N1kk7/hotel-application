@@ -1,11 +1,12 @@
 <template>
   <div class="Page Hotel">
-    <div class="main">
-      <video controls autoplay loop muted poster="../assets/images/hotel-page/mainBg.png">
+    <div class="main" ref="mainDiv">
+      <video controls autoplay loop muted ref="mainImageBg"
+      poster ="../assets/images/hotel-page/mainBg.png">
         <source src="../assets/images/hotel-page/Kings-Hotel.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div class="textBlock">
+      <div class="textBlock" ref="textBlock">
         <h1>SLEEP LIKE</h1>
         <h1 class="colorText">A KING</h1>
         <p>
@@ -520,6 +521,7 @@
 
 <script>
 import { ref } from 'vue';
+import useAnimations from '@/animations/useAnimations';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
@@ -581,6 +583,10 @@ export default {
         deluxeCurrentSlide.value = swiperDeluxe.value.realIndex + 1;
       }
     };
+    const {
+      mainDiv,
+      textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
+    } = useAnimations();
     return {
       luxury,
       deluxe,
@@ -599,6 +605,12 @@ export default {
       onSlideChangeLux,
       onSlideChangeDeluxe,
       modules: [EffectFade, Autoplay, Navigation],
+      mainDiv,
+      textBlock,
+      pageBlock,
+      blockWrapper,
+      mainImageBg,
+      animatedTitle,
     };
   },
 };
@@ -611,7 +623,7 @@ export default {
   @include pageStyle;
   .main {
     position: relative;
-
+    overflow: hidden;
     .mainImage,
     video {
       @include mainBg;
