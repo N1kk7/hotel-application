@@ -1753,6 +1753,7 @@ export default {
         </div>
       </div>
     </div>
+
     <div class="pageBlock" ref="pageBlock">
       <h1>OLOLO TAG HERE</h1>
       <h2 class="animated-title" ref="animatedTitle">
@@ -1762,8 +1763,11 @@ export default {
       <p class="animated-text">For your convenience, we have a selection of trusted tourist attractions nearby.</p>
       <div class="blockWrapper" ref="blockWrapper">
         <div class="item" v-for="(item, index) in items" :key="index">
+    <!-- <img src="../assets/images/king-palace/item1.png" alt="services" /> -->
+
           <!-- <img :src="item.imgSrc" alt="services" /> -->
-          <img :src="`/king-palace/${item.imgSrc}`" alt="services" />
+          <!-- <img :src="require(`./assets/images/king-palace/${item.imgSrc}`)" alt="services" /> -->
+          <img :src="require(`@/assets/images/king-palace/${item.imgSrc}`)" alt="services" />
 
           <h4 class="nameBlock">{{ item.title }}</h4>
           <p class="animated-text">{{ item.description }}</p>
