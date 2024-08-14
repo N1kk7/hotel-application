@@ -37,16 +37,16 @@
              class="mySwiper"
             >
               <swiper-slide>
-                <img :src="`./${room.image}`" alt="Room Image" />
+                <img :src="`${pathImg}./${room.image}`" alt="Room Image" />
               </swiper-slide>
               <swiper-slide>
-                <img :src="`./${room.image}`" alt="Room Image" />
+                <img :src="`${pathImg}./${room.image}`" alt="Room Image" />
               </swiper-slide>
               <swiper-slide>
-                <img :src="`./${room.image}`" alt="Room Image" />
+                <img :src="`${pathImg}./${room.image}`" alt="Room Image" />
               </swiper-slide>
               <swiper-slide>
-                <img :src="`./${room.image}`" alt="Room Image" />
+                <img :src="`${pathImg}./${room.image}`" alt="Room Image" />
               </swiper-slide>
             </swiper>
             <!-- <img :src="`/${room.image}`" alt="Room Image" /> -->
@@ -158,6 +158,10 @@ export default {
       type: String,
       required: true,
     },
+    pathImg: {
+      type: String,
+      default: '',
+    },
     // cardItems: {
     //   type: Array,
     //   required: true,
@@ -181,7 +185,6 @@ export default {
 
     const updateSlidesPerView = () => {
       const width = window.innerWidth;
-      console.log(spaceBetween.value, slidesPerView.value);
       if (width >= 1024) {
         slidesPerView.value = 3;
         spaceBetween.value = 40;

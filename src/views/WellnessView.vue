@@ -120,7 +120,7 @@
                 <img src="../assets/images/wellness/aboutImg.png" alt="massagists">
             </div>
         </div>
-        <RoomsCarusel tittleName="AcCommodations"/>
+        <RoomsCarusel tittleName="AcCommodations" pathImg="."/>
     </div>
 
 </template>
