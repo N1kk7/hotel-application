@@ -62,7 +62,7 @@
 
           <div class="burgerIcon" @click="burgerMenu" aria-hidden="true">
             <SvgIcon v-if="isBurgerMenu" name="closeBurger" size="medium" />
-            <SvgIcon v-else name="burgerMenu" size="medium" />]
+            <SvgIcon v-else name="burgerMenu" size="medium" />
           </div>
         </div>
       </div>
