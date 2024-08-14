@@ -1799,14 +1799,14 @@ export default {
     const titleLetters = 'Nearby tourist attractions and activities'.split('');
 
     const items = ref([
-      { imgSrc: '../king-palace/item1.png', title: 'Sports Facilities IN TACHOV', description: 'Ideal for training and recreational sports.' },
-      { imgSrc: '../king-palace/item2.png', title: 'Světce RIDING HALL', description: 'A national cultural monument and the second largest riding hall in Central Europe.' },
-      { imgSrc: '../king-palace/item3.png', title: 'Přimda castle', description: 'Ruins of the oldest known Czech stone castle.' },
-      { imgSrc: '../king-palace/item4.png', title: 'Gotcha Spielfeld', description: "Europe's most important paintball arena." },
-      { imgSrc: '../king-palace/item5.png', title: 'PLEYSTEIN', description: 'Ruins of the oldest known Czech stone castle.' },
-      { imgSrc: '../king-palace/item6.png', title: 'TACHOV', description: "Europe's most important paintball arena." },
-      { imgSrc: '../king-palace/item7.png', title: 'WAIDHAUS', description: 'Ruins of the oldest known Czech stone castle.' },
-      { imgSrc: '../king-palace/item8.png', title: 'PŘIMDA', description: "Europe's most important paintball arena." },
+      { imgSrc: '/king-palace/item1.png', title: 'Sports Facilities IN TACHOV', description: 'Ideal for training and recreational sports.' },
+      { imgSrc: '/king-palace/item2.png', title: 'Světce RIDING HALL', description: 'A national cultural monument and the second largest riding hall in Central Europe.' },
+      { imgSrc: '/king-palace/item3.png', title: 'Přimda castle', description: 'Ruins of the oldest known Czech stone castle.' },
+      { imgSrc: '/king-palace/item4.png', title: 'Gotcha Spielfeld', description: "Europe's most important paintball arena." },
+      { imgSrc: '/king-palace/item5.png', title: 'PLEYSTEIN', description: 'Ruins of the oldest known Czech stone castle.' },
+      { imgSrc: '/king-palace/item6.png', title: 'TACHOV', description: "Europe's most important paintball arena." },
+      { imgSrc: '/king-palace/item7.png', title: 'WAIDHAUS', description: 'Ruins of the oldest known Czech stone castle.' },
+      { imgSrc: '/king-palace/item8.png', title: 'PŘIMDA', description: "Europe's most important paintball arena." },
     ]);
 
     // const smoothScroll = (targetY, duration) => {
