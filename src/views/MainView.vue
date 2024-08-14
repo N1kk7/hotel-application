@@ -5,6 +5,7 @@
          alt="Header Image" class="mainImage" /> -->
         <!-- <video src="../assets/images/home-page/Kings-Main.mp4"></video> -->
         <video
+        playsinline
       controls
       autoplay
       loop
