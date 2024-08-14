@@ -1762,7 +1762,9 @@ export default {
       <p class="animated-text">For your convenience, we have a selection of trusted tourist attractions nearby.</p>
       <div class="blockWrapper" ref="blockWrapper">
         <div class="item" v-for="(item, index) in items" :key="index">
-          <img :src="item.imgSrc" alt="services" />
+          <!-- <img :src="item.imgSrc" alt="services" /> -->
+          <img :src="`/king-palace/${item.imgSrc}`" alt="services" />
+
           <h4 class="nameBlock">{{ item.title }}</h4>
           <p class="animated-text">{{ item.description }}</p>
         </div>
@@ -1799,8 +1801,8 @@ export default {
     const titleLetters = 'Nearby tourist attractions and activities'.split('');
 
     const items = ref([
-      { imgSrc: '/king-palace/item1.png', title: 'Sports Facilities IN TACHOV', description: 'Ideal for training and recreational sports.' },
-      { imgSrc: '/king-palace/item2.png', title: 'Světce RIDING HALL', description: 'A national cultural monument and the second largest riding hall in Central Europe.' },
+      { imgSrc: '/item1.png', title: 'Sports Facilities IN TACHOV', description: 'Ideal for training and recreational sports.' },
+      { imgSrc: '/item2.png', title: 'Světce RIDING HALL', description: 'A national cultural monument and the second largest riding hall in Central Europe.' },
       { imgSrc: '/king-palace/item3.png', title: 'Přimda castle', description: 'Ruins of the oldest known Czech stone castle.' },
       { imgSrc: '/king-palace/item4.png', title: 'Gotcha Spielfeld', description: "Europe's most important paintball arena." },
       { imgSrc: '/king-palace/item5.png', title: 'PLEYSTEIN', description: 'Ruins of the oldest known Czech stone castle.' },
