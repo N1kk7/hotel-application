@@ -6,7 +6,7 @@
                 alt="Header Image" class="mainImage"
             /> -->
             <video
-                controls
+                playsinline
                 autoplay
                 loop
                 muted
@@ -212,6 +212,13 @@ export default {
     .mainImage, video {
       @include mainBg;
     }
+    video::-webkit-media-controls {
+        display: none !important;
+        }
+
+        video::-webkit-media-controls-enclosure {
+        display: none !important;
+        }
     .textBlock {
       @include mainTextBlock;
 

@@ -229,7 +229,7 @@
 
       <section class="map">
         <img src="../assets/images/home-page/map.png" alt="Map" />
-        <div class="contactPopup">
+        <!-- <div class="contactPopup">
             <div class="item">
                 <div class="avatar">
                     <img src="../assets/images/home-page/person.png" alt="person">
@@ -248,7 +248,8 @@
                 </div>
                 <PrimaryButton buttonText="contact"/>
             </div>
-        </div>
+        </div> -->
+        <HelpInfo />
       </section>
     </div>
   </template>
@@ -258,6 +259,7 @@ import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 // import { Swiper, SwiperSlide } from 'swiper/vue';
 import useAnimations from '@/animations/useAnimations';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
+import HelpInfo from '@/components/HelpInfo.vue';
 import SvgIcon from '../components/SvgIcon.vue';
 // import TertiaryButton from '../components/Buttons/TertiaryButton.vue';
 import Additional3 from '../components/Buttons/Additional3.vue';
@@ -320,6 +322,7 @@ export default {
     // TertiaryButton,
     SvgIcon,
     Additional3,
+    HelpInfo,
     // Swiper,
     // SwiperSlide,
   },
@@ -386,6 +389,7 @@ export default {
 
         }
         .description{
+            text-align: center;
             margin: 40px 0;
             p{
             @include text(var(--color-black), clamp(16px,3vw,20px), none, 400);
@@ -604,50 +608,50 @@ export default {
             height: 100%;
             object-fit: cover;
         }
-        .contactPopup{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 80vw;
-            background: var(--color-white);
-            padding: 40px;
-            position: absolute;
-            bottom: -20px;
-            .item{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
-                .avatar{
-                    position: relative;
-                    width: fit-content;
-                    margin-right: 35px;
-                    img{
-                        width: 64px;
-                        height: 64px;
-                        border-radius: 50%;
-                    }
-                    .onlinePin{
-                        width: 10px;
-                        height: 10px;
-                        background: green;
-                        border-radius: 50%;
-                        position: absolute;
-                        bottom: 10px;
-                        right: 5px;
-                    }
-                }
-                .mail{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 5px;
-                }
-                span{
-                    @include text(#3F3F3F, 20px, unset, 400);
-                }
-            }
-        }
+        // .contactPopup{
+        //     display: flex;
+        //     justify-content: space-between;
+        //     align-items: center;
+        //     width: 80vw;
+        //     background: var(--color-white);
+        //     padding: 40px;
+        //     position: absolute;
+        //     bottom: -20px;
+        //     .item{
+        //         display: flex;
+        //         align-items: center;
+        //         justify-content: center;
+        //         gap: 5px;
+        //         .avatar{
+        //             position: relative;
+        //             width: fit-content;
+        //             margin-right: 35px;
+        //             img{
+        //                 width: 64px;
+        //                 height: 64px;
+        //                 border-radius: 50%;
+        //             }
+        //             .onlinePin{
+        //                 width: 10px;
+        //                 height: 10px;
+        //                 background: green;
+        //                 border-radius: 50%;
+        //                 position: absolute;
+        //                 bottom: 10px;
+        //                 right: 5px;
+        //             }
+        //         }
+        //         .mail{
+        //             display: flex;
+        //             align-items: center;
+        //             justify-content: center;
+        //             gap: 5px;
+        //         }
+        //         span{
+        //             @include text(#3F3F3F, 20px, unset, 400);
+        //         }
+        //     }
+        // }
     }
 
     .booking, .rooms,
@@ -696,13 +700,13 @@ export default {
     }
 
   @media screen and (max-width: 1440px) {
-    .kingsPalace{
-        .main{
-            .textBlock{
-                max-width: 55vw;
-            }
-        }
-    }
+    // .kingsPalace{
+    //     .main{
+    //         .textBlock{
+    //             max-width: 55vw;
+    //         }
+    //     }
+    // }
   }
 
   @media screen and (max-width: 1024px) {

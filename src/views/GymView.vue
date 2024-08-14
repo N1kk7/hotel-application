@@ -2,7 +2,7 @@
     <div class="Page Massage">
         <div class="main" ref="mainDiv">
             <video
-                controls
+                playsinline
                 autoplay
                 loop
                 muted
@@ -152,6 +152,13 @@ export default {
            overflow: hidden;
            .mainImage, video{
             @include mainBg;
+            }
+            video::-webkit-media-controls {
+            display: none !important;
+            }
+
+            video::-webkit-media-controls-enclosure {
+            display: none !important;
             }
             .textBlock{
                 @include mainTextBlock;

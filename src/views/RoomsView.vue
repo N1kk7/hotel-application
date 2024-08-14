@@ -1,7 +1,8 @@
 <template>
   <div class="Page Hotel">
     <div class="main" ref="mainDiv">
-      <video controls autoplay loop muted ref="mainImageBg"
+      <video playsinline autoplay loop muted
+      ref="mainImageBg"
       poster ="../assets/images/hotel-page/mainBg.png">
         <source src="../assets/images/hotel-page/Kings-Hotel.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -628,6 +629,13 @@ export default {
     video {
       @include mainBg;
     }
+    video::-webkit-media-controls {
+        display: none !important;
+        }
+
+        video::-webkit-media-controls-enclosure {
+        display: none !important;
+        }
     .textBlock {
       position: absolute;
       top: 50%;
