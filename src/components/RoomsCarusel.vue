@@ -37,16 +37,16 @@
              class="mySwiper"
             >
               <swiper-slide>
-                <img :src="`/${room.image}`" alt="Room Image" />
+                <img :src="`./${room.image}`" alt="Room Image" />
               </swiper-slide>
               <swiper-slide>
-                <img :src="`/${room.image}`" alt="Room Image" />
+                <img :src="`./${room.image}`" alt="Room Image" />
               </swiper-slide>
               <swiper-slide>
-                <img :src="`/${room.image}`" alt="Room Image" />
+                <img :src="`./${room.image}`" alt="Room Image" />
               </swiper-slide>
               <swiper-slide>
-                <img :src="`/${room.image}`" alt="Room Image" />
+                <img :src="`./${room.image}`" alt="Room Image" />
               </swiper-slide>
             </swiper>
             <!-- <img :src="`/${room.image}`" alt="Room Image" /> -->
