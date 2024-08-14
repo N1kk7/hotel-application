@@ -656,11 +656,12 @@ export default {
         }
         .mapSvg{
           svg{
-            transform: scale(1.1) translateX(40px);
+            transform: scale(1.1);
             padding-block: 20px;
+            stroke: var(--color-gold);
             @media (max-width: 430px) {
               &{
-                transform: scale(0.95) translateX(40px);
+                transform: scale(0.95) translateX(20px);
               }
             }
             @media (max-width: 375px) {
