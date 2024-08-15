@@ -159,7 +159,7 @@
         </div>
         </div>
         <div class="footerContact">
-          <div class="container">
+          <!-- <div class="container"> -->
             <div class="findKings">
             <span class="preTittle"> Where to find King's? </span>
             <h4>On the Main Motorway from Munich to Prague</h4>
@@ -177,7 +177,7 @@
             <button>call +420 777 281 804</button>
           </div>
           </div>
-        </div>
+        <!-- </div> -->
     </div>
     <div class="footerBottom">
       <div class="container">
@@ -320,10 +320,15 @@ export default {
       // gap: 5px;
       a {
         flex: 1 1 45%;
-        padding: clamp(1px, 1vw, 3px);
+        padding: clamp(1px, 1vw, 2px);
         .link {
           min-height: clamp(100px, 50vw, 200px);
           .card {
+          height: 100%;
+          padding: 0;
+          .description, .tittle {
+            padding: 15px;
+          }
             .tittle {
               margin-bottom: 5px;
             }
@@ -503,7 +508,7 @@ export default {
 
     .footerContact {
       border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-      padding-bottom: 20px;
+      padding: 0 20px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -517,6 +522,7 @@ export default {
         display: flex;
         flex-direction: column;
         gap: 15px;
+        width: 100%;
         h4 {
           @include text(var(--color-white), 20px, uppercase, 500);
           max-width: 60%;
@@ -536,6 +542,7 @@ export default {
       }
       .mapSvg {
         flex: 1;
+        padding-top: 20px;
         svg {
           width: 424px;
           height: 231px;
@@ -547,6 +554,7 @@ export default {
         display: flex;
         flex-direction: column;
         gap: 15px;
+        width: 100%;
         .callKings {
           @include text(var(--color-white), 14px, uppercase, 500);
           .colorText {
