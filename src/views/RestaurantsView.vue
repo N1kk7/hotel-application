@@ -181,36 +181,9 @@
         </div>
 
         </div>
-        <div class="cardsWrapper">
-            <div class="card" v-for="cafe in cafeData" :key="cafe.id">
-                <img :src="cafe.image" alt="cafe">
-                <div class="bottomSide">
-                    <h3 class="title">
-                        {{ cafe.name }}
-                    </h3>
-                <ul>
-                    <li>
-                        <DistanceC :distance="cafe.distance" :meters="cafe.meters"/>
-                        <span class="option">
-                            Distance from King's
-                        </span>
-                    </li>
-                    <li class="strokeSvg">
-                        <SvgIcon name='cafeSuite' size="large" strokeWidth="0"/>
-                        <span class="option">
-                            European cuisine
-                        </span>
-                    </li>
-                    <li>
-                        <SvgIcon name='location' size="large" strokeWidth="0"/>
-                        <span class="option">
-                            {{ cafe.location }}
-                        </span>
-                    </li>
-                </ul>
-                </div>
-            </div>
-        </div>
+        <!-- <div class="cardsWrapper">
+        </div> -->
+        <RestaurantCarusel tittleName="Other restaurants"/>
         <div class="infoBlock">
           <div class="infoWrapper">
             <span class="topBlock">
@@ -243,6 +216,7 @@ import SvgIcon from '@/components/SvgIcon.vue';
 import useAnimations from '@/animations/useAnimations';
 import DistanceC from '@/components/DistanceC.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
+import RestaurantCarusel from '@/components/RestaurantCarusel.vue';
 import 'swiper/swiper-bundle.css';
 
 export default {
@@ -251,6 +225,7 @@ export default {
     SvgIcon,
     DistanceC,
     RoomsCarusel,
+    RestaurantCarusel,
     Swiper,
     SwiperSlide,
   },
@@ -355,7 +330,7 @@ export default {
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '@/style/mixins.scss';
 @import '@/style/main.scss';
 .Restaurants {
@@ -558,6 +533,9 @@ export default {
               z-index: 2;
             }
           }
+          // ::v-deep .swiper-slide-next{
+          //   transform: scale(1.2);
+          // }
 
           .buttonWrapper {
             position: absolute;
@@ -700,7 +678,7 @@ export default {
       }
     }
   }
-
+////
   .cardsWrapper {
     box-sizing: border-box;
     margin-bottom: 60px;
@@ -720,51 +698,51 @@ export default {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    .card {
-      background: var(--color-white);
-      max-width: fit-content;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden; /* Добавлено */
-      box-sizing: border-box; /* Добавлено */
-      .bottomSide {
-        padding: 16px;
-        .title {
-          margin: 16px 0 10px;
-          // color: var(--color-black);
-          // font-family: var(--font-text-reg);
-          // font-size: 24px;
-          // font-style: normal;
-          // font-weight: 500;
-          // line-height: 130%;
-          // text-transform: uppercase;
-          @include text(var(--color-black), 24px, uppercase, 500);
-        }
-        ul {
-          list-style-type: none;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          li {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 10px;
-            .option {
-              // color: var(--color-black);
-              // font-family: var(--font-text-reg);
-              // font-size: 14px;
-              // font-style: normal;
-              // font-weight: 400;
-              // line-height: 150%;
-              @include text(var(--color-black), 14px, unset, 400);
-            }
-          }
-        }
-      }
-    }
+    // .card {
+    //   background: var(--color-white);
+    //   max-width: fit-content;
+    //   width: 100%;
+    //   display: flex;
+    //   flex-direction: column;
+    //   overflow: hidden; /* Добавлено */
+    //   box-sizing: border-box; /* Добавлено */
+    //   .bottomSide {
+    //     padding: 16px;
+    //     .title {
+    //       margin: 16px 0 10px;
+    //       // color: var(--color-black);
+    //       // font-family: var(--font-text-reg);
+    //       // font-size: 24px;
+    //       // font-style: normal;
+    //       // font-weight: 500;
+    //       // line-height: 130%;
+    //       // text-transform: uppercase;
+    //       @include text(var(--color-black), 24px, uppercase, 500);
+    //     }
+    //     ul {
+    //       list-style-type: none;
+    //       padding: 0;
+    //       display: flex;
+    //       flex-direction: column;
+    //       gap: 10px;
+    //       li {
+    //         display: flex;
+    //         align-items: center;
+    //         justify-content: flex-start;
+    //         gap: 10px;
+    //         .option {
+    //           // color: var(--color-black);
+    //           // font-family: var(--font-text-reg);
+    //           // font-size: 14px;
+    //           // font-style: normal;
+    //           // font-weight: 400;
+    //           // line-height: 150%;
+    //           @include text(var(--color-black), 14px, unset, 400);
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
   }
   .infoBlock {
     display: flex;
