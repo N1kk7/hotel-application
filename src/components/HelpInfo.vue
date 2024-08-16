@@ -78,4 +78,27 @@ export default {
                 }
             }
         }
+    @media (max-width: 768px) {
+        .contactPopup{
+            flex-direction: column;
+            margin-inline: auto;
+            border-radius: 10px;
+            position: relative;
+            width: 65vw;
+            gap: 10px;
+            span{
+                        text-align: center;
+                    }
+            .item{
+                flex-direction: column;
+                gap: 10px;
+                .avatar{
+                    margin-right: 0;
+                }
+                button{
+                    width: -webkit-fill-available;
+                }
+            }
+        }
+    }
 </style>

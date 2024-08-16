@@ -24,15 +24,42 @@
     </section>
 
     <section class="hotelDescription">
-      <div class="container">
+      <!-- <div class="container"> -->
         <h2>King’s Palace Rozvadov, Czech Republic</h2>
         <div class="description">
           <p>
-            Experience comfort and luxury where every moment becomes an unforgettable experience.
-          </p>
-          <p>We offer rooms in various categories, ranging from 2* to 5*.</p>
+            Experience comfort and luxury where every moment becomes an unforgettable
+            experience.<br>
+          We offer rooms in various categories, ranging from 2* to 5*.
+        </p>
         </div>
         <div class="underLine"></div>
+      <!-- </div> -->
+    </section>
+
+    <section class="PlayKing">
+      <div class="container">
+        <div class="main">
+          <div class="description">
+            <span class="topBlock"> Poker & Casino </span>
+            <h2>
+              Play Like
+            </h2>
+            <h2 class="colorText">
+              A King
+            </h2>
+            <p>
+              Game on! Are you ready for some serious play at King’s?
+              Claim your spot and play poker in Europe’s biggest poker room.
+              Home to the WSOPE, King’s also houses card and dice games like Blackjack,
+              Craps, or Roulette. If slots are your game, we’ve got plenty.
+              Let yourself be carried away by the atmosphere of Las Vegas today!
+            </p>
+          </div>
+          <!-- <div class="content"> -->
+          <img src="@/assets/images/home-page/playKing.jpg" alt="playKing"/>
+          <!-- </div> -->
+        </div>
       </div>
     </section>
 
@@ -41,29 +68,49 @@
         <span class="accomodation"> ACCOMMODATIONS </span>
         <h4>SLEEP LIKE A KING</h4>
       </div>
-      <div class="items">
-        <div class="rightItem">
-          <div class="buttons">
-            <button id="leftBtn">
-              <SvgIcon name="whiteArrow" size="medium" />
-            </button>
-            <button id="rightBtn">
-              <SvgIcon name="goldArrow" size="medium" />
-            </button>
+      <div class="main">
+        <div class="description">
+            <span class="topBlock"> HOTEL </span>
+            <h2>four stars of spacious luxury</h2>
+            <p>
+              After playing for many hours, you definitely need to recharge your energy
+              to prepare yourself for another exciting day full of action! From a comfort
+              bed to a King size double bed, choose the one that suits you the best and will
+              make you rest like a true King!
+            </p>
           </div>
-          <div class="title">
-            <h2>Luxury 5-star</h2>
-          </div>
-          <p class="description">
-            Choose the bed that suits you best, from a Comfort bed to a spacious King size double
-            bed. Rest like a true King!
-          </p>
-          <PrimaryButton buttonText="CHECK AVAILABILITY" />
+          <swiper
+            ref="swiperDeluxe"
+            :spaceBetween="30"
+            :effect="'fade'"
+            :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }"
+            @slideChange="onSlideChangeDeluxe"
+            @swiper="onSwiperDeluxe"
+            :modules="modules"
+            :autoplay="true"
+            class="mySwiper"
+          >
+            <swiper-slide v-for="hotel in hotelSlides" :key="hotel.id">
+              <img :src="require(`@/assets/images/home-page/accomodation/${hotel.pathImg}`)"
+              alt="hotelImg"
+              >
+
+            </swiper-slide>
+            <div class="buttonWrapper">
+              <div class="swiper-button-prev">
+                <SvgIcon name="longArrowLeft" size="large" fill="red" />
+              </div>
+              <div class="info">
+                <p>{{ deluxeCurrentSlide }}</p>
+                <span>/</span>
+                <p>{{ deluxeTotalSlides }}</p>
+              </div>
+              <div class="swiper-button-next">
+                <SvgIcon name="longArrowRight" size="large" fill="red" />
+              </div>
+            </div>
+          </swiper>
         </div>
-        <div class="leftItem">
-          <img src="../assets/images/home-page/room5s.png" alt="Luxury Room" />
-        </div>
-      </div>
     </section>
 
     <section class="relaxLikeAKing">
@@ -76,14 +123,14 @@
           <img src="../assets/images/home-page/welness.png" alt="welness" />
         </div>
         <div class="rightItem">
-          <div class="buttons">
+          <!-- <div class="buttons">
             <button id="leftBtn">
               <SvgIcon name="whiteArrow" size="medium" />
             </button>
             <button id="rightBtn">
               <SvgIcon name="goldArrow" size="medium" />
             </button>
-          </div>
+          </div> -->
           <div class="title">
             <h2>Welness</h2>
           </div>
@@ -153,16 +200,19 @@
       </div>
       <div class="instagramGallery">
         <img
-          v-for="image in instagramImages"
-          :src="image"
-          :alt="`Instagram Image ${image}`"
-          :key="image"
+          v-for="image in igImg"
+          :src="require(`@/assets/images/home-page/ig/${image.pathImg}`)"
+          alt="picture"
+          :key="image.id"
         />
       </div>
     </section>
 
     <section class="map">
-      <img src="../assets/images/home-page/map.png" alt="Map" />
+      <div class="mapImg">
+        <img src="../assets/images/home-page/map.png" alt="Map" />
+
+      </div>
       <HelpInfo />
     </section>
   </div>
@@ -187,9 +237,35 @@ export default {
   data() {
     return {
       autoplayConfig: {
-        delay: 3000, // Длительность autoplay в миллисекундах
-        disableOnInteraction: false, // Продолжать прокрутку после взаимодействия
+        delay: 3000,
+        disableOnInteraction: false,
       },
+      hotelSlides: [
+        {
+          id: 1,
+          pathImg: 'hotelSlider1.jpg',
+          tittle: 'King’s palace',
+          description: 'Luxury hotel',
+        },
+        {
+          id: 2,
+          pathImg: 'hotelSlider2.jpg',
+          tittle: 'Radimský restaurant',
+          description: 'Radimský restaurant',
+        },
+        {
+          id: 3,
+          pathImg: 'hotelSlider3.jpg',
+          tittle: 'Radimský restaurant',
+          description: 'Radimský restaurant',
+        },
+        {
+          id: 4,
+          pathImg: 'hotelSlider1.jpg',
+          tittle: 'Radimský restaurant',
+          description: 'Radimský restaurant',
+        },
+      ],
       dataSlides: [
         {
           id: 1,
@@ -246,6 +322,20 @@ export default {
           slideImg: 'tourBg4.jpg',
         },
       ],
+      igImg: [
+        {
+          id: 1,
+          pathImg: 'ig1.png',
+        },
+        {
+          id: 2,
+          pathImg: 'ig2.png',
+        },
+        {
+          id: 3,
+          pathImg: 'ig3.png',
+        },
+      ],
     };
   },
   methods: {
@@ -274,6 +364,10 @@ export default {
     RestaurantCarusel,
   },
   setup() {
+    const swiperDeluxe = ref(null);
+    const deluxeTotalSlides = ref(0);
+    const deluxeCurrentSlide = ref(0);
+
     const {
       mainDiv, textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
@@ -283,6 +377,16 @@ export default {
     const onSlideChange = (swiper) => {
       const progress = ((swiper.activeIndex + 1) / swiper.slides.length) * 100;
       progressWidth.value = progress;
+    };
+
+    const onSwiperDeluxe = (swiper) => {
+      swiperDeluxe.value = swiper;
+      deluxeTotalSlides.value = swiper.slides.length;
+    };
+    const onSlideChangeDeluxe = () => {
+      if (swiperDeluxe.value) {
+        deluxeCurrentSlide.value = swiperDeluxe.value.realIndex + 1;
+      }
     };
 
     return {
@@ -295,6 +399,11 @@ export default {
       animatedTitle,
       onSlideChange,
       progressWidth,
+      swiperDeluxe,
+      onSwiperDeluxe,
+      deluxeTotalSlides,
+      deluxeCurrentSlide,
+      onSlideChangeDeluxe,
     };
   },
 };
@@ -306,6 +415,7 @@ export default {
 @import "swiper/swiper-bundle.css";
 .kingsPalace {
   @include pageStyle;
+  position: relative;
 
   .main {
     position: relative;
@@ -340,16 +450,29 @@ export default {
     display: none;
   }
   .hotelDescription {
-    margin: 66px 0 80px;
+    @include blockStyles;
+    // width: 100%;
+    // margin: 66px 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     h2 {
       @include text(var(--color-black), clamp(28px, 5vw, 40px), uppercase, 500);
       text-align: center;
+      width: fit-content;
     }
     .description {
       text-align: center;
       margin: 40px 0;
+      width: fit-content;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      // flex-direction: column;
       p {
         @include text(var(--color-black), clamp(16px, 3vw, 20px), none, 400);
+        width: fit-content;
       }
     }
     .underLine {
@@ -359,7 +482,364 @@ export default {
       margin: 20px auto;
     }
   }
-  .sleepLikeAKing,
+  .PlayKing{
+    background: #121212;
+    padding-block: 20px;
+    .container{
+      .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        background: rgba(255, 255, 255, 0.02);
+        // margin: 0 20px;
+      @include blockStyles;
+
+        @media (min-width: 768px) {
+          flex-direction: row;
+          justify-content: space-between;
+          gap: clamp(20px, 2vw, 50px);
+        }
+
+        .description {
+          position: relative;
+          margin-block: 20px;
+          flex: 0 0 100%;
+          max-width: 100%;
+
+          @media (min-width: 768px) {
+            flex: 0 0 50%;
+            max-width: 50%;
+          }
+
+          .topBlock {
+            &::before {
+              content: "";
+              width: 79px;
+              height: 1px;
+              display: inline-block;
+              background-color: var(--color-gold);
+              vertical-align: middle;
+              top: -2px;
+              margin-bottom: 1px;
+              margin-right: 18px;
+            }
+          }
+
+          span {
+            @include text(var(--color-gold), 14px, uppercase, 700);
+            // font-family: var(--font-grot-bold);
+            // font-size: 14px;
+            // color: var(--color-gold);
+            // font-weight: 700;
+            // letter-spacing: 2px;
+          }
+
+          h2 {
+            @include text(var(--color-white), 24px, uppercase, 700);
+            // font-family: var(--font-text-reg);
+            // font-size: 24px;
+            // font-weight: 700;
+            // line-height: 1.1;
+            // text-transform: uppercase;
+            // margin: 20px 0 30px;
+
+            @media (min-width: 768px) {
+              font-size: 42px;
+            }
+
+          }
+          .colorText {
+              font-size: 24px;
+              color: var(--color-gold);
+
+              @media (min-width: 768px) {
+                font-size: 42px;
+              }
+
+              &::before {
+                display: none;
+              }
+            }
+
+          p {
+            @include text(var(--color-white), 16px, none, 400);
+
+            @media (min-width: 768px) {
+              font-size: 20px;
+              max-width: 70%;
+            }
+          }
+        }
+
+        .swiper {
+          width: 100%;
+          flex: 0 0 100%;
+          max-width: 100%;
+          height: auto;
+
+          @media (min-width: 768px) {
+            flex: 0 0 50%;
+            max-width: 40%;
+          }
+
+          .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: all ease 0.5s;
+              transform: scale(1);
+
+              &:hover {
+                transform: scale(1.1);
+                transition: all ease 0.5s;
+              }
+            }
+          }
+
+          .buttonWrapper {
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10;
+
+            .swiper-button-prev,
+            .swiper-button-next {
+              flex: 1;
+              border-radius: 50%;
+              svg {
+                stroke: var(--color-gold);
+              }
+
+              &::after {
+                content: "";
+              }
+            }
+            .info{
+                @include text(var(--color-gold), 16px, uppercase, 700);
+                line-height: 1.1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+          }
+        }
+
+        .roomImg {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+
+          @media (min-width: 768px) {
+            flex: 0 0 50%;
+            max-width: 40%;
+          }
+        }
+      }
+    }
+  }
+  .sleepLikeAKing{
+    background: white;
+    @include blockStyles;
+
+    .topBlock {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-bottom: 30px;
+      gap: 12px;
+      .accomodation {
+        @include text(var(--color-gold), 14px, uppercase, 500);
+      }
+      h4 {
+        @include text(var(--color-black), 48px, uppercase, 500);
+      }
+    }
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        // margin: 0 20px;
+      margin-bottom: 0;
+
+        @media (min-width: 768px) {
+          flex-direction: row;
+          justify-content: space-between;
+          gap: 50px;
+        }
+
+        .description {
+          position: relative;
+          margin-block: 20px;
+          flex: 0 0 100%;
+          max-width: 100%;
+
+          @media (min-width: 768px) {
+            flex: 0 0 50%;
+            max-width: 50%;
+          }
+
+          .topBlock {
+            display: flex;
+            flex-direction: row;
+            &::before {
+              content: "";
+              width: 79px;
+              height: 1px;
+              display: inline-block;
+              background-color: var(--color-gold);
+              vertical-align: middle;
+              top: -2px;
+              margin-bottom: 1px;
+              margin-right: 18px;
+            }
+          }
+
+          span {
+            font-family: var(--font-grot-bold);
+            font-size: 14px;
+            color: var(--color-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+          }
+
+          h2 {
+            font-family: var(--font-text-reg);
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin: 20px 0 30px;
+
+            @media (min-width: 768px) {
+              font-size: 42px;
+            }
+
+            .colorText {
+              font-size: 24px;
+
+              @media (min-width: 768px) {
+                font-size: 42px;
+              }
+
+              &::before {
+                display: none;
+              }
+            }
+          }
+
+          p {
+            @include text(var(--color-black), 16px, none, 400);
+            @media (min-width: 768px) {
+              font-size: 20px;
+              max-width: 70%;
+            }
+          }
+          .buttonGroup{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            padding-top: 15px;
+            gap: 15px;
+          }
+        }
+
+        .swiper {
+          width: 100%;
+          flex: 0 0 100%;
+          max-width: 100%;
+          height: auto;
+
+          @media (min-width: 768px) {
+            flex: 0 0 50%;
+            max-width: 40%;
+          }
+
+          .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: all ease 0.5s;
+              transform: scale(1);
+
+              &:hover {
+                transform: scale(1.1);
+                transition: all ease 0.5s;
+              }
+            }
+          }
+
+          .buttonWrapper {
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10;
+
+            .swiper-button-prev,
+            .swiper-button-next {
+              flex: 1;
+              border-radius: 50%;
+              svg {
+                stroke: var(--color-gold);
+              }
+
+              &::after {
+                content: "";
+              }
+            }
+            .info{
+                @include text(var(--color-gold), 16px, uppercase, 700);
+                line-height: 1.1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+          }
+        }
+
+        .roomImg {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+
+          @media (min-width: 768px) {
+            flex: 0 0 50%;
+            max-width: 40%;
+          }
+        }
+      }
+  }
   .relaxLikeAKing,
   .eatLikeAKing {
     background: var(--color-white);
@@ -410,11 +890,39 @@ export default {
       }
     }
   }
+  .eatLikeAKing {
+    @include blockStyles;
+    padding-bottom: 0;
+    .topBlock {
+      padding-top: 0;
+    }
+  }
   .relaxLikeAKing {
     .items {
+      justify-content: space-between;
+      position: relative;
       .rightItem {
         padding-left: 0;
         padding-right: 20px;
+        flex: 1 1 50%;
+        gap: 50px;
+        width: 80%;
+        p{
+          width: 70%;
+        }
+      }
+      .leftItem{
+        flex: 1 1 50%;
+        img{
+          width: 100%;
+        }
+      }
+      @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        padding-block: 0;
+        .rightItem{
+          padding: 20px;
+        }
       }
     }
   }
@@ -438,13 +946,14 @@ export default {
         color: var(--color-gold);
       }
       h2 {
-        @include text(var(--color-white), 60px, uppercase, 500);
+        @include text(var(--color-white), clamp(30px, 5vw, 60px), uppercase, 500);
       }
     }
   }
 }
 .instagram {
   margin-bottom: 80px;
+
   .topBlock {
     display: flex;
     align-items: center;
@@ -458,6 +967,9 @@ export default {
     span {
       @include text(#3f3f3f, 20px, unset, 400);
     }
+    @media (max-width: 525px) {
+      padding: 0 20px 20px;
+    }
   }
   .instagramGallery {
     padding-inline: 20px;
@@ -467,6 +979,17 @@ export default {
     gap: 10px;
     img {
       width: clamp(100px, 30vw, 400px);
+      min-height: 300px;
+    }
+    @media (max-width: 525px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      img {
+        width: 90%;
+      }
     }
   }
 }
@@ -486,10 +1009,11 @@ export default {
       .slideContent {
         position: absolute;
         background: rgba(0, 0, 0, 0.8);
-        top: 15%;
-        left: 10%;
+        bottom: 15%;
+        right: 5%;
         // width: 25%;
         width: clamp(200px, 25vw, 300px);
+        border-radius: 10px;
         height: 40%;
         display: flex;
         flex-direction: column;
@@ -522,7 +1046,7 @@ export default {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
       }
     }
     ::v-deep {
@@ -560,6 +1084,10 @@ export default {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
   }
 }
 

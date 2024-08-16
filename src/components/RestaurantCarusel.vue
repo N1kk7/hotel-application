@@ -214,15 +214,15 @@ export default {
 
 .RestaurantCarusel {
   margin-inline: 40px;
-  margin-bottom: 80px;
+//   margin-bottom: 80px;
   .topRooms {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-block: 20px;
     h2 {
-      @include text(var(--color-black), clamp(20px, 5vw, 48px), uppercase, 500);
-      flex: 1;
+      @include text(var(--color-black), clamp(16px, 5vw, 32px), uppercase, 500);
+    //   flex: 1;
     }
     .buttons {
       display: flex;
@@ -249,6 +249,8 @@ export default {
       .swiper-slide {
         box-shadow: 10px 10px 8px rgba(0, 0, 0, 0);
         transition: all ease 0.3s;
+        height: fit-content;
+        // overflow: hidden;
         .card {
           position: relative;
           width: 100%;
@@ -263,6 +265,9 @@ export default {
             padding: 10px clamp(10px, 2vw, 16px);
             background: white;
             position: relative;
+            border: 1px solid var(--color-gold);
+            border-top: 0;
+            border-radius: 0 0 5px 5px;
             h3 {
               @include text(var(--color-black), clamp(12px, 1.6vw, 22px), unset, 700);
               text-transform: uppercase;
