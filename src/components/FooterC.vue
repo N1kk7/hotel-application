@@ -512,6 +512,7 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      overflow: hidden;
       // margin-bottom: 20px;
       .preTittle {
         @include text(var(--color-gold), 14px, uppercase, 600);

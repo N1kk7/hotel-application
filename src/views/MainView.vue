@@ -66,7 +66,11 @@
     <section class="sleepLikeAKing">
       <div class="topBlock">
         <span class="accomodation"> ACCOMMODATIONS </span>
-        <h4>SLEEP LIKE A KING</h4>
+        <h4>SLEEP LIKE A
+          <span class="colorText">
+            KING
+          </span>
+        </h4>
       </div>
       <div class="main">
         <div class="description">
@@ -123,16 +127,8 @@
           <img src="../assets/images/home-page/welness.png" alt="welness" />
         </div>
         <div class="rightItem">
-          <!-- <div class="buttons">
-            <button id="leftBtn">
-              <SvgIcon name="whiteArrow" size="medium" />
-            </button>
-            <button id="rightBtn">
-              <SvgIcon name="goldArrow" size="medium" />
-            </button>
-          </div> -->
-          <div class="title">
-            <h2>Welness</h2>
+          <div class="tittle">
+            <h2>Wellness</h2>
           </div>
           <p class="description">
             Take time out of your routine to restore energy to your body, mind and spirit at our
@@ -451,25 +447,22 @@ export default {
   }
   .hotelDescription {
     @include blockStyles;
-    // width: 100%;
-    // margin: 66px 0 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     h2 {
-      @include text(var(--color-black), clamp(28px, 5vw, 40px), uppercase, 500);
+      @include text(var(--color-black), clamp(17px, 3vw, 40px), uppercase, 700);
       text-align: center;
       width: fit-content;
+      @media (min-width: 768px) {
+        text-align: left;
+      }
     }
     .description {
       text-align: center;
       margin: 40px 0;
       width: fit-content;
-      // display: flex;
-      // align-items: center;
-      // justify-content: center;
-      // flex-direction: column;
       p {
         @include text(var(--color-black), clamp(16px, 3vw, 20px), none, 400);
         width: fit-content;
@@ -492,7 +485,6 @@ export default {
         align-items: center;
         gap: 20px;
         background: rgba(255, 255, 255, 0.02);
-        // margin: 0 20px;
       @include blockStyles;
 
         @media (min-width: 768px) {
@@ -528,21 +520,10 @@ export default {
 
           span {
             @include text(var(--color-gold), 14px, uppercase, 700);
-            // font-family: var(--font-grot-bold);
-            // font-size: 14px;
-            // color: var(--color-gold);
-            // font-weight: 700;
-            // letter-spacing: 2px;
           }
 
           h2 {
             @include text(var(--color-white), 24px, uppercase, 700);
-            // font-family: var(--font-text-reg);
-            // font-size: 24px;
-            // font-weight: 700;
-            // line-height: 1.1;
-            // text-transform: uppercase;
-            // margin: 20px 0 30px;
 
             @media (min-width: 768px) {
               font-size: 42px;
@@ -571,83 +552,9 @@ export default {
             }
           }
         }
-
-        .swiper {
-          width: 100%;
-          flex: 0 0 100%;
-          max-width: 100%;
-          height: auto;
-
-          @media (min-width: 768px) {
-            flex: 0 0 50%;
-            max-width: 40%;
-          }
-
-          .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              transition: all ease 0.5s;
-              transform: scale(1);
-
-              &:hover {
-                transform: scale(1.1);
-                transition: all ease 0.5s;
-              }
-            }
-          }
-
-          .buttonWrapper {
-            position: absolute;
-            bottom: 0;
-            right: 10%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 30%;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 10;
-
-            .swiper-button-prev,
-            .swiper-button-next {
-              flex: 1;
-              border-radius: 50%;
-              svg {
-                stroke: var(--color-gold);
-              }
-
-              &::after {
-                content: "";
-              }
-            }
-            .info{
-                @include text(var(--color-gold), 16px, uppercase, 700);
-                line-height: 1.1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-            }
-          }
-        }
-
-        .roomImg {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-
-          @media (min-width: 768px) {
-            flex: 0 0 50%;
-            max-width: 40%;
+        @media (max-width: 768px) {
+          img{
+            max-width: 100%;
           }
         }
       }
@@ -661,13 +568,24 @@ export default {
       display: flex;
       align-items: center;
       flex-direction: column;
-      padding-bottom: 30px;
+      // padding-bottom: 30px;
+      padding-bottom: clamp(10px, 2vw, 30px);
       gap: 12px;
       .accomodation {
         @include text(var(--color-gold), 14px, uppercase, 500);
+        @media (max-width: 768px){
+          margin-bottom: 15px;
+        }
       }
       h4 {
-        @include text(var(--color-black), 48px, uppercase, 500);
+        @include text(var(--color-black), clamp(20px, 4vw, 48px), uppercase, 500);
+        .colorText {
+          color: var(--color-gold);
+        }
+        @media (max-width: 768px) {
+          text-align: start;
+          width: 100%;
+        }
       }
     }
     .main {
@@ -686,13 +604,15 @@ export default {
 
         .description {
           position: relative;
-          margin-block: 20px;
           flex: 0 0 100%;
           max-width: 100%;
+          margin: 10px 0 0;
 
           @media (min-width: 768px) {
             flex: 0 0 50%;
             max-width: 50%;
+            margin-block: 20px;
+
           }
 
           .topBlock {
@@ -712,35 +632,14 @@ export default {
           }
 
           span {
-            font-family: var(--font-grot-bold);
-            font-size: 14px;
-            color: var(--color-gold);
-            font-weight: 700;
-            letter-spacing: 2px;
+            @include text(var(--color-gold), 14px, uppercase, 700);
           }
 
           h2 {
-            font-family: var(--font-text-reg);
-            font-size: 24px;
-            font-weight: 700;
-            line-height: 1.1;
-            text-transform: uppercase;
+            @include text(var(--color-black), clamp(20px, 4vw, 42px), uppercase, 500);
             margin: 20px 0 30px;
-
-            @media (min-width: 768px) {
-              font-size: 42px;
-            }
-
-            .colorText {
-              font-size: 24px;
-
-              @media (min-width: 768px) {
-                font-size: 42px;
-              }
-
-              &::before {
-                display: none;
-              }
+            @media (max-width: 768px) {
+              margin: 10px 0 15px;
             }
           }
 
@@ -750,13 +649,6 @@ export default {
               font-size: 20px;
               max-width: 70%;
             }
-          }
-          .buttonGroup{
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            padding-top: 15px;
-            gap: 15px;
           }
         }
 
@@ -894,10 +786,56 @@ export default {
     @include blockStyles;
     padding-bottom: 0;
     .topBlock {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
       padding-top: 0;
+      padding-bottom: clamp(10px, 2vw, 30px);
+      gap: 12px;
+      .accomodation {
+        @include text(var(--color-gold), 14px, uppercase, 500);
+        @media (max-width: 768px){
+          margin-bottom: 15px;
+        }
+      }
+      h4 {
+        @include text(var(--color-black), clamp(20px, 4vw, 48px), uppercase, 500);
+        .colorText {
+          color: var(--color-gold);
+        }
+        @media (max-width: 768px) {
+          text-align: start;
+          width: 100%;
+        }
+      }
     }
   }
   .relaxLikeAKing {
+    .topBlock {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 40px;
+      padding-bottom: clamp(10px, 2vw, 30px);
+      gap: 12px;
+      .accomodation {
+        @include text(var(--color-gold), 14px, uppercase, 500);
+        @media (max-width: 768px){
+          margin-bottom: 15px;
+        }
+      }
+      h4 {
+        @include text(var(--color-black), clamp(20px, 4vw, 48px), uppercase, 500);
+        .colorText {
+          color: var(--color-gold);
+        }
+        @media (max-width: 768px) {
+          text-align: start;
+          padding-left: 20px;
+          width: 100%;
+        }
+      }
+    }
     .items {
       justify-content: space-between;
       position: relative;
@@ -907,8 +845,21 @@ export default {
         flex: 1 1 50%;
         gap: 50px;
         width: 80%;
+        .tittle{
+          h2{
+            @include text(var(--color-gold), clamp(16px, 5vw, 42px), uppercase, 600);
+          }
+        }
         p{
           width: 70%;
+        }
+        @media (max-width: 768px) {
+          padding: 0;
+          width: 100%;
+          gap: 20px;
+          button{
+            margin-top: 40px !important;
+          }
         }
       }
       .leftItem{
@@ -1144,9 +1095,11 @@ export default {
   .kingsPalace {
     .main {
       .textBlock {
-        max-width: 70vw;
+        // max-width: 70vw;
+        text-align: center;
         p {
           white-space: pre-wrap;
+          max-width: 60vw;
         }
       }
     }
@@ -1166,7 +1119,7 @@ export default {
 @media screen and (max-width: 450px) {
   .kingsPalace {
     .hotelDescription {
-      margin: 40px 0 60px;
+      margin: 20px 0 40px;
       .underLine {
         width: 80vw;
       }

@@ -269,7 +269,7 @@ export default {
             border-top: 0;
             border-radius: 0 0 5px 5px;
             h3 {
-              @include text(var(--color-black), clamp(12px, 1.6vw, 22px), unset, 700);
+              @include text(var(--color-black), clamp(18px, 1.6vw, 24px), unset, 700);
               text-transform: uppercase;
               text-align: start;
               margin-bottom: 10px;
@@ -307,7 +307,7 @@ export default {
                   padding: 2px;
                 }
                 .option {
-                  @include text(var(--color-black), clamp(10px, 1.5vw, 20px), unset, 400);
+                  @include text(var(--color-black), clamp(14px, 1.5vw, 20px), unset, 400);
                 }
               }
             }
@@ -378,13 +378,28 @@ export default {
   }
 }
 @media (max-width: 768px) {
-  .rooms {
+  .RestaurantCarusel {
+    margin-inline: 0px;
     .topRooms {
+      margin-block: unset;
+      margin: 0 0 20px;
       .buttons {
         display: none;
       }
     }
+    .cafeCards {
+      .swiper{
+        padding: 0 0 40px;
+      }
+    }
   }
+  // .rooms {
+  //   .topRooms {
+  //     .buttons {
+  //       display: none;
+  //     }
+  //   }
+  // }
 }
 @media (max-width: 425px) {
   .RestaurantCarusel {
