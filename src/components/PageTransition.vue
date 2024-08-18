@@ -242,9 +242,13 @@ export default {
     ></div>
     <div
       ref="bg3"
-      class="fixed top-0 bottom-0 right-full h-screen z-30 bg-[#1b4747]"
+      class="mainBg fixed top-0 bottom-0 right-full h-screen z-30 bg-[#1b4747]"
       style="background-color: var(--color-black);"
     >
+      <div
+        ref="transparentLogo"
+        class="logoBg"
+        ></div>
       <img
         ref="refImg"
         src="@/assets/images/mainLogo.png" alt="logo"
@@ -264,13 +268,13 @@ export default {
     const bg2 = ref(null);
     const bg3 = ref(null);
     const refImg = ref(null);
+    const transparentLogo = ref(null);
 
     const playTransition = () => {
       nextTick(() => {
         const timeline = gsap.timeline({
           onComplete: () => {
             isVisible.value = false;
-            // showTransition.value = false;
           },
         });
 
@@ -299,21 +303,35 @@ export default {
             },
             '-=0.3',
           )
-          .to(refImg.value, {
-            duration: 0.4, scale: 1.3, ease: 'power2.inOut',
-          })
+          .to(
+            transparentLogo.value,
+            {
+              duration: 1.7,
+              opacity: 0,
+              ease: 'power2.inOut',
+              scale: 1,
+            },
+            'start',
+          )
+          .to(
+            refImg.value,
+            {
+              duration: 0.4, scale: 1.3, ease: 'power2.inOut',
+            },
+            'start',
+          )
           .to(refImg.value, {
             duration: 0.2, rotate: 10, ease: 'power2.inOut',
-          })
+          }, '>')
           .to(refImg.value, {
             duration: 0.2, rotate: -10, ease: 'power2.inOut',
-          })
+          }, '>')
           .to(refImg.value, {
             duration: 0.3, rotate: 1, ease: 'power2.inOut',
-          })
+          }, '>')
           .to(refImg.value, {
             duration: 0.4, scale: 1, ease: 'power2.inOut',
-          })
+          }, '>')
           .to(bg3.value, {
             right: '100%',
             duration: 0.5,
@@ -352,7 +370,7 @@ export default {
     });
 
     return {
-      bg1, bg2, bg3, isVisible, refImg,
+      bg1, bg2, bg3, isVisible, refImg, transparentLogo,
     };
   },
 };
@@ -373,6 +391,18 @@ export default {
   img {
     animation: logoAnimate 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
   }
+}
+.logoBg{
+  background-image: url('@/assets/images/transparentLogo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.1;
+  transform: scale(0.8);
 }
 .top-0 {
   top: 0;
