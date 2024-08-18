@@ -48,7 +48,7 @@ export default defineComponent({
 
       setTimeout(() => {
         showTransition.value = false; // Скрываем анимацию после перехода
-      }, 3500); // Устанавливаем длительность анимации
+      }, 4000); // Устанавливаем длительность анимации
     });
 
     return { showTransition };

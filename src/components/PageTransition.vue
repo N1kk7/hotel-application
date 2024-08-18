@@ -15,7 +15,9 @@
         class="fixed top-0 bottom-0 right-full h-screen z-30 bg-[#1b4747]"
         style="background-color: var(--color-black);"
       >
-        <img src="@/assets/images/mainLogo.png" alt="logo">
+        <img
+          src="@/assets/images/mainLogo.png" alt="logo"
+          />
       </div>
     </div>
   </template>
@@ -71,14 +73,14 @@ export default {
           .set([bg1.value, bg2.value, bg3.value], { right: '100%', width: '100vw' })
           .to(bg1.value, {
             right: '0%',
-            duration: 0.7,
+            duration: 0.8,
             ease: 'power3.inOut',
           })
           .to(
             bg2.value,
             {
               right: '0%',
-              duration: 0.7,
+              duration: 0.8,
               ease: 'power3.inOut',
             },
             '-=0.4',
@@ -87,7 +89,7 @@ export default {
             bg3.value,
             {
               right: '0%',
-              duration: 0.7,
+              duration: 0.8,
               ease: 'power3.inOut',
             },
             '-=0.4',
@@ -95,14 +97,14 @@ export default {
           .to({}, { duration: 0.5 }) // пауза на последнем элементе
           .to(bg3.value, {
             right: '100%',
-            duration: 0.7,
+            duration: 0.8,
             ease: 'power3.inOut',
           })
           .to(
             bg2.value,
             {
               right: '100%',
-              duration: 0.7,
+              duration: 0.8,
               ease: 'power3.inOut',
             },
             '-=0.4',
@@ -111,7 +113,7 @@ export default {
             bg1.value,
             {
               right: '100%',
-              duration: 0.7,
+              duration: 0.8,
               ease: 'power3.inOut',
             },
             '-=0.4',
@@ -130,7 +132,7 @@ export default {
         }
       });
       // isVisible.value = true;
-      playTransition();
+      // playTransition();
     });
 
     return {
@@ -149,14 +151,17 @@ export default {
   height: 100vh;
   width: 100vw;
   z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   img{
-    border: 1px solid var(color-gold);
-    border-radius: 10px;
-    padding: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50% -50%);
+    // border: 1px solid var(color-gold);
+    // border-radius: 10px;
+    // padding: 20px;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50% -50%);
     animation: logoAnimate 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
   }
 }
@@ -181,6 +186,7 @@ export default {
 .z-10 {
   z-index: 10;
 }
+
 @keyframes logoAnimate {
   0% {
     // transform: rotate(0deg);
@@ -203,4 +209,5 @@ export default {
     transform: scale(1.5);
   }
 }
+
 </style>
