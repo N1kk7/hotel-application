@@ -41,42 +41,28 @@ export default defineComponent({
     const router = useRouter();
 
     // router.beforeEach((to, from, next) => {
-    //   showTransition.value = true; // Показываем анимацию перехода
+    //   showTransition.value = true;
     //   setTimeout(() => {
-    //     next(); // Переход к следующему маршруту
+    //     next();
     //   }, 1000);
 
     //   setTimeout(() => {
-    //     showTransition.value = false; // Скрываем анимацию после перехода
-    //   }, 5000); // Устанавливаем длительность анимации
+    //     showTransition.value = false;
+    //   }, 5000);
     // });
 
     router.beforeEach((to, from, next) => {
-      showTransition.value = true; // Show the transition animation
-
-      // Wait for the transition animation to complete before navigating
+      showTransition.value = true;
       setTimeout(() => {
-        next(); // Proceed to the next route
-      }, 2000); // Match this timeout with the total duration of your transition animation
+        next();
+      }, 2000);
 
       setTimeout(() => {
-        showTransition.value = false; // Hide the transition animation after the route change
-      }, 3000); // A bit longer to ensure the animation finishes before hiding
+        showTransition.value = false;
+      }, 3200);
     });
 
     return { showTransition };
-    // router.beforeEach((to, from, next) => {
-    //   showTransition.value = true;
-    //   next(); // Сразу переходим к следующему маршруту
-    // });
-
-    // const startTransition = () => {
-    //   setTimeout(() => {
-    //     showTransition.value = false;
-    //   }, 3500); // Длительность анимации
-    // };
-
-    // return { showTransition, startTransition };
   },
 });
 </script>

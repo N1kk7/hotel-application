@@ -270,6 +270,7 @@ export default {
         const timeline = gsap.timeline({
           onComplete: () => {
             isVisible.value = false;
+            // showTransition.value = false;
           },
         });
 
