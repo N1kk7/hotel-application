@@ -306,7 +306,7 @@ export default {
           .to(
             transparentLogo.value,
             {
-              duration: 1.7,
+              duration: 1.2,
               opacity: 0,
               ease: 'power2.inOut',
               scale: 1,
