@@ -40,15 +40,28 @@ export default defineComponent({
     const showTransition = ref(false);
     const router = useRouter();
 
+    // router.beforeEach((to, from, next) => {
+    //   showTransition.value = true; // Показываем анимацию перехода
+    //   setTimeout(() => {
+    //     next(); // Переход к следующему маршруту
+    //   }, 1000);
+
+    //   setTimeout(() => {
+    //     showTransition.value = false; // Скрываем анимацию после перехода
+    //   }, 5000); // Устанавливаем длительность анимации
+    // });
+
     router.beforeEach((to, from, next) => {
-      showTransition.value = true; // Показываем анимацию перехода
+      showTransition.value = true; // Show the transition animation
+
+      // Wait for the transition animation to complete before navigating
       setTimeout(() => {
-        next(); // Переход к следующему маршруту
-      }, 1000);
+        next(); // Proceed to the next route
+      }, 2000); // Match this timeout with the total duration of your transition animation
 
       setTimeout(() => {
-        showTransition.value = false; // Скрываем анимацию после перехода
-      }, 4000); // Устанавливаем длительность анимации
+        showTransition.value = false; // Hide the transition animation after the route change
+      }, 3000); // A bit longer to ensure the animation finishes before hiding
     });
 
     return { showTransition };
