@@ -327,10 +327,10 @@ export default {
             duration: 0.2, rotate: -10, ease: 'power2.inOut',
           }, '>')
           .to(refImg.value, {
-            duration: 0.3, rotate: 1, ease: 'power2.inOut',
+            duration: 0.2, rotate: 1, ease: 'power2.inOut',
           }, '>')
           .to(refImg.value, {
-            duration: 0.4, scale: 1, ease: 'power2.inOut',
+            duration: 0.2, scale: 1, ease: 'power2.inOut',
           }, '>')
           .to(bg3.value, {
             right: '100%',
