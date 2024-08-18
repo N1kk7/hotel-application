@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import HomeView from '../views/HomeView.vue';
 import MainView from '@/views/MainView.vue';
 import RoomsView from '@/views/RoomsView.vue';
 import WellnessView from '@/views/WellnessView.vue';
@@ -13,6 +12,7 @@ import KingPalaceView from '@/views/KingPalaceView.vue';
 import RelaxView from '@/views/RelaxView.vue';
 import KingSuite from '@/views/KingsSuiteView.vue';
 import GuestRoom from '@/views/GuestRoomView.vue';
+// import PageTransition from '@/components/PageTransition.vue';
 
 const routes = [
   {
@@ -23,10 +23,6 @@ const routes = [
   {
     path: '/rooms',
     name: 'rooms',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
     component: RoomsView,
   },
   {
@@ -90,5 +86,14 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//   const transitionComponent = new PageTransition(); // Создайте экземпляр компонента
+//   document.body.appendChild(transitionComponent.$el); // Вставьте его в DOM
+
+//   setTimeout(() => {
+//     next(); // Переключитесь на новый маршрут
+//   }, 600); // Задержка до конца анимации
+// });
 
 export default router;

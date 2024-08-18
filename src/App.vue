@@ -1,45 +1,69 @@
 <template>
-    <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <BookingComponent/> -->
+<!-- <div>
+  v-if="showTransition"
 
+</div> -->
   <HeaderC/>
-   <!-- <MainView/> -->
+  <PageTransition v-if="showTransition"/>
   <router-view/>
+  <!-- <router-view v-slot="{ Component }">
+    <component :is="Component" />
+    <PageTransition />
+  </router-view> -->
 
-  <!-- <HelloWorld/> -->
-
+  <!-- <router-view>
+      <p>Test Content</p>
+    </router-view> -->
   <FooterC/>
 
   <LibraryQ/>
-
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/> -->
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-// import BookingComponent from './components/BookingComponent.vue';
+import { defineComponent, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import FooterC from './components/FooterC.vue';
 import HeaderC from './components/HeaderC.vue';
-// import HelloWorld from './components/HelloWorld.vue';
 import LibraryQ from './components/LibraryQ.vue';
-// import MainView from './views/MainView.vue';
+// import PageTransition from './components/PageTransition.vue';
+import PageTransition from './components/PageTransition.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     HeaderC,
     LibraryQ,
-    // BookingComponent,
     FooterC,
-    // MainView,
-    // HelloWorld,
+    PageTransition,
+  },
+  setup() {
+    const showTransition = ref(false);
+    const router = useRouter();
+
+    router.beforeEach((to, from, next) => {
+      showTransition.value = true; // Показываем анимацию перехода
+      setTimeout(() => {
+        next(); // Переход к следующему маршруту
+      }, 1000);
+
+      setTimeout(() => {
+        showTransition.value = false; // Скрываем анимацию после перехода
+      }, 3500); // Устанавливаем длительность анимации
+    });
+
+    return { showTransition };
+    // router.beforeEach((to, from, next) => {
+    //   showTransition.value = true;
+    //   next(); // Сразу переходим к следующему маршруту
+    // });
+
+    // const startTransition = () => {
+    //   setTimeout(() => {
+    //     showTransition.value = false;
+    //   }, 3500); // Длительность анимации
+    // };
+
+    // return { showTransition, startTransition };
   },
 });
 </script>
