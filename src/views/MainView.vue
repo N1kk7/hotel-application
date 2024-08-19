@@ -768,7 +768,7 @@ export default {
       text-align: center;
     }
     img {
-      max-width: -webkit-fill-available;
+      width: -webkit-fill-available;
     }
   }
 }
