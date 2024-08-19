@@ -159,15 +159,13 @@
     <RoomsCarusel tittleName="KING'S PALACE ROOM" />
 
     <section class="slider">
-      <!-- <div>
-        :autoplay="{
-          delay: autoplayConfig.delay,
-        }"
-      </div> -->
       <swiper
         @swiper="onSwiperInit"
         ref="mySwiper"
         :effect="'fade'"
+        :autoplay="{
+          delay: autoplayConfig.delay,
+        }"
         :modules="modules"
         :loop="true"
         :slides-per-view="1"
@@ -202,6 +200,7 @@
           :slidesPerView="slidesPerView"
           :spaceBetween="spaceBetween"
           :modules="modules"
+          ref="swiperInstance"
           class="mySwiper"
         >
           <swiper-slide v-for="image in igImg" :key="image.id">
@@ -770,8 +769,6 @@ export default {
     }
     img {
       max-width: -webkit-fill-available;
-    }
-    @media (max-width: 525px) {
     }
   }
 }
