@@ -84,7 +84,7 @@ export default {
             margin-inline: auto;
             border-radius: 10px;
             position: relative;
-            width: 65vw;
+            width: 80vw;
             gap: 10px;
             span{
                         text-align: center;

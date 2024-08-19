@@ -217,7 +217,7 @@ export default {
 .rooms {
   background: var(--color-light);
   margin-inline: 40px;
-  margin-bottom: 80px;
+  // margin-bottom: 80px;
   .topRooms {
     display: flex;
     align-items: center;
@@ -388,9 +388,15 @@ export default {
 }
 @media (max-width: 768px) {
   .rooms {
+    margin-inline: 10px;
     .topRooms {
       .buttons {
         display: none;
+      }
+    }
+    .roomCards {
+      .swiper {
+        padding: 0 20px 50px;
       }
     }
   }

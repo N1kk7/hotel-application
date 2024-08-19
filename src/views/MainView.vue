@@ -39,7 +39,7 @@
 
     <section class="PlayKing">
       <div class="container">
-        <div class="main">
+        <div class="defaultBlock">
           <div class="description">
             <span class="topBlock"> Poker & Casino </span>
             <h2>
@@ -57,14 +57,14 @@
             </p>
           </div>
           <!-- <div class="content"> -->
-          <img src="@/assets/images/home-page/playKing.jpg" alt="playKing"/>
+          <img class="defaultImg" src="@/assets/images/home-page/playKing.jpg" alt="playKing"/>
           <!-- </div> -->
         </div>
       </div>
     </section>
 
     <section class="sleepLikeAKing">
-      <div class="topBlock">
+      <div class="preTittle">
         <span class="accomodation"> ACCOMMODATIONS </span>
         <h4>SLEEP LIKE A
           <span class="colorText">
@@ -72,7 +72,7 @@
           </span>
         </h4>
       </div>
-      <div class="main">
+      <div class="defaultBlock">
         <div class="description">
             <span class="topBlock"> HOTEL </span>
             <h2>four stars of spacious luxury</h2>
@@ -159,13 +159,15 @@
     <RoomsCarusel tittleName="KING'S PALACE ROOM" />
 
     <section class="slider">
+      <!-- <div>
+        :autoplay="{
+          delay: autoplayConfig.delay,
+        }"
+      </div> -->
       <swiper
         @swiper="onSwiperInit"
         ref="mySwiper"
         :effect="'fade'"
-        :autoplay="{
-          delay: autoplayConfig.delay,
-        }"
         :modules="modules"
         :loop="true"
         :slides-per-view="1"
@@ -195,12 +197,20 @@
         <span> And be inspired to relax like a King. </span>
       </div>
       <div class="instagramGallery">
-        <img
-          v-for="image in igImg"
-          :src="require(`@/assets/images/home-page/ig/${image.pathImg}`)"
-          alt="picture"
-          :key="image.id"
-        />
+        <swiper
+          @swiper="swiperIg"
+          :slidesPerView="slidesPerView"
+          :spaceBetween="spaceBetween"
+          :modules="modules"
+          class="mySwiper"
+        >
+          <swiper-slide v-for="image in igImg" :key="image.id">
+            <img
+              :src="require(`@/assets/images/home-page/ig/${image.pathImg}`)"
+              alt="picture"
+            />
+          </swiper-slide>
+        </swiper>
       </div>
     </section>
 
@@ -216,10 +226,10 @@
 
 <script>
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import {
-  EffectFade, Navigation, Pagination, Autoplay,
+  EffectFade, Navigation, Pagination, Autoplay, FreeMode,
 } from 'swiper/modules';
 import useAnimations from '@/animations/useAnimations';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
@@ -363,6 +373,9 @@ export default {
     const swiperDeluxe = ref(null);
     const deluxeTotalSlides = ref(0);
     const deluxeCurrentSlide = ref(0);
+    const swiperInstance = ref(null);
+    const slidesPerView = ref(3);
+    const spaceBetween = ref(40);
 
     const {
       mainDiv, textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
@@ -375,6 +388,24 @@ export default {
       progressWidth.value = progress;
     };
 
+    const updateSlidesPerView = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        slidesPerView.value = 3;
+        spaceBetween.value = 40;
+      } else if (width >= 550 && width < 1024) {
+        slidesPerView.value = 2;
+        spaceBetween.value = 30;
+      } else {
+        slidesPerView.value = 1;
+        spaceBetween.value = 20;
+      }
+    };
+
+    const swiperIg = (swiper) => {
+      swiperInstance.value = swiper;
+    };
+
     const onSwiperDeluxe = (swiper) => {
       swiperDeluxe.value = swiper;
       deluxeTotalSlides.value = swiper.slides.length;
@@ -385,8 +416,13 @@ export default {
       }
     };
 
+    onMounted(() => {
+      updateSlidesPerView();
+      window.addEventListener('resize', updateSlidesPerView);
+    });
+
     return {
-      modules: [EffectFade, Navigation, Pagination, Autoplay],
+      modules: [EffectFade, Navigation, Pagination, Autoplay, FreeMode],
       mainDiv,
       textBlock,
       pageBlock,
@@ -400,6 +436,11 @@ export default {
       deluxeTotalSlides,
       deluxeCurrentSlide,
       onSlideChangeDeluxe,
+      swiperInstance,
+      swiperIg,
+      updateSlidesPerView,
+      slidesPerView,
+      spaceBetween,
     };
   },
 };
@@ -479,84 +520,20 @@ export default {
     background: #121212;
     padding-block: 20px;
     .container{
-      .main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
+      @include defaultBlock;
+
+      .defaultBlock{
+        @include blockStyles;
+
         background: rgba(255, 255, 255, 0.02);
-      @include blockStyles;
-
-        @media (min-width: 768px) {
-          flex-direction: row;
-          justify-content: space-between;
-          gap: clamp(20px, 2vw, 50px);
+      .description {
+        h2{
+          color: white;
         }
-
-        .description {
-          position: relative;
-          margin-block: 20px;
-          flex: 0 0 100%;
-          max-width: 100%;
-
-          @media (min-width: 768px) {
-            flex: 0 0 50%;
-            max-width: 50%;
-          }
-
-          .topBlock {
-            &::before {
-              content: "";
-              width: 79px;
-              height: 1px;
-              display: inline-block;
-              background-color: var(--color-gold);
-              vertical-align: middle;
-              top: -2px;
-              margin-bottom: 1px;
-              margin-right: 18px;
-            }
-          }
-
-          span {
-            @include text(var(--color-gold), 14px, uppercase, 700);
-          }
-
-          h2 {
-            @include text(var(--color-white), 24px, uppercase, 700);
-
-            @media (min-width: 768px) {
-              font-size: 42px;
-            }
-
-          }
-          .colorText {
-              font-size: 24px;
-              color: var(--color-gold);
-
-              @media (min-width: 768px) {
-                font-size: 42px;
-              }
-
-              &::before {
-                display: none;
-              }
-            }
-
-          p {
-            @include text(var(--color-white), 16px, none, 400);
-
-            @media (min-width: 768px) {
-              font-size: 20px;
-              max-width: 70%;
-            }
-          }
+        p {
+          @include text(var(--color-white), 16px, none, 400);
         }
-        @media (max-width: 768px) {
-          img{
-            max-width: 100%;
-          }
-        }
+      }
       }
     }
   }
@@ -564,17 +541,17 @@ export default {
     background: white;
     @include blockStyles;
 
-    .topBlock {
+    .preTittle {
       display: flex;
       align-items: center;
       flex-direction: column;
       // padding-bottom: 30px;
       padding-bottom: clamp(10px, 2vw, 30px);
-      gap: 12px;
+      gap: 10px;
       .accomodation {
         @include text(var(--color-gold), 14px, uppercase, 500);
         @media (max-width: 768px){
-          margin-bottom: 15px;
+          margin-bottom: 5px;
         }
       }
       h4 {
@@ -588,149 +565,7 @@ export default {
         }
       }
     }
-    .main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        // margin: 0 20px;
-      margin-bottom: 0;
-
-        @media (min-width: 768px) {
-          flex-direction: row;
-          justify-content: space-between;
-          gap: 50px;
-        }
-
-        .description {
-          position: relative;
-          flex: 0 0 100%;
-          max-width: 100%;
-          margin: 10px 0 0;
-
-          @media (min-width: 768px) {
-            flex: 0 0 50%;
-            max-width: 50%;
-            margin-block: 20px;
-
-          }
-
-          .topBlock {
-            display: flex;
-            flex-direction: row;
-            &::before {
-              content: "";
-              width: 79px;
-              height: 1px;
-              display: inline-block;
-              background-color: var(--color-gold);
-              vertical-align: middle;
-              top: -2px;
-              margin-bottom: 1px;
-              margin-right: 18px;
-            }
-          }
-
-          span {
-            @include text(var(--color-gold), 14px, uppercase, 700);
-          }
-
-          h2 {
-            @include text(var(--color-black), clamp(20px, 4vw, 42px), uppercase, 500);
-            margin: 20px 0 30px;
-            @media (max-width: 768px) {
-              margin: 10px 0 15px;
-            }
-          }
-
-          p {
-            @include text(var(--color-black), 16px, none, 400);
-            @media (min-width: 768px) {
-              font-size: 20px;
-              max-width: 70%;
-            }
-          }
-        }
-
-        .swiper {
-          width: 100%;
-          flex: 0 0 100%;
-          max-width: 100%;
-          height: auto;
-
-          @media (min-width: 768px) {
-            flex: 0 0 50%;
-            max-width: 40%;
-          }
-
-          .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              transition: all ease 0.5s;
-              transform: scale(1);
-
-              &:hover {
-                transform: scale(1.1);
-                transition: all ease 0.5s;
-              }
-            }
-          }
-
-          .buttonWrapper {
-            position: absolute;
-            bottom: 0;
-            right: 10%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 30%;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 10;
-
-            .swiper-button-prev,
-            .swiper-button-next {
-              flex: 1;
-              border-radius: 50%;
-              svg {
-                stroke: var(--color-gold);
-              }
-
-              &::after {
-                content: "";
-              }
-            }
-            .info{
-                @include text(var(--color-gold), 16px, uppercase, 700);
-                line-height: 1.1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-            }
-          }
-        }
-
-        .roomImg {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-
-          @media (min-width: 768px) {
-            flex: 0 0 50%;
-            max-width: 40%;
-          }
-        }
-      }
+    @include defaultBlock;
   }
   .relaxLikeAKing,
   .eatLikeAKing {
@@ -885,6 +720,7 @@ export default {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    min-height: 300px;
   }
   .sectionItems {
     position: absolute;
@@ -903,7 +739,7 @@ export default {
   }
 }
 .instagram {
-  margin-bottom: 80px;
+  margin-bottom: clamp(40px, 5vw, 80px);
 
   .topBlock {
     display: flex;
@@ -911,15 +747,16 @@ export default {
     justify-content: center;
     flex-direction: column;
     gap: 24px;
-    margin-block: 80px;
+    margin-block: clamp(20px, 5vw, 80px);
     h2 {
-      @include text(var(--color-black), 48px, uppercase, 500);
+      @include text(var(--color-black), clamp(20px, 4vw, 48px), uppercase, 500);
     }
     span {
       @include text(#3f3f3f, 20px, unset, 400);
     }
     @media (max-width: 525px) {
       padding: 0 20px 20px;
+      align-items: flex-start;
     }
   }
   .instagramGallery {
@@ -928,19 +765,13 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    .swiper-slide {
+      text-align: center;
+    }
     img {
-      width: clamp(100px, 30vw, 400px);
-      min-height: 300px;
+      max-width: -webkit-fill-available;
     }
     @media (max-width: 525px) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      img {
-        width: 90%;
-      }
     }
   }
 }
@@ -985,9 +816,37 @@ export default {
           gap: 10px;
           @include text(var(--color-white), 16px, unset, 400);
         }
-        @media (max-width: 570px) {
+        @media (max-width: 768px) {
           & {
+            bottom: 5%;
+            right: unset;
+            left: 50%;
+            transform: translateX(-50%);
+            // top: 5%;
+            width: 90vw !important;
+            height: fit-content;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
             width: 50%;
+            border: 1px solid var(--color-gold);
+            p{
+              display: none;
+            }
+          }
+          @media (max-width: 475px) {
+            justify-content: center;
+            h2{
+              display: none;
+            }
+            a{
+              span{
+                color: var(--color-gold);
+              }
+              svg{
+                stroke: var(--color-gold);
+              }
+            }
           }
         }
       }
@@ -1065,8 +924,7 @@ export default {
   }
 
   .roomCards,
-  .restaurantCards,
-  .instagramGallery {
+  .restaurantCards{
     display: flex;
     justify-content: space-around;
     gap: 10px;
@@ -1083,11 +941,11 @@ export default {
       }
     }
 
-    .instagramGallery img {
-      width: 30%;
-      height: auto;
-      padding: 5px;
-    }
+    // .instagramGallery img {
+    //   width: 30%;
+    //   height: auto;
+    //   padding: 5px;
+    // }
   }
 }
 
@@ -1119,7 +977,7 @@ export default {
 @media screen and (max-width: 450px) {
   .kingsPalace {
     .hotelDescription {
-      margin: 20px 0 40px;
+      margin: 20px clamp(20px, 5vw, 60px) 40px;
       .underLine {
         width: 80vw;
       }
