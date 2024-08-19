@@ -175,7 +175,7 @@
           <div class="slideContent">
             <h2>{{ slide.slideName }}</h2>
             <p>{{ slide.description }}</p>
-            <router-link>
+            <router-link :to="slide.linkTo">
               <span>
                 {{ slide.buttonText }}
               </span>

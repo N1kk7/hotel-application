@@ -258,11 +258,19 @@ export default {
 </template>
 
 <script>
-import { ref, onMounted, nextTick } from 'vue';
+import {
+  ref, onMounted, nextTick,
+} from 'vue';
 import { gsap } from 'gsap';
 
 export default {
-  setup() {
+  props: {
+    isFirstLoad: {
+      type: Boolean,
+      // default: false,
+    },
+  },
+  setup(props) {
     const isVisible = ref(false);
     const bg1 = ref(null);
     const bg2 = ref(null);
@@ -271,93 +279,164 @@ export default {
     const transparentLogo = ref(null);
 
     const playTransition = () => {
-      nextTick(() => {
-        const timeline = gsap.timeline({
-          onComplete: () => {
-            isVisible.value = false;
-          },
+      if (!props.isFirstLoad) {
+        // isFirstLoad = true;
+        nextTick(() => {
+          const timeline = gsap.timeline({
+            onComplete: () => {
+              isVisible.value = false;
+            },
+          });
+
+          timeline.set([bg1.value, bg2.value, bg3.value], { right: '0%', width: '100vw' });
+
+          timeline
+            .to(
+              transparentLogo.value,
+              {
+                duration: 1.2,
+                opacity: 0,
+                ease: 'power2.inOut',
+                scale: 1,
+              },
+              'start',
+            )
+            .to(
+              refImg.value,
+              {
+                duration: 0.4, scale: 1.3, ease: 'power2.inOut',
+              },
+              'start',
+            )
+            .to(refImg.value, {
+              duration: 0.2, rotate: 10, ease: 'power2.inOut',
+            }, '>')
+            .to(refImg.value, {
+              duration: 0.2, rotate: -10, ease: 'power2.inOut',
+            }, '>')
+            .to(refImg.value, {
+              duration: 0.2, rotate: 1, ease: 'power2.inOut',
+            }, '>')
+            .to(refImg.value, {
+              duration: 0.2, scale: 1, ease: 'power2.inOut',
+            }, '>')
+            .to(bg3.value, {
+              right: '100%',
+              duration: 0.5,
+              ease: 'power2.inOut',
+            })
+            .to(
+              bg2.value,
+              {
+                right: '100%',
+                duration: 0.5,
+                ease: 'power2.inOut',
+              },
+              '-=0.3',
+            )
+            .to(
+              bg1.value,
+              {
+                right: '100%',
+                duration: 0.5,
+                ease: 'power2.inOut',
+              },
+              '-=0.3',
+            );
         });
+      } else {
+        console.log('not first load');
+        nextTick(() => {
+          const timeline = gsap.timeline({
+            onComplete: () => {
+              isVisible.value = false;
+            },
+          });
 
-        timeline
-          .set([bg1.value, bg2.value, bg3.value], { right: '100%', width: '100vw' })
-          .to(bg1.value, {
-            right: '0%',
-            duration: 0.5,
-            ease: 'power2.inOut',
-          })
-          .to(
-            bg2.value,
-            {
+          timeline.set([bg1.value, bg2.value, bg3.value], { right: '100%', width: '100vw' });
+          // if (ololo) {
+          timeline
+            .to(bg1.value, {
               right: '0%',
               duration: 0.5,
               ease: 'power2.inOut',
-            },
-            '-=0.3',
-          )
-          .to(
-            bg3.value,
-            {
-              right: '0%',
-              duration: 0.5,
-              ease: 'power2.inOut',
-            },
-            '-=0.3',
-          )
-          .to(
-            transparentLogo.value,
-            {
-              duration: 1.2,
-              opacity: 0,
-              ease: 'power2.inOut',
-              scale: 1,
-            },
-            'start',
-          )
-          .to(
-            refImg.value,
-            {
-              duration: 0.4, scale: 1.3, ease: 'power2.inOut',
-            },
-            'start',
-          )
-          .to(refImg.value, {
-            duration: 0.2, rotate: 10, ease: 'power2.inOut',
-          }, '>')
-          .to(refImg.value, {
-            duration: 0.2, rotate: -10, ease: 'power2.inOut',
-          }, '>')
-          .to(refImg.value, {
-            duration: 0.2, rotate: 1, ease: 'power2.inOut',
-          }, '>')
-          .to(refImg.value, {
-            duration: 0.2, scale: 1, ease: 'power2.inOut',
-          }, '>')
-          .to(bg3.value, {
-            right: '100%',
-            duration: 0.5,
-            ease: 'power2.inOut',
-          })
-          .to(
-            bg2.value,
-            {
+            })
+            .to(
+              bg2.value,
+              {
+                right: '0%',
+                duration: 0.5,
+                ease: 'power2.inOut',
+              },
+              '-=0.3',
+            )
+            .to(
+              bg3.value,
+              {
+                right: '0%',
+                duration: 0.5,
+                ease: 'power2.inOut',
+              },
+              '-=0.3',
+            );
+          // }
+
+          timeline
+            .to(
+              transparentLogo.value,
+              {
+                duration: 1.2,
+                opacity: 0,
+                ease: 'power2.inOut',
+                scale: 1,
+              },
+              'start',
+            )
+            .to(
+              refImg.value,
+              {
+                duration: 0.4, scale: 1.3, ease: 'power2.inOut',
+              },
+              'start',
+            )
+            .to(refImg.value, {
+              duration: 0.2, rotate: 10, ease: 'power2.inOut',
+            }, '>')
+            .to(refImg.value, {
+              duration: 0.2, rotate: -10, ease: 'power2.inOut',
+            }, '>')
+            .to(refImg.value, {
+              duration: 0.2, rotate: 1, ease: 'power2.inOut',
+            }, '>')
+            .to(refImg.value, {
+              duration: 0.2, scale: 1, ease: 'power2.inOut',
+            }, '>')
+            .to(bg3.value, {
               right: '100%',
               duration: 0.5,
               ease: 'power2.inOut',
-            },
-            '-=0.3',
-          )
-          .to(
-            bg1.value,
-            {
-              right: '100%',
-              duration: 0.5,
-              ease: 'power2.inOut',
-            },
-            '-=0.3',
-          );
-      });
+            })
+            .to(
+              bg2.value,
+              {
+                right: '100%',
+                duration: 0.5,
+                ease: 'power2.inOut',
+              },
+              '-=0.3',
+            )
+            .to(
+              bg1.value,
+              {
+                right: '100%',
+                duration: 0.5,
+                ease: 'power2.inOut',
+              },
+              '-=0.3',
+            );
+        });
+      }
     };
-
     onMounted(() => {
       isVisible.value = true;
       nextTick(() => {

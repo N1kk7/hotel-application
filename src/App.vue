@@ -4,7 +4,7 @@
 
 </div> -->
   <HeaderC/>
-  <PageTransition v-if="showTransition"/>
+  <PageTransition v-if="showTransition" :isFirstLoad="isFirstLoad"/>
   <router-view/>
   <!-- <router-view v-slot="{ Component }">
     <component :is="Component" />
@@ -36,8 +36,14 @@ export default defineComponent({
     FooterC,
     PageTransition,
   },
+  // data() {
+  //   return {
+  //     isFirstLoad: false,
+  //   };
+  // },
   setup() {
     const showTransition = ref(false);
+    const isFirstLoad = ref(true);
     const router = useRouter();
 
     // router.beforeEach((to, from, next) => {
@@ -55,14 +61,17 @@ export default defineComponent({
       showTransition.value = true;
       setTimeout(() => {
         next();
-      }, 2000);
-
+      }, 200);
+      if (!isFirstLoad.value) {
+        isFirstLoad.value = true;
+      }
       setTimeout(() => {
         showTransition.value = false;
+        // isFirstLoad.value = true;
       }, 3200);
     });
 
-    return { showTransition };
+    return { showTransition, isFirstLoad };
   },
 });
 </script>
