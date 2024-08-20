@@ -61,7 +61,7 @@ export default defineComponent({
       showTransition.value = true;
       setTimeout(() => {
         next();
-      }, 200);
+      }, 1000);
       if (!isFirstLoad.value) {
         isFirstLoad.value = true;
       }
