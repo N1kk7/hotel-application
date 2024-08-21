@@ -2,6 +2,7 @@
   <div class="Header" ref="headerHeight">
     <div
       :class="{ headerWrapper: true, hideHeader: showHeader }"
+      :style="headerMarginTop ? { marginTop: '0' } : {}"
       @mouseleave="hideHoverList"
       @blur="hideHoverList"
     >
@@ -178,6 +179,7 @@ export default defineComponent({
       scrollPosition: 0,
       lastScrollPosition: 0,
       showHeader: false,
+      headerMarginTop: true,
     };
   },
   created() {
@@ -210,6 +212,13 @@ export default defineComponent({
       } else if (currentScrollPosition >= scrollMain.clientHeight) {
         this.showHeader = true;
       }
+      if (currentScrollPosition === 0) {
+        this.headerMarginTop = true;
+      } else {
+        this.headerMarginTop = false;
+      }
+      // currentScrollPosition === 0 ? (this.headerMarginTop = true)
+      // : (this.headerMarginTop = false);
       this.lastScrollPosition = currentScrollPosition;
       this.scrollPosition = currentScrollPosition;
     },
@@ -448,10 +457,19 @@ export default defineComponent({
     }
   }
 }
+@media screen and (max-width: 768px) {
+  .Header{
+    .headerWrapper{
+      margin: 0;
+      .topWrapper{
+        background: rgba(0, 0, 0, 0.9);
+      }
+    }
+  }
+}
 @media screen and (max-width: 450px) {
   .Header {
     .headerWrapper {
-      margin: 10px;
       .topWrapper {
         .rightSide {
           .langBtn {
