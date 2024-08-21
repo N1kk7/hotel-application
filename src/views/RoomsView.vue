@@ -732,22 +732,21 @@ export default {
                 list-style-type: none;
                 display: flex;
                 padding: 0;
-                // flex-direction: column;
                 justify-content: flex-start;
                 flex-wrap: wrap;
                 gap: 10px;
+                width: 80%;
+                max-width: fit-content;
+                margin: 0 auto;
                 li{
-                    color: var(--color-gold);
                     padding: 5px 7px;
                     border-radius: 20px;
-                    background: rgba(0, 0, 0, 0.75);
+                    background: var(--color-light);
                     width: fit-content;
-                    font-family: var(--font-text-reg);
-                    font-size: 12px;
-                    text-transform: uppercase;
+                    @include text(var(--color-gold), 12px, uppercase, 500);
                     cursor: pointer;
                     white-space: nowrap;
-                    z-index: 5;
+                    z-index: 4;
                 }
             }
         }

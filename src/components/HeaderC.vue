@@ -223,6 +223,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@import '@/style/mixins.scss';
+
 .Header {
   z-index: 5;
   position: absolute;
@@ -269,13 +271,7 @@ export default defineComponent({
             }
             cursor: pointer;
             span {
-              color: #fff;
-              font-family: var(--font-text-reg);
-              font-size: clamp(12px, 1vw, 16px);
-              font-style: normal;
-              font-weight: 500;
-              line-height: 150%; /* 21px */
-              text-transform: uppercase;
+              @include text(var(--color-white), clamp(12px, 1vw, 16px), uppercase, 500);
             }
           }
         }
@@ -293,13 +289,7 @@ export default defineComponent({
             width: clamp(20px, 4vw, 100%);
           }
           span {
-            color: #fff;
-            font-family: var(--font-text-reg);
-            font-size: clamp(11px, 3vw, 14px);
-            font-style: normal;
-            font-weight: 500;
-            line-height: 120%; /* 16.8px */
-            text-transform: uppercase;
+            @include text(var(--color-white), clamp(11px, 3vw, 14px), uppercase, 500);
             margin: 0 4px 0 6px;
           }
           .SecondaryButton {
@@ -341,13 +331,7 @@ export default defineComponent({
             text-decoration: none;
           }
           span {
-            color: #fff;
-            font-family: var(--font-text-reg);
-            font-size: clamp(12px, 1vw, 16px);
-            font-style: normal;
-            font-weight: 500;
-            line-height: 150%; /* 21px */
-            text-transform: uppercase;
+            @include text(var(--color-white), clamp(12px, 1vw, 16px), uppercase, 500);
           }
         }
       }
@@ -406,16 +390,16 @@ export default defineComponent({
       left: 0;
       background: var(--color-black);
       width: 100%;
-      height: -webkit-fill-available;
+      height: 100%;
       z-index: 5;
       padding-top: clamp(90px, 20vw, 150px);
-      // padding: 10vw 0 30px;
       padding-bottom: 50px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow-y: scroll;
       .navList {
+        padding: 20px;
         ul {
           display: flex;
           flex-direction: column;
@@ -431,19 +415,14 @@ export default defineComponent({
               text-decoration: none;
             }
             span {
-              color: #fff;
-              font-family: var(--font-text-reg);
-              font-size: clamp(14px, 2vw, 22px);
-              font-style: normal;
-              font-weight: 500;
-              line-height: 120%; /* 16.8px */
-              text-transform: uppercase;
+              @include text(var(--color-white), clamp(14px, 2vw, 22px), uppercase, 500);
             }
           }
           .subList {
             height: 0px;
             overflow: hidden;
             transition: all ease 0.5s;
+            padding-left: 20px;
           }
           .subListActive {
             height: auto;
@@ -458,13 +437,7 @@ export default defineComponent({
         gap: 15px;
         span {
           padding-left: 40px;
-          color: #fff;
-          font-family: var(--font-text-reg);
-          font-size: 10px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 120%; /* 16.8px */
-          text-transform: uppercase;
+          @include text(var(--color-white), 10px, uppercase, 500);
           text-align: left;
           max-width: 80vw;
         }

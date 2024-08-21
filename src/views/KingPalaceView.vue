@@ -23,7 +23,25 @@
     </div>
 
     <div class="pageBlock" ref="pageBlock">
-      <h1>OLOLO TAG HERE</h1>
+      <div class="tags">
+        <ul>
+          <li >
+            <span> restaurants </span>
+          </li>
+          <li >
+            <span> bars </span>
+          </li>
+          <li >
+            <span> shopping spree </span>
+          </li>
+          <li >
+            <span> historic heritage </span>
+          </li>
+          <li >
+            <span> swimming pools</span>
+          </li>
+        </ul>
+    </div>
       <h2 class="animated-title" ref="animatedTitle">
         <!-- Nearby tourist attractions and activities -->
         <span class="letter" v-for="(letter, index) in titleLetters"
@@ -132,7 +150,6 @@ export default {
 
       h1 {
         @include mainTitle;
-        // Добавление стилей для span внутри h1
         span {
           display: inline-block;
           font-size: inherit;
@@ -150,13 +167,41 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    .tags{
+      margin-bottom: 10px;
+      ul{
+                list-style-type: none;
+                display: flex;
+                padding: 0;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: 10px;
+                width: 80%;
+                max-width: fit-content;
+                margin: 0 auto;
+                li{
+                    padding: 5px 7px;
+                    border-radius: 20px;
+                    background: var(--color-light);
+                    width: fit-content;
+                    @include text(var(--color-gold), 12px, uppercase, 500);
+                    cursor: pointer;
+                    white-space: nowrap;
+                    z-index: 4;
+                    &:hover{
+                        background: var(--color-gold);
+                        color: var(--color-white);
+                    }
+                }
+            }
+    }
 
     h2 {
-      @include text(var(--color-black), 40px, uppercase, 500);
+      @include text(var(--color-black), clamp(18px, 4vw, 40px), uppercase, 500);
     }
 
     p {
-      @include text(#454545, 20px, unset, 400);
+      @include text(#454545, clamp(16px, 4vw, 28px), normal, 400);
       &.animated-text span {
         display: inline-block;
         opacity: 0;
@@ -179,12 +224,12 @@ export default {
         }
 
         h4 {
-          @include text(var(--color-black), 30px, uppercase, 500);
-          padding: 22px 0;
+          @include text(var(--color-black), clamp(14px, 4vw, 30px), uppercase, 500);
+          padding: clamp(11px, 4vw, 22px) 0;
         }
 
         p {
-          @include text(#454545, 21px, unset, 400);
+          @include text(#454545, clamp(12px, 4vw, 24px), normal, 400);
           &.animated-text span {
             display: inline-block;
             opacity: 0;
@@ -208,15 +253,6 @@ export default {
       padding: 30px;
       margin: 30px;
       gap: 20px;
-
-      h2 {
-        font-size: 30px;
-      }
-
-      p {
-        font-size: 18px;
-      }
-
       .blockWrapper {
         grid-template-columns: 1fr;
       }
@@ -231,14 +267,6 @@ export default {
       margin: 20px;
       gap: 15px;
 
-      h2 {
-        font-size: 25px;
-      }
-
-      p {
-        font-size: 16px;
-      }
-
       .blockWrapper {
         grid-template-columns: 1fr;
       }
@@ -252,14 +280,6 @@ export default {
       padding: 10px;
       margin: 10px;
       gap: 10px;
-
-      h2 {
-        font-size: 20px;
-      }
-
-      p {
-        font-size: 14px;
-      }
 
       .blockWrapper {
         grid-template-columns: 1fr;

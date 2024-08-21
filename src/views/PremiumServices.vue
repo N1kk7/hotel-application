@@ -25,9 +25,14 @@
             </div>
         </div>
         <div class="golfClubs">
-            <h2>
-                Available Services
-            </h2>
+            <div class="topTittle">
+                <h4 class="preTittle">
+                    Premium
+                </h4>
+                <h2>
+                    Available Services
+                </h2>
+            </div>
             <p>
                 Our team is always ready to provide a range of special services:
                 do not hesitate to contact us.
@@ -145,17 +150,22 @@ export default {
             display: flex;
             flex-direction: column;
             gap: 40px;
+            .preTittle{
+                @include text(var(--color-gold), 14px, uppercase, 500);
+                padding-bottom: clamp(5px, 4vw, 10px);
+            }
             h2{
-                @include text(var(--color-black), 40px, uppercase, 500);
+                @include text(var(--color-black), clamp(18px, 4vw, 40px), uppercase, 500);
             }
             p{
-                @include text(#454545, 20px, normal, 400);
+                @include text(#454545, clamp(16px, 4vw, 28px), normal, 400);
             }
             .clubsWrapper{
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 column-gap: 40px;
-                row-gap: 60px;
+                // row-gap: 60px;
+                row-gap: clamp(30px, 5vw, 60px);
                 .club{
                     overflow: hidden;
                     img{
@@ -164,11 +174,11 @@ export default {
                         object-fit: cover;
                     }
                     h4{
-                        @include text(var(--color-black), 30px, uppercase, 500);
-                        padding: 22px 0;
+                        @include text(var(--color-black), clamp(14px, 4vw, 30px), uppercase, 500);
+                        padding: clamp(11px, 4vw, 22px) 0;
                     }
                     p{
-                        @include text(#454545, 21px, normal, 400);
+                        @include text(#454545, clamp(12px, 4vw, 24px), normal, 400);
                     }
                 }
 
@@ -188,14 +198,6 @@ export default {
                     margin: 30px;
                     gap: 20px;
 
-                    h2 {
-                    font-size: 30px;
-                    }
-
-                    p {
-                    font-size: 18px;
-                    }
-
                     .clubsWrapper {
                     grid-template-columns: 1fr;
                     }
@@ -207,15 +209,7 @@ export default {
             .golfClubs {
                     padding: 20px;
                     margin: 20px;
-                    gap: 15px;
-
-                    h2 {
-                    font-size: 25px;
-                    }
-
-                    p {
-                    font-size: 16px;
-                    }
+                    gap: 20px;
 
                     .clubsWrapper {
                     grid-template-columns: 1fr;
@@ -228,15 +222,7 @@ export default {
             .golfClubs {
                     padding: 10px;
                     margin: 10px;
-                    gap: 10px;
-
-                    h2 {
-                    font-size: 20px;
-                    }
-
-                    p {
-                    font-size: 14px;
-                    }
+                    gap: 15px;
 
                     .clubsWrapper {
                     grid-template-columns: 1fr;
