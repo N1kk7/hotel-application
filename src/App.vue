@@ -61,13 +61,12 @@ export default defineComponent({
       showTransition.value = true;
       setTimeout(() => {
         next();
-      }, 1000);
+      }, 900);
       if (!isFirstLoad.value) {
         isFirstLoad.value = true;
       }
       setTimeout(() => {
         showTransition.value = false;
-        // isFirstLoad.value = true;
       }, 3200);
     });
 

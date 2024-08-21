@@ -88,7 +88,6 @@ export default {
       blockWrapper,
       items,
       mainImageBg,
-      // titleBlock,
       animatedTitle,
       titleLetters,
     };

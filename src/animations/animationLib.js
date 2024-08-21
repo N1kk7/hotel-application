@@ -70,8 +70,9 @@ gsap.registerPlugin(ScrollTrigger);
 // animation for mainDiv
 export const animateMainDiv = (mainDiv) => {
   gsap.from(mainDiv, {
+    delay: 1.6,
     opacity: 0,
-    y: -50,
+    y: -150,
     duration: 1,
     ease: 'power3.out',
   });
@@ -79,6 +80,7 @@ export const animateMainDiv = (mainDiv) => {
 export const animateTextBlockHeaders = (textBlock) => {
   if (textBlock) {
     gsap.from(textBlock.querySelectorAll('h1'), {
+      delay: 2.1,
       opacity: 0,
       y: 50,
       duration: 1,
