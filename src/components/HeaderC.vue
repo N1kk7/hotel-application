@@ -2,7 +2,7 @@
   <div class="Header" ref="headerHeight">
     <div
       :class="{ headerWrapper: true, hideHeader: showHeader }"
-      :style="headerMarginTop ? { marginTop: '0' } : {}"
+      :style="{marginTop: headerMarginTop ? '20px' : '0'}"
       @mouseleave="hideHoverList"
       @blur="hideHoverList"
     >
@@ -242,7 +242,7 @@ export default defineComponent({
   overflow: hidden;
   .headerWrapper {
     position: fixed;
-    margin: 20px;
+    margin-inline: 20px;
     width: -webkit-fill-available;
     transition: all ease 0.5s;
     top: 0;
@@ -460,7 +460,7 @@ export default defineComponent({
 @media screen and (max-width: 768px) {
   .Header{
     .headerWrapper{
-      margin: 0;
+      margin-inline: 0;
       .topWrapper{
         background: rgba(0, 0, 0, 0.9);
       }
