@@ -86,15 +86,15 @@
           <h3 class="cafeName">Radimský</h3>
           <ul>
             <li>
-              <DistanceC distance="800" meters="meters" />
+              <DistanceC distance="800" meters="m" />
               <span class="option"> Distance from King's </span>
             </li>
             <li class="strokeSvg">
-              <SvgIcon name="cafeSuite" size="large" strokeWidth="0" />
+              <SvgIcon name="cafeSuite" size="medium" strokeWidth="0" />
               <span class="option"> European cuisine </span>
             </li>
             <li>
-              <SvgIcon name="location" size="large" strokeWidth="0" />
+              <SvgIcon name="location" size="medium" strokeWidth="0" />
               <span class="option"> Rozvadov 7 </span>
             </li>
           </ul>

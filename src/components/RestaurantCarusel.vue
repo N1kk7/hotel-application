@@ -17,6 +17,7 @@
         @swiper="onSwiper"
         :slidesPerView="slidesPerView"
         :spaceBetween="spaceBetween"
+        :pagination="pagination"
         :modules="modules"
         class="mySwiper"
       >
@@ -77,7 +78,6 @@ import SvgIcon from './SvgIcon.vue';
 export default {
   name: 'RestaurantCarusel',
   components: {
-    // DistanceC,
     SvgIcon,
     Swiper,
     SwiperSlide,
@@ -193,6 +193,9 @@ export default {
       cardSwiperInstance,
       slidesPerView,
       spaceBetween,
+      pagination: {
+        clickable: true,
+      },
     };
   },
   props: {
@@ -269,7 +272,7 @@ export default {
             border-top: 0;
             border-radius: 0 0 5px 5px;
             h3 {
-              @include text(var(--color-black), clamp(18px, 1.6vw, 24px), unset, 700);
+              @include text(var(--color-black), clamp(12px, 1.6vw, 22px), unset, 700);
               text-transform: uppercase;
               text-align: start;
               margin-bottom: 10px;
@@ -341,6 +344,27 @@ export default {
 
             }
         }
+      }
+    }
+    ::v-deep .swiper-pagination{
+      display: none;
+      @media (max-width: 768px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        left: 50%;
+            transform: translateX(-50%);
+        .swiper-pagination-bullet{
+          height: 5px;
+          width: 100%;
+          background: var(--color-textGrey);
+          border-radius: 0;
+        }
+        .swiper-pagination-bullet-active{
+          background: var(--color-gold);
+        }
+
       }
     }
     @media (min-width: 1024px) {

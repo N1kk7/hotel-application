@@ -199,6 +199,7 @@
           @swiper="swiperIg"
           :slidesPerView="slidesPerView"
           :spaceBetween="spaceBetween"
+          :pagination="pagination"
           :modules="modules"
           ref="swiperInstance"
           class="mySwiper"
@@ -440,6 +441,9 @@ export default {
       updateSlidesPerView,
       slidesPerView,
       spaceBetween,
+      pagination: {
+        clickable: true,
+      },
     };
   },
 };
@@ -764,11 +768,34 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    :deep(.swiper-pagination){
+      display: none;
+      @media (max-width: 768px) {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        align-items: center;
+        width: 80vw;
+        left: 50%;
+            transform: translateX(-50%);
+        .swiper-pagination-bullet{
+          height: 5px;
+          width: 100%;
+          background: var(--color-white);
+          border-radius: 0;
+          opacity: 0.8;
+        }
+        .swiper-pagination-bullet-active{
+          background: var(--color-gold);
+          opacity: 1;
+        }
+
+      }
+    }
     .swiper-slide {
       text-align: center;
     }
     img {
-      // width: -webkit-fill-available;
       width: 100%;
       height: 100%;
     }
@@ -835,6 +862,7 @@ export default {
           }
           @media (max-width: 475px) {
             justify-content: center;
+            padding: 10px;
             h2{
               display: none;
             }
@@ -858,11 +886,9 @@ export default {
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
       }
     }
-    ::v-deep {
-      .swiper-button-next,
-      .swiper-button-prev {
+    :deep(.swiper-button-next,
+          .swiper-button-prev){
         display: none;
-      }
     }
   }
   .progress-bar {
@@ -939,12 +965,6 @@ export default {
         height: auto;
       }
     }
-
-    // .instagramGallery img {
-    //   width: 30%;
-    //   height: auto;
-    //   padding: 5px;
-    // }
   }
 }
 

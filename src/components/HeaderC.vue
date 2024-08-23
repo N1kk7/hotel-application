@@ -5,6 +5,7 @@
       :style="{marginTop: headerMarginTop ? '20px' : '0'}"
       @mouseleave="hideHoverList"
       @blur="hideHoverList"
+      ref="headerWrapperRef"
     >
       <div :class="{ topWrapper: true, burgerActive: isBurgerMenu }">
         <div class="leftSide">
@@ -87,7 +88,7 @@
         </ul>
       </div>
     </div>
-    <div class="burgerMenu" v-if="isBurgerMenu">
+    <div class="burgerMenu" v-if="isMobileMenu" ref="burgerMenuRef">
       <div class="navList">
         <ul>
           <li @click="burgerMenu" @keydown="none">
@@ -164,7 +165,10 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import {
+  defineComponent, ref, nextTick, watch,
+} from 'vue';
+import { gsap } from 'gsap';
 import SecondaryButton from './Buttons/SecondaryButton.vue';
 import SvgIcon from './SvgIcon.vue';
 import PrimaryButton from './Buttons/PrimaryButton.vue';
@@ -188,11 +192,104 @@ export default defineComponent({
   beforeUnmount() {
     window.removeEventListener('scroll', this.onScroll);
   },
+  setup() {
+    const burgerMenuRef = ref(null);
+    const isMobileMenu = ref(false);
+    const headerWrapperRef = ref(null);
+
+    const animateBurgerMenuIn = () => {
+      nextTick(() => {
+        if (burgerMenuRef.value && headerWrapperRef.value) {
+          const tl = gsap.timeline();
+
+          tl.to(
+            headerWrapperRef.value,
+            {
+              y: '-100%', opacity: 0, duration: 0.5, ease: 'power3.out',
+            },
+          )
+            .fromTo(
+              burgerMenuRef.value,
+              { x: '100%' },
+              { x: '0%', duration: 0.5, ease: 'power3.out' },
+            )
+            .fromTo(
+              headerWrapperRef.value,
+              { y: '-100%', opacity: 0 },
+              {
+                y: '0%', opacity: 1, duration: 0.5, ease: 'power3.out',
+              },
+            )
+            .fromTo(
+              burgerMenuRef.value.querySelectorAll('.navList li'),
+              { opacity: 0, x: 50 },
+              {
+                opacity: 1, x: 0, duration: 0.5, stagger: 0.1, ease: 'power3.out',
+              },
+              '-=0.3',
+            )
+            .fromTo(
+              burgerMenuRef.value.querySelector('.bottomMenu'),
+              { y: '200%' },
+              { y: '0%', duration: 0.5, ease: 'power3.out' },
+              '-=0.2',
+            );
+        }
+      });
+    };
+
+    const animateBurgerMenuOut = () => {
+      nextTick(() => {
+        if (burgerMenuRef.value) {
+          const tl = gsap.timeline();
+
+          tl.to(
+            burgerMenuRef.value.querySelector('.bottomMenu'),
+            { y: '100%', duration: 0.3, ease: 'power3.in' },
+          )
+            .to(
+              burgerMenuRef.value.querySelectorAll('.navList li'),
+              {
+                opacity: 0, x: 50, duration: 0.3, stagger: -0.1, ease: 'power3.in',
+              },
+              '-=0.2',
+            )
+            .to(
+              burgerMenuRef.value,
+              { x: '100%', duration: 0.5, ease: 'power3.in' },
+              '-=0.3',
+            );
+        }
+      });
+    };
+
+    watch(isMobileMenu, async (newValue) => {
+      if (newValue) {
+        await nextTick(); // Подождите обновления DOM
+        animateBurgerMenuIn();
+      } else {
+        animateBurgerMenuOut();
+      }
+    });
+
+    return {
+      burgerMenuRef,
+      animateBurgerMenuIn,
+      animateBurgerMenuOut,
+      headerWrapperRef,
+      isMobileMenu,
+      toggleBurgerMenu() {
+        isMobileMenu.value = !isMobileMenu.value;
+        document.body.style.overflow = isMobileMenu.value ? 'hidden' : '';
+      },
+    };
+  },
   methods: {
     burgerMenu() {
-      this.isBurgerMenu = !this.isBurgerMenu;
-      document.body.style.overflow = this.isBurgerMenu ? 'hidden' : '';
+      this.isMobileMenu = !this.isMobileMenu;
+      document.body.style.overflow = this.isMobileMenu ? 'hidden' : '';
     },
+
     subList() {
       this.isActiveSublist = !this.isActiveSublist;
     },
@@ -217,8 +314,6 @@ export default defineComponent({
       } else {
         this.headerMarginTop = false;
       }
-      // currentScrollPosition === 0 ? (this.headerMarginTop = true)
-      // : (this.headerMarginTop = false);
       this.lastScrollPosition = currentScrollPosition;
       this.scrollPosition = currentScrollPosition;
     },

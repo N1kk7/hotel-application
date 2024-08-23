@@ -17,6 +17,7 @@
         @swiper="onSwiper"
         :slidesPerView="slidesPerView"
         :spaceBetween="spaceBetween"
+        :pagination="pagination"
         :modules="modules"
         class="mySwiper"
       >
@@ -53,15 +54,15 @@
                   <span class="option"> Distance from King's </span>
                 </li>
                 <li>
-                  <SvgIcon name="doubleBed" size="small" stroke="#D7B154" strokeWidth="0" />
+                  <SvgIcon name="doubleBed" size="medium" stroke="#D7B154" strokeWidth="0" />
                   <span class="option"> King bed </span>
                 </li>
                 <li>
-                  <SvgIcon name="conditioner" size="small" stroke="#D7B154" strokeWidth="0" />
+                  <SvgIcon name="conditioner" size="medium" stroke="#D7B154" strokeWidth="0" />
                   <span class="option"> Air conditioner </span>
                 </li>
                 <li>
-                  <SvgIcon name="wifi" size="small" stroke="#D7B154" />
+                  <SvgIcon name="wifi" size="medium" stroke="#D7B154" />
                   <span class="option"> Wi-Fi </span>
                 </li>
               </ul>
@@ -225,7 +226,6 @@ export default {
     margin-block: 20px;
     h2 {
       @include text(var(--color-black), clamp(20px, 5vw, 48px), uppercase, 500);
-      // text-align: center;
       flex: 1;
     }
     .buttons {
@@ -249,6 +249,28 @@ export default {
     gap: 10px;
     .swiper {
       padding: 0 40px 50px;
+    }
+    .swiper-pagination{
+      display: none;
+      @media (max-width: 768px) {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        align-items: center;
+        width: 80vw;
+        left: 50%;
+            transform: translateX(-50%);
+        .swiper-pagination-bullet{
+          height: 5px;
+          width: 100%;
+          background: var(--color-textGrey);
+          border-radius: 0;
+        }
+        .swiper-pagination-bullet-active{
+          background: var(--color-gold);
+        }
+
+      }
     }
     .swiper-slide {
       box-shadow: 10px 10px 8px rgba(0, 0, 0, 0);
@@ -275,6 +297,8 @@ export default {
             align-items: center;
             justify-content: center;
             padding-bottom: 5px;
+            width: 100%;
+            margin-bottom: unset;
             gap: 1px;
             .swiper-pagination-bullet {
               width: 22%;
@@ -315,7 +339,7 @@ export default {
                 justify-content: center;
                 border: 1px solid #d7b154;
                 border-radius: 10px;
-                padding: 3px;
+                padding: 5px;
                 color: #d7b154;
                 .meters {
                   @include text(var(--color-gold), 12px, unset, 800);
