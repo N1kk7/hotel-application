@@ -145,7 +145,7 @@
             <div class="items">
                 <div class="item">
                     <div class="icon">
-                        <SvgIcon name="car" size="medium"/>
+                        <SvgIcon name="car" size="large"/>
                     </div>
                     <h3>
                         BY CAR
@@ -157,7 +157,7 @@
                 </div>
                 <div class="item">
                     <div class="icon">
-                        <SvgIcon name="airplane" size="medium"/>
+                        <SvgIcon name="airplane" size="large"/>
                     </div>
                     <h3>
                         BY PLANE
@@ -169,7 +169,7 @@
                 </div>
                 <div class="item">
                     <div class="icon">
-                        <SvgIcon name="train" size="medium"/>
+                        <SvgIcon name="train" size="large"/>
                     </div>
                     <h3>
                         BY TRAIN
@@ -204,13 +204,13 @@
                     </h3>
                     <ul>
                         <li>
-                            <SvgIcon name="envelope" size="small"/>
+                            <SvgIcon name="envelope" size="medium"/>
                             <span>
                                 stay@kings-palace.com
                             </span>
                         </li>
                         <li>
-                            <SvgIcon name="phone" size="small"/>
+                            <SvgIcon name="phone" size="medium" strokeWidth="2"/>
                             <span>
                                 +420 777 281 804
                             </span>
@@ -278,13 +278,10 @@ export default {
       .path {
         @include alignPath;
 
-        //!!!!!!!!!!!!!!!!!!!!!!
-
         a {
           text-decoration: none;
           cursor: pointer;
         }
-        //!!!!!!!!!!!!!!!!!!!!!!
 
         span {
           @include pathText;
@@ -303,13 +300,6 @@ export default {
       }
     }
   }
-//   @media (max-width: 768px) {
-//     .main {
-//         .mainImage{
-//             min-height: 50vh;
-//         }
-//     }
-//   }
 
   .map,
   .journeyPlan,
@@ -338,7 +328,8 @@ export default {
       }
 
       h3 {
-        @include text(var(--color-black), 24px, uppercase, 500);
+        @include text(var(--color-gold), 24px, uppercase, 500);
+        margin-bottom: clamp(10px, 2vw, 30px);
       }
 
       ul {
@@ -353,7 +344,8 @@ export default {
         li {
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: flex-start;
+          width: -webkit-fill-available;
           gap: 10px;
           .openingDescription {
             display: flex;
@@ -363,16 +355,22 @@ export default {
           }
 
           .timeAvailable {
-            color: var(--color-grey);
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
+            @include text(var(--color-textGrey), 16px, unset, 400);
           }
+          // svg{
+          //   flex: 1 1 30%;
+          // }
 
           span {
+            width: -webkit-fill-available;
             @include text(var(--color-black), 16px, unset, 400);
           }
         }
+      }
+    }
+    .openingCard{
+      svg{
+        flex: 1 1 30%;
       }
     }
   }
@@ -397,9 +395,7 @@ export default {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
     h3 {
-      color: var(--color-gold);
-      text-transform: uppercase;
-      font-size: 14px;
+      @include text(var(--color-gold), 14px, uppercase, 500);
     }
 
     .topBlock {
@@ -416,9 +412,7 @@ export default {
         padding: 0 clamp(30px, 5vw, 60px);
 
       h2 {
-        font-size: 32px;
-        font-family: var(--font-text-reg);
-        font-weight: 700;
+        @include text(var(--color-black), clamp(22px, 4vw, 32px), unset, 600);
         margin: 0;
       }
       .colorText{
@@ -432,9 +426,7 @@ export default {
         gap: 20px;
 
         span {
-          font-size: 18px;
-          font-family: var(--font-text-reg);
-          font-weight: 400;
+          @include text(var(--color-textGrey), clamp(14px, 2vw, 18px), unset, 400);
         }
       }
       @media (max-width: 768px) {
@@ -470,7 +462,18 @@ export default {
     .mobileLocation{
         display: none;
         @media (max-width: 768px) {
-            display: block;
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: column;
+          gap: 10px;
+            .location{
+              h3{
+                @include text(var(--color-gold), clamp(18px, 3vw, 22px), uppercase, 500);
+              }
+              span{
+                @include text(var(--color-textGrey), clamp(14px, 3vw, 18px), unset, 400);
+              }
+            }
         }
     }
   }
@@ -480,15 +483,13 @@ export default {
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     h2 {
-      font-size: 32px;
-      font-family: var(--font-text-reg);
-      font-weight: 700;
+      @include text(var(--color-gold), clamp(18px, 4vw, 28px), unset, 500);
     }
 
     .items {
       display: flex;
       justify-content: space-between;
-      margin: 60px 0 20px;
+      margin: clamp(30px, 3vw, 60px) 0 20px;
       gap: 20px;
 
       .item {
@@ -501,15 +502,19 @@ export default {
             border: 1px solid var(--color-gold);
             border-radius: 50%;
             padding: 10px;
+            @media (max-width: 768px) {
+              min-width: 50px;
+              min-height: 50px;
+            }
           }
         }
 
         h3 {
-        @include text(var(--color-black), 24px, unset, 700);
+        @include text(var(--color-black), clamp(18px, 3vw, 24px), unset, 500);
         }
 
         p {
-          @include text(#3F3F3F, 16px, unset, 400);
+          @include text(var(--color-textGrey), 16px, unset, 400);
           max-width: 80%;
 
         }
@@ -532,6 +537,7 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: clamp(30px, 5vw, 60px);
+    margin-bottom: 50px !important;
     gap: 40px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -549,17 +555,14 @@ export default {
         flex-direction: column;
         justify-content: space-between;
       h2 {
-        font-size: clamp(28px, 5vw, 40px);
-        font-family: var(--font-text-reg);
-        font-weight: 700;
-        color: var(--color-black);
+        @include text(var(--color-black), clamp(28px, 4vw, 40px), unset, 500);
       }
       .colorText {
         color: var(--color-gold);
       }
 
       p{
-          @include text(#3F3F3F, clamp(16px, 2vw, 20px), unset, 200);
+          @include text(var(--color-textGrey), clamp(16px, 2vw, 20px), unset, 200);
           max-width: 80%;
           margin-top: 40px;
       }
@@ -650,9 +653,10 @@ export default {
     h1 {
       font-size: 8vw;
     }
-
-    .infoBlock,
-    .map,
+    .infoBlock{
+      margin: 10px;
+      gap: 10px;
+    }
     .journeyPlan,
     .transferBlock {
       margin: 10px;
@@ -665,6 +669,9 @@ export default {
     p,
     span {
       font-size: 80%;
+    }
+    .map{
+      margin: 10px;
     }
 
     .mainImage,

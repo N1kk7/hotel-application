@@ -389,8 +389,8 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: 30%;
-                    height: 50px;
+                    width: clamp(140px, 30%, 200px);
+                    height: clamp(40px, 5vw, 50px);
                     background: rgba(0, 0, 0, 0.7);
                     z-index: 10;
         
@@ -413,6 +413,10 @@
                         justify-content: center;
                         align-items: center;
                         gap: 10px;
+                    }
+                    @media (max-width: 450px) {
+                      width: 100%;
+                      left: 0;
                     }
                   }
                 }

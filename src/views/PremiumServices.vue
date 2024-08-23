@@ -155,7 +155,7 @@ export default {
                 padding-bottom: clamp(5px, 4vw, 10px);
             }
             h2{
-                @include text(var(--color-black), clamp(18px, 4vw, 40px), uppercase, 500);
+                @include text(var(--color-gold), clamp(18px, 4vw, 40px), uppercase, 500);
             }
             p{
                 @include text(#454545, clamp(16px, 4vw, 28px), normal, 400);
@@ -174,7 +174,7 @@ export default {
                         object-fit: cover;
                     }
                     h4{
-                        @include text(var(--color-black), clamp(14px, 4vw, 30px), uppercase, 500);
+                        @include text(var(--color-gold), clamp(14px, 4vw, 30px), uppercase, 500);
                         padding: clamp(11px, 4vw, 22px) 0;
                     }
                     p{

@@ -184,9 +184,10 @@ export default {
                     border-radius: 20px;
                     background: var(--color-light);
                     width: fit-content;
-                    @include text(var(--color-gold), 12px, uppercase, 500);
+                    @include text(var(--color-gold), 12px, uppercase, 700);
                     cursor: pointer;
                     white-space: nowrap;
+                    border: 1px solid var(--color-gold);
                     z-index: 4;
                     &:hover{
                         background: var(--color-gold);
@@ -197,7 +198,7 @@ export default {
     }
 
     h2 {
-      @include text(var(--color-black), clamp(18px, 4vw, 40px), uppercase, 500);
+      @include text(var(--color-gold), clamp(18px, 4vw, 40px), uppercase, 500);
     }
 
     p {
@@ -224,7 +225,7 @@ export default {
         }
 
         h4 {
-          @include text(var(--color-black), clamp(14px, 4vw, 30px), uppercase, 500);
+          @include text(var(--color-gold), clamp(14px, 4vw, 30px), uppercase, 500);
           padding: clamp(11px, 4vw, 22px) 0;
         }
 

@@ -74,7 +74,9 @@
         <section class="playGolf">
             <div class="playGolf__content">
                 <div class="playGolf__text">
-                    <h2 class="playGolf__title">Play Some Golf</h2>
+                    <h2 class="playGolf__title">Play Some
+                      <span style="color: var(--color-gold)">Golf</span>
+                    </h2>
                     <p class="playGolf__description">
                     Fancy a game of golf? You have many options to choose from! For example,
                     The Royal Golf Club in Mariánské Lázně is the oldest golf course in the country.
@@ -115,8 +117,6 @@
                     </swiper-slide>
                   </swiper>
                   <div class="buttonWrapper">
-                    <!-- <SvgIcon name="arrowRight" size="large" stroke="#D7B154"
-                    style="transform: rotate(180deg);"/> -->
                     <SvgIcon name="arrowLeft" size="medium" stroke="#D7B154" @click="slidePrev"/>
 
                     <SvgIcon name="arrowRight" size="medium" stroke="#D7B154" @click="slideNext"/>
@@ -303,11 +303,11 @@ export default {
       gap: 40px;
 
       h2 {
-        @include text(var(--color-black), 40px, uppercase, 500);
+        @include text(var(--color-gold), clamp(18px, 4vw, 40px), uppercase, 500);
       }
 
       p {
-        @include text(var(--color-black), 20px, unset, 400);
+        @include text(#454545, clamp(16px, 4vw, 28px), unset, 400);
       }
 
       .clubsWrapper {
@@ -326,12 +326,12 @@ export default {
           }
 
           h4 {
-            @include text(var(--color-black), 30.752px, uppercase, 500);
+            @include text(var(--color-gold), clamp(14px, 4vw, 30px), uppercase, 500);
             padding: 22px 0;
           }
 
           p {
-            @include text(var(--color-black), 21.966px, unset, 400);
+            @include text(#454545, clamp(12px, 4vw, 24px), unset, 400);
           }
         }
       }
@@ -354,8 +354,8 @@ export default {
         gap: 40px;
         margin-bottom: 2rem;
         background: var(--color-white);
-        // padding: 60px 72px;
-      @include blockStyles;
+        @include blockStyles;
+        margin: 0;
 
       }
 
@@ -371,7 +371,7 @@ export default {
 
       &__description {
         margin-bottom: 1rem;
-        @include text(var(--color-black), 20px, unset, 400);
+        @include text(var(--color-textGrey), 20px, unset, 400);
       }
 
       &__imageWrapper {
@@ -425,6 +425,7 @@ export default {
       padding: 60px;
       background-color: #f9f9f9;
       border-radius: 10px;
+      margin-block: 20px;
     }
 
     .playGolf__detail {
@@ -433,7 +434,7 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      gap: 20px;
+      gap: clamp(10px, 2vw, 20px);
 
       .icon {
         border: 1px solid #D7B154;
@@ -443,11 +444,11 @@ export default {
     }
 
     .playGolf__detailValue {
-      @include text(var(--color-black), 28px, uppercase, 500);
+      @include text(var(--color-gold), clamp(22px, 4vw, 28px), uppercase, 500);
     }
 
     .playGolf__detailLabel {
-      @include text(#3F3F3F, 20px, unset, 400);
+      @include text(var(--color-textGrey), clamp(16px, 4vw, 20px), unset, 400);
     }
 
     .availableServices {
@@ -460,12 +461,12 @@ export default {
       }
 
       &__title {
-        @include text(var(--color-black), 40px, uppercase, 500);
+        @include text(var(--color-black), clamp(18px, 4vw, 40px), uppercase, 500);
       }
 
       &__description {
-        margin-top: 40px;
-        @include text(var(--color-black), 20px, unset, 400);
+        margin-top: clamp(20px, 3vw, 40px);
+        @include text(var(--color-greyText), clamp(16px, 4vw, 28px), unset, 400);
       }
 
       &__services {
@@ -486,12 +487,12 @@ export default {
       }
 
       &__serviceTitle {
-        @include text(var(--color-black), 28px, uppercase, 500);
+        @include text(var(--color-gold), clamp(14px, 4vw, 30px), uppercase, 500);
       }
 
       &__serviceDescription {
-        margin-top: 20px;
-        @include text(var(--color-black), 20px, unset, 400);
+        margin-top: clamp(10px, 2vw, 20px);
+        @include text(var(--color-textGrey), clamp(12px, 4vw, 24px), unset, 400);
       }
     }
   }
@@ -656,7 +657,7 @@ export default {
         &__details {
           flex-direction: column;
           padding: 20px;
-          gap: 15px;
+          gap: clamp(15px, 4vw, 25px);
         }
       }
 
@@ -708,7 +709,6 @@ export default {
       }
 
       .golfClubs {
-        padding: 10px;
         margin: 10px;
         gap: 10px;
 
@@ -749,8 +749,6 @@ export default {
 
         &__details {
           flex-direction: column;
-          padding: 10px;
-          gap: 10px;
         }
       }
 
