@@ -346,7 +346,7 @@ export default {
         }
       }
     }
-    ::v-deep .swiper-pagination{
+    :deep(.swiper-pagination){
       display: none;
       @media (max-width: 768px) {
         display: flex;
