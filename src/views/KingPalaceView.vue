@@ -2,7 +2,7 @@
   <div class="Page KingPalace">
     <div class="main" ref="mainDiv">
       <picture>
-        <source srcset="../assets/images/king-palace/mob/mainBg.png" media="(min-width: 768px)">
+        <source srcset="../assets/images/king-palace/mob/mainBg.png" media="(max-width: 768px)">
         <img
           src="../assets/images/king-palace/mainBg.png"
           alt="Header Image"
@@ -56,7 +56,7 @@
         <div class="item" v-for="(item, index) in items" :key="index">
           <picture>
             <source :srcset="require(`@/assets/images/king-palace/mob/${item.imgSrc}`)"
-            media="(min-width: 768px)">
+            media="(max-width: 768px)">
             <img :src="require(`@/assets/images/king-palace/${item.imgSrc}`)" alt="services" />
           </picture>
           <h4 class="nameBlock">{{ item.title }}</h4>

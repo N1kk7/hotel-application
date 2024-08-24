@@ -349,8 +349,6 @@ export default {
       this.$nextTick(() => {
         if (this.swiperInstance) {
           this.swiperInstance.slideTo(index);
-        } else {
-          console.error('Swiper instance is not available.');
         }
       });
     },
