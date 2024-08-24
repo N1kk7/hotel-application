@@ -1,11 +1,17 @@
 <template>
    <div class="Page Services">
         <div class="main" ref="mainDiv">
-            <img
-                src="../assets/images/premium-services/main.png"
-                alt="Header Image" class="mainImage"
-                ref="mainImageBg"
-            />
+            <picture>
+                <source
+                    srcset="../assets/images/premium-services/mob/main.png"
+                    media="(max-width: 768px)"
+                >
+                <img
+                    src="../assets/images/premium-services/main.png"
+                    alt="Header Image" class="mainImage"
+                    ref="mainImageBg"
+                />
+            </picture>
             <div class="textBlock" ref="textBlock">
                 <div class="path">
                     <router-link to="/">
@@ -38,44 +44,23 @@
                 do not hesitate to contact us.
             </p>
             <div class="clubsWrapper">
-                <div class="club">
-                    <img src="../assets/images/premium-services/serv1.png" alt="services">
+                <div class="club" v-for="service in servicesItems" :key="service.id">
+                    <picture>
+                        <source
+                            :srcset="
+                                require(`@/assets/images/premium-services/mob/${service.pathImg}`)"
+                            media="(max-width: 768px)"
+                        >
+                        <img
+                            :src="require(`@/assets/images/premium-services/${service.pathImg}`)"
+                            alt="services">
+                    </picture>
                     <h4 class="nameClub">
-                        Airport Transfer
+                         {{ service.tittle }}
 
                     </h4>
                     <p>
-                        We will drive you home safely and on time
-                    </p>
-                </div>
-                <div class="club">
-                    <img src="../assets/images/premium-services/serv2.png" alt="services">
-                    <h4 class="nameClub">
-                        Rent a car
-
-                    </h4>
-                    <p>
-                        We will help you with your car rental
-                    </p>
-                </div>
-                <div class="club">
-                    <img src="../assets/images/premium-services/serv3.png" alt="services">
-                    <h4 class="nameClub">
-                        Early Check-In
-
-                    </h4>
-                    <p>
-                        Early check-in upon availability
-                    </p>
-                </div>
-                <div class="club">
-                    <img src="../assets/images/premium-services/serv4.png" alt="services">
-                    <h4 class="nameClub">
-                        Laundry Service
-
-                    </h4>
-                    <p>
-                        Laundry Service
+                        {{ service.description }}
                     </p>
                 </div>
             </div>
@@ -95,6 +80,36 @@ export default {
   components: {
     SvgIcon,
     RoomsCarusel,
+  },
+  data() {
+    return {
+      servicesItems: [
+        {
+          id: 1,
+          pathImg: 'serv1.png',
+          tittle: 'Airport Transfer',
+          description: 'We will drive you home safely and on time',
+        },
+        {
+          id: 2,
+          pathImg: 'serv2.png',
+          tittle: 'Rent a car',
+          description: 'We will help you with your car rental',
+        },
+        {
+          id: 3,
+          pathImg: 'serv3.png',
+          tittle: 'Early Check-In',
+          description: 'Early check-in upon availability',
+        },
+        {
+          id: 4,
+          pathImg: 'serv4.png',
+          tittle: 'Laundry Service',
+          description: 'Laundry Service',
+        },
+      ],
+    };
   },
   setup() {
     const {

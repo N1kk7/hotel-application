@@ -1,11 +1,16 @@
 <template>
     <div class="Page Contact">
         <div class="main" ref="mainDiv">
-            <img
-                src="../assets/images/contact/mainBg.png"
+            <picture>
+              <source
+                :srcset="require('../assets/images/contact/mob/mainBg.png')"
+                media="(max-width: 768px)">
+              <img
+                :src="require('@/assets/images/contact/mainBg.png')"
                 alt="Header Image" class="mainImage"
-                 ref="mainImageBg"
-            />
+                ref="mainImageBg"
+              />
+            </picture>
             <div class="textBlock" ref="textBlock">
                 <div class="path">
                     <router-link to="/">
@@ -182,7 +187,16 @@
             </div>
         </div>
         <div class="transferBlock">
-            <img src="../assets/images/contact/transfer.png" alt="transfer">
+            <picture>
+              <source
+                :srcset="require('@/assets/images/contact/mob/transfer.png')"
+                media="(max-width: 768px)"
+              >
+              <img
+                :src="require('@/assets/images/contact/transfer.png')"
+                alt="transfer"
+              >
+            </picture>
             <div class="transferInfo">
                 <div class="title">
                     <h2>
@@ -547,7 +561,7 @@ export default {
 
     img {
         flex: 1 1 50%;
-        max-width: 50%;
+        // max-width: 50%;
         height: auto;
         object-fit: cover;
     }

@@ -6,7 +6,7 @@
         autoplay
         loop
         muted
-        poster="../assets/images/restaurants/mainBg.png"
+        :poster="posterImg"
         ref="mainImageBg"
       >
         <source src="../assets/images/restaurants/Kings-Restaurant.mp4" type="video/mp4" />
@@ -56,10 +56,16 @@
           class="mySwiper"
         >
           <swiper-slide v-for="slide in radimskySlides" :key="slide.id">
-            <img
-              :src="require(`@/assets/images/restaurants/${slide.pathImg}`)"
-              alt="hotelImg"
+            <picture>
+              <source
+                :srcset="require(`@/assets/images/restaurants/mob/${slide.pathImg}`)"
+                media="(max-width: 768px)"
+              >
+              <img
+                :src="require(`@/assets/images/restaurants/${slide.pathImg}`)"
+                alt="hotelImg"
             />
+            </picture>
           </swiper-slide>
           <div class="buttonWrapper">
             <div class="swiper-button-prev">
@@ -100,7 +106,16 @@
           </ul>
         </div>
         <div class="cafeImage">
-          <img src="../assets/images/restaurants/restSlider1.png" alt="" />
+          <picture>
+            <source
+              :srcset="require('@/assets/images/restaurants/mob/restSlider1.png')"
+              media="(max-width: 768px)"
+            >
+            <img
+              :src="require('@/assets/images/restaurants/restSlider1.png')"
+              alt="cafe"
+            />
+          </picture>
         </div>
       </div>
     </div>
@@ -121,11 +136,14 @@
               memorable.
             </p>
           </div>
-          <img
-            class="defaultImg"
-            src="@/assets/images/restaurants/radimsky-team.png"
-            alt="playKing"
-          />
+          <picture>
+            <source :srcset="require('@/assets/images/restaurants/mob/radimsky-team.jpg')">
+            <img
+              class="defaultImg"
+              :src="require('@/assets/images/restaurants/radimsky-team.png')"
+              alt="playKing"
+            />
+          </picture>
         </div>
       </div>
     </div>
@@ -134,7 +152,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import SvgIcon from '@/components/SvgIcon.vue';
@@ -142,6 +160,8 @@ import useAnimations from '@/animations/useAnimations';
 import DistanceC from '@/components/DistanceC.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
 import RestaurantCarusel from '@/components/RestaurantCarusel.vue';
+import mainBg from '@/assets/images/restaurants/mainBg.png';
+import mobileBg from '@/assets/images/restaurants/mob/mainBg.png';
 import 'swiper/swiper-bundle.css';
 
 export default {
@@ -261,6 +281,7 @@ export default {
     const cafeTotalSlides = ref(0);
     const luxCurrentSlide = ref(0);
     const luxTotalSlides = ref(0);
+    const posterImg = ref('');
     const {
       mainDiv, textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
@@ -287,6 +308,21 @@ export default {
       }
     };
 
+    const setPosterImg = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth >= 768) {
+        posterImg.value = mainBg;
+      } else {
+        posterImg.value = mobileBg;
+      }
+    };
+    onMounted(() => {
+      setPosterImg();
+      window.addEventListener('resize', setPosterImg);
+    });
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', setPosterImg);
+    });
     return {
       modules: [Autoplay, EffectFade, Navigation],
       swiperLux,
@@ -305,8 +341,15 @@ export default {
       cafeTotalSlides,
       onCafeSwiper,
       onSlideChangeCafe,
+      posterImg,
+      setPosterImg,
     };
   },
+  // computed: {
+  //   posterPath() {
+  //     return `/assets/images/restaurants/${this.posterImg}`;
+  //   },
+  // },
   mounted() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   },

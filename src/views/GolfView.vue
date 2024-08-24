@@ -1,11 +1,15 @@
 <template>
     <div class="Page Golf">
         <div class="main" ref="mainDiv">
-            <img
-                src="../assets/images/golf-page/main-golf.png"
-                alt="Header Image" class="mainImage"
-                ref="mainImageBg"
-            />
+            <picture>
+              <source
+                srcset="@/assets/images/golf-page/mob/main-golf.png" media="(max-width: 768px)">
+              <img
+                  src="@/assets/images/golf-page/main-golf.png"
+                  alt="Header Image" class="mainImage"
+                  ref="mainImageBg"
+              />
+            </picture>
             <div class="textBlock" ref="textBlock">
                 <div class="path">
                     <router-link to="/">
@@ -27,45 +31,23 @@
             </h2>
             <p>For your convenience, we have a selection of trusted tourist attractions nearby.</p>
             <div class="clubsWrapper">
-                <div class="club">
-                    <img src="../assets/images/golf-page/golf4.png" alt="">
+                <div class="club" v-for="(club, index) in clubs" :key="index">
+                    <picture>
+                      <source
+                        :srcset="require(`@/assets/images/golf-page/mob/${club.image}`)"
+                        media="(max-width: 768px)"
+                      >
+                      <img
+                        :src="require(`@/assets/images/golf-page/${club.image}`)"
+                        alt="club"
+                      >
+                    </picture>
                     <h4 class="nameClub">
-                        MARIÁNSKÉ LÁZNĚ
+                         {{ club.name }}
 
                     </h4>
                     <p>
-                        A national cultural monument and the second
-                        largest riding hall in Central Europe.
-                    </p>
-                </div>
-                <div class="club">
-                    <img src="../assets/images/golf-page/golf1.png" alt="">
-                    <h4 class="nameClub">
-                        KYNŽVART
-
-                    </h4>
-                    <p>
-                        Ruins of the oldest known Czech stone castle.
-                    </p>
-                </div>
-                <div class="club">
-                    <img src="../assets/images/golf-page/golf2.png" alt="">
-                    <h4 class="nameClub">
-                        ALFRÉDOV
-
-                    </h4>
-                    <p>
-                        Ideal for training and recreational sports.
-                    </p>
-                </div>
-                <div class="club">
-                    <img src="../assets/images/golf-page/golf3.png" alt="">
-                    <h4 class="nameClub">
-                        SOKOLOV
-
-                    </h4>
-                    <p>
-                        Europe's most important paintball arena.
+                        {{ club.description }}
                     </p>
                 </div>
             </div>
@@ -91,29 +73,14 @@
                     :slides-per-view="'auto'"
                     class="mySwiper"
                   >
-                    <swiper-slide>
-                      <img class="playGolf__image"
-                      src="../assets/images/golf-page/player1.png" alt="Golf Image"/>
-                    </swiper-slide>
-                    <swiper-slide>
-                      <img class="playGolf__image"
-                      src="../assets/images/golf-page/player2.png" alt="Golf Image"/>
-                    </swiper-slide>
-                    <swiper-slide>
-                      <img class="playGolf__image"
-                      src="../assets/images/golf-page/player4.png" alt="Golf Image"/>
-                    </swiper-slide>
-                    <swiper-slide>
-                      <img class="playGolf__image"
-                      src="../assets/images/golf-page/player3.png" alt="Golf Image"/>
-                    </swiper-slide>
-                    <swiper-slide>
-                      <img class="playGolf__image"
-                      src="../assets/images/golf-page/player4.png" alt="Golf Image"/>
-                    </swiper-slide>
-                    <swiper-slide>
-                      <img class="playGolf__image"
-                      src="../assets/images/golf-page/player5.png" alt="Golf Image"/>
+                    <swiper-slide v-for="player in playGolf" :key="player.id">
+                      <picture>
+                        <source
+                        :srcset="require(`@/assets/images/golf-page/mob/${player.pathImg}`)">
+                        <img class="playGolf__image"
+                        :src="require(`@/assets/images/golf-page/${player.pathImg}`)"
+                        alt="Golf Image"/>
+                      </picture>
                     </swiper-slide>
                   </swiper>
                   <div class="buttonWrapper">
@@ -159,23 +126,17 @@
       </p>
     </div>
     <div class="availableServices__services">
-      <div class="availableServices__service">
-        <img class="availableServices__image"
-        src="../assets/images/golf-page/service1.png" alt="Equipment Rental">
-        <h3 class="availableServices__serviceTitle">Equipment Rental</h3>
-        <p class="availableServices__serviceDescription">Description</p>
-      </div>
-      <div class="availableServices__service">
-        <img class="availableServices__image"
-        src="../assets/images/golf-page/service2.png" alt="Golf Lessons">
-        <h3 class="availableServices__serviceTitle">Golf Lessons</h3>
-        <p class="availableServices__serviceDescription">Description</p>
-      </div>
-      <div class="availableServices__service">
-        <img class="availableServices__image"
-        src="../assets/images/golf-page/service3.png" alt="Transfer">
-        <h3 class="availableServices__serviceTitle">Transfer</h3>
-        <p class="availableServices__serviceDescription">Description</p>
+      <div class="availableServices__service" v-for="(services, index) in servicesArray"
+      :key="index">
+        <picture>
+          <source :srcset="require(`@/assets/images/golf-page/mob/${services.image}`)
+          " media="(max-width: 768px)">
+          <img class="availableServices__image"
+          :src="require(`@/assets/images/golf-page/${services.image}`)"
+          alt="Equipment Rental">
+        </picture>
+        <h3 class="availableServices__serviceTitle">{{ services.tittle }}</h3>
+        <p class="availableServices__serviceDescription">{{ services.description }}</p>
       </div>
     </div>
         </section>
@@ -210,21 +171,43 @@ export default {
       showPlayGolfContent: true,
       showPlayGolfDetails: true,
       showAvailableServicesHeader: true,
+      playGolf: [
+        {
+          id: 1,
+          pathImg: 'player1.png',
+        },
+        {
+          id: 2,
+          pathImg: 'player2.png',
+        },
+        {
+          id: 3,
+          pathImg: 'player3.png',
+        },
+        {
+          id: 4,
+          pathImg: 'player4.png',
+        },
+        {
+          id: 5,
+          pathImg: 'player5.png',
+        },
+      ],
       clubs: [
-        { name: 'MARIÁNSKÉ LÁZNĚ', image: '../assets/images/golf-page/golf4.png', description: 'A national cultural monument and the second largest riding hall in Central Europe.' },
-        { name: 'KYNŽVART', image: '../assets/images/golf-page/golf1.png', description: 'Ruins of the oldest known Czech stone castle.' },
-        { name: 'ALFRÉDOV', image: '../assets/images/golf-page/golf2.png', description: 'Ideal for training and recreational sports.' },
-        { name: 'SOKOLOV', image: '../assets/images/golf-page/golf3.png', description: 'Europe\'s most important paintball arena.' },
+        { name: 'MARIÁNSKÉ LÁZNĚ', image: 'golf4.png', description: 'A national cultural monument and the second largest riding hall in Central Europe.' },
+        { name: 'KYNŽVART', image: 'golf1.png', description: 'Ruins of the oldest known Czech stone castle.' },
+        { name: 'ALFRÉDOV', image: 'golf2.png', description: 'Ideal for training and recreational sports.' },
+        { name: 'SOKOLOV', image: 'golf3.png', description: 'Europe\'s most important paintball arena.' },
       ],
       details: [
         { icon: 'golfField', value: '100 HA', label: 'Area of the golf course' },
         { icon: 'lake', value: '10 HA', label: 'Area of the water surface' },
         { icon: 'golfHole', value: '18', label: 'Number of holes' },
       ],
-      services: [
-        { title: 'Equipment Rental', image: '../assets/images/golf-page/service1.png', description: 'Description' },
-        { title: 'Golf Lessons', image: '../assets/images/golf-page/service2.png', description: 'Description' },
-        { title: 'Transfer', image: '../assets/images/golf-page/service3.png', description: 'Description' },
+      servicesArray: [
+        { title: 'Equipment Rental', image: 'service1.png', description: 'Description' },
+        { title: 'Golf Lessons', image: 'service2.png', description: 'Description' },
+        { title: 'Transfer', image: 'service3.png', description: 'Description' },
       ],
     };
   },

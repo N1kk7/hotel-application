@@ -1,20 +1,15 @@
 <template>
     <div class="Page Massage">
         <div class="main" ref="mainDiv">
-            <!-- <img
-                src="../assets/images/relax/relaxBg.png"
-                alt="Header Image" class="mainImage"
-            /> -->
             <video
                 playsinline
                 autoplay
                 loop
                 muted
-                poster="../assets/images/relax/relaxBg.png"
+                :poster="posterImg"
                 ref="mainImageBg"
                 >
                 <source src="../assets/images/relax/Kings-Wellness.mp4" type="video/mp4" />
-                <!-- <source src="path/to/video.webm" type="video/webm" /> -->
                 Your browser does not support the video tag.
             </video>
             <div class="textBlock" ref="textBlock">
@@ -99,24 +94,58 @@
                 </ul>
             </div>
         </div>
-        <div class="ourSpecialist">
+        <div class="ourSpecialist" v-for="(item, index) in relaxItems" :key="index">
+          <div class="specialistWrapper" v-if="item.revert">
             <div class="infoBlock">
                 <h2>
-                    RETREAT
+                    {{ item.name }}
                 </h2>
                 <p>
-                    Relax in our Finnish sauna, steam bath or herbal steam bath.
-                    Take a few laps in the pool and enjoy the tranquil views of the Bohemian Forest!
+                    {{ item.description }}
                 </p>
-                <router-link to="/relax/wellness">
+                <router-link to="/relax/wellness" v-if="item.hasBtn">
                     <PrimaryButton buttonText="More info"/>
                 </router-link>
             </div>
             <div class="imageBlock">
-                <img src="../assets/images/relax/retreat.png" alt="retreat">
+              <!-- <img :src="require(`@/assets/images/relax/${item.img}`)" alt="massage"> -->
+                <picture>
+                  <source
+                    :srcset="require(`@/assets/images/relax/mob/${item.img}`)"
+                    type="image/webp">
+                  <img
+                    :src="require(`@/assets/images/relax/${item.img}`)"
+                    alt="retreat"
+                  >
+                </picture>
             </div>
+          </div>
+          <div class="specialistWrapper" v-else>
+            <div class="imageBlock">
+              <picture>
+                  <source
+                    :srcset="require(`@/assets/images/relax/mob/${item.img}`)"
+                    type="image/webp">
+                  <img
+                    :src="require(`@/assets/images/relax/${item.img}`)"
+                    alt="retreat"
+                  >
+                </picture>
+            </div>
+            <div class="infoBlock">
+                <h2>
+                    {{ item.name }}
+                </h2>
+                <p>
+                    {{ item.description }}
+                </p>
+                <router-link to="/relax/wellness" v-if="item.hasBtn">
+                    <PrimaryButton buttonText="More info"/>
+                </router-link>
+            </div>
+          </div>
         </div>
-        <div class="ourSpecialist">
+        <!-- <div class="ourSpecialist">
             <div class="imageBlock">
                 <img src="../assets/images/relax/massage.png" alt="massage">
             </div>
@@ -164,16 +193,19 @@
                     Palace.
                 </p>
             </div>
-        </div>
+        </div> -->
     </div>
 
 </template>
 
 <script>
+import { onMounted, ref, onBeforeUnmount } from 'vue';
 import SvgIcon from '@/components/SvgIcon.vue';
 // import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
+import mainBg from '@/assets/images/relax/relaxBg.png';
+import mobileBg from '@/assets/images/relax/mob/relaxBg.png';
 
 export default {
   name: 'MassagesView',
@@ -181,11 +213,65 @@ export default {
     SvgIcon,
     PrimaryButton,
   },
+  data() {
+    return {
+      relaxItems: [
+        {
+          id: 1,
+          name: 'RETREAT',
+          description: 'Relax in our Finnish sauna, steam bath or herbal steam bath. Take a few laps in the pool and enjoy the tranquil views of the Bohemian Forest!',
+          img: 'retreat.png',
+          hasBtn: true,
+          revert: false,
+        },
+        {
+          id: 2,
+          name: 'THAI MASSAGE',
+          description: 'Certified Thai masseuses will make sure you’re ready for your next step.',
+          img: 'massage.png',
+          hasBtn: true,
+          revert: true,
+        },
+        {
+          id: 3,
+          name: 'REACH NEW HEIGHTS',
+          description: 'Our gym has 24/7 accessibility with a well-maintained selection of free weights and machines.',
+          img: 'gym.png',
+          hasBtn: true,
+          revert: false,
+        },
+        {
+          id: 4,
+          name: 'BARBER SHOP',
+          description: 'Barber Karel Cavalier won the GBBB (the Great British Barber Bash) in Amsterdam and is one of the best barbers in Europe.  After opening barber shops in Pilsen and Prague, he has opened his third barber shop at King\'s Palace.',
+          img: 'barber.png',
+          hasBtn: false,
+          revert: true,
+        },
+      ],
+    };
+  },
   setup() {
     const {
       mainDiv,
       textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
+    const posterImg = ref('');
+    const setPosterImg = () => {
+      const screen = window.innerWidth;
+      if (screen >= 768) {
+        posterImg.value = mainBg;
+      } else {
+        posterImg.value = mobileBg;
+      }
+    };
+    onMounted(() => {
+      setPosterImg();
+      window.addEventListener('resize', setPosterImg);
+    });
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', setPosterImg);
+    });
     return {
       mainDiv,
       textBlock,
@@ -193,6 +279,8 @@ export default {
       blockWrapper,
       mainImageBg,
       animatedTitle,
+      posterImg,
+      setPosterImg,
     };
   },
   mounted() {
@@ -250,16 +338,9 @@ export default {
   .infoBlock {
     display: flex;
     gap: 30px;
-    // padding: 20px;
     @include blockMargin;
 
     .infoCard {
-    //   padding: 20px;
-    //   border-bottom: 1px solid var(--color-light-grey);
-    // background: var(--color-white);
-    // border-radius: 10px;
-    // width: 100%;
-    // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     @include cardStyles;
 
       &:last-child {
@@ -309,9 +390,11 @@ export default {
   .ourSpecialist {
     @include blockStyles;
     background: var(--color-white);
-    align-items: center;
-    display: flex;
-    gap: 20px;
+    .specialistWrapper{
+      align-items: center;
+      display: flex;
+      gap: 20px;
+    }
 
     .infoBlock {
       display: flex;
@@ -355,7 +438,9 @@ export default {
             }
         }
         .ourSpecialist{
+          .specialistWrapper{
             flex-direction: column;
+          }
             .infoBlock{
                 max-width: 100%;
             }
