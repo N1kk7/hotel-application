@@ -278,7 +278,7 @@
 
 <script>
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import {
   EffectFade, Navigation, Pagination, Autoplay, FreeMode,
@@ -478,8 +478,13 @@ export default {
     };
 
     onMounted(() => {
+      setPosterImg();
       updateSlidesPerView();
-      window.addEventListener('resize', updateSlidesPerView);
+      window.addEventListener('resize', updateSlidesPerView, setPosterImg);
+    });
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', updateSlidesPerView, setPosterImg);
     });
 
     return {
