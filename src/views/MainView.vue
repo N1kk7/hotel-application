@@ -7,7 +7,7 @@
         loop
         muted
         ref="mainImageBg"
-        poster="../assets/images/home-page/main.png"
+        :poster="posterImg"
       >
         <source src="../assets/images/home-page/Kings-Main.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -24,7 +24,6 @@
     </section>
 
     <section class="hotelDescription">
-      <!-- <div class="container"> -->
         <h2>King’s Palace Rozvadov, Czech Republic</h2>
         <div class="description">
           <p>
@@ -34,7 +33,6 @@
         </p>
         </div>
         <div class="underLine"></div>
-      <!-- </div> -->
     </section>
 
     <section class="PlayKing">
@@ -57,7 +55,18 @@
             </p>
           </div>
           <!-- <div class="content"> -->
-          <img class="defaultImg" src="@/assets/images/home-page/playKing.jpg" alt="playKing"/>
+            <picture>
+              <source
+                :srcset="require('@/assets/images/home-page/mob/playKing.jpg')"
+                media="(max-width: 768px)"
+              >
+              <img
+                class="defaultImg"
+                :src="require('@/assets/images/home-page/playKing.jpg')"
+                alt="playKing"
+              />
+
+            </picture>
           <!-- </div> -->
         </div>
       </div>
@@ -95,9 +104,16 @@
             class="mySwiper"
           >
             <swiper-slide v-for="hotel in hotelSlides" :key="hotel.id">
-              <img :src="require(`@/assets/images/home-page/accomodation/${hotel.pathImg}`)"
-              alt="hotelImg"
-              >
+              <picture>
+                <source
+                  :srcset="require(`@/assets/images/home-page/accomodation/mob/${hotel.pathImg}`)"
+                  media="(max-width: 768px)"
+                >
+                <img
+                  :src="require(`@/assets/images/home-page/accomodation/${hotel.pathImg}`)"
+                  alt="hotelImg"
+                >
+              </picture>
 
             </swiper-slide>
             <div class="buttonWrapper">
@@ -124,7 +140,17 @@
       </div>
       <div class="items">
         <div class="leftItem">
-          <img src="../assets/images/home-page/welness.png" alt="welness" />
+          <picture>
+            <source
+              :srcset="require('@/assets/images/home-page/mob/welness.png')"
+              media="(max-width: 768px)"
+            >
+            <img
+              :src="require('@/assets/images/home-page/welness.png')"
+              alt="welness"
+            />
+
+          </picture>
         </div>
         <div class="rightItem">
           <div class="tittle">
@@ -146,7 +172,17 @@
       <RestaurantCarusel tittleName="Nearby restaurants"/>
     </section>
     <section class="visualTour">
-      <img src="../assets/images/home-page/tour.png" alt="tour" />
+      <picture>
+        <source
+          :srcset="require('@/assets/images/home-page/mob/tour.png')"
+          media="(max-width: 768px)"
+        >
+        <img
+          :src="require('@/assets/images/home-page/tour.png')"
+          alt="tour"
+        />
+
+      </picture>
       <div class="sectionItems">
         <div class="description">
           <h2 class="colorText">visual tour</h2>
@@ -171,7 +207,17 @@
         :slides-per-view="1"
       >
         <swiper-slide v-for="slide in dataSlides" :key="slide.id">
-          <img :src="require(`@/assets/images/home-page/tour/${slide.slideImg}`)" alt="tour-img" />
+          <picture>
+            <source
+              :srcset="require(`@/assets/images/home-page/tour/mob/${slide.slideImg}`)"
+              media="(max-width: 768px)"
+            >
+            <img
+              :src="require(`@/assets/images/home-page/tour/${slide.slideImg}`)"
+              alt="tour-img"
+            />
+
+          </picture>
           <div class="slideContent">
             <h2>{{ slide.slideName }}</h2>
             <p>{{ slide.description }}</p>
@@ -205,10 +251,16 @@
           class="mySwiper"
         >
           <swiper-slide v-for="image in igImg" :key="image.id">
-            <img
-              :src="require(`@/assets/images/home-page/ig/${image.pathImg}`)"
-              alt="picture"
-            />
+            <picture>
+              <source
+                :srcset="require(`@/assets/images/home-page/ig/mob/${image.pathImg}`)"
+                media="(max-width: 768px)"
+              >
+              <img
+                :src="require(`@/assets/images/home-page/ig/${image.pathImg}`)"
+                alt="picture"
+              />
+            </picture>
           </swiper-slide>
         </swiper>
       </div>
@@ -236,6 +288,8 @@ import RoomsCarusel from '@/components/RoomsCarusel.vue';
 import HelpInfo from '@/components/HelpInfo.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
 import RestaurantCarusel from '@/components/RestaurantCarusel.vue';
+import mainBg from '@/assets/images/home-page/main.png';
+import mobileBg from '@/assets/images/home-page/mob/main.png';
 import SvgIcon from '../components/SvgIcon.vue';
 import Additional3 from '../components/Buttons/Additional3.vue';
 
@@ -374,6 +428,7 @@ export default {
     const swiperInstance = ref(null);
     const slidesPerView = ref(3);
     const spaceBetween = ref(40);
+    const posterImg = ref(null);
 
     const {
       mainDiv, textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
@@ -413,6 +468,14 @@ export default {
         deluxeCurrentSlide.value = swiperDeluxe.value.realIndex + 1;
       }
     };
+    const setPosterImg = () => {
+      const width = window.innerWidth;
+      if (width >= 768) {
+        posterImg.value = mainBg;
+      } else {
+        posterImg.value = mobileBg;
+      }
+    };
 
     onMounted(() => {
       updateSlidesPerView();
@@ -439,6 +502,8 @@ export default {
       updateSlidesPerView,
       slidesPerView,
       spaceBetween,
+      setPosterImg,
+      posterImg,
       pagination: {
         clickable: true,
       },

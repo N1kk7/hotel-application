@@ -1,11 +1,17 @@
 <template>
     <div class="Page Massage">
         <div class="main" ref="mainDiv">
-            <img
-                src="../assets/images/wellness/wellnessBg.png"
-                alt="Header Image" class="mainImage"
-                ref="mainImageBg"
-            />
+            <picture>
+                <source
+                    :srcset="require('@/assets/images/wellness/mob/wellnessBg.png')"
+                    media="(max-width: 768px)"
+                    >
+                <img
+                    :src="require('@/assets/images/wellness/wellnessBg.png')"
+                    alt="Header Image" class="mainImage"
+                    ref="mainImageBg"
+                />
+            </picture>
             <div class="textBlock" ref="textBlock">
                 <div class="path">
                     <router-link to="/">
@@ -99,7 +105,16 @@
                 Take a soothing Finnish sauna or steam bath.
             </p>
             <div class="imageWrapper">
-                <img src="../assets/images/wellness/slider1.png" alt="slider1">
+                <picture>
+                    <source
+                        :srcset="require('@/assets/images/wellness/mob/slider1.png')"
+                        media="(max-width: 768px)"
+                    >
+                    <img
+                        :src="require('@/assets/images/wellness/slider1.png')"
+                        alt="slider1"
+                    >
+                </picture>
             </div>
         </div>
         <div class="ourSpecialist">
@@ -115,7 +130,13 @@
                 </p>
             </div>
             <div class="imageBlock">
-                <img src="../assets/images/wellness/aboutImg.png" alt="massagists">
+                <picture>
+                    <source :srcset="require('@/assets/images/wellness/mob/aboutImg.png')">
+                    <img
+                        :src="require('@/assets/images/wellness/aboutImg.png')"
+                        alt="massagists"
+                    >
+                </picture>
             </div>
         </div>
         <RoomsCarusel tittleName="AcCommodations" pathImg="."/>
@@ -125,7 +146,6 @@
 
 <script>
 import SvgIcon from '@/components/SvgIcon.vue';
-// import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';

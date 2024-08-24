@@ -145,55 +145,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="ourSpecialist">
-            <div class="imageBlock">
-                <img src="../assets/images/relax/massage.png" alt="massage">
-            </div>
-            <div class="infoBlock">
-                <h2>
-                    THAI MASSAGE
-                </h2>
-                <p>
-                    Certified Thai masseuses will make sure you're ready for your next step.
-                </p>
-                <router-link to="/relax/massages">
-                    <PrimaryButton buttonText="More info"/>
-                </router-link>
-            </div>
-        </div>
-        <div class="ourSpecialist">
-            <div class="infoBlock">
-                <h2>
-                    REACH NEW HEIGHTS
-                </h2>
-                <p>
-                    Our gym has 24/7 accessibility with a well-maintained
-                    selection of free weights and machines.
-                </p>
-                <router-link to="/relax/gym">
-                    <PrimaryButton buttonText="More info"/>
-                </router-link>
-            </div>
-            <div class="imageBlock">
-                <img src="../assets/images/relax/gym.png" alt="gym">
-            </div>
-        </div>
-        <div class="ourSpecialist">
-            <div class="imageBlock">
-                <img src="../assets/images/relax/barber.png" alt="barber">
-            </div>
-            <div class="infoBlock">
-                <h2>
-                    Barber shop
-                </h2>
-                <p>
-                    Barber Karel Cavalier won the GBBB (the Great British Barber Bash) in
-                    Amsterdam and is one of the best barbers in Europe.  After opening barber
-                    shops in Pilsen and Prague, he has opened his third barber shop at King's
-                    Palace.
-                </p>
-            </div>
-        </div> -->
     </div>
 
 </template>
@@ -201,7 +152,6 @@
 <script>
 import { onMounted, ref, onBeforeUnmount } from 'vue';
 import SvgIcon from '@/components/SvgIcon.vue';
-// import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import mainBg from '@/assets/images/relax/relaxBg.png';

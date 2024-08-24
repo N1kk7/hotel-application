@@ -59,7 +59,7 @@
     </div>
     <section class="luxury" ref="luxury">
       <div class="wrapper">
-        <div class="main">
+        <div class="defaultBlock">
           <div class="description">
             <span class="topBlock"> 5 STAR LUXURY </span>
             <h2>
@@ -86,7 +86,6 @@
 
             </div>
           </div>
-          <!-- <div class="content"> -->
           <swiper
             ref="swiperLux"
             :spaceBetween="30"
@@ -99,22 +98,16 @@
             class="mySwiper"
           >
             <swiper-slide
-              ><img src="@/assets/images/hotel-page/king/king1.jpg" alt="image1" /> </swiper-slide
-            ><swiper-slide
-              ><img src="@/assets/images/hotel-page/king/king2.jpg" alt="image2" /> </swiper-slide
-            ><swiper-slide
-              ><img src="@/assets/images/hotel-page/king/king3.jpg" alt="image3" /> </swiper-slide
-            ><swiper-slide
-              ><img src="@/assets/images/hotel-page/king/king4.jpg" alt="image4"
-            /></swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/hotel-page/king/king5.jpg" alt="image5" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/hotel-page/king/king6.jpg" alt="image6" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/hotel-page/king/king7.jpg" alt="image7" />
+              v-for="slide in leonSuite"
+              :key="slide.id"
+            >
+              <picture>
+                <source :srcset="require(`@/assets/images/hotel-page/king/mob/${slide.img}`)">
+                <img
+                  :src="require(`@/assets/images/hotel-page/king/${slide.img}`)"
+                  alt="image1"
+                />
+              </picture>
             </swiper-slide>
             <div class="buttonWrapper">
               <div class="swiper-button-prev">
@@ -130,8 +123,6 @@
               </div>
             </div>
           </swiper>
-
-          <!-- </div> -->
         </div>
         <div class="includeOptions">
           <h3 class="preTitle">Our 5 stars</h3>
@@ -179,7 +170,7 @@
     </section>
     <section class="luxury" ref="deluxe">
       <div class="wrapper">
-        <div class="main">
+        <div class="defaultBlock">
           <swiper
             ref="swiperDeluxe"
             :spaceBetween="30"
@@ -192,40 +183,19 @@
             class="mySwiper"
           >
             <swiper-slide
-              ><img
-                src="@/assets/images/hotel-page/admiral/admiral1.png"
-                alt="image1"
-              /> </swiper-slide
-            ><swiper-slide
-              ><img
-                src="@/assets/images/hotel-page/admiral/admiral2.png"
-                alt="image2"
-              /> </swiper-slide
-            ><swiper-slide
-              ><img
-                src="@/assets/images/hotel-page/admiral/admiral3.png"
-                alt="image3"
-              /> </swiper-slide
-            ><swiper-slide
-              ><img src="@/assets/images/hotel-page/admiral/admiral4.png" alt="image4"
-            /></swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/hotel-page/admiral/admiral5.png" alt="image5" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/hotel-page/admiral/admiral6.png" alt="image6" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/hotel-page/admiral/admiral7.png" alt="image7" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/hotel-page/admiral/admiral8.png" alt="image8" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/hotel-page/admiral/admiral9.png" alt="image9" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/hotel-page/admiral/admiral10.png" alt="image10" />
+              v-for="slide in admiralRoom"
+              :key="slide.id"
+            >
+              <picture>
+                <source
+                  :srcset="require(`@/assets/images/hotel-page/admiral/mob/${slide.img}`)"
+                  media="(max-width: 768px)"
+                >
+                <img
+                  :src="require(`@/assets/images/hotel-page/admiral/${slide.img}`)"
+                  alt="image1"
+                />
+              </picture>
             </swiper-slide>
             <div class="buttonWrapper">
               <div class="swiper-button-prev">
@@ -288,7 +258,7 @@
     </section>
     <section class="luxury" ref="comfort">
       <div class="wrapper">
-        <div class="main">
+        <div class="defaultBlock">
           <div class="description">
             <span class="topBlock"> 4 STAR COMFORT </span>
             <h2>4 stars of best comfort</h2>
@@ -301,7 +271,14 @@
               <PrimaryButton buttonText="Check availability" />
             </div>
           </div>
-          <img class="roomImg" src="@/assets/images/hotel-page/comfort.png" alt="comfort" />
+          <picture>
+            <source :srcset="require(`@/assets/images/hotel-page/mob/comfort.png`)">
+            <img
+              class="roomImg"
+              src="@/assets/images/hotel-page/comfort.png"
+              alt="comfort"
+            />
+          </picture>
         </div>
         <div class="includeOptions">
           <h3 class="preTitle">Our 4 stars</h3>
@@ -403,8 +380,15 @@
     </section>
     <section class="luxury" ref="everybody">
       <div class="wrapper">
-        <div class="main">
-          <img class="roomImg" src="@/assets/images/hotel-page/3star.png" alt="3star" />
+        <div class="defaultBlock">
+          <picture>
+            <source :srcset="require('@/assets/images/hotel-page/mob/3star.png')">
+            <img
+              class="roomImg"
+              :src="require('@/assets/images/hotel-page/3star.png')"
+              alt="3star"
+              />
+          </picture>
           <div class="description">
             <span class="topBlock"> 3 STAR EVERYBODY </span>
             <h2>3 stars to enjoy every night at king’s</h2>
@@ -479,7 +463,7 @@
     </section>
     <section class="luxury" ref="basic">
       <div class="wrapper">
-        <div class="main">
+        <div class="defaultBlock">
           <div class="description">
             <span class="topBlock"> 2 STAR BASIC </span>
             <h2>2- star affordable rooms</h2>
@@ -494,10 +478,15 @@
               <PrimaryButton buttonText="Check availability" />
             </div>
           </div>
-          <!-- <div class="content"> -->
-          <img class="roomImg" src="@/assets/images/hotel-page/2star.png" alt="2star" />
+            <picture>
+              <source :srcset="require('@/assets/images/hotel-page/mob/2star.png')">
+              <img
+                class="roomImg"
+                :src="require('@/assets/images/hotel-page/2star.png')"
+                alt="2star"
+              />
 
-          <!-- </div> -->
+            </picture>
         </div>
         <div class="includeOptions">
           <h3 class="preTitle">Our 2 stars</h3>
@@ -537,6 +526,82 @@ export default {
     SwiperSlide,
     PrimaryButton,
   },
+  data() {
+    return {
+      leonSuite: [
+        {
+          id: 1,
+          img: 'king1.jpg',
+        },
+        {
+          id: 2,
+          img: 'king2.jpg',
+        },
+        {
+          id: 3,
+          img: 'king3.jpg',
+        },
+        {
+          id: 4,
+          img: 'king4.jpg',
+        },
+        {
+          id: 5,
+          img: 'king5.jpg',
+        },
+        {
+          id: 6,
+          img: 'king6.jpg',
+        },
+        {
+          id: 7,
+          img: 'king7.jpg',
+        },
+      ],
+      admiralRoom: [
+        {
+          id: 1,
+          img: 'admiral1.png',
+        },
+        {
+          id: 2,
+          img: 'admiral2.png',
+        },
+        {
+          id: 3,
+          img: 'admiral3.png',
+        },
+        {
+          id: 4,
+          img: 'admiral4.png',
+        },
+        {
+          id: 5,
+          img: 'admiral5.png',
+        },
+        {
+          id: 6,
+          img: 'admiral6.png',
+        },
+        {
+          id: 7,
+          img: 'admiral7.png',
+        },
+        {
+          id: 8,
+          img: 'admiral8.png',
+        },
+        {
+          id: 9,
+          img: 'admiral9.png',
+        },
+        {
+          id: 10,
+          img: 'admiral10.png',
+        },
+      ],
+    };
+  },
   setup() {
     // const swiperInstance = ref(null);
     const luxury = ref(null);
@@ -544,7 +609,6 @@ export default {
     const comfort = ref(null);
     const everybody = ref(null);
     const basic = ref(null);
-
     const swiperLux = ref(null);
     const swiperDeluxe = ref(null);
     const luxCurrentSlide = ref(0);
@@ -651,13 +715,7 @@ export default {
       gap: 16px;
 
       p {
-        color: var(--color-white);
-        font-family: var(--font-text-reg);
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 24px */
-        text-transform: uppercase;
+        @include text(var(--color-white), 16px, uppercase, 400);
         max-width: 80%;
         margin: 0 auto;
       }
@@ -689,18 +747,18 @@ export default {
         @media (max-width: 768px) {
             &{
                 width: 95%;
-
             }
         }
         li {
-          color: var(--color-gold);
+          @include text(var(--color-gold), clamp(10px, 1vw, 12px), uppercase, 400);
+          // color: var(--color-gold);
           background: rgba(0, 0, 0, 0.75);
           border-radius: 20px;
         padding-block: clamp(5px, 2vw, 10px);
             padding-inline: clamp(10px, 2vw, 20px);
-          font-family: var(--font-text-reg);
-          font-size: clamp(10px, 1vw, 12px);
-          text-transform: uppercase;
+          // font-family: var(--font-text-reg);
+          // font-size: clamp(10px, 1vw, 12px);
+          // text-transform: uppercase;
           transition: all ease 0.3s;
           cursor: pointer;
           transform: translateX(0) scaleX(1);
@@ -765,177 +823,9 @@ export default {
     .wrapper {
       width: 100%;
       margin: 0 auto;
-
-      .main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        // margin: 0 20px;
-      @include blockStyles;
-
-        @media (min-width: 768px) {
-          flex-direction: row;
-          justify-content: space-between;
-          gap: 50px;
-        }
-
-        .description {
-          position: relative;
-          margin-block: 20px;
-          flex: 0 0 100%;
-          max-width: 100%;
-
-          @media (min-width: 768px) {
-            flex: 0 0 50%;
-            max-width: 50%;
-          }
-
-          .topBlock {
-            &::before {
-              content: "";
-              width: 79px;
-              height: 1px;
-              display: inline-block;
-              background-color: var(--color-gold);
-              vertical-align: middle;
-              top: -2px;
-              margin-bottom: 1px;
-              margin-right: 18px;
-            }
-          }
-
-          span {
-            font-family: var(--font-grot-bold);
-            font-size: 14px;
-            color: var(--color-gold);
-            font-weight: 700;
-            letter-spacing: 2px;
-          }
-
-          h2 {
-            font-family: var(--font-text-reg);
-            font-size: 24px;
-            font-weight: 700;
-            line-height: 1.1;
-            text-transform: uppercase;
-            margin: 20px 0 30px;
-
-            @media (min-width: 768px) {
-              font-size: 42px;
-            }
-
-            .colorText {
-              font-size: 24px;
-
-              @media (min-width: 768px) {
-                font-size: 42px;
-              }
-
-              &::before {
-                display: none;
-              }
-            }
-          }
-
-          p {
-            font-family: var(--font-text-reg);
-            font-size: 16px;
-            margin-block: 20px;
-            max-width: 100%;
-
-            @media (min-width: 768px) {
-              font-size: 20px;
-              max-width: 70%;
-            }
-          }
-          .buttonGroup{
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            padding-top: 15px;
-            gap: 15px;
-          }
-        }
-
-        .swiper {
-          width: 100%;
-          flex: 0 0 100%;
-          max-width: 100%;
-          height: auto;
-
-          @media (min-width: 768px) {
-            flex: 0 0 50%;
-            max-width: 40%;
-          }
-
-          .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              transition: all ease 0.5s;
-              transform: scale(1);
-
-              &:hover {
-                transform: scale(1.1);
-                transition: all ease 0.5s;
-              }
-            }
-          }
-
-          .buttonWrapper {
-            position: absolute;
-            bottom: 0;
-            right: 10%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 30%;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 10;
-
-            .swiper-button-prev,
-            .swiper-button-next {
-              flex: 1;
-              border-radius: 50%;
-              svg {
-                stroke: var(--color-gold);
-              }
-
-              &::after {
-                content: "";
-              }
-            }
-            .info{
-                @include text(var(--color-gold), 16px, uppercase, 700);
-                line-height: 1.1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-            }
-          }
-        }
-
-        .roomImg {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-
-          @media (min-width: 768px) {
-            flex: 0 0 50%;
-            max-width: 40%;
-          }
-        }
+      @include defaultBlock;
+      .defaultBlock {
+        @include blockStyles;
       }
       .includeOptions {
         margin: 20px;
@@ -974,7 +864,6 @@ export default {
             color: var(--color-gold);
             font-weight: 700;
             letter-spacing: 2px;
-            // flex: 1 1 20%;
             width: 20%;
             @media (max-width: 768px) {
               font-size: 20px;
@@ -982,18 +871,8 @@ export default {
             }
           }
           p {
-            font-family: var(--font-text-reg);
-            color: #3f3f3f;
-            font-size: 16px;
-            margin-block: 20px;
-            // max-width: 30%;
-            // flex: 1 1 20%;
+            @include text(var(--color-textGrey), 16px, uppercase, 500);
             width: 30%;
-
-            // @media (min-width: 768px) {
-            //     font-size: 20px;
-            //     max-width: 70%;
-            // }
           }
           ul {
             list-style-type: none;
@@ -1022,18 +901,11 @@ export default {
             gap: 20px;
           }
           h5 {
-            font-family: var(--font-text-reg);
-            color: #3f3f3f;
-            font-weight: 600;
-            font-size: 16px;
+            @include text(var(--color-textGrey), 16px, unset, 600);
             margin-block: 20px;
-            // max-width: 15%;
           }
           span {
-            font-family: var(--font-text-reg);
-            color: var(--color-gold);
-            font-weight: 600;
-            font-size: 16px;
+            @include text(var(--color-gold), 16px, unset, 600);
             margin-block: 20px;
             max-width: 15%;
           }
@@ -1054,7 +926,6 @@ export default {
               width: 100%;
             }
             .mobPosition{
-                // display: flex;
                 justify-content: flex-start;
                 align-items: flex-end;
                 width: -webkit-fill-available;

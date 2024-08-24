@@ -6,7 +6,7 @@
                 autoplay
                 loop
                 muted
-                poster="../assets/images/gym/gymBg.png"
+                :poster="posterImg"
                 ref="mainImageBg"
                 >
                 <source src="../assets/images/gym/Kings–Fitness.mp4" type="video/mp4" />
@@ -100,19 +100,31 @@
                 free weights and machines.
             </p>
             <div class="imageWrapper">
-                <img src="../assets/images/gym/slider1.png" alt="slider1">
+                <picture>
+                    <source
+                        srcset="@/assets/images/gym/mob/slider1.png"
+                        media="(max-width: 768px)"
+                    >
+                    <img
+                        :src="require('@/assets/images/gym/slider1.png')"
+                        alt="slider1"
+                    >
+                </picture>
             </div>
         </div>
-        <RoomsCarusel tittleName="King's palace room"/>
+        <RoomsCarusel tittleName="King's palace room" pathImg="."/>
     </div>
 
 </template>
 
 <script>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import SvgIcon from '@/components/SvgIcon.vue';
 import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
+import mainBg from '@/assets/images/gym/gymBg.png';
+import mobileBg from '@/assets/images/gym/mob/gymBg.png';
 
 export default {
   name: 'MassagesView',
@@ -126,6 +138,25 @@ export default {
       mainDiv,
       textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
+    const posterImg = ref('');
+
+    const setPosterImg = () => {
+      const screen = window.innerWidth;
+      if (screen >= 768) {
+        posterImg.value = mainBg;
+      } else {
+        posterImg.value = mobileBg;
+      }
+    };
+
+    onMounted(() => {
+      setPosterImg();
+      window.addEventListener('resize', setPosterImg);
+    });
+    onBeforeUnmount(() => {
+      setPosterImg();
+      window.removeEventListener('resize', setPosterImg);
+    });
 
     return {
       mainDiv,
@@ -134,6 +165,8 @@ export default {
       blockWrapper,
       mainImageBg,
       animatedTitle,
+      posterImg,
+      setPosterImg,
     };
   },
   mounted() {

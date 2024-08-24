@@ -1,11 +1,17 @@
 <template>
     <div class="Page Massage">
         <div class="main" ref="mainDiv">
-            <img
-                src="../assets/images/massage/massageBg.png"
-                alt="Header Image" class="mainImage"
-                ref="mainImageBg"
-            />
+            <picture>
+                <source
+                    :srcset="require('@/assets/images/massage/mob/massageBg.png')"
+                    media="(max-width: 768px)"
+                >
+                <img
+                    :src="require('@/assets/images/massage/massageBg.png')"
+                    alt="Header Image" class="mainImage"
+                    ref="mainImageBg"
+                />
+            </picture>
             <div class="textBlock" ref="textBlock">
                 <div class="path">
                     <router-link to="/">
@@ -113,7 +119,16 @@
                 Professional Thai massage therapists will help you relax and unwind.
             </p>
             <div class="imageWrapper">
-                <img src="../assets/images/massage/sliderImg1.png" alt="slider1">
+                <picture>
+                    <source
+                        :srcset="require('@/assets/images/massage/mob/sliderImg1.png')"
+                        media="(max-width: 768px)"
+                    >
+                    <img
+                        :src="require('@/assets/images/massage/sliderImg1.png')"
+                        alt="slider1"
+                    >
+                </picture>
             </div>
         </div>
         <div class="ourSpecialist">
