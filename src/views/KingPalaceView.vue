@@ -1,12 +1,15 @@
 <template>
   <div class="Page KingPalace">
     <div class="main" ref="mainDiv">
-      <img
-        src="../assets/images/king-palace/mainBg.png"
-        alt="Header Image"
-        class="mainImage"
-        ref="mainImageBg"
-      />
+      <picture>
+        <source srcset="../assets/images/king-palace/mob/mainBg.png" media="(min-width: 768px)">
+        <img
+          src="../assets/images/king-palace/mainBg.png"
+          alt="Header Image"
+          class="mainImage"
+          ref="mainImageBg"
+        />
+      </picture>
       <div class="textBlock" ref="textBlock">
         <div class="path">
           <router-link to="/">
@@ -43,7 +46,6 @@
         </ul>
     </div>
       <h2 class="animated-title" ref="animatedTitle">
-        <!-- Nearby tourist attractions and activities -->
         <span class="letter" v-for="(letter, index) in titleLetters"
         :key="index">{{ letter }}</span>
       </h2>
@@ -52,8 +54,11 @@
       </p>
       <div class="blockWrapper" ref="blockWrapper">
         <div class="item" v-for="(item, index) in items" :key="index">
-          <img :src="require(`@/assets/images/king-palace/${item.imgSrc}`)" alt="services" />
-
+          <picture>
+            <source :srcset="require(`@/assets/images/king-palace/mob/${item.imgSrc}`)"
+            media="(min-width: 768px)">
+            <img :src="require(`@/assets/images/king-palace/${item.imgSrc}`)" alt="services" />
+          </picture>
           <h4 class="nameBlock">{{ item.title }}</h4>
           <p class="animated-text">{{ item.description }}</p>
         </div>
@@ -65,14 +70,9 @@
 
 <script>
 import { ref } from 'vue';
-// import { gsap } from 'gsap';
 import SvgIcon from '@/components/SvgIcon.vue';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import { useAnimations } from '@/animations/useAnimations';
 import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '../components/Buttons/PrimaryButton.vue';
-
-// gsap.registerPlugin(ScrollTrigger); // Регистрируем ScrollTrigger
 
 export default {
   name: 'KingPalace',
@@ -109,6 +109,10 @@ export default {
       animatedTitle,
       titleLetters,
     };
+  },
+
+  mounted() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   },
 };
 </script>

@@ -110,6 +110,9 @@ export default {
       animatedTitle,
     };
   },
+  mounted() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  },
 };
 </script>
 

@@ -481,7 +481,6 @@ export default {
           padding: 0 12px 16px;
           border-radius: 57% 25%;
           margin-top: 45px;
-          // background-color: #0f0f0f;
           background-color: #1c1c1c;
           width: 250px;
           .logo {
@@ -500,6 +499,9 @@ export default {
             align-items: center;
             justify-content: center;
             transform: translateY(-25%);
+          }
+          @media (max-width: 768px) {
+            border: 1px solid var(--color-gold);
           }
         }
         // }
