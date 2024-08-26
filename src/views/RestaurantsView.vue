@@ -13,19 +13,19 @@
         Your browser does not support the video tag.
       </video>
       <div class="textBlock" ref="textBlock">
-        <div class="path">
-          <router-link to="/">
-            <span> Homepage </span>
-          </router-link>
-          <SvgIcon name="arrowRight" size="medium" />
-          <span> restaurants </span>
-        </div>
         <h1>Dine</h1>
         <h1 class="colorTitle">like a King</h1>
         <p class="description">
           Explore a wide range of dishes from buffet options to world-class gastronomy at Radimský
           Restaurant
         </p>
+      </div>
+      <div class="path">
+        <router-link to="/">
+          <span> Homepage </span>
+        </router-link>
+        <SvgIcon name="arrowRight" size="medium" />
+        <span> restaurants </span>
       </div>
     </div>
     <div class="cafeBlock">
@@ -345,11 +345,6 @@ export default {
       setPosterImg,
     };
   },
-  // computed: {
-  //   posterPath() {
-  //     return `/assets/images/restaurants/${this.posterImg}`;
-  //   },
-  // },
   mounted() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   },
@@ -378,16 +373,6 @@ export default {
     }
     .textBlock {
       @include mainTextBlock;
-      .path {
-        @include alignPath;
-        a {
-          text-decoration: none;
-          cursor: pointer;
-        }
-        span {
-          @include pathText;
-        }
-      }
       .colorTitle {
         color: var(--color-gold);
       }
@@ -397,6 +382,9 @@ export default {
       .description {
         @include mainDescription;
       }
+    }
+    .path {
+      @include alignPath;
     }
   }
 

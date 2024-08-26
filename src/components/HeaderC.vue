@@ -333,7 +333,7 @@ export default defineComponent({
   z-index: 5;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: auto;
   overflow: hidden;
   .headerWrapper {
     position: fixed;
@@ -356,7 +356,6 @@ export default defineComponent({
         align-items: center;
         .logo {
           img {
-            // width: 110px;
             width: clamp(75px, 10vw, 110px);
             position: absolute;
             top: 0;

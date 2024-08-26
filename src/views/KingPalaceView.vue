@@ -11,17 +11,17 @@
         />
       </picture>
       <div class="textBlock" ref="textBlock">
-        <div class="path">
-          <router-link to="/">
-            <span>Homepage</span>
-          </router-link>
-          <SvgIcon name="arrowRight" size="medium" />
-          <span>king-palace</span>
-        </div>
         <div class="titleBlock" ref="titleBlock">
           <h1 class="colorTitle">King</h1>
           <h1>Palace</h1>
         </div>
+      </div>
+      <div class="path">
+        <router-link to="/">
+          <span>Homepage</span>
+        </router-link>
+        <SvgIcon name="arrowRight" size="medium" />
+        <span>king-palace</span>
       </div>
     </div>
 
@@ -135,19 +135,6 @@ export default {
     .textBlock {
       @include mainTextBlock;
 
-      .path {
-        @include alignPath;
-
-        a {
-          text-decoration: none;
-          cursor: pointer;
-        }
-
-        span {
-          @include pathText;
-        }
-      }
-
       .colorTitle {
         color: var(--color-gold);
       }
@@ -162,6 +149,10 @@ export default {
           letter-spacing: inherit;
         }
       }
+    }
+    .path {
+      @include alignPath;
+
     }
   }
 

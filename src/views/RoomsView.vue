@@ -15,6 +15,17 @@
           any King.
         </p>
       </div>
+      <div class="path">
+          <router-link to="/">
+              <span>
+                  Homepage
+              </span>
+          </router-link>
+          <SvgIcon name="arrowRight" size="medium"/>
+          <span>
+              premium-services
+          </span>
+      </div>
       <div class="roomsCategory">
         <ul>
           <li @click="scrollToSection('luxury')" @keydown="none">
@@ -728,10 +739,17 @@ export default {
         color: var(--color-gold);
       }
     }
+    .path{
+        @include alignPath;
+        bottom: 7%;
+        @media (max-width: 768px) {
+            bottom: 2%;
+        }
+      }
 
     .roomsCategory {
       position: absolute;
-      bottom: 5%;
+      bottom: 2%;
       width: 100%;
       z-index: 4;
       ul {

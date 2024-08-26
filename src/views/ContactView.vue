@@ -12,19 +12,6 @@
               />
             </picture>
             <div class="textBlock" ref="textBlock">
-                <div class="path">
-                    <router-link to="/">
-                        <span>
-                            Homepage
-                        </span>
-                    </router-link>
-                    <SvgIcon name="arrowRight" size="medium"/>
-                    <router-link to="/relax">
-                        <span>
-                            contact
-                        </span>
-                    </router-link>
-                </div>
                 <h1>
                     Contact
                     <span class="colorText">
@@ -32,6 +19,17 @@
                     </span>
                 </h1>
             <PrimaryButton buttonText="contact"/>
+            </div>
+            <div class="path">
+                <router-link to="/">
+                    <span>
+                        Homepage
+                    </span>
+                </router-link>
+                <SvgIcon name="arrowRight" size="medium"/>
+                <span>
+                    contact
+                </span>
             </div>
         </div>
         <div class="infoBlock">
@@ -292,19 +290,6 @@ export default {
     .textBlock {
     @include mainTextBlock;
 
-      .path {
-        @include alignPath;
-
-        a {
-          text-decoration: none;
-          cursor: pointer;
-        }
-
-        span {
-          @include pathText;
-        }
-      }
-
       h1 {
         @include mainTitle;
         .colorText {
@@ -316,6 +301,9 @@ export default {
         max-width: 180px;
       }
     }
+    .path {
+        @include alignPath;
+      }
   }
 
   .map,

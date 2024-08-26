@@ -13,9 +13,9 @@
         Your browser does not support the video tag.
       </video>
       <div class="textBlock" ref="textBlock">
-        <p>Rozvadov 7, Entrance 2, 348 06 Rozvadov, Plzeňský kraj, Czech Republic</p>
         <h1>WELCOME TO</h1>
         <h1 class="colorTittle">KING'S PALACE</h1>
+        <p>Rozvadov 7, Entrance 2, 348 06 Rozvadov, Plzeňský kraj, Czech Republic</p>
       </div>
     </div>
     <section class="mobileCheckAvailable">

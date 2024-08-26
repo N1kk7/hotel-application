@@ -13,17 +13,6 @@
                 Your browser does not support the video tag.
             </video>
             <div class="textBlock" ref="textBlock">
-                <div class="path">
-                    <router-link to="/">
-                        <span>
-                            Homepage
-                        </span>
-                    </router-link>
-                    <SvgIcon name="arrowRight" size="medium"/>
-                    <span>
-                        relax
-                    </span>
-                </div>
                 <h1>
                     Relax
                 </h1>
@@ -36,6 +25,17 @@
                 </p>
             <PrimaryButton buttonText="contact"/>
             </div>
+            <div class="path">
+                  <router-link to="/">
+                      <span>
+                          Homepage
+                      </span>
+                  </router-link>
+                  <SvgIcon name="arrowRight" size="medium"/>
+                  <span>
+                      relax
+                  </span>
+              </div>
         </div>
         <div class="infoBlock">
             <div class="infoCard openingCard">
@@ -44,7 +44,7 @@
                 </h3>
                 <ul>
                     <li>
-                        <SvgIcon name="clock" size="small"/>
+                        <SvgIcon name="clock" size="small" strokeWidth="0"/>
                         <div class="openingDescription">
                             <span>
                                 Monday – Sunday
@@ -55,7 +55,7 @@
                         </div>
                     </li>
                     <li>
-                        <SvgIcon name="clock" size="small"/>
+                        <SvgIcon name="clock" size="small" strokeWidth="0"/>
                         <div class="openingDescription">
                             <span>
                                 Friday
@@ -74,13 +74,13 @@
                 </h3>
                 <ul>
                     <li>
-                        <SvgIcon name="envelope" size="small"/>
+                        <SvgIcon name="envelope" size="small" strokeWidth="1"/>
                         <span>
                             stay@kings-palace.com
                         </span>
                     </li>
                     <li>
-                        <SvgIcon name="phone" size="small"/>
+                        <SvgIcon name="phone" size="small" strokeWidth="3"/>
                         <span>
                             +420 604 689 933
                         </span>
@@ -259,17 +259,6 @@ export default {
         }
     .textBlock {
       @include mainTextBlock;
-
-      .path {
-        @include alignPath;
-        a {
-          text-decoration: none;
-          cursor: pointer;
-        }
-        span {
-          @include pathText;
-        }
-      }
       .colorText {
         color: var(--color-gold);
       }
@@ -283,12 +272,16 @@ export default {
         max-width: 180px;
       }
     }
+    .path {
+        @include alignPath;
+      }
   }
 
   .infoBlock {
     display: flex;
     gap: 30px;
-    @include blockMargin;
+    @include blockStyles;
+    background: var(--color-white);
 
     .infoCard {
     @include cardStyles;
@@ -318,7 +311,6 @@ export default {
           .openingDescription {
             display: flex;
             flex-direction: column;
-            gap: 5px;
             align-items: flex-start;
           }
 
@@ -353,6 +345,7 @@ export default {
       max-width: 50%;
       padding: 0;
       flex: 1;
+    box-shadow: none;
 
       h2 {
         @include text(var(--color-black), 30px, uppercase, 500);
@@ -417,7 +410,8 @@ export default {
     }
 
     .infoBlock {
-      margin: 20px;
+      // margin: 20px;
+      margin: 20px 10px;
       .infoCard {
         padding: 20px;
         h3 {

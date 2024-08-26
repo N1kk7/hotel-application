@@ -13,23 +13,6 @@
                 Your browser does not support the video tag.
             </video>
             <div class="textBlock" ref="textBlock">
-                <div class="path">
-                    <router-link to="/">
-                        <span>
-                            Homepage
-                        </span>
-                    </router-link>
-                    <SvgIcon name="arrowRight" size="medium"/>
-                    <router-link to="/relax">
-                        <span>
-                            relax
-                        </span>
-                    </router-link>
-                    <SvgIcon name="arrowRight" size="medium"/>
-                    <span>
-                        fitness
-                    </span>
-                </div>
                 <h1>
                     24/7
                 </h1>
@@ -40,6 +23,23 @@
                     Reach new heights!
                 </p>
             <PrimaryButton buttonText="contact"/>
+            </div>
+            <div class="path">
+                <router-link to="/">
+                    <span>
+                        Homepage
+                    </span>
+                </router-link>
+                <SvgIcon name="arrowRight" size="medium"/>
+                <router-link to="/relax">
+                    <span>
+                        relax
+                    </span>
+                </router-link>
+                <SvgIcon name="arrowRight" size="medium"/>
+                <span>
+                    fitness
+                </span>
             </div>
         </div>
         <div class="infoBlock">
@@ -195,16 +195,6 @@ export default {
             }
             .textBlock{
                 @include mainTextBlock;
-                .path{
-                    @include alignPath;
-                    a{
-                        text-decoration: none;
-                        cursor: pointer;
-                    }
-                    span{
-                        @include pathText;
-                    }
-                }
                 .colorTitle{
                     color: var(--color-gold);
                 }
@@ -217,6 +207,9 @@ export default {
                 .PrimaryButton{
                     max-width: 180px;
                 }
+            }
+            .path{
+                @include alignPath;
             }
         }
         .infoBlock{

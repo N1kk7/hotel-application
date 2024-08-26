@@ -6,6 +6,24 @@
                 ref="mainImageBg"
                 alt="Header Image" class="mainImage"
             />
+            <div class="path">
+                <router-link to="/">
+                    <span>
+                        Homepage
+                    </span>
+                </router-link>
+                <SvgIcon name="arrowRight" size="medium"/>
+                <router-link to="/rooms">
+                    <span>
+                        Rooms
+                    </span>
+                </router-link>
+                <SvgIcon name="arrowRight" size="medium"/>
+                <span>
+                    King suite
+                </span>
+            </div>
+            <div class="bg"></div>
         </div>
         <div class="kingOption">
             <ul>
@@ -513,38 +531,10 @@ export default {
         showMoreBtn.value = detailItems.value.length !== showItems.value.length;
       }
     };
-    // gsap.fromTo(showMoreBtn, { height: 0 }, { height: 'auto', duration: 3.5 });
-
-    // Функция для управления состоянием кнопки "Показать больше"
     const toggleShowMoreBtn = () => {
       showMoreBtn.value = !showMoreBtn.value;
     };
     const collapseDetail = (index) => {
-    //   showItems.value.splice(index, 1);
-      // const element = document.querySelector(`#detail-${showItems.value[index].id}`);
-      // //   gsap.to(element, {
-      // //     height: 0,
-      // //     duration: 0.5,
-      // //     onComplete: () => {
-      // //       showItems.value.splice(index, 1);
-      // //     },
-      // //   });
-      // console.log(showItems.value.length, '1');
-      // gsap.to(element, {
-      //   height: 10, // анимируем до небольшой высоты
-      //   duration: 0.3,
-      //   onComplete: () => {
-      //     gsap.to(element, {
-      //       height: 0, // затем анимируем до 0
-      //       duration: 0.2,
-      //       onComplete: () => {
-      //         showItems.value.splice(index, 1);
-      //         showMoreBtn.value = detailItems.value.length !== showItems.value.length;
-      //       },
-      //     });
-      //   },
-      // });
-      // console.log(showItems.value.length, '2');
       const element = document.querySelector(`#detail-${showItems.value[index].id}`);
       if (element) {
         gsap.to(element, {
@@ -559,7 +549,6 @@ export default {
       }
     };
 
-    // Функция анимации появления
     const animateIn = () => {
       if (showMoreButton.value) {
         gsap.fromTo(
@@ -569,8 +558,6 @@ export default {
         );
       }
     };
-
-    // Функция анимации исчезновения// Функция анимации исчезновения
     const animateOut = () => {
       if (showMoreButton.value) {
         gsap.to(
@@ -580,9 +567,8 @@ export default {
       }
     };
 
-    // Управляем анимацией в зависимости от состояния showMoreBtn
     watch(showMoreBtn, async (newValue) => {
-      await nextTick(); // Ждем, пока элемент отобразится
+      await nextTick();
       if (newValue) {
         animateIn();
       } else {
@@ -596,12 +582,7 @@ export default {
         animateIn();
       }
     });
-    // onMounted(async () => {
-    //   if (showMoreBtn.value) {
-    //     await nextTick(); // Ждем, пока элемент отобразится
-    //     animateIn();
-    //   }
-    // });
+
     const {
       mainDiv,
       pageBlock, blockWrapper, mainImageBg,
@@ -619,11 +600,9 @@ export default {
       animateOut,
       showMoreButton,
       mainDiv,
-      // textBlock,
       pageBlock,
       blockWrapper,
       mainImageBg,
-      // animatedTitle,
     };
   },
 };
@@ -633,28 +612,6 @@ export default {
     @import '@/style/mixins.scss';
     @import '@/style/main.scss';
 
-  //   .fade-enter-active, .fade-leave-active {
-  // transition: opacity 0.5s;
-  //   }
-  //   .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-  //     opacity: 0;
-  //   }
-
-    //   /* Определяем анимацию для появления и исчезновения */
-    // .fade-enter-active, .fade-leave-active {
-    //   transition: opacity 0.5s;
-    // }
-    // .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-    //   opacity: 0;
-    // }
-/* Определяем анимацию для появления и исчезновения */
-// .fade-enter-active, .fade-leave-active {
-//   transition: opacity 0.5s;
-// }
-// .fade-enter, .fade-leave-to {
-//   opacity: 0;
-// }
-
     .KingsSuite {
         @include pageStyle;
         .main{
@@ -662,6 +619,12 @@ export default {
            overflow: hidden;
            .mainImage{
             @include mainBg;
+            }
+            .path{
+              @include alignPath;
+            }
+            .bg{
+              @include gradientBg;
             }
         }
 
@@ -736,20 +699,6 @@ export default {
                 @include text(var(--color-black), 40px, uppercase, 600);
                 margin-bottom: 40px;
             }
-            // .swiper{
-            //     .swiper-wrapper{
-            //         .swiper-slide{
-            //             img{
-            //                 max-width: 100%;
-
-            //             }
-            //         }
-            //         .swiper-slide-next,
-            //         .swiper-slide-prev{
-            //             opacity: 0.5;
-            //         }
-            //     }
-            // }
             .swiper{
               width: 100%;
               height: 100%;

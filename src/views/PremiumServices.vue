@@ -13,21 +13,21 @@
                 />
             </picture>
             <div class="textBlock" ref="textBlock">
-                <div class="path">
-                    <router-link to="/">
-                        <span>
-                            Homepage
-                        </span>
-                    </router-link>
-                    <SvgIcon name="arrowRight" size="medium"/>
-                    <span>
-                        premium-services
-                    </span>
-                </div>
                 <h1 class="colorTitle">Premium </h1>
                 <h1>
                     Services
                 </h1>
+            </div>
+            <div class="path">
+                <router-link to="/">
+                    <span>
+                        Homepage
+                    </span>
+                </router-link>
+                <SvgIcon name="arrowRight" size="medium"/>
+                <span>
+                    premium-services
+                </span>
             </div>
         </div>
         <div class="golfClubs">
@@ -144,23 +144,16 @@ export default {
             }
             .textBlock{
                 @include mainTextBlock;
-                .path{
-                    @include alignPath;
-                    a{
-                        text-decoration: none;
-                        cursor: pointer;
-                    }
-                    span{
-                        @include pathText;
-                    }
-                }
                 .colorTitle{
                     color: var(--color-gold);
                 }
                 h1{
                     @include mainTitle;
-        }
+                }
             }
+            .path{
+                    @include alignPath;
+                }
         }
         .golfClubs{
             @include blockStyles;
