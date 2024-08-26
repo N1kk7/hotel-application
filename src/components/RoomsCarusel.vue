@@ -242,11 +242,12 @@ export default {
     }
   }
   .roomCards {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     gap: 10px;
+    @include blockStyles;
+    margin: 0 0 50px;
     .swiper {
       padding: 0 40px 50px;
     }
@@ -390,13 +391,18 @@ export default {
         }
       }
     }
+
+    @media (max-width: 768px) {
+      margin: clamp(10px, 5vw, 40px);
+      width: 90%;
+
+    }
   }
 }
 
 @media (max-width: 1024px) {
   .rooms {
     .roomCards {
-      width: 100%;
       .swiper {
         .swiper-wrapper {
           .swiper-slide {

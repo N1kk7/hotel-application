@@ -174,31 +174,36 @@ export default {
     .tags{
       margin-bottom: 10px;
       ul{
-                list-style-type: none;
-                display: flex;
-                padding: 0;
-                justify-content: flex-start;
-                flex-wrap: wrap;
-                gap: 10px;
-                width: 80%;
-                max-width: fit-content;
-                margin: 0 auto;
-                li{
-                    padding: 5px 7px;
-                    border-radius: 20px;
-                    background: var(--color-light);
-                    width: fit-content;
-                    @include text(var(--color-gold), 12px, uppercase, 700);
-                    cursor: pointer;
-                    white-space: nowrap;
-                    border: 1px solid var(--color-gold);
-                    z-index: 4;
-                    &:hover{
-                        background: var(--color-gold);
-                        color: var(--color-white);
-                    }
-                }
+        list-style-type: none;
+        display: flex;
+        padding: 0;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+        max-width: fit-content;
+        margin: 0 auto;
+        li{
+            padding: 5px 7px;
+            border-radius: 20px;
+            background: var(--color-light);
+            width: fit-content;
+            @include text(var(--color-gold), 12px, uppercase, 700);
+            cursor: pointer;
+            white-space: nowrap;
+            border: 1px solid var(--color-gold);
+            z-index: 4;
+            &:hover{
+                background: var(--color-gold);
+                color: var(--color-white);
             }
+        }
+        @media (max-width: 768px) {
+          &{
+            margin: unset;
+          }
+        }
+      }
     }
 
     h2 {
@@ -217,7 +222,7 @@ export default {
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 40px;
-      row-gap: 60px;
+      row-gap: clamp(20px, 5vw, 60px);
 
       .item {
         overflow: hidden;
@@ -241,6 +246,12 @@ export default {
           }
         }
       }
+
+      // @media (max-width: 768px) {
+      //   &{
+
+      //   }
+      // }
     }
 
     button {
