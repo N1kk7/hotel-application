@@ -39,7 +39,7 @@
                 </h3>
                 <ul>
                     <li>
-                        <SvgIcon name="location" size="small"/>
+                        <SvgIcon name="location" size="small" strokeWidth="0"/>
                         <div class="openingDescription">
                             <span>
                                 King's Palace, Rozvadov 7, Entrance 2, Rozvadov,
@@ -62,7 +62,7 @@
                         </span>
                     </li>
                     <li>
-                        <SvgIcon name="phone" size="small"/>
+                        <SvgIcon name="phone" size="small" strokeWidth="3"/>
                         <span>
                             +420 604 689 933
                         </span>
@@ -362,9 +362,6 @@ export default {
           .timeAvailable {
             @include text(var(--color-textGrey), 16px, unset, 400);
           }
-          // svg{
-          //   flex: 1 1 30%;
-          // }
 
           span {
             width: -webkit-fill-available;
@@ -375,7 +372,8 @@ export default {
     }
     .openingCard{
       svg{
-        flex: 1 1 30%;
+        flex: 1 1 auto;
+        min-width: 24px;
       }
     }
   }

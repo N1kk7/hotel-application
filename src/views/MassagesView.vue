@@ -47,7 +47,7 @@
                 </h3>
                 <ul>
                     <li>
-                        <SvgIcon name="clock" size="small"/>
+                        <SvgIcon name="clock" size="small" strokeWidth="0"/>
                         <div class="openingDescription">
                             <span>
                                 Monday – Thursday
@@ -58,7 +58,7 @@
                         </div>
                     </li>
                     <li>
-                        <SvgIcon name="clock" size="small"/>
+                        <SvgIcon name="clock" size="small" strokeWidth="0"/>
                         <div class="openingDescription">
                             <span>
                                 Friday
@@ -69,7 +69,7 @@
                         </div>
                     </li>
                     <li>
-                        <SvgIcon name="clock" size="small"/>
+                        <SvgIcon name="clock" size="small" strokeWidth="0"/>
                         <div class="openingDescription">
                             <span>
                                 Saturday – Sunday
@@ -148,7 +148,7 @@
                 <img src="../assets/images/massage/massagists.png" alt="massagists">
             </div>
         </div>
-        <RoomsCarusel tittleName="AcCommodations"/>
+        <RoomsCarusel tittleName="AcCommodations" pathImg="."/>
     </div>
 
 </template>
@@ -227,38 +227,55 @@ export default {
                 @include cardStyles;
                 background: var(--color-white);
                 h3{
-                    @include text(var(--color-black), 28px, uppercase, 500);
+                    @include text(var(--color-textGrey), clamp(18px, 2.5vw, 28px), uppercase, 500);
                 }
                 ul{
                     padding: 0;
                     display: flex;
                     flex-direction: column;
                     list-style-type: none;
+                    margin-top: 20px;
                     gap: 20px;
                     li{
                         display: flex;
                         align-items: center;
                         justify-content: flex-start;
+                        position: relative;
                         gap: 10px;
                         .openingDescription{
                             display: flex;
                             justify-content: space-between;
                             width: 100%;
+                            gap: 10px;
+                            span{
+                            white-space: nowrap;
+
+                            }
                         }
                         .timeAvailable{
-                            padding-right: 10%;
+                            position: absolute;
+                            right: 0;
+                            @media (max-width: 768px) {
+                                position: relative;
+                                right: unset;
+                            }
                         }
                         span{
-                            @include text(var(--color-black), 20px, unset, 400);
+                            @include text(
+                                var(--color-textGrey), clamp(14px, 2.3vw, 20px), unset, 400);
                         }
+                    }
+                    @media (max-width: 768px) {
+                        width: fit-content;
                     }
                 }
 
             }
+            @media (max-width: 768px) {
+                flex-direction: column;
+            }
         }
         .aboutMassage{
-            // margin-inline: 60px;
-            // margin-bottom: 70px;
             @include blockStyles;
             background: var(--color-white);
             // padding: 60px;
@@ -266,30 +283,28 @@ export default {
                 @include text(var(--color-gold), 14px, uppercase, 500);
             }
             .title{
-                margin: 8px 0 32px;
-                @include text(var(--color-black), 40px, uppercase, 500);
+                margin: 8px 0 clamp(24px, 2.5vw, 32px);
+                @include text(var(--color-textGrey), clamp(24px, 3.5vw, 40px), uppercase, 500);
             }
             .description{
-                @include text(var(--color-black), 20px, unset, 400);
+                @include text(var(--color-textGrey), clamp(14px, 2.3vw, 20px), unset, 400);
             }
             .imageWrapper{
                 position: relative;
                 overflow: hidden;
-                margin-top: 40px;
+                margin-top: clamp(20px, 3vw, 40px);
                 img{
                     max-width: 100%;
                 }
             }
         }
         .ourSpecialist{
-            // padding: 40px;
-            // margin: 70px 60px;
             @include blockStyles;
             background: var(--color-white);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 40px;
+            gap: clamp(20px, 3vw, 40px);
             .infoBlock{
                 display: flex;
                 flex-direction: column;
@@ -301,10 +316,10 @@ export default {
                     @include text(var(--color-gold), 14px, uppercase, 500);
                 }
                 h2{
-                    @include text(var(--color-black), 40px, uppercase, 500);
+                    @include text(var(--color-textGrey), clamp(24px, 3.5vw, 40px), uppercase, 500);
                 }
                 p{
-                    @include text(var(--color-black), 20px, unset, 400);
+                    @include text(var(--color-textGrey), clamp(14px, 2.3vw, 20px), unset, 400);
                 }
             }
             .imageBlock{
@@ -312,6 +327,13 @@ export default {
                 position: relative;
                 img{
                     width: 100%;
+                }
+            }
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+                .infoBlock{
+                    max-width: 100%;
                 }
             }
         }

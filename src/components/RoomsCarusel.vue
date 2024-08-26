@@ -426,7 +426,7 @@ export default {
     }
     .roomCards {
       .swiper {
-        padding: 0 20px 50px;
+        padding: 0 clamp(5px, 3vw, 20px) 50px;
       }
     }
   }
