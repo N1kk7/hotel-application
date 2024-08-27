@@ -307,7 +307,7 @@
         overflow: hidden;
     //   @include blockStyles;
 
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
           flex-direction: row;
           justify-content: space-between;
           gap: clamp(20px, 2vw, 50px);
@@ -319,7 +319,7 @@
           flex: 0 0 100%;
           max-width: 100%;
 
-          @media (min-width: 768px) {
+          @media (min-width: 1024px) {
             flex: 0 0 50%;
             max-width: 50%;
           }
@@ -341,15 +341,12 @@
           span {
             @include text(var(--color-gold), 14px, uppercase, 700);
             position: relative;
-            bottom: 15px;
+            // bottom: 15px;
           }
 
           h2 {
-            @include text(var(--color-black), clamp(20px, 4vw, 48px), uppercase, 700);
-
-            // @media (min-width: 768px) {
-            //   font-size: 42px !important;
-            // }
+            margin-top: 15px;
+            @include text(var(--color-textGrey), clamp(20px, 4vw, 48px), uppercase, 500);
 
           }
           .colorText {
@@ -366,10 +363,10 @@
             }
 
           p {
-            @include text(var(--color-black), 16px, none, 400);
+            @include text(var(--color-textGrey), 16px, none, 400);
             margin-top: 10px;
 
-            @media (min-width: 768px) {
+            @media (min-width: 1024px) {
               font-size: 20px;
               max-width: 70%;
             }
@@ -388,7 +385,7 @@
                   max-width: 100%;
                   height: auto;
         
-                  @media (min-width: 768px) {
+                  @media (min-width: 1024px) {
                     flex: 0 0 50%;
                     max-width: 40%;
                   }

@@ -222,14 +222,14 @@
                             </span>
                         </li>
                         <li>
-                            <SvgIcon name="phone" size="medium" strokeWidth="2"/>
+                            <SvgIcon name="phone" size="medium" strokeWidth="3"/>
                             <span>
                                 +420 777 281 804
                             </span>
                         </li>
                         <li>
                             <SvgIcon name="whatsup" size="medium"/>
-                            <SvgIcon name="viber" size="medium"/>
+                            <SvgIcon name="viber" size="medium" strokeWidth="0"/>
                         </li>
                     </ul>
 
@@ -545,11 +545,14 @@ export default {
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
-    img {
+    picture {
+      img{
         flex: 1 1 50%;
-        // max-width: 50%;
         height: auto;
         object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .transferInfo {
@@ -557,6 +560,7 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        min-width: 40%;
       h2 {
         @include text(var(--color-black), clamp(28px, 4vw, 40px), unset, 500);
       }
@@ -603,6 +607,7 @@ export default {
 
     @media (max-width: 768px) {
       flex-direction: column;
+      gap: 0;
       img{
           display: none;
       }
@@ -663,7 +668,7 @@ export default {
     .journeyPlan,
     .transferBlock {
       margin: 10px;
-      padding: 10px;
+      padding: 20px;
     }
 
     h1,

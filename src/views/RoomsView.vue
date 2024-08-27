@@ -769,14 +769,10 @@ export default {
         }
         li {
           @include text(var(--color-gold), clamp(10px, 1vw, 12px), uppercase, 400);
-          // color: var(--color-gold);
           background: rgba(0, 0, 0, 0.75);
           border-radius: 20px;
         padding-block: clamp(5px, 2vw, 10px);
             padding-inline: clamp(10px, 2vw, 20px);
-          // font-family: var(--font-text-reg);
-          // font-size: clamp(10px, 1vw, 12px);
-          // text-transform: uppercase;
           transition: all ease 0.3s;
           cursor: pointer;
           transform: translateX(0) scaleX(1);
@@ -802,9 +798,9 @@ export default {
     display: none;
     @media (max-width: 768px) {
       display: block;
-      margin: 20px;
+      margin: 20px 20px 0;
       h2{
-        @include text(var(--color-gold), 20px, uppercase, 700);
+        @include text(var(--color-textGrey), 20px, uppercase, 500);
 
       }
         ul{
@@ -814,19 +810,20 @@ export default {
                 justify-content: flex-start;
                 flex-wrap: wrap;
                 gap: 10px;
-                width: 80%;
+                width: 100%;
                 max-width: fit-content;
-                margin: 0 auto;
+                margin: 20px auto 0;
                 li{
-                    padding: 5px 7px;
-                    border-radius: 20px;
-                    background: var(--color-light);
-                    width: fit-content;
-                    @include text(var(--color-gold), 12px, uppercase, 500);
-                    cursor: pointer;
-                    white-space: nowrap;
-                    z-index: 4;
-                }
+                  padding: 5px 7px;
+                  border-radius: 20px;
+                  background: var(--color-light);
+                  width: fit-content;
+                  @include text(var(--color-gold), 12px, uppercase, 700);
+                  cursor: pointer;
+                  white-space: nowrap;
+                  border: 1px solid var(--color-gold);
+                  z-index: 4;
+              }
             }
         }
     }
@@ -836,7 +833,6 @@ export default {
     background: var(--color-light);
     position: relative;
     overflow: hidden;
-    // padding-block: 20px;
 
     .wrapper {
       width: 100%;

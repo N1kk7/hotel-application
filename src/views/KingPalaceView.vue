@@ -184,9 +184,11 @@ export default {
             white-space: nowrap;
             border: 1px solid var(--color-gold);
             z-index: 4;
-            &:hover{
+            @media (min-width: 1024px) {
+              &:hover{
                 background: var(--color-gold);
                 color: var(--color-white);
+              }
             }
         }
         @media (max-width: 768px) {
@@ -237,12 +239,6 @@ export default {
           }
         }
       }
-
-      // @media (max-width: 768px) {
-      //   &{
-
-      //   }
-      // }
     }
 
     button {
