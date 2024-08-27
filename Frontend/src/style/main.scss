@@ -1,0 +1,95 @@
+*{
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+    height: 100%;
+}
+
+button{
+    border: none;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+
+
+p, h1,h2,h3,h4{
+    margin: 0;
+}
+
+.container{
+    width: 95vw;
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .Page{
+        .main {
+            .mainImage, video{
+                min-height: 60vh !important;
+            }
+            .textBlock{
+             
+                h1{
+                    font-size: clamp(30px, 8vw, 35px) !important;
+                    white-space: nowrap;
+                }
+                p{
+                    max-width: 100% !important;
+                    font-size: clamp(12px, 2vw, 16px) !important;
+                }
+            }
+        }
+    }
+  }
+
+
+@font-face {
+    font-family: 'Brandon-text-regular';
+    src: url('../assets/fonts/Fonts-BrandonText-Regular.otf');
+}
+@font-face {
+    font-family: 'Brandon-grotesque-regular';
+    src: url('../assets/fonts/BrandonGrotesque-Regular.ttf');
+}
+@font-face {
+    font-family: 'Brandon-grotesque-bold';
+    src: url('../assets/fonts/BrandonGrotesque-Bold.ttf');
+}
+@font-face {
+    font-family: 'Brandon-grotesque-medium';
+    src: url('../assets/fonts/BrandonGrotesque-Medium.ttf');
+}
+:root {
+    --font-text-reg: 'Brandon-text-regular';
+    --font-grot-reg: 'Brandon-grotesque-regular';
+    --font-grot-bold: 'Brandon-grotesque-bold';
+    --font-grot-medium: 'Brandon-grotesque-medium';
+    --font-family-text-reg: var(--font-text-reg), sans-serif;
+    --font-family-grot-reg: var(--font-grot-reg), sans-serif;
+    --font-family-grot-bold: var(--font-grot-bold), sans-serif;
+    --font-family-grot-medium: var(--font-grot-medium), sans-serif;
+
+    --color-gold: #D7B154;
+    --color-light: #F7F3EC;
+    --color-white: #FFF;
+    --color-grey: #BABABA;
+    --color-black: #171717;
+    --color-textGrey: #454545;
+
+
+}

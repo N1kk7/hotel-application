@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "name": "King's Superior Double Room",
+      "image": "../room.png"
+    },
+    {
+      "id": 2,
+      "name": "King's Superior Twin Room",
+      "image": "./room.png"
+    },
+    {
+      "id": 3,
+      "name": "King's Superior Apartment Room",
+      "image": "./room.png"
+    },
+    {
+      "id": 1,
+      "name": "King's Superior Double Room",
+      "image": "./room.png"
+    },
+    {
+      "id": 2,
+      "name": "King's Superior Twin Room",
+      "image": "./room.png"
+    },
+    {
+      "id": 3,
+      "name": "King's Superior Apartment Room",
+      "image": "./room.png"
+    }
+  ]
