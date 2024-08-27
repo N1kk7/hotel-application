@@ -1,19 +1,7 @@
 <template>
-<!-- <div>
-  v-if="showTransition"
-
-</div> -->
   <HeaderC/>
   <PageTransition v-if="showTransition" :isFirstLoad="isFirstLoad"/>
   <router-view/>
-  <!-- <router-view v-slot="{ Component }">
-    <component :is="Component" />
-    <PageTransition />
-  </router-view> -->
-
-  <!-- <router-view>
-      <p>Test Content</p>
-    </router-view> -->
   <FooterC/>
 
   <LibraryQ/>
@@ -25,7 +13,6 @@ import { useRouter } from 'vue-router';
 import FooterC from './components/FooterC.vue';
 import HeaderC from './components/HeaderC.vue';
 import LibraryQ from './components/LibraryQ.vue';
-// import PageTransition from './components/PageTransition.vue';
 import PageTransition from './components/PageTransition.vue';
 
 export default defineComponent({
@@ -36,26 +23,10 @@ export default defineComponent({
     FooterC,
     PageTransition,
   },
-  // data() {
-  //   return {
-  //     isFirstLoad: false,
-  //   };
-  // },
   setup() {
     const showTransition = ref(false);
     const isFirstLoad = ref(true);
     const router = useRouter();
-
-    // router.beforeEach((to, from, next) => {
-    //   showTransition.value = true;
-    //   setTimeout(() => {
-    //     next();
-    //   }, 1000);
-
-    //   setTimeout(() => {
-    //     showTransition.value = false;
-    //   }, 5000);
-    // });
 
     router.beforeEach((to, from, next) => {
       showTransition.value = true;

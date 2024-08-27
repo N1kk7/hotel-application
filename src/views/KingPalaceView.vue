@@ -1,3 +1,4 @@
+<!-- eslint-disable vuejs-accessibility/form-control-has-label -->
 <template>
   <div class="Page KingPalace">
     <div class="main" ref="mainDiv">
@@ -64,14 +65,39 @@
         </div>
       </div>
       <PrimaryButton buttonText="More golf clubs" />
+      <div class="piniaBlock">
+        <div class="count">
+          Count:
+          {{ countComponent }}
+        </div>
+        <div class="name">
+          Name:
+          {{ fullName }}
+        </div>
+        <div class="form">
+          <!-- <label for="text"></label> -->
+          <!-- // eslint-disable-next-line vuejs-accessibility/form-control-has-label -->
+          <input type="text" placeholder="enter name" v-model="newName">
+          <button>SetName</button>
+        </div>
+        <div class="counterBtn">
+          <button @click="updateCount('+')">
+            +
+          </button>
+          <button @click="updateCount('-')">
+            -
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import SvgIcon from '@/components/SvgIcon.vue';
 import useAnimations from '@/animations/useAnimations';
+import useUserStore from '@/store/useStore';
 import PrimaryButton from '../components/Buttons/PrimaryButton.vue';
 
 export default {
@@ -82,11 +108,28 @@ export default {
   },
   setup() {
     const titleLetters = 'Nearby tourist attractions and activities'.split('');
+    const newName = ref('');
+    const userStore = useUserStore();
 
     const {
       mainDiv,
       textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
+
+    const updateName = () => {
+
+    };
+
+    const countComponent = computed(() => userStore.count);
+
+    const updateCount = (operator) => {
+      if (operator === '+') {
+        userStore.increment();
+      } else if (operator === '-') {
+        userStore.decrement();
+      }
+      console.log(userStore.count);
+    };
 
     const items = ref([
       { imgSrc: 'item1.png', title: 'Sports Facilities IN TACHOV', description: 'Ideal for training and recreational sports.' },
@@ -108,6 +151,13 @@ export default {
       mainImageBg,
       animatedTitle,
       titleLetters,
+      //
+      countComponent,
+      count: userStore.count,
+      fullName: userStore.fullName,
+      newName,
+      updateName,
+      updateCount,
     };
   },
 
@@ -246,6 +296,31 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+  }
+  .piniaBlock{
+    button{
+        padding: 10px 20px;
+        border: 1px solid var(--color-gold);
+        border-radius: 10px;
+        margin: 0;
+      }
+    .form{
+      text-align: start;
+      input{
+        width: 100%;
+        height: 20px;
+        border: 1px solid var(--color-gold);
+        border-radius: 10px;
+        padding: 20px;
+        margin-block: 20px;
+      }
+    }
+    .counterBtn{
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      margin-block: 20px;
     }
   }
 }
