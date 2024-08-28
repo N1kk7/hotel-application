@@ -63,8 +63,10 @@
           <SecondaryButton buttonText="Booking" />
 
           <div class="burgerIcon" @click="burgerMenu" aria-hidden="true">
-            <SvgIcon v-if="isBurgerMenu" name="closeBurger" size="medium" />
-            <SvgIcon v-else name="burgerMenu" size="medium" />
+            <SvgIcon v-if="!isBurgerMenu" name="burgerMenu" size="medium" />
+            <SvgIcon v-else name="closeBurger" size="medium" />
+            <!-- <SvgIcon v-else name="closeBurger" size="medium" /> -->
+
           </div>
         </div>
       </div>
@@ -96,7 +98,7 @@
               <span> Rooms & Prices </span>
             </router-link>
           </li>
-          <li @click="subList" @keydown="none">
+          <li @click="toggleSubList" @keydown="none">
             <span> Relax </span>
             <SvgIcon name="arrowDown" size="small" stroke="white" />
           </li>
@@ -178,7 +180,7 @@ export default defineComponent({
   data() {
     return {
       isBurgerMenu: false,
-      isActiveSublist: false,
+      // isActiveSublist: false,
       isHoverListVisible: false,
       scrollPosition: 0,
       lastScrollPosition: 0,
@@ -196,6 +198,7 @@ export default defineComponent({
     const burgerMenuRef = ref(null);
     const isMobileMenu = ref(false);
     const headerWrapperRef = ref(null);
+    const isActiveSublist = ref(false);
 
     const animateBurgerMenuIn = () => {
       nextTick(() => {
@@ -240,6 +243,9 @@ export default defineComponent({
 
     const animateBurgerMenuOut = () => {
       nextTick(() => {
+        console.log(isActiveSublist);
+        isActiveSublist.value = false;
+        // isActiveSublist = false;
         if (burgerMenuRef.value) {
           const tl = gsap.timeline();
 
@@ -263,6 +269,10 @@ export default defineComponent({
       });
     };
 
+    const toggleSubList = () => {
+      isActiveSublist.value = !isActiveSublist.value;
+    };
+
     watch(isMobileMenu, async (newValue) => {
       if (newValue) {
         await nextTick(); // Подождите обновления DOM
@@ -273,6 +283,8 @@ export default defineComponent({
     });
 
     return {
+      toggleSubList,
+      isActiveSublist,
       burgerMenuRef,
       animateBurgerMenuIn,
       animateBurgerMenuOut,
@@ -288,11 +300,18 @@ export default defineComponent({
     burgerMenu() {
       this.isMobileMenu = !this.isMobileMenu;
       document.body.style.overflow = this.isMobileMenu ? 'hidden' : '';
+      if (!this.isBurgerMenu) {
+        setTimeout(() => {
+          this.isBurgerMenu = !this.isBurgerMenu;
+        }, 500);
+      } else {
+        this.isBurgerMenu = !this.isBurgerMenu;
+      }
     },
 
-    subList() {
-      this.isActiveSublist = !this.isActiveSublist;
-    },
+    // subList() {
+    //   this.isActiveSublist = !this.isActiveSublist;
+    // },
     showHoverList() {
       this.isHoverListVisible = true;
     },
@@ -333,7 +352,7 @@ export default defineComponent({
   z-index: 5;
   position: absolute;
   width: 100%;
-  height: auto;
+  height: fit-content;
   overflow: hidden;
   .headerWrapper {
     position: fixed;
