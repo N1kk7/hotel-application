@@ -308,10 +308,6 @@ export default defineComponent({
         this.isBurgerMenu = !this.isBurgerMenu;
       }
     },
-
-    // subList() {
-    //   this.isActiveSublist = !this.isActiveSublist;
-    // },
     showHoverList() {
       this.isHoverListVisible = true;
     },
