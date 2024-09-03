@@ -65,7 +65,6 @@
           <div class="burgerIcon" @click="burgerMenu" aria-hidden="true">
             <SvgIcon v-if="!isBurgerMenu" name="burgerMenu" size="medium" />
             <SvgIcon v-else name="closeBurger" size="medium" />
-            <!-- <SvgIcon v-else name="closeBurger" size="medium" /> -->
 
           </div>
         </div>
@@ -88,6 +87,12 @@
             </router-link>
           </li>
         </ul>
+        <div class="signBlock">
+          <div class="signWrapper" style="color: aliceblue;">
+            <span> Sign in</span>
+            <span> Sign up</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="burgerMenu" v-if="isMobileMenu" ref="burgerMenuRef">
@@ -423,33 +428,50 @@ export default defineComponent({
       }
     }
     .hoverList {
-      background: var(--color-black);
       position: relative;
       bottom: 1px;
       border-top: 2px solid black;
       z-index: -1;
-      background: var(--color-black);
       position: relative;
-      bottom: 65px;
-      border-top: 2px solid black;
-      z-index: -1;
+      bottom: 45px;
       height: auto;
       transition: all ease 0.3s;
       ul {
         margin: 0;
-        padding: 0;
         display: flex;
         justify-content: center;
         gap: 50px;
         align-items: center;
         list-style-type: none;
         padding: 10px;
+        background: var(--color-black);
+
         li {
           a {
             text-decoration: none;
           }
           span {
             @include text(var(--color-white), clamp(12px, 1vw, 16px), uppercase, 500);
+          }
+        }
+      }
+      .signBlock {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        background: transparent;
+        .signWrapper {
+          background: var(--color-black);
+          display: flex;
+          justify-content: space-around;
+          padding: 10px;
+          position: relative;
+          bottom: 1px;
+            width: 25%;
+
+          span{
+            @include text(var(--color-white), clamp(12px, 1vw, 16px), uppercase, 500);
+            cursor: pointer;
           }
         }
       }

@@ -14,6 +14,7 @@ import FooterC from './components/FooterC.vue';
 import HeaderC from './components/HeaderC.vue';
 import LibraryQ from './components/LibraryQ.vue';
 import PageTransition from './components/PageTransition.vue';
+import useModalStore from './store/useModalStore';
 
 export default defineComponent({
   name: 'App',
@@ -28,6 +29,17 @@ export default defineComponent({
     const isFirstLoad = ref(true);
     const router = useRouter();
 
+    const modalStore = useModalStore();
+
+    const modalHandler = (modal, state) => {
+      switch (modal) {
+        case 'register':
+          modalStore.registerModal = state;
+          break;
+        default:
+      }
+    };
+
     router.beforeEach((to, from, next) => {
       showTransition.value = true;
       setTimeout(() => {
@@ -41,7 +53,12 @@ export default defineComponent({
       }, 3200);
     });
 
-    return { showTransition, isFirstLoad };
+    return {
+      showTransition,
+      isFirstLoad,
+      registerModal: modalStore.registerModal,
+      modalHandler,
+    };
   },
 });
 </script>
