@@ -89,8 +89,14 @@
         </ul>
         <div class="signBlock">
           <div class="signWrapper" style="color: aliceblue;">
-            <span> Sign in</span>
-            <span> Sign up</span>
+            <span
+              @click="registration"
+              @keydown="none"
+            > Sign in</span>
+            <span
+              @click="logIn"
+              @keydown="none"
+            > Sign up</span>
           </div>
         </div>
       </div>
@@ -205,6 +211,44 @@ export default defineComponent({
     const headerWrapperRef = ref(null);
     const isActiveSublist = ref(false);
 
+    const registration = async () => {
+      try {
+        // http://localhost:4444/auth/register
+        const response = await fetch('https://secret-eyrie-79076-8d2c9b054b1f.herokuapp.com/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName: 'Alex',
+            lastName: 'Smith',
+            email: 'smith@example.com',
+            password: '14253456',
+            phoneNumber: '+380123456789',
+          }),
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (e) {
+        console.log(e, 'from error');
+      }
+    };
+
+    const logIn = async () => {
+      try {
+        const response = await fetch('https://secret-eyrie-79076-8d2c9b054b1f.herokuapp.com/api/rooms', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (e) {
+        console.log(e, 'from error');
+      }
+    };
+
     const animateBurgerMenuIn = () => {
       nextTick(() => {
         if (burgerMenuRef.value && headerWrapperRef.value) {
@@ -299,6 +343,8 @@ export default defineComponent({
         isMobileMenu.value = !isMobileMenu.value;
         document.body.style.overflow = isMobileMenu.value ? 'hidden' : '';
       },
+      registration,
+      logIn,
     };
   },
   methods: {

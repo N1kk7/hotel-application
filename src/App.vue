@@ -1,6 +1,7 @@
 <template>
   <HeaderC/>
   <PageTransition v-if="showTransition" :isFirstLoad="isFirstLoad"/>
+  <RegistrationModal/>
   <router-view/>
   <FooterC/>
 
@@ -15,6 +16,8 @@ import HeaderC from './components/HeaderC.vue';
 import LibraryQ from './components/LibraryQ.vue';
 import PageTransition from './components/PageTransition.vue';
 import useModalStore from './store/useModalStore';
+// Modals
+import RegistrationModal from './components/Modals/RegistrationModal.vue';
 
 export default defineComponent({
   name: 'App',
@@ -23,6 +26,7 @@ export default defineComponent({
     LibraryQ,
     FooterC,
     PageTransition,
+    RegistrationModal,
   },
   setup() {
     const showTransition = ref(false);
