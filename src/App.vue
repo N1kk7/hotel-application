@@ -1,7 +1,7 @@
 <template>
   <HeaderC/>
   <PageTransition v-if="showTransition" :isFirstLoad="isFirstLoad"/>
-  <RegistrationModal/>
+  <RegistrationModal v-if="registerModalState"/>
   <router-view/>
   <FooterC/>
 
@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import useModalStore from '@/store/useModalStore';
 import FooterC from './components/FooterC.vue';
 import HeaderC from './components/HeaderC.vue';
 import LibraryQ from './components/LibraryQ.vue';
 import PageTransition from './components/PageTransition.vue';
-import useModalStore from './store/useModalStore';
 // Modals
 import RegistrationModal from './components/Modals/RegistrationModal.vue';
 
@@ -32,7 +32,6 @@ export default defineComponent({
     const showTransition = ref(false);
     const isFirstLoad = ref(true);
     const router = useRouter();
-
     const modalStore = useModalStore();
 
     const modalHandler = (modal, state) => {
@@ -57,11 +56,15 @@ export default defineComponent({
       }, 3200);
     });
 
+    const registerModalState = computed(() => modalStore.registerModal);
+
     return {
       showTransition,
       isFirstLoad,
-      registerModal: modalStore.registerModal,
+      registerModal: modalStore.registerModal(),
       modalHandler,
+      registerModalState,
+
     };
   },
 });

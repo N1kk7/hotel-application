@@ -5,8 +5,8 @@ const useModalStore = defineStore('modal', {
     registerModal: false,
   }),
   actions: {
-    registerModal(func) {
-      this.registerModal = func;
+    registerModal(state) {
+      this.registerModal = state;
     },
   },
 });

@@ -53,6 +53,9 @@
           </ul>
         </div>
         <div class="rightSide">
+          <div class="defaultUser" @click="openLoginModal" @keydown="none">
+            <SvgIcon name="defaultUser" size="medium" stroke="#D7B154" />
+          </div>
           <div class="langBtn">
             <SvgIcon name="language" size="medium" stroke="#D7B154" />
 
@@ -87,7 +90,7 @@
             </router-link>
           </li>
         </ul>
-        <div class="signBlock">
+        <!-- <div class="signBlock">
           <div class="signWrapper" style="color: aliceblue;">
             <span
               @click="registration"
@@ -98,7 +101,7 @@
               @keydown="none"
             > Sign up</span>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="burgerMenu" v-if="isMobileMenu" ref="burgerMenuRef">
@@ -182,6 +185,7 @@ import {
   defineComponent, ref, nextTick, watch,
 } from 'vue';
 import { gsap } from 'gsap';
+import useModalStore from '@/store/useModalStore';
 import SecondaryButton from './Buttons/SecondaryButton.vue';
 import SvgIcon from './SvgIcon.vue';
 import PrimaryButton from './Buttons/PrimaryButton.vue';
@@ -210,44 +214,7 @@ export default defineComponent({
     const isMobileMenu = ref(false);
     const headerWrapperRef = ref(null);
     const isActiveSublist = ref(false);
-
-    const registration = async () => {
-      try {
-        // http://localhost:4444/auth/register
-        const response = await fetch('https://secret-eyrie-79076-8d2c9b054b1f.herokuapp.com/api/auth/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            firstName: 'Alex',
-            lastName: 'Smith',
-            email: 'smith@example.com',
-            password: '14253456',
-            phoneNumber: '+380123456789',
-          }),
-        });
-        const data = await response.json();
-        console.log(data);
-      } catch (e) {
-        console.log(e, 'from error');
-      }
-    };
-
-    const logIn = async () => {
-      try {
-        const response = await fetch('https://secret-eyrie-79076-8d2c9b054b1f.herokuapp.com/api/rooms', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        const data = await response.json();
-        console.log(data);
-      } catch (e) {
-        console.log(e, 'from error');
-      }
-    };
+    const modalStore = useModalStore();
 
     const animateBurgerMenuIn = () => {
       nextTick(() => {
@@ -331,6 +298,10 @@ export default defineComponent({
       }
     });
 
+    const openLoginModal = () => {
+      modalStore.registerModal = (true);
+    };
+
     return {
       toggleSubList,
       isActiveSublist,
@@ -343,8 +314,7 @@ export default defineComponent({
         isMobileMenu.value = !isMobileMenu.value;
         document.body.style.overflow = isMobileMenu.value ? 'hidden' : '';
       },
-      registration,
-      logIn,
+      openLoginModal,
     };
   },
   methods: {
@@ -501,26 +471,26 @@ export default defineComponent({
           }
         }
       }
-      .signBlock {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        background: transparent;
-        .signWrapper {
-          background: var(--color-black);
-          display: flex;
-          justify-content: space-around;
-          padding: 10px;
-          position: relative;
-          bottom: 1px;
-            width: 25%;
+      // .signBlock {
+      //   display: flex;
+      //   align-items: center;
+      //   justify-content: flex-end;
+      //   background: transparent;
+      //   .signWrapper {
+      //     background: var(--color-black);
+      //     display: flex;
+      //     justify-content: space-around;
+      //     padding: 10px;
+      //     position: relative;
+      //     bottom: 1px;
+      //       width: 25%;
 
-          span{
-            @include text(var(--color-white), clamp(12px, 1vw, 16px), uppercase, 500);
-            cursor: pointer;
-          }
-        }
-      }
+      //     span{
+      //       @include text(var(--color-white), clamp(12px, 1vw, 16px), uppercase, 500);
+      //       cursor: pointer;
+      //     }
+      //   }
+      // }
     }
     .activeHoverList {
       bottom: 1px;
