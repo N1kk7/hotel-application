@@ -1,7 +1,8 @@
 <template>
   <HeaderC/>
   <PageTransition v-if="showTransition" :isFirstLoad="isFirstLoad"/>
-  <RegistrationModal v-if="registerModalState"/>
+  <RegistrationModal v-if="registerModal"/>
+  <BookingModal v-if="bookingModal"/>
   <router-view/>
   <FooterC/>
 
@@ -18,6 +19,7 @@ import LibraryQ from './components/LibraryQ.vue';
 import PageTransition from './components/PageTransition.vue';
 // Modals
 import RegistrationModal from './components/Modals/RegistrationModal.vue';
+import BookingModal from './components/Modals/BookingModal.vue';
 
 export default defineComponent({
   name: 'App',
@@ -27,6 +29,7 @@ export default defineComponent({
     FooterC,
     PageTransition,
     RegistrationModal,
+    BookingModal,
   },
   setup() {
     const showTransition = ref(false);
@@ -56,14 +59,20 @@ export default defineComponent({
       }, 3200);
     });
 
-    const registerModalState = computed(() => modalStore.registerModal);
+    // const registerModalState = computed(() => modalStore.registerModal);
+    // const bookingModalState = computed(() => modalStore.bookingModal);
+    // console.log('register', registerModalState);
+
+    // console.log('booking', bookingModalState);
 
     return {
       showTransition,
       isFirstLoad,
-      registerModal: modalStore.registerModal(),
+      registerModal: computed(() => modalStore.registerModal),
+      bookingModal: computed(() => modalStore.bookingModal),
       modalHandler,
-      registerModalState,
+      // registerModalState,
+      // bookingModalState,
 
     };
   },

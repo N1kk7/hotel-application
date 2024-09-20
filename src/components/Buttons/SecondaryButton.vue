@@ -1,5 +1,5 @@
 <template>
-    <button class="SecondaryButton" @click="buttonClick">
+    <button class="SecondaryButton">
         <span>
             {{ buttonText }}
         </span>
@@ -21,11 +21,11 @@ export default defineComponent({
   components: {
 
   },
-  methods: {
-    buttonClick() {
-      console.log('button-clicked');
-    },
-  },
+  // methods: {
+  //   buttonClick() {
+  //     console.log('button-clicked');
+  //   },
+  // },
 
 });
 </script>

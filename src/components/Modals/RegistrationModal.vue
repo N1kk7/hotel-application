@@ -32,7 +32,7 @@
                                 <input
                                     type="email"
                                     name="email"
-                                    placeholder="Email"
+                                    placeholder="example@gmail.com"
                                     maxlength="40"
                                     required
                                     v-model="email"
@@ -45,35 +45,39 @@
                                 <input
                                     type="password"
                                     name="password"
-                                    placeholder="Password"
+                                    placeholder="ololo"
                                     maxlength="40"
                                     required
                                     v-model="password"
+                                    class="passwordInput"
                                 />
+                                <span v-if="!password && !isFocused" class="passwordPlaceholder">
+                                    ••••••••
+                                </span>
                             </label>
                         </div>
 
                     </div>
                     <div class="typeEnter" v-else>
                         <div class="input">
-                        <label for="name">
+                        <label for="firstName">
                             First Name
                             <input
                                 type="text"
-                                name="name"
-                                placeholder="First Name"
+                                name="firstName"
+                                placeholder="Paul"
                                 required
                                 v-model="firstName"
                             />
                         </label>
                         </div>
                         <div class="input">
-                            <label for="name">
+                            <label for="lastName">
                                 Last Name
                                 <input
                                     type="text"
-                                    name="name"
-                                    placeholder="Last Name"
+                                    name="lastName"
+                                    placeholder="Walker"
                                     required
                                     v-model="lastName"
                                 />
@@ -85,7 +89,7 @@
                                 <input
                                     type="email"
                                     name="email"
-                                    placeholder="Email"
+                                    placeholder="example@gmail.com"
                                     required
                                     v-model="email"
                                 />
@@ -100,7 +104,12 @@
                                     placeholder="Password"
                                     required
                                     v-model="password"
+                                    class="passwordInput"
+
                                 />
+                                <span v-if="!password && !isFocused" class="passwordPlaceholder">
+                                    ••••••••
+                                </span>
                             </label>
                         </div>
                         <div class="input">
@@ -109,28 +118,28 @@
                                 <input
                                     type="tel"
                                     name="phone"
-                                    placeholder="Phone"
+                                    placeholder="+_ (___) ___-__-__"
                                     required
                                     v-model="phone"
                                 />
                             </label>
                         </div>
                     </div>
+                    <div class="buttonGroup">
+                        <TertiaryButton
+                            v-if="!logInState"
+                            buttonText="Registration"
+                            textColor="var(--color-gold)"
+                            @click="registrationHandler"
+                        />
+                        <TertiaryButton
+                            v-else
+                            buttonText="Log in"
+                            textColor="var(--color-gold)"
+                            @click="logInHandler"
+                        />
+                    </div>
                 </div>
-            </div>
-            <div class="buttonGroup">
-                <TertiaryButton
-                    v-if="!logInState"
-                    buttonText="Registration"
-                    textColor="var(--color-gold)"
-                    @click="registrationHandler"
-                />
-                <TertiaryButton
-                    v-else
-                    buttonText="Log in"
-                    textColor="var(--color-gold)"
-                    @click="logInHandler"
-                />
             </div>
         </div>
     </div>
@@ -219,7 +228,7 @@ export default {
 
     const closeModal = () => {
     //   console.log('click');
-      modalStore.registerModal = (false);
+      modalStore.setRegisterModal(false);
     };
 
     return {
@@ -233,171 +242,15 @@ export default {
       email,
       password,
       closeModal,
-
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-// @import '../style/main.scss';
     @import '@/style/mixins.scss';
 
-    .Modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: rgba(0, 0, 0, 0.9);
-        z-index: 9999;
-
-        .ModalWrapper {
-            position: relative;
-            width: clamp(290px, 90vw, 2000px);
-            background-color: var(--color-white);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid var(--color-gold);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(255, 255, 255, 0.15);
-                backdrop-filter: blur(10px);
-                z-index: -1;
-            }
-            .ModalTop{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 120px;
-                border-radius: 10px 10px 0 0;
-                background-position-y: 60%;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-image: url('../../assets/images/king-palace/mainBg.png');
-                filter: sepia(0.7);
-                border-bottom: 1px solid var(--color-gold);
-                .closeBtn{
-                    position: absolute;
-                    top: 10px;
-                    right: 10px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: var(--color-white);
-                    border-radius: 50%;
-                    border: 1px solid var(--color-white);
-                    cursor: pointer;
-                }
-            }
-            .ModalContent{
-                width: 100%;
-                height: 100%;
-                display: flex;
-                padding: 20px clamp(5px, 4vw, 40px);
-                justify-content: center;
-                align-items: center;
-                &::before{
-                    content: '';
-                    position: absolute;
-                    top: 10%;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-image: url('../../assets/images/transparentLogo.png');
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-blend-mode: luminosity;
-                    background-size: clamp(150px, 85%, 400px);
-                    z-index: -1;
-                    opacity: 0.1;
-                }
-                .section{
-                    width: 100%;
-                    .ChoiceEnter{
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 100%;
-                        .item{
-                            border-bottom: 2px solid transparent;
-                            padding: 15px;
-                        }
-                        button{
-                            @include text(var(--color-white), clamp(12px, 2vw, 18px), unset, 600);
-
-                        }
-                        .itemActive{
-                            border-bottom: 2px solid var(--color-gold);
-                            button{
-                                color: var(--color-gold);
-
-                            }
-                        }
-
-                    }
-                    .typeEnter{
-                        display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-                    width: 100%;
-                    gap: 20px;
-                    }
-                    .input{
-                        width: clamp(280px, 100%, 800px);
-                        // width: 80%;;
-                        @include text(var(--color-gold), clamp(12px, 2vw, 18px), unset, 600);
-                    }
-                    input{
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: clamp(280px, 100%, 800px);
-                        margin: 0 auto;
-                        height: 50px;
-                        margin-top: 5px;
-                        padding: 0 10px;
-                        border: 1px solid var(--color-gold);
-                        border-radius: 4px;
-                        background: rgba(255, 255, 255, 0.35);
-                        @include text(var(--color-white), clamp(12px, 2vw, 18px), unset, 600);
-                        &:focus{
-                            outline: none;
-                        }
-                        &::placeholder{
-                            @include text(var(--color-white), clamp(12px, 2vw, 18px), unset, 400);
-                        }
-                    }
-                }
-            }
-            .buttonGroup{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 20px 0 30px;
-                gap: 20px;
-                button{
-                    background: rgba(255, 255, 255, 0.35) !important;
-                    border: 1px solid var(--color-gold) !important;
-                    span{
-                        font-weight: 700 !important;
-                    }
-
-                }
-            }
-        }
+    .Modal{
+        @include modalBlock;
     }
 </style>

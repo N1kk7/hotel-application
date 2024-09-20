@@ -53,17 +53,17 @@
           </ul>
         </div>
         <div class="rightSide">
-          <div class="defaultUser" @click="openLoginModal" @keydown="none">
-            <SvgIcon name="defaultUser" size="medium" stroke="#D7B154" />
-          </div>
           <div class="langBtn">
             <SvgIcon name="language" size="medium" stroke="#D7B154" />
 
-            <span> deutsch </span>
+            <span> de </span>
             <SvgIcon name="arrowDown" size="small" stroke="white" />
           </div>
+          <div class="user" @click="openLoginModal" @keydown="none">
+            <SvgIcon name="defaultUser" size="medium" stroke="#D7B154" fill="##171717"/>
+          </div>
 
-          <SecondaryButton buttonText="Booking" />
+          <SecondaryButton buttonText="Booking" @click="openBookingModal"/>
 
           <div class="burgerIcon" @click="burgerMenu" aria-hidden="true">
             <SvgIcon v-if="!isBurgerMenu" name="burgerMenu" size="medium" />
@@ -299,7 +299,12 @@ export default defineComponent({
     });
 
     const openLoginModal = () => {
-      modalStore.registerModal = (true);
+      modalStore.setRegisterModal(true);
+    };
+
+    const openBookingModal = () => {
+      modalStore.setBookingModal(true);
+      // console.log(modalStore.bookingModal());
     };
 
     return {
@@ -315,6 +320,8 @@ export default defineComponent({
         document.body.style.overflow = isMobileMenu.value ? 'hidden' : '';
       },
       openLoginModal,
+      openBookingModal,
+
     };
   },
   methods: {
@@ -420,6 +427,9 @@ export default defineComponent({
         align-items: center;
         justify-content: flex-end;
         gap: clamp(0px, 1vw, 14px);
+        .user{
+          cursor: pointer;
+        }
         .langBtn {
           display: flex;
           align-items: center;
