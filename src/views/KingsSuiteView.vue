@@ -82,7 +82,7 @@
                 </li>
             </ul>
         </div>
-        <div class="accomodation">
+        <div class="accommodation">
             <span>
                 Accomodation
             </span>
@@ -658,7 +658,12 @@ export default {
                         flex-direction: column;
                         // gap: 10px;
                         .title{
-                            @include text(var(--color-black), 20px, uppercase, 500);
+                            @include text(
+                              var(--color-black), clamp(17px, 1.5vw, 20px), uppercase, 500
+                            );
+                            @media screen and (max-width: 1024px){
+                              font-size: 20px;
+                            }
                         }
                         .subtitle{
                             @include text(var(--color-black), 16px, unset, 400);
@@ -666,37 +671,52 @@ export default {
                     }
 
                 }
+                @media screen and (max-width: 1024px){
+                  flex-direction: column;
+                  gap: 4vw;
+                  align-items: baseline;
+                  width: fit-content;
+                  margin: 0 auto;
+                  li {
+                    width: 100%;
+                    justify-content: flex-start;
+                    button{
+                      margin: 20px auto 0;
+                      padding: clamp(7px, 4vw, 20px) clamp(10px, 20vw, 50px);
+                    }
+                  }
+                }
             }
         }
 
-        .accomodation{
-            margin: 40px 0 100px;
+        .accommodation{
+            margin: 40px 0 clamp(50px, 5vw, 100px);
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
             span{
-                @include text(var(--color-black), 14px, uppercase, 500);
+                @include text(var(--color-textGrey), 16px, uppercase, 500);
             }
             h2{
-                @include text(var(--color-black), 40px, uppercase, 600);
+                @include text(var(--color-gold), clamp(30px, 5vw, 40px), uppercase, 600);
             }
             p{
                 margin-bottom: 20px;
                 max-width: 60%;
                 text-align: center;
-                @include text(var(--color-black), 20px, unset, 400);
+                @include text(var(--color-textGrey), 20px, unset, 400);
             }
             .underline{
                 width: 20%;
-                background: black;
+                background: var(--color-gold);
                 height: 1px;
             }
         }
         .swiperBlock{
             h2{
                 text-align: center;
-                @include text(var(--color-black), 40px, uppercase, 600);
+                @include text(var(--color-gold), clamp(30px, 5vw, 40px), uppercase, 600);
                 margin-bottom: 40px;
             }
             .swiper{
@@ -730,17 +750,17 @@ export default {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-top: 100px;
-            margin-bottom: 80px;
+            margin-top: clamp(50px, 5vw, 100px);
+            margin-bottom: clamp(40px, 5vw, 80px);
             h1{
-                @include text(var(--color-black), 40px, uppercase, 600);
+                @include text(var(--color-gold), clamp(30px, 5vw, 40px), uppercase, 600);
                 margin-bottom: 40px;
             }
             .detailsGroup{
                 display: flex;
                 flex-direction: column;
                 gap: 32px;
-                width: 80%;
+                width: clamp(300px, 90vw, 1000px);
                 // margin-bottom: 80px;
                 overflow: hidden;
                 .tittle{
@@ -750,7 +770,9 @@ export default {
                     // padding-top: 80px;
 
                     h3{
-                        @include text(var(--color-black), 28px, uppercase, 500);
+                        @include text(
+                          var(--color-textGrey), clamp(18px, 2.5vw, 28px), uppercase, 500
+                          );
                     }
                 }
                 ul{
@@ -763,8 +785,14 @@ export default {
                         align-items: center;
                         gap: 12px;
                         span{
-                            @include text(var(--color-black), 20px, unset, 400);
+                            @include text(
+                              var(--color-textGrey), clamp(14px, 2.5vw, 20px), unset, 400
+                              );
+                              word-break: break-word;
                         }
+                    }
+                    @media screen and (max-width: 600px){
+                      grid-template-columns: repeat(2, 1fr);
                     }
 
                 }

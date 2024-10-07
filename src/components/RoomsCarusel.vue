@@ -225,7 +225,7 @@ export default {
     justify-content: space-between;
     margin-block: 20px;
     h2 {
-      @include text(var(--color-black), clamp(20px, 5vw, 48px), uppercase, 500);
+      @include text(var(--color-textGrey), clamp(20px, 5vw, 40px), uppercase, 500);
       flex: 1;
     }
     .buttons {
@@ -256,7 +256,6 @@ export default {
       @media (max-width: 768px) {
         display: flex;
         justify-content: center;
-        margin-bottom: 20px;
         align-items: center;
         width: 80vw;
         left: 50%;
