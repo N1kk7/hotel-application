@@ -33,7 +33,12 @@
 
                             </div>
                     </div>
-                    <div class="typeEnter" v-if="logInState">
+                    <div class="contentWrapper">
+                        <div
+                        ref="logInContent"
+                        class="typeEnter"
+                        v-if="logInState"
+                    >
                         <div class="input">
                             <label for="email">
                                 Email
@@ -65,72 +70,79 @@
                             </label>
                         </div>
 
-                    </div>
-                    <div class="typeEnter" v-else>
-                        <div class="input">
-                        <label for="firstName">
-                            First Name
-                            <input
-                                type="text"
-                                name="firstName"
-                                placeholder="Paul"
-                                required
-                                v-model="firstName"
-                            />
-                        </label>
                         </div>
-                        <div class="input">
-                            <label for="lastName">
-                                Last Name
+                        <div
+                            ref="registerContent"
+                            class="typeEnter"
+                            v-else
+                        >
+                            <div class="input">
+                            <label for="firstName">
+                                First Name
                                 <input
                                     type="text"
-                                    name="lastName"
-                                    placeholder="Walker"
+                                    name="firstName"
+                                    placeholder="Paul"
                                     required
-                                    v-model="lastName"
+                                    v-model="firstName"
                                 />
                             </label>
-                        </div>
-                        <div class="input">
-                            <label for="email">
-                                Email
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="example@gmail.com"
-                                    required
-                                    v-model="email"
-                                />
-                            </label>
-                        </div>
-                        <div class="input">
-                            <label for="password">
-                                Password
-                                <input
-                                    type="password"
-                                    name="password"
-                                    placeholder="Password"
-                                    required
-                                    v-model="password"
-                                    class="passwordInput"
+                            </div>
+                            <div class="input">
+                                <label for="lastName">
+                                    Last Name
+                                    <input
+                                        type="text"
+                                        name="lastName"
+                                        placeholder="Walker"
+                                        required
+                                        v-model="lastName"
+                                    />
+                                </label>
+                            </div>
+                            <div class="input">
+                                <label for="email">
+                                    Email
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="example@gmail.com"
+                                        required
+                                        v-model="email"
+                                    />
+                                </label>
+                            </div>
+                            <div class="input">
+                                <label for="password">
+                                    Password
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        required
+                                        v-model="password"
+                                        class="passwordInput"
 
-                                />
-                                <span v-if="!password && !isFocused" class="passwordPlaceholder">
-                                    ••••••••
-                                </span>
-                            </label>
-                        </div>
-                        <div class="input">
-                            <label for="phone">
-                                Phone
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    placeholder="+_ (___) ___-__-__"
-                                    required
-                                    v-model="phone"
-                                />
-                            </label>
+                                    />
+                                    <span v-if="!password && !isFocused"
+                                        class="passwordPlaceholder"
+                                    >
+                                        ••••••••
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="input">
+                                <label for="phone">
+                                    Phone
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="+_ (___) ___-__-__"
+                                        required
+                                        v-model="phone"
+                                    />
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="buttonGroup">
@@ -154,7 +166,10 @@
 </template>
 
 <script>
-import { onMounted, onBeforeUnmount, ref } from 'vue';
+import {
+  onMounted, onBeforeUnmount, ref, watch, nextTick,
+} from 'vue';
+import gsap from 'gsap';
 import useModalStore from '@/store/useModalStore';
 import TertiaryButton from '../Buttons/TertiaryButton.vue';
 import SvgIcon from '../SvgIcon.vue';
@@ -167,6 +182,8 @@ export default {
   },
   setup() {
     const logInState = ref(true);
+    const logInContent = ref(null);
+    const registerContent = ref(null);
     const firstName = ref('');
     const lastName = ref('');
     const phone = ref('');
@@ -238,9 +255,98 @@ export default {
       modalStore.setRegisterModal(false);
     };
 
+    // const toggleContent = async () => {
+    //   await nextTick(); // Ждем, пока DOM обновится
+
+    //   const logInHeight = logInContent.value ? logInContent.value.scrollHeight : 0;
+    //   const registerHeight = registerContent.value ? registerContent.value.scrollHeight : 0;
+
+    //   if (logInState.value) {
+    //     // Сначала устанавливаем высоту регистрационной формы в 0, чтобы она была скрыта
+    //     gsap.set(registerContent.value, { height: 0 });
+    //     gsap.to(registerContent.value, {
+    // height: registerHeight, duration: 0.5, ease: 'power2.out',
+    // });
+    //     gsap.to(logInContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
+    //   } else {
+    //     // Сначала устанавливаем высоту логин формы в 0, чтобы она была скрыта
+    //     gsap.set(logInContent.value, { height: 0 });
+    //     gsap.to(logInContent.value, { height: logInHeight, duration: 0.5, ease: 'power2.out' });
+    //     gsap.to(registerContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
+    //   }
+    // };
+
+    const toggleContent = async () => {
+      await nextTick(); // Ждем, пока DOM обновится
+
+      const logInHeight = logInContent.value ? logInContent.value.scrollHeight : 0;
+      const registerHeight = registerContent.value ? registerContent.value.scrollHeight : 0;
+
+      if (logInState.value) {
+        // Переход к логину
+        gsap.set(registerContent.value, {
+          height: registerHeight,
+        }); // Устанавливаем высоту для регистрационного блока
+        gsap.to(registerContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
+
+        // Анимируем показ блока логина
+        gsap.set(logInContent.value, { height: 0 }); // Сначала высота 0
+        gsap.to(logInContent.value, { height: logInHeight, duration: 0.5, ease: 'power2.out' });
+      } else {
+        // Переход к регистрации
+        gsap.set(logInContent.value, {
+          height: logInHeight,
+        }); // Устанавливаем высоту для логин-блока
+        gsap.to(logInContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
+
+        // Анимируем показ регистрационного блока
+        gsap.set(registerContent.value, { height: 0 }); // Сначала высота 0
+        gsap.to(registerContent.value, {
+          height: registerHeight, duration: 0.5, ease: 'power2.out',
+        });
+      }
+    };
+
+    // const toggleContent = async () => {
+    //   await nextTick(); // Ждем обновления DOM
+
+    //   //   const logInHeight = logInContent.value ? logInContent.value.scrollHeight : 0;
+    //   //   const registerHeight = registerContent.value ? registerContent.value.scrollHeight : 0;
+
+    //   if (logInState.value) {
+    //     // Сначала сворачиваем текущий блок регистрации
+    //     gsap.to(registerContent.value, {
+    //       height: 0,
+    //       duration: 0.5,
+    //       ease: 'power2.out',
+    //       onComplete: () => {
+    //         logInState.value = true; // Меняем состояние после того, как свернули блок
+    //         gsap.set(logInContent.value, { height: 'auto' });
+    //         gsap.from(logInContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
+    //       },
+    //     });
+    //   } else {
+    //     // Сначала сворачиваем текущий блок логина
+    //     gsap.to(logInContent.value, {
+    //       height: 0,
+    //       duration: 0.5,
+    //       ease: 'power2.out',
+    //       onComplete: () => {
+    //         logInState.value = false; // Меняем состояние после того, как свернули блок
+    //         gsap.set(registerContent.value, { height: 'auto' });
+    //         gsap.from(registerContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
+    //       },
+    //     });
+    //   }
+    // };
+
+    watch(logInState, toggleContent);
+
     return {
       choiceEnter,
       logInState,
+      logInContent,
+      registerContent,
       logInHandler,
       registrationHandler,
       firstName,
@@ -249,6 +355,7 @@ export default {
       email,
       password,
       closeModal,
+      toggleContent,
     };
   },
 };
@@ -285,6 +392,7 @@ export default {
                 transition: transform 0.5s ease-in-out;
                 // transition: background-position 0.5s ease-in-out;
                 z-index: 10;
+                transition: transform 0.5s ease-in-out, background-position-x 0.5s ease-in-out;
     //             position: absolute;
     // height: -webkit-fill-available;
     // left: 0%;
@@ -330,5 +438,11 @@ export default {
             }
 
         }
+    }
+    .contentWrapper {
+        overflow: hidden;  /* Скрываем переполнение для анимации */
+    }
+    .typeEnter {
+        transition: height 0.5s ease; /* Плавный переход высоты */
     }
 </style>

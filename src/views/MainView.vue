@@ -267,10 +267,18 @@
     </section>
 
     <section class="map">
-      <div class="mapImg">
+      <!-- <div class="mapImg">
         <img src="../assets/images/home-page/map.png" alt="Map" />
 
-      </div>
+      </div> -->
+      <GoogleMap
+        :api-key="apiKey"
+        style="width: 100%; height: 500px"
+        :center="center"
+        :zoom="15"
+      >
+        <Marker :options="{ position: center }" />
+      </GoogleMap>
       <HelpInfo />
     </section>
   </div>
@@ -290,11 +298,15 @@ import ProgressBar from '@/components/ProgressBar.vue';
 import RestaurantCarusel from '@/components/RestaurantCarusel.vue';
 import mainBg from '@/assets/images/home-page/main.png';
 import mobileBg from '@/assets/images/home-page/mob/main.png';
+import { GoogleMap, Marker } from 'vue3-google-map';
 import SvgIcon from '../components/SvgIcon.vue';
 import Additional3 from '../components/Buttons/Additional3.vue';
 
+const apiKey = 'AIzaSyCybyZ8sOM7G5c0aEmfqynbnUJKNk8fQRo';
+
 export default {
   data() {
+    const center = { lat: 49.833333, lng: 24.016667 };
     return {
       autoplayConfig: {
         delay: 3000,
@@ -396,6 +408,8 @@ export default {
           pathImg: 'ig3.png',
         },
       ],
+      center,
+      apiKey,
     };
   },
   methods: {
@@ -420,6 +434,8 @@ export default {
     SwiperSlide,
     ProgressBar,
     RestaurantCarusel,
+    GoogleMap,
+    Marker,
   },
   setup() {
     const swiperDeluxe = ref(null);
