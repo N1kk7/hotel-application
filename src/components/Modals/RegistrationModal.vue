@@ -167,7 +167,7 @@
 
 <script>
 import {
-  onMounted, onBeforeUnmount, ref, watch, nextTick,
+  onMounted, onBeforeUnmount, ref, watch, nextTick, inject,
 } from 'vue';
 import gsap from 'gsap';
 import useModalStore from '@/store/useModalStore';
@@ -190,6 +190,8 @@ export default {
     const email = ref('');
     const password = ref('');
     const modalStore = useModalStore();
+
+    const showToast = inject('showToast');
 
     onMounted(() => {
       document.body.style.overflow = 'hidden';
@@ -215,9 +217,11 @@ export default {
           }),
         });
         const data = await response.json();
+        showToast('Toast is working', 'error');
         console.log(data);
       } catch (e) {
         console.log(e, 'from error');
+        showToast('ololo', 'error');
       }
       email.value = '';
       password.value = '';
@@ -225,7 +229,6 @@ export default {
 
     const registrationHandler = async () => {
       try {
-        // http://localhost:4444/auth/register
         const response = await fetch('https://secret-eyrie-79076-8d2c9b054b1f.herokuapp.com/api/auth/register', {
           method: 'POST',
           headers: {
@@ -254,27 +257,6 @@ export default {
     const closeModal = () => {
       modalStore.setRegisterModal(false);
     };
-
-    // const toggleContent = async () => {
-    //   await nextTick(); // Ждем, пока DOM обновится
-
-    //   const logInHeight = logInContent.value ? logInContent.value.scrollHeight : 0;
-    //   const registerHeight = registerContent.value ? registerContent.value.scrollHeight : 0;
-
-    //   if (logInState.value) {
-    //     // Сначала устанавливаем высоту регистрационной формы в 0, чтобы она была скрыта
-    //     gsap.set(registerContent.value, { height: 0 });
-    //     gsap.to(registerContent.value, {
-    // height: registerHeight, duration: 0.5, ease: 'power2.out',
-    // });
-    //     gsap.to(logInContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
-    //   } else {
-    //     // Сначала устанавливаем высоту логин формы в 0, чтобы она была скрыта
-    //     gsap.set(logInContent.value, { height: 0 });
-    //     gsap.to(logInContent.value, { height: logInHeight, duration: 0.5, ease: 'power2.out' });
-    //     gsap.to(registerContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
-    //   }
-    // };
 
     const toggleContent = async () => {
       await nextTick(); // Ждем, пока DOM обновится
@@ -306,39 +288,6 @@ export default {
         });
       }
     };
-
-    // const toggleContent = async () => {
-    //   await nextTick(); // Ждем обновления DOM
-
-    //   //   const logInHeight = logInContent.value ? logInContent.value.scrollHeight : 0;
-    //   //   const registerHeight = registerContent.value ? registerContent.value.scrollHeight : 0;
-
-    //   if (logInState.value) {
-    //     // Сначала сворачиваем текущий блок регистрации
-    //     gsap.to(registerContent.value, {
-    //       height: 0,
-    //       duration: 0.5,
-    //       ease: 'power2.out',
-    //       onComplete: () => {
-    //         logInState.value = true; // Меняем состояние после того, как свернули блок
-    //         gsap.set(logInContent.value, { height: 'auto' });
-    //         gsap.from(logInContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
-    //       },
-    //     });
-    //   } else {
-    //     // Сначала сворачиваем текущий блок логина
-    //     gsap.to(logInContent.value, {
-    //       height: 0,
-    //       duration: 0.5,
-    //       ease: 'power2.out',
-    //       onComplete: () => {
-    //         logInState.value = false; // Меняем состояние после того, как свернули блок
-    //         gsap.set(registerContent.value, { height: 'auto' });
-    //         gsap.from(registerContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
-    //       },
-    //     });
-    //   }
-    // };
 
     watch(logInState, toggleContent);
 
@@ -392,10 +341,8 @@ export default {
                 transition: transform 0.5s ease-in-out;
                 // transition: background-position 0.5s ease-in-out;
                 z-index: 10;
-                transition: transform 0.5s ease-in-out, background-position-x 0.5s ease-in-out;
-    //             position: absolute;
-    // height: -webkit-fill-available;
-    // left: 0%;
+                transition: transform 0.5s ease-in-out, background-position-x 0.7s ease-in-out;
+                filter: sepia(0.05);
             }
             .ModalContent{
                 width: 50%;

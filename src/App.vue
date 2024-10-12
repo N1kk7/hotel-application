@@ -3,6 +3,7 @@
   <PageTransition v-if="showTransition" :isFirstLoad="isFirstLoad"/>
   <RegistrationModal v-if="registerModal"/>
   <BookingModal v-if="bookingModal"/>
+  <Toast :isVisible="isToastVisible" :message="toastMessage" :type="toastType" />
   <router-view/>
   <FooterC/>
 
@@ -10,7 +11,9 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref } from 'vue';
+import {
+  computed, defineComponent, ref, provide,
+} from 'vue';
 import { useRouter } from 'vue-router';
 import useModalStore from '@/store/useModalStore';
 import FooterC from './components/FooterC.vue';
@@ -20,6 +23,8 @@ import PageTransition from './components/PageTransition.vue';
 // Modals
 import RegistrationModal from './components/Modals/RegistrationModal.vue';
 import BookingModal from './components/Modals/BookingModal.vue';
+import Toast from './components/ToastComponent.vue';
+import useToast from './composables/composable';
 
 export default defineComponent({
   name: 'App',
@@ -30,12 +35,18 @@ export default defineComponent({
     PageTransition,
     RegistrationModal,
     BookingModal,
+    Toast,
   },
   setup() {
     const showTransition = ref(false);
     const isFirstLoad = ref(true);
     const router = useRouter();
     const modalStore = useModalStore();
+    const {
+      toastMessage, toastType, isToastVisible, showToast,
+    } = useToast();
+
+    provide('showToast', showToast);
 
     const modalHandler = (modal, state) => {
       switch (modal) {
@@ -59,20 +70,15 @@ export default defineComponent({
       }, 3200);
     });
 
-    // const registerModalState = computed(() => modalStore.registerModal);
-    // const bookingModalState = computed(() => modalStore.bookingModal);
-    // console.log('register', registerModalState);
-
-    // console.log('booking', bookingModalState);
-
     return {
       showTransition,
       isFirstLoad,
       registerModal: computed(() => modalStore.registerModal),
       bookingModal: computed(() => modalStore.bookingModal),
       modalHandler,
-      // registerModalState,
-      // bookingModalState,
+      toastMessage,
+      toastType,
+      isToastVisible,
 
     };
   },
