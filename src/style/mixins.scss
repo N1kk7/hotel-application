@@ -333,6 +333,10 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      @media (max-width: 560px) {
+        width: clamp(290px, 90vw, 2000px);
+        height: 90vh;
+      }
       &::before {
         content: '';
         position: absolute;
@@ -396,6 +400,9 @@
             width: 100%;
             overflow-y: scroll;
             max-height: calc(100vh - 200px);
+            @media (max-width: 550px) {
+              max-height: fit-content;
+            }
             .ChoiceEnter{
                 display: flex;
                 align-items: center;
@@ -475,9 +482,12 @@
                     span{
                         font-weight: 700 !important;
                     }
-                    &:hover{
+                    @media screen and (min-width: 1024px) {
+                      &:hover{
                         background: rgba(255,255,255, 0.35) !important;
+                      }
                     }
+                    
 
                 }
             }

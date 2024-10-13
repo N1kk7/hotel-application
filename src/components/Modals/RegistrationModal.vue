@@ -56,17 +56,40 @@
                             <label for="password">
                                 Password
                                 <input
-                                    type="password"
+                                    :type="hiddenPassword ? 'text' : 'password'"
                                     name="password"
-                                    placeholder="ololo"
-                                    maxlength="40"
+                                    placeholder="Password"
+                                    maxlength="20"
                                     required
                                     v-model="password"
                                     class="passwordInput"
                                 />
-                                <span v-if="!password && !isFocused" class="passwordPlaceholder">
-                                    ••••••••
-                                </span>
+                                <div class="hiddenPass">
+                                    <SvgIcon
+                                        v-if="hiddenPassword"
+                                        name="open-eye"
+                                        size="medium"
+                                        strokeWidth="1"
+                                        @click="toggleEye"
+                                    />
+                                    <SvgIcon
+                                        v-else
+                                        name="close-eye"
+                                        size="medium"
+                                        strokeWidth="1"
+                                        @click="toggleEye"
+                                    />
+                                    <span v-if="!password && !isFocused && !hiddenPassword"
+                                        class="passwordPlaceholder"
+                                    >
+                                        ••••••••
+                                    </span>
+                                    <span
+                                        v-if="!password && hiddenPassword"
+                                        class="passwordPlaceholder">
+                                        123456
+                                    </span>
+                                </div>
                             </label>
                         </div>
 
@@ -116,19 +139,41 @@
                                 <label for="password">
                                     Password
                                     <input
-                                        type="password"
+                                        :type="hiddenPassword ? 'text' : 'password'"
                                         name="password"
                                         placeholder="Password"
+                                        maxlength="20"
                                         required
                                         v-model="password"
                                         class="passwordInput"
 
                                     />
-                                    <span v-if="!password && !isFocused"
-                                        class="passwordPlaceholder"
-                                    >
-                                        ••••••••
-                                    </span>
+                                    <div class="hiddenPass">
+                                    <SvgIcon
+                                            v-if="hiddenPassword"
+                                            name="open-eye"
+                                            size="medium"
+                                            strokeWidth="1"
+                                            @click="toggleEye"
+                                        />
+                                        <SvgIcon
+                                            v-else
+                                            name="close-eye"
+                                            size="medium"
+                                            strokeWidth="1"
+                                            @click="toggleEye"
+                                        />
+                                        <span v-if="!password && !isFocused && !hiddenPassword"
+                                            class="passwordPlaceholder"
+                                        >
+                                            ••••••••
+                                        </span>
+                                        <span
+                                            v-if="!password && hiddenPassword"
+                                            class="passwordPlaceholder">
+                                            123456
+                                        </span>
+                                    </div>
                                 </label>
                             </div>
                             <div class="input">
@@ -189,9 +234,14 @@ export default {
     const phone = ref('');
     const email = ref('');
     const password = ref('');
+    const hiddenPassword = ref(true);
     const modalStore = useModalStore();
 
     const showToast = inject('showToast');
+
+    const toggleEye = () => {
+      hiddenPassword.value = !hiddenPassword.value;
+    };
 
     onMounted(() => {
       document.body.style.overflow = 'hidden';
@@ -259,7 +309,7 @@ export default {
     };
 
     const toggleContent = async () => {
-      await nextTick(); // Ждем, пока DOM обновится
+      await nextTick();
 
       const logInHeight = logInContent.value ? logInContent.value.scrollHeight : 0;
       const registerHeight = registerContent.value ? registerContent.value.scrollHeight : 0;
@@ -268,21 +318,18 @@ export default {
         // Переход к логину
         gsap.set(registerContent.value, {
           height: registerHeight,
-        }); // Устанавливаем высоту для регистрационного блока
+        });
         gsap.to(registerContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
 
-        // Анимируем показ блока логина
-        gsap.set(logInContent.value, { height: 0 }); // Сначала высота 0
+        gsap.set(logInContent.value, { height: 0 });
         gsap.to(logInContent.value, { height: logInHeight, duration: 0.5, ease: 'power2.out' });
       } else {
-        // Переход к регистрации
         gsap.set(logInContent.value, {
           height: logInHeight,
-        }); // Устанавливаем высоту для логин-блока
+        });
         gsap.to(logInContent.value, { height: 0, duration: 0.5, ease: 'power2.out' });
 
-        // Анимируем показ регистрационного блока
-        gsap.set(registerContent.value, { height: 0 }); // Сначала высота 0
+        gsap.set(registerContent.value, { height: 0 });
         gsap.to(registerContent.value, {
           height: registerHeight, duration: 0.5, ease: 'power2.out',
         });
@@ -305,6 +352,8 @@ export default {
       password,
       closeModal,
       toggleContent,
+      hiddenPassword,
+      toggleEye,
     };
   },
 };
@@ -338,11 +387,17 @@ export default {
             .ModalTop{
                 height: auto;
                 width: 50%;
-                transition: transform 0.5s ease-in-out;
-                // transition: background-position 0.5s ease-in-out;
                 z-index: 10;
                 transition: transform 0.5s ease-in-out, background-position-x 0.7s ease-in-out;
                 filter: sepia(0.05);
+                @media (max-width: 1024px) {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    filter: brightness(0.4);
+                }
             }
             .ModalContent{
                 width: 50%;
@@ -353,6 +408,36 @@ export default {
                     top: 0;
                     left: 50%;
                     transform: translateX(-50%);
+                }
+                .hiddenPass{
+                    svg{
+                        position: absolute;
+                        top: 50%;
+                        right: 15px;
+                        z-index: 10;
+                    }
+                }
+                @media (max-width: 1024px) {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    .section{
+                        input{
+                            color: var(--color-white);
+                            font-weight: 200;
+                            background: transparent;
+                            backdrop-filter: blur(5px);
+                            letter-spacing: 0.1em;
+                            &::placeholder{
+                                color: var(--color-white);
+                                font-weight: 200;
+                                letter-spacing: 0.1em;
+                            }
+                        }
+                    }
                 }
             }
             &.row-reverse,
@@ -374,14 +459,20 @@ export default {
                 // flex-direction: row;
 
                 .ModalTop {
-                transform: translateX(-100%);
-                background-position-x: 0%;
+                    transform: translateX(-100%);
+                    background-position-x: 0%;
+                    @media screen and (max-width: 1024px) {
+                        transform: translateX(0%);
+                    }
 
                 }
 
                 .ModalContent {
-                transform: translateX(100%);
-                }
+                    transform: translateX(100%);
+                        @media screen and (max-width: 1024px) {
+                            transform: translateX(0%);
+                        }
+                    }
             }
 
         }
