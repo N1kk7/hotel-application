@@ -406,7 +406,7 @@ export default {
                 }
                 .section{
                     input{
-                        font-size: clamp(12px, 2vw, 18px);
+                        font-size: 16px;
                     }
                 }
                 .hiddenPass{
