@@ -404,6 +404,11 @@ export default {
                     left: 50%;
                     transform: translateX(-50%);
                 }
+                .section{
+                    input{
+                        font-size: clamp(12px, 2vw, 18px);
+                    }
+                }
                 .hiddenPass{
                     width: fit-content;
                     height: 45px;
