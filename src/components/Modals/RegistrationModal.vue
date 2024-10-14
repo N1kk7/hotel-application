@@ -41,7 +41,9 @@
                     >
                         <div class="input">
                             <label for="email">
-                                Email
+                                <span class="labelName">
+                                    Email
+                                </span>
                                 <input
                                     type="email"
                                     name="email"
@@ -54,11 +56,13 @@
                         </div>
                         <div class="input">
                             <label for="password">
-                                Password
+                                <span class="labelName">
+                                    Password
+                                </span>
                                 <input
                                     :type="hiddenPassword ? 'text' : 'password'"
                                     name="password"
-                                    placeholder="Password"
+                                    :placeholder="hiddenPassword ? '123456' : '••••••••'"
                                     maxlength="20"
                                     required
                                     v-model="password"
@@ -79,16 +83,6 @@
                                         strokeWidth="1"
                                         @click="toggleEye"
                                     />
-                                    <span v-if="!password && !isFocused && !hiddenPassword"
-                                        class="passwordPlaceholder"
-                                    >
-                                        ••••••••
-                                    </span>
-                                    <span
-                                        v-if="!password && hiddenPassword"
-                                        class="passwordPlaceholder">
-                                        123456
-                                    </span>
                                 </div>
                             </label>
                         </div>
@@ -101,7 +95,9 @@
                         >
                             <div class="input">
                             <label for="firstName">
+                                <span class="labelName">
                                 First Name
+                                </span>
                                 <input
                                     type="text"
                                     name="firstName"
@@ -113,7 +109,9 @@
                             </div>
                             <div class="input">
                                 <label for="lastName">
-                                    Last Name
+                                    <span class="labelName">
+                                        Last Name
+                                    </span>
                                     <input
                                         type="text"
                                         name="lastName"
@@ -125,7 +123,9 @@
                             </div>
                             <div class="input">
                                 <label for="email">
-                                    Email
+                                    <span class="labelName">
+                                        Email
+                                    </span>
                                     <input
                                         type="email"
                                         name="email"
@@ -137,11 +137,13 @@
                             </div>
                             <div class="input">
                                 <label for="password">
-                                    Password
+                                    <span class="labelName">
+                                        Password
+                                    </span>
                                     <input
                                         :type="hiddenPassword ? 'text' : 'password'"
                                         name="password"
-                                        placeholder="Password"
+                                        :placeholder="hiddenPassword ? '123456' : '••••••••'"
                                         maxlength="20"
                                         required
                                         v-model="password"
@@ -149,7 +151,7 @@
 
                                     />
                                     <div class="hiddenPass">
-                                    <SvgIcon
+                                        <SvgIcon
                                             v-if="hiddenPassword"
                                             name="open-eye"
                                             size="medium"
@@ -163,25 +165,18 @@
                                             strokeWidth="1"
                                             @click="toggleEye"
                                         />
-                                        <span v-if="!password && !isFocused && !hiddenPassword"
-                                            class="passwordPlaceholder"
-                                        >
-                                            ••••••••
-                                        </span>
-                                        <span
-                                            v-if="!password && hiddenPassword"
-                                            class="passwordPlaceholder">
-                                            123456
-                                        </span>
                                     </div>
                                 </label>
                             </div>
                             <div class="input">
                                 <label for="phone">
-                                    Phone
+                                    <span class="labelName">
+                                        Phone
+                                    </span>
                                     <input
-                                        type="tel"
+                                        type="number"
                                         name="phone"
+                                        maxlength="12"
                                         placeholder="+_ (___) ___-__-__"
                                         required
                                         v-model="phone"
@@ -410,11 +405,27 @@ export default {
                     transform: translateX(-50%);
                 }
                 .hiddenPass{
+                    width: fit-content;
+                    height: 45px;
+                    position: absolute;
+                    bottom: 0;
+                    left: 90%;
+                    transform: translateX(-50%);
+                    display: flex;
+                    justify-content: right;
+                    align-items: center;
+                    padding-right: 20px;
                     svg{
-                        position: absolute;
-                        top: 50%;
-                        right: 15px;
                         z-index: 10;
+                    }
+                    @media (max-width: 375px) {
+                        &{
+                            height: 40px;
+                            padding-right: 15px;
+                        }
+                        svg{
+                            width: clamp(25px, 2vw, 30px);
+                        }
                     }
                 }
                 @media (max-width: 1024px) {
@@ -425,6 +436,7 @@ export default {
                     left: 0;
                     z-index: 10;
                     .section{
+                        overflow: visible;
                         input{
                             color: var(--color-white);
                             font-weight: 200;
@@ -456,7 +468,6 @@ export default {
             }
 
             &.row {
-                // flex-direction: row;
 
                 .ModalTop {
                     transform: translateX(-100%);
@@ -478,9 +489,9 @@ export default {
         }
     }
     .contentWrapper {
-        overflow: hidden;  /* Скрываем переполнение для анимации */
+        overflow: hidden;
     }
     .typeEnter {
-        transition: height 0.5s ease; /* Плавный переход высоты */
+        transition: height 0.5s ease;
     }
 </style>
