@@ -22,7 +22,6 @@ const useMainStore = defineStore('main', {
     },
     setMainHeight(height) {
       this.mainHeight = height;
-      // console.log(height, 'from store');
     },
   },
 });

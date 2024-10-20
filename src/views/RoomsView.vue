@@ -521,11 +521,12 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import useAnimations from '@/animations/useAnimations';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
+import useMainStore from '@/store/useStore';
 import SvgIcon from '../components/SvgIcon.vue';
 import 'swiper/swiper-bundle.css';
 
@@ -626,6 +627,7 @@ export default {
     const luxTotalSlides = ref(0);
     const deluxeCurrentSlide = ref(0);
     const deluxeTotalSlides = ref(0);
+    const useStore = useMainStore();
 
     const scrollToSection = (section) => {
       const target = {
@@ -663,6 +665,12 @@ export default {
       mainDiv,
       textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
+    onMounted(() => {
+      useStore.setMainHeight(mainDiv.value.clientHeight);
+    });
+    onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
+    });
     return {
       luxury,
       deluxe,

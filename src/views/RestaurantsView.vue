@@ -163,6 +163,7 @@ import RestaurantCarusel from '@/components/RestaurantCarusel.vue';
 import mainBg from '@/assets/images/restaurants/mainBg.png';
 import mobileBg from '@/assets/images/restaurants/mob/mainBg.png';
 import 'swiper/swiper-bundle.css';
+import useMainStore from '@/store/useStore';
 
 export default {
   name: 'RestaurantsComponent',
@@ -281,6 +282,7 @@ export default {
     const cafeTotalSlides = ref(0);
     const luxCurrentSlide = ref(0);
     const luxTotalSlides = ref(0);
+    const useStore = useMainStore();
     const posterImg = ref('');
     const {
       mainDiv, textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
@@ -317,10 +319,12 @@ export default {
       }
     };
     onMounted(() => {
+      useStore.setMainHeight(mainDiv.value.clientHeight);
       setPosterImg();
       window.addEventListener('resize', setPosterImg);
     });
     onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
       window.removeEventListener('resize', setPosterImg);
     });
     return {

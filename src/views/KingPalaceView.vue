@@ -94,7 +94,9 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import {
+  computed, ref, onBeforeUnmount, onMounted,
+} from 'vue';
 import SvgIcon from '@/components/SvgIcon.vue';
 import useAnimations from '@/animations/useAnimations';
 import useUserStore from '@/store/useStore';
@@ -141,6 +143,14 @@ export default {
       { imgSrc: 'item7.png', title: 'WAIDHAUS', description: 'Ruins of the oldest known Czech stone castle.' },
       { imgSrc: 'item8.png', title: 'PŘIMDA', description: "Europe's most important paintball arena." },
     ]);
+
+    onMounted(() => {
+      userStore.setMainHeight(mainDiv.value.clientHeight);
+    });
+
+    onBeforeUnmount(() => {
+      userStore.setMainHeight(0);
+    });
 
     return {
       mainDiv,

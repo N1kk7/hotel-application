@@ -195,9 +195,10 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper/modules';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
 import 'swiper/swiper-bundle.css';
+import useMainStore from '@/store/useStore';
 
 import {
-  ref, onMounted, nextTick, watch,
+  ref, onMounted, nextTick, watch, onBeforeUnmount,
 } from 'vue';
 
 gsap.registerPlugin();
@@ -518,6 +519,8 @@ export default {
     ]);
     const showItems = ref([]);
 
+    const useStore = useMainStore();
+
     const handleShowDetail = () => {
       const existingIDs = showItems.value.map((item) => item.id);
       const foundElem = detailItems.value.find((elem) => !existingIDs.includes(elem.id));
@@ -576,17 +579,22 @@ export default {
       }
     });
 
+    const {
+      mainDiv,
+      pageBlock, blockWrapper, mainImageBg,
+    } = useAnimations();
+
     onMounted(() => {
+      useStore.setMainHeight(mainDiv.value.clientHeight);
       showItems.value.push(detailItems.value[0]);
       if (showMoreBtn.value) {
         animateIn();
       }
     });
 
-    const {
-      mainDiv,
-      pageBlock, blockWrapper, mainImageBg,
-    } = useAnimations();
+    onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
+    });
 
     return {
       modules: [Pagination, Autoplay],

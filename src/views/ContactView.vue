@@ -245,6 +245,10 @@ import SvgIcon from '@/components/SvgIcon.vue';
 import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import AdditionalBtn from '@/components/Buttons/AdditionalBtn.vue';
+import useMainStore from '@/store/useStore';
+import { onMounted, onBeforeUnmount } from 'vue';
+// import { useStore } from 'vuex';
+// import useMainStore from '@/store/useStore';
 
 export default {
   name: 'MassagesView',
@@ -258,6 +262,15 @@ export default {
       mainDiv,
       textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
+
+    const useStore = useMainStore();
+
+    onMounted(() => {
+      useStore.setMainHeight(mainDiv.value.clientHeight);
+    });
+    onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
+    });
 
     return {
       mainDiv,

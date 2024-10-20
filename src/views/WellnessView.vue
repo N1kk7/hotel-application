@@ -149,6 +149,8 @@ import SvgIcon from '@/components/SvgIcon.vue';
 import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
+import { onMounted, onBeforeUnmount } from 'vue';
+import useMainStore from '@/store/useStore';
 
 export default {
   name: 'MassagesView',
@@ -158,10 +160,17 @@ export default {
     RoomsCarusel,
   },
   setup() {
+    const useStore = useMainStore();
     const {
       mainDiv,
       textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
+    onMounted(() => {
+      useStore.setMainHeight(mainDiv.value.clientHeight);
+    });
+    onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
+    });
     return {
       mainDiv,
       textBlock,

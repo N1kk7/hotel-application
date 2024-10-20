@@ -156,6 +156,7 @@ import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import mainBg from '@/assets/images/relax/relaxBg.png';
 import mobileBg from '@/assets/images/relax/mob/relaxBg.png';
+import useMainStore from '@/store/useStore';
 
 export default {
   name: 'MassagesView',
@@ -202,6 +203,7 @@ export default {
     };
   },
   setup() {
+    const useStore = useMainStore();
     const {
       mainDiv,
       textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
@@ -216,10 +218,12 @@ export default {
       }
     };
     onMounted(() => {
+      useStore.setMainHeight(mainDiv.value.clientHeight);
       setPosterImg();
       window.addEventListener('resize', setPosterImg);
     });
     onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
       window.removeEventListener('resize', setPosterImg);
     });
     return {

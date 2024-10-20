@@ -125,6 +125,7 @@ import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
 import mainBg from '@/assets/images/gym/gymBg.png';
 import mobileBg from '@/assets/images/gym/mob/gymBg.png';
+import useMainStore from '@/store/useStore';
 
 export default {
   name: 'MassagesView',
@@ -139,6 +140,7 @@ export default {
       textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
     const posterImg = ref('');
+    const useStore = useMainStore();
 
     const setPosterImg = () => {
       const screen = window.innerWidth;
@@ -150,10 +152,12 @@ export default {
     };
 
     onMounted(() => {
+      useStore.setMainHeight(mainDiv.value.clientHeight);
       setPosterImg();
       window.addEventListener('resize', setPosterImg);
     });
     onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
       setPosterImg();
       window.removeEventListener('resize', setPosterImg);
     });

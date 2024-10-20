@@ -191,13 +191,10 @@ import { gsap } from 'gsap';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import TertiaryButton from '@/components/Buttons/TertiaryButton.vue';
 import useAnimations from '@/animations/useAnimations';
-// import { Swiper, SwiperSlide } from 'swiper/vue';
-// import { Pagination, Autoplay } from 'swiper/modules';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
-// import RoomsData from '@/Data/RoomsData.json';
-
+import useMainStore from '@/store/useStore';
 import {
-  ref, onMounted, nextTick, watch,
+  ref, onMounted, nextTick, watch, onBeforeUnmount,
 } from 'vue';
 import 'swiper/swiper-bundle.css';
 
@@ -221,6 +218,7 @@ export default {
   setup() {
     const showMoreBtn = ref(true);
     const showMoreButton = ref(null);
+    const useStore = useMainStore();
 
     const detailItems = ref([
       {
@@ -386,16 +384,22 @@ export default {
       }
     });
 
+    const {
+      mainDiv,
+      textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
+    } = useAnimations();
+
     onMounted(() => {
+      useStore.setMainHeight(mainDiv.value.clientHeight);
       showItems.value.push(detailItems.value[0]);
       if (showMoreBtn.value) {
         animateIn();
       }
     });
-    const {
-      mainDiv,
-      textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
-    } = useAnimations();
+
+    onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
+    });
 
     return {
       modules: [Pagination, Autoplay],

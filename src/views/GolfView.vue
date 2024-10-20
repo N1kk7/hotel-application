@@ -145,7 +145,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import SvgIcon from '@/components/SvgIcon.vue';
 import useAnimations from '@/animations/useAnimations';
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
@@ -153,6 +153,7 @@ import RoomsCarusel from '@/components/RoomsCarusel.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
+import useMainStore from '@/store/useStore';
 
 export default {
   name: 'GolfComponent',
@@ -217,6 +218,8 @@ export default {
       textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
 
+    const useStore = useMainStore();
+
     const swiperInstance = ref(null);
 
     const onSwiper = (swiper) => {
@@ -226,9 +229,17 @@ export default {
       swiperInstance.value.slideNext();
     };
     const slidePrev = () => {
-      // console.log('prev');
       swiperInstance.value.slidePrev();
     };
+
+    onMounted(() => {
+      useStore.setMainHeight(mainDiv.value.clientHeight);
+    });
+
+    onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
+    });
+
     return {
       modules: [Pagination, Autoplay],
       onSwiper,

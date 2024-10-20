@@ -74,6 +74,8 @@
 import SvgIcon from '@/components/SvgIcon.vue';
 import useAnimations from '@/animations/useAnimations';
 import RoomsCarusel from '@/components/RoomsCarusel.vue';
+import { onBeforeUnmount, onMounted } from 'vue';
+import useMainStore from '@/store/useStore';
 
 export default {
   name: 'Premium-services',
@@ -112,10 +114,19 @@ export default {
     };
   },
   setup() {
+    const useStore = useMainStore();
     const {
       mainDiv,
       textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
     } = useAnimations();
+
+    onMounted(() => {
+      useStore.setMainHeight(mainDiv.value.clientHeight);
+    });
+    onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
+    });
+
     return {
       mainDiv,
       textBlock,
