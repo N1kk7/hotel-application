@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 const useMainStore = defineStore('main', {
   state: () => ({
     count: 0,
+    mainHeight: 0,
     fullName: 'ololo',
   }),
   actions: {
@@ -18,6 +19,10 @@ const useMainStore = defineStore('main', {
     },
     getFullName(name) {
       this.fullName = name;
+    },
+    setMainHeight(height) {
+      this.mainHeight = height;
+      // console.log(height, 'from store');
     },
   },
 });

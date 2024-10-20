@@ -288,6 +288,7 @@
 import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import useMainStore from '@/store/useStore';
 import {
   EffectFade, Navigation, Pagination, Autoplay, FreeMode,
 } from 'swiper/modules';
@@ -445,6 +446,7 @@ export default {
     const slidesPerView = ref(3);
     const spaceBetween = ref(40);
     const posterImg = ref(null);
+    const useStore = useMainStore();
 
     const {
       mainDiv, textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
@@ -497,9 +499,12 @@ export default {
       setPosterImg();
       updateSlidesPerView();
       window.addEventListener('resize', updateSlidesPerView, setPosterImg);
+      useStore.setMainHeight(mainDiv.value.clientHeight);
+      // console.log(mainDiv.value.clientHeight);
     });
 
     onBeforeUnmount(() => {
+      useStore.setMainHeight(0);
       window.removeEventListener('resize', updateSlidesPerView, setPosterImg);
     });
 

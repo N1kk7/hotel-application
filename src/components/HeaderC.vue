@@ -90,18 +90,6 @@
             </router-link>
           </li>
         </ul>
-        <!-- <div class="signBlock">
-          <div class="signWrapper" style="color: aliceblue;">
-            <span
-              @click="registration"
-              @keydown="none"
-            > Sign in</span>
-            <span
-              @click="logIn"
-              @keydown="none"
-            > Sign up</span>
-          </div>
-        </div> -->
       </div>
     </div>
     <div class="burgerMenu" v-if="isMobileMenu" ref="burgerMenuRef">
@@ -186,6 +174,7 @@ import {
 } from 'vue';
 import { gsap } from 'gsap';
 import useModalStore from '@/store/useModalStore';
+import useMainStore from '@/store/useStore';
 import SecondaryButton from './Buttons/SecondaryButton.vue';
 import SvgIcon from './SvgIcon.vue';
 import PrimaryButton from './Buttons/PrimaryButton.vue';
@@ -215,6 +204,10 @@ export default defineComponent({
     const headerWrapperRef = ref(null);
     const isActiveSublist = ref(false);
     const modalStore = useModalStore();
+    const mainStore = useMainStore();
+    const headerMainHeight = ref(0);
+
+    // this.headerMainHeight = mainStore.mainHeight;
 
     const animateBurgerMenuIn = () => {
       nextTick(() => {
@@ -261,7 +254,6 @@ export default defineComponent({
       nextTick(() => {
         console.log(isActiveSublist);
         isActiveSublist.value = false;
-        // isActiveSublist = false;
         if (burgerMenuRef.value) {
           const tl = gsap.timeline();
 
@@ -289,9 +281,13 @@ export default defineComponent({
       isActiveSublist.value = !isActiveSublist.value;
     };
 
+    watch(() => mainStore.mainHeight, (newValue) => {
+      headerMainHeight.value = newValue;
+    });
+
     watch(isMobileMenu, async (newValue) => {
       if (newValue) {
-        await nextTick(); // Подождите обновления DOM
+        await nextTick();
         animateBurgerMenuIn();
       } else {
         animateBurgerMenuOut();
@@ -321,6 +317,7 @@ export default defineComponent({
       },
       openLoginModal,
       openBookingModal,
+      headerMainHeight,
 
     };
   },
@@ -346,10 +343,10 @@ export default defineComponent({
     },
     onScroll() {
       const currentScrollPosition = window.scrollY || document.documentElement.scrollTop;
-      const scrollMain = this.$refs.headerHeight;
+      const scrollMain = this.headerMainHeight;
       if (currentScrollPosition < this.lastScrollPosition) {
         this.showHeader = false;
-      } else if (currentScrollPosition >= scrollMain.clientHeight) {
+      } else if (currentScrollPosition >= scrollMain) {
         this.showHeader = true;
       }
       if (currentScrollPosition === 0) {
@@ -481,26 +478,6 @@ export default defineComponent({
           }
         }
       }
-      // .signBlock {
-      //   display: flex;
-      //   align-items: center;
-      //   justify-content: flex-end;
-      //   background: transparent;
-      //   .signWrapper {
-      //     background: var(--color-black);
-      //     display: flex;
-      //     justify-content: space-around;
-      //     padding: 10px;
-      //     position: relative;
-      //     bottom: 1px;
-      //       width: 25%;
-
-      //     span{
-      //       @include text(var(--color-white), clamp(12px, 1vw, 16px), uppercase, 500);
-      //       cursor: pointer;
-      //     }
-      //   }
-      // }
     }
     .activeHoverList {
       bottom: 1px;
