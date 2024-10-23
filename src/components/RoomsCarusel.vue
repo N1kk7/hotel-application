@@ -218,7 +218,6 @@ export default {
 .rooms {
   background: var(--color-light);
   margin-inline: 40px;
-  // margin-bottom: 80px;
   .topRooms {
     display: flex;
     align-items: center;

@@ -267,17 +267,14 @@
     </section>
 
     <section class="map">
-      <!-- <div class="mapImg">
-        <img src="../assets/images/home-page/map.png" alt="Map" />
-
-      </div> -->
       <GoogleMap
         :api-key="apiKey"
+        mapId="2a1a0f5e4e9c4e1b"
         style="width: 100%; height: 500px"
         :center="center"
         :zoom="15"
       >
-        <Marker :options="{ position: center }" />
+        <AdvancedMarker :options="markerOptions" :pin-options="pinOptions" />
       </GoogleMap>
       <HelpInfo />
     </section>
@@ -299,15 +296,13 @@ import ProgressBar from '@/components/ProgressBar.vue';
 import RestaurantCarusel from '@/components/RestaurantCarusel.vue';
 import mainBg from '@/assets/images/home-page/main.png';
 import mobileBg from '@/assets/images/home-page/mob/main.png';
-import { GoogleMap, Marker } from 'vue3-google-map';
+import { GoogleMap, AdvancedMarker } from 'vue3-google-map';
 import SvgIcon from '../components/SvgIcon.vue';
 import Additional3 from '../components/Buttons/Additional3.vue';
 
-const apiKey = 'AIzaSyCybyZ8sOM7G5c0aEmfqynbnUJKNk8fQRo';
-
 export default {
   data() {
-    const center = { lat: 49.833333, lng: 24.016667 };
+    // const center = { lat: 49.833333, lng: 24.016667 };
     return {
       autoplayConfig: {
         delay: 3000,
@@ -409,8 +404,8 @@ export default {
           pathImg: 'ig3.png',
         },
       ],
-      center,
-      apiKey,
+      // center,
+      // apiKey,
     };
   },
   methods: {
@@ -436,7 +431,7 @@ export default {
     ProgressBar,
     RestaurantCarusel,
     GoogleMap,
-    Marker,
+    AdvancedMarker,
   },
   setup() {
     const swiperDeluxe = ref(null);
@@ -447,6 +442,15 @@ export default {
     const spaceBetween = ref(40);
     const posterImg = ref(null);
     const useStore = useMainStore();
+
+    // 49.67034087304698, 12.556432995295028
+
+    const apiKey = 'AIzaSyA6264jeTRPcvWNQRbtB46lphG1lT33GZw';
+    const center = { lat: 49.67034087304698, lng: 12.556432995295028 };
+    const markerOptions = { position: center, title: 'LADY LIBERTY' };
+    const pinOptions = { background: '#F88379' };
+    // const mapElement = ref(null);
+    // const map = ref(null);
 
     const {
       mainDiv, textBlock, pageBlock, blockWrapper, mainImageBg, animatedTitle,
@@ -500,7 +504,16 @@ export default {
       updateSlidesPerView();
       window.addEventListener('resize', updateSlidesPerView, setPosterImg);
       useStore.setMainHeight(mainDiv.value.clientHeight);
-      // console.log(mainDiv.value.clientHeight);
+
+      // const initMap = () => {
+      //   if (mapElement.value) {
+      //     map.value = new google.maps.Map(mapElement.value, {
+      //       center: { lat: 40.73061, lng: -73.935242 },
+      //       zoom: 12,
+      //       mapTypeId: 'roadmap',
+      //     });
+      //   }
+      // }
     });
 
     onBeforeUnmount(() => {
@@ -533,6 +546,10 @@ export default {
       pagination: {
         clickable: true,
       },
+      apiKey,
+      center,
+      markerOptions,
+      pinOptions,
     };
   },
   mounted() {
